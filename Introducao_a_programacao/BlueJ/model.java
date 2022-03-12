@@ -1,5 +1,5 @@
-public class Class {
-    public static void main(String args[]){
-        
+public class Model {
+    public static void main(String args[]) {
+
     }
 }
