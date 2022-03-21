@@ -6,17 +6,21 @@ public class horario {
         int horario1;
         int horario2;
         int diferenca;
+        String string;
         
-        System.out.println("Digite um primeiro horário: ");
+        System.out.println("\nDigite um primeiro horário: ");
         horario1 = input.nextInt();
         
         System.out.println("Digite um segundo horário: ");
         horario2 = input.nextInt();
         
-        diferenca = (horario1 - horario2);
-        Integer.toString(diferenca);
+        diferenca = (horario2 - horario1);
+        string = Integer.toString(diferenca);
+        if (string.length < 4) {
+            string = "0"+string;
+        }
         
         System.out.println("Horário 1: "+horario1+" \nHorário 2: "+horario2);
-        System.out.print("Diferença: "+diferenca);
+        System.out.print("Diferença: "+string);
     }
 }
