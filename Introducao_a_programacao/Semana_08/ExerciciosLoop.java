@@ -145,7 +145,6 @@ public class ExerciciosLoop {
             System.out.println("Erro: "+e);
             System.out.println("(Apenas números inteiros são aceitos.)");
         }
-    }
     public static void Ex9() {
 
     }
