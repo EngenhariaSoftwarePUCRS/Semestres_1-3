@@ -60,7 +60,7 @@ public class ExerciciosFor {
                 }
             }
             
-            System.out.printf("A soma dos números positivos até %d é: %d ", n, soma);
+            System.out.printf("A soma dos números inteiros até %d é: %d ", n, soma);
         } catch (Exception e) {
             System.out.println("Apenas números inteiros. Favor reiniciar o programa.");
             System.out.println("Erro: "+e);
@@ -92,19 +92,16 @@ public class ExerciciosFor {
     public static void Ex7() {
         String palavra;
         int qtdLetras;
-        char[] letras;
         
         try (Scanner input = new Scanner(System.in)) {
             System.out.print("Escreva uma palavra: ");
             palavra = input.nextLine();
             qtdLetras = palavra.length();
-            letras = new char[qtdLetras];
                         
             for (int i = 0; i < qtdLetras; i++) {
-                System.out.println(i);
+                System.out.println(palavra.charAt(i));
             }
         } catch (Exception e) {
-            System.out.println("Apenas números inteiros. Favor reiniciar o programa.");
             System.out.println("Erro: "+e);
         }
     }
