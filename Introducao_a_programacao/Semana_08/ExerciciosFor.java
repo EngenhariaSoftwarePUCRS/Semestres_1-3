@@ -69,7 +69,21 @@ public class ExerciciosFor {
     
     //Como você poderia modificar o laço for do programa InvestmentTable.java para que ele imprima todos os saldos até que o valor tenha dobrado?
     public static void Ex5() {
+        final double RATE = 5;
+        final double INITIAL_BALANCE = 10000;
+        double balance = INITIAL_BALANCE;
+        final double META = 2*INITIAL_BALANCE;
+        int nyears = 0, i = 1;
+      
+        while (balance <= META) {
+            double interest = balance * RATE / 100;
+            System.out.printf("O balanço do ano %d é equivalente a: %.2f%n", nyears, balance);
+            balance += interest;
+            nyears = i;
+            i++;
+        }
         
+        System.out.printf("Foram necessários %d anos para duplicar o investimento.%n", nyears);
     }
     
     //O que estes laços imprimem na tela?
@@ -106,10 +120,10 @@ public class ExerciciosFor {
         }
     }
     
-    //Escreva um programa que imprime os valores de 20, 21, 22 até 220.
+    //Escreva um programa que imprime os valores de 2^0, 2^1, 2^2 até 2^20.
     public static void Ex8() {
-        for (int i = 20; i <= 220; i++) {
-            System.out.println(i);
+        for (int i = 0; i <= 20; i++) {
+            System.out.println(Math.pow(2, i));
         }
     }
 }
