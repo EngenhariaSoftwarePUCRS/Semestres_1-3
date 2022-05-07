@@ -1,33 +1,20 @@
-
 /**
- * Escreva uma descrição da classe Ex10 aqui.
- * 
- * @author (seu nome) 
- * @version (um número da versão ou uma data)
+10.	Escreva um programa que imprima na tela a tabela da multiplicação da seguinte forma:
+
+1   2   3   4   5   6   7   8   9   10
+2   4   6   8   10  12  14  16  18  20
+3   6   9   12  15  18  21  24  27  30
+...
+10  20  30  40  50  60  70  80  90  100
  */
 public class Ex10
 {
-    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    private int x;
-
-    /**
-     * Construtor para objetos da classe Ex10
-     */
-    public Ex10()
-    {
-        // inicializa variáveis de instância
-        x = 0;
-    }
-
-    /**
-     * Um exemplo de um método - substitua este comentário pelo seu próprio
-     * 
-     * @param  y   um exemplo de um parâmetro de método
-     * @return     a soma de x e y 
-     */
-    public int sampleMethod(int y)
-    {
-        // escreva seu código aqui
-        return x + y;
+    public static void main() {
+        for (int i = 1; i <= 10; i++) {
+            for (int j = 1; j <= 10; j++) {
+                System.out.print(i*j+"\t");
+            }
+            System.out.println();
+        }
     }
 }
