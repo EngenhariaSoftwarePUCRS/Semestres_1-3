@@ -1,33 +1,13 @@
-
-/**
- * Escreva uma descrição da classe Ex6 aqui.
- * 
- * @author (seu nome) 
- * @version (um número da versão ou uma data)
- */
 public class Ex6
 {
-    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    private int x;
-
-    /**
-     * Construtor para objetos da classe Ex6
-     */
-    public Ex6()
-    {
-        // inicializa variáveis de instância
-        x = 0;
-    }
-
-    /**
-     * Um exemplo de um método - substitua este comentário pelo seu próprio
-     * 
-     * @param  y   um exemplo de um parâmetro de método
-     * @return     a soma de x e y 
-     */
-    public int sampleMethod(int y)
-    {
-        // escreva seu código aqui
-        return x + y;
+    public static void main() {
+        int valorEstacionamento = 6;
+        int valorPacote = 81;
+        int valorRecebido = 90;
+        int vezesEstacionadas = valorRecebido / valorEstacionamento;
+        
+        System.out.println("A cada "+vezesEstacionadas+" idas ao estacionamento individuais, se tu tivesse comprado direto um pacote de "+valorPacote+" reais, tu teria economizado "+(valorRecebido-valorPacote)+" reais.");
+        System.out.println("Ou seja; a cada 2 mêses tu ganharia 3 estacionamentos de graça");
+        System.out.println("Ou, pensando pelo lado humano, já que a carona equivale a um estacionamento, a cada dois mêses três pessoas teriam um trajeto de brinde.");
     }
 }
