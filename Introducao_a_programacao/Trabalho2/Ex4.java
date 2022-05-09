@@ -1,8 +1,8 @@
 /*4.Escreva um programa que lê um conjunto de números em ponto flutuante e imprime:
-A média dos valores
-O menor valor.
-O maior valor.
-A diferença entre o maior e o menor número digitado.*/
+    A média dos valores
+    O menor valor.
+    O maior valor.
+    A diferença entre o maior e o menor número digitado.*/
 
 import java.util.Scanner;
 public class Ex4

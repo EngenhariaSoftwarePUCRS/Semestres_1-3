@@ -1,4 +1,4 @@
-/*3.	Escreva um programa que leia uma frase de um usuário e retorna quantos espaços em branco existem nessa frase.*/
+/*3.Escreva um programa que leia uma frase de um usuário e retorna quantos espaços em branco existem nessa frase.*/
 
 import java.util.Scanner;
 public class Ex3
@@ -9,7 +9,7 @@ public class Ex3
         int qtdEspacos = 0;
         Scanner input = new Scanner(System.in);
         
-        System.out.print("Digite uma palavra: ");
+        System.out.print("Digite uma frase: ");
         frase = input.nextLine();
         
         frase = frase.toUpperCase();
