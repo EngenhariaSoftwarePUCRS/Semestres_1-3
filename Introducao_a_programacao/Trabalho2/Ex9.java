@@ -1,20 +1,17 @@
-/**
-for (int i = 1; i <= height; i++)
-{
-    for (int j = 1; j <= width; j++) 
-    { 
-        System.out.print("*"); 
+/*  for (int i = 1; i <= height; i++)
+    {
+        for (int j = 1; j <= width; j++) 
+        { 
+            System.out.print("*"); 
+        }
+        System.out.println();
     }
-    System.out.println();
-}
-Imprimem um retângulo a partir de uma altura e uma largura como, por exemplo,
-
-****
-****
-****
-Escreva um programa que lê a altura, largura e o caractere a ser utilizado e então desenha o retângulo.
-
- */
+    Imprimem um retângulo a partir de uma altura e uma largura como, por exemplo,
+    
+    ****
+    ****
+    ****
+    Escreva um programa que lê a altura, largura e o caractere a ser utilizado e então desenha o retângulo.*/
 import java.util.Scanner;
 public class Ex9
 {
