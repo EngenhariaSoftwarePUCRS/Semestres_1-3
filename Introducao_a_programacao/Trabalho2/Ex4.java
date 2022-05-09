@@ -8,15 +8,17 @@ import java.util.Scanner;
 public class Ex4
 {
     public static void main() {
-        double numeroLido, menorValor, maiorValor;
+        double numeroLido, menorValor, maiorValor, qtdValores = 0, soma, media;
         Scanner input = new Scanner(System.in);
         
-        System.out.print("Digite valores diferentes de 0: ");
+        System.out.print("Digite valores: ");
         numeroLido = input.nextDouble();
         menorValor = numeroLido;
         maiorValor = numeroLido;
+        soma = numeroLido;
+        qtdValores++;
         
-        while (numeroLido != 0) {
+        while (input.hasNextDouble()) {
             System.out.print("Digite um valor: ");
             numeroLido = input.nextDouble();
             
@@ -26,8 +28,13 @@ public class Ex4
             if (numeroLido < menorValor) {
                 menorValor = numeroLido;
             }
+            soma += numeroLido;
+            qtdValores++;
         }
         
+        media = soma / qtdValores;
+        
+        System.out.println("Média valores: "+media);
         System.out.println("Menor valor: "+menorValor);
         System.out.println("Maior valor: "+maiorValor);
         System.out.println("Diferença: "+(maiorValor - menorValor));
