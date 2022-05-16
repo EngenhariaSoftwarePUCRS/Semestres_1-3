@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Exercicio3
+comment0.text=\ \r\n\ \ \ \ 3)\ O\ que\ o\ programa\ abaixo\ imprime?\r\n\ \ \ \ \r\n\ \ \ \ \r\n\ \ \ \ public\ static\ double\ mystery(int\ x,\ int\ y)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ double\ z\ \=\ x\ +\ y;\r\n\ \ \ \ \ \ \ \ z\ \=\ z\ /\ 2.0;\r\n\ \ \ \ \ \ \ \ return\ z;\r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ static\ void\ main(String[]\ args)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ int\ a\ \=\ 5;\r\n\ \ \ \ \ \ \ \ int\ b\ \=\ 7;\r\n\ \ \ \ \ \ \ \ System.out.println(mystery(a,\ b));\r\n\ \ \ \ }\r\n
+comment1.params=x\ y
+comment1.target=double\ mystery(int,\ int)
+comment2.params=
+comment2.target=void\ main()
+numComments=3
