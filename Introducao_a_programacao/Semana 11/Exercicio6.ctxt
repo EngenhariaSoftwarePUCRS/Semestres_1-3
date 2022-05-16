@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Exercicio6
+comment0.text=\r\n\ \ \ \ 6)\ Considere\ o\ m\u00E9todo\ abaixo\ cujo\ objetivo\ \u00E9\ trocar\ o\ conte\u00FAdo\ de\ duas\ vari\u00E1veis\ inteiras\:\r\n\ \ \ \ \r\n\ \ \ \ public\ static\ void\ falseSwap(int\ a,\ int\ b)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ int\ temp\ \=\ a;\r\n\ \ \ \ \ \ \ \ a\ \=\ b;\r\n\ \ \ \ \ \ \ \ b\ \=\ temp;\r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ static\ void\ main(String[]\ args)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ int\ x\ \=\ 3;\r\n\ \ \ \ \ \ \ \ int\ y\ \=\ 4;\r\n\ \ \ \ \ \ \ \ falseSwap(x,\ y);\r\n\ \ \ \ \ \ \ \ System.out.println(x\ +\ "\ "\ +\ y);\r\n\ \ \ \ }\r\n\ \ \ \ Por\ que\ este\ m\u00E9todo\ n\u00E3o\ funciona?\r\n
+comment1.params=a\ b
+comment1.target=void\ falseSwap(int,\ int)
+comment2.params=
+comment2.target=void\ main()
+numComments=3

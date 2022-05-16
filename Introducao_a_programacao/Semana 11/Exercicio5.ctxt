@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=Exercicio5
+comment0.text=\r\n\ \ \ \ 5)\ O\ que\ o\ programa\ abaixo\ imprime?\r\n\ \ \ \ \r\n\ \ \ \ public\ static\ int\ mystery(int\ n)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ n++;\r\n\ \ \ \ \ \ \ \ n++;\r\n\ \ \ \ \ \ \ \ return\ n;\r\n\ \ \ \ }\r\n\ \ \ \ \r\n\ \ \ \ public\ static\ void\ main(String[]\ args)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ int\ a\ \=\ 5;\r\n\ \ \ \ \ \ \ \ System.out.println(mystery(a));\r\n\ \ \ \ }\r\n
+comment1.params=n
+comment1.target=int\ mystery(int)
+comment2.params=
+comment2.target=void\ main()
+numComments=3
