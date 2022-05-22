@@ -1,0 +1,27 @@
+1- Escreva um método que recebe três números e determina a média aritmética entre três números.
+
+2- Escreva uma método que retorna o caractere do meio de uma String passada como parâmetro.
+
+Se a String tem tamanho par, então existem dois caracteres no meio, o método deve retornar o caractere da esquerda.
+
+3- Escreva um método que retorna a quantidade de vogais de uma String passada como argumento.
+
+4- Escreva um método que retorna a quantidade de palavras em uma String.
+
+5- Escreva um método que recebe um número inteiro positivo e determina se o mesmo é primo ou não. Use um valor booleano true como retorno quando o número for primo e false caso contrário. Lembre-se que todos números primos são positivos e que o número 1 não é primo.
+
+6 - Escreva um método que computa o somatório dos dígitos de um número.
+
+7 - Bob adora pedalar. Como Bob sabe da importância de se manter hidratado, ele bebe 0,5 litros de água a cada hora pedalada.
+
+Dado o número de horas a ser pedalado, você deve calcular a quantidade de litros de água que Bob precisa levar. O cálculo deve retornar o arredondamento para o menor inteiro mais próximo. Por exemplo,
+
+Horas: 3 -> Litros = 1
+
+Horas: 6.7 -> Litros = 3
+
+Horas: 11.8 -> Litros = 5
+
+8 - Escreva um método que receba um número inteiro e devolva o valor do fatorial desse número. Obs.: Não usar nenhuma biblioteca externa para calcular o fatorial.
+9 - Escreva um método que recebe uma string como parâmetro e devolve a string invertida.
+Exemplo: inverter("computador"); //deve retornar rodatupmoc
