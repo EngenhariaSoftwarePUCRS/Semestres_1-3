@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.target=Exercicio7
-comment0.text=\r\n\ \ \ \ 7)\ O\ que\ este\ m\u00E9todo\ faz\:\r\n\ \ \ \ \r\n\ \ \ \ public\ static\ boolean\ mystery(int\ n)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ if\ (n\ %\ 2\ \=\=\ 0)\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ true;\ \r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ return\ false;\ \r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ }\r\n
-comment1.params=
-comment1.target=void\ main()
-comment2.params=n
-comment2.target=boolean\ mystery(int)
-numComments=3
