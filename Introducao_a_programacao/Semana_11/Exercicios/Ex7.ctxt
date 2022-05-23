@@ -2,4 +2,6 @@
 comment0.target=Ex7
 comment1.params=
 comment1.target=void\ main()
-numComments=2
+comment2.params=horas
+comment2.target=double\ litrosPorHora(double)
+numComments=3

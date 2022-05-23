@@ -1,13 +1,31 @@
 package Exercicios;
-//1- Escreva um método que recebe três números
-//e determina a média aritmética entre três números.
+/*
+    1- Escreva um método que recebe três números e determina a média aritmética entre três números.
+*/
+import java.util.Scanner;
 public class Ex1 {
     public static void main() {
-        int x1=0, x2=0, x3=0;
-        double media = (x1 + x2 + x3)/3;
-        System.out.println(media);
+        double media;
+        int[] valores = new int[3];
+        Scanner input = new Scanner(System.in);        
+    
+        System.out.println("Digite três valores inteiros para calcular a média: ");
+        for (int i = 0; i < valores.length; i++) {
+            valores[i] = input.nextInt();
+        }
+    
+        System.out.println("A média dos valores somados é: "+media(valores));
     }
-    private static double media(int x1, int x2, int x3) {
-        return 0.0;
+    
+    private static double media(int[] valores) {
+        double soma = 0;
+        int qtdValores = valores.length;
+        for (int i = 0; i < qtdValores; i++) {
+            soma += valores[i];
+        }
+        double media = soma
+                        /
+                    qtdValores;
+        return media;
     }
 }

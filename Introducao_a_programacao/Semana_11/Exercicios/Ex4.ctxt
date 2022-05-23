@@ -2,4 +2,6 @@
 comment0.target=Ex4
 comment1.params=
 comment1.target=void\ main()
-numComments=2
+comment2.params=string
+comment2.target=int\ contaPalavras(java.lang.String)
+numComments=3
