@@ -2,6 +2,6 @@
 comment0.target=Ex1
 comment1.params=
 comment1.target=void\ main()
-comment2.params=x1\ x2\ x3
-comment2.target=double\ media(int,\ int,\ int)
+comment2.params=valores
+comment2.target=double\ media(int[])
 numComments=3
