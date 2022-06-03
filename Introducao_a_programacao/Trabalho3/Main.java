@@ -29,7 +29,19 @@ public class Main {
         input.close();
 
         matrix = populateMatrix(lineAmount, columnAmount, lowerBound, upperBound);
-        printMatrix(matrix, lineAmount, columnAmount);
+
+        System.out.println("Você chutou: "+getGuess(lowerBound, upperBound));
+        // printMatrix(matrix, lineAmount, columnAmount);
+    }
+
+    private static int getGuess(int lowerBound, int upperBound) {
+        Scanner input = new Scanner(System.in);
+        int numero;
+        do {
+            System.out.printf("Digite um número entre %d e %d.", lowerBound, upperBound);
+            numero = input.nextInt();
+        } while (numero < lowerBound || numero > upperBound);
+        return numero;
     }
 
     private static int[][] populateMatrix(int lineAmount, int columnAmount, int lowerBound, int upperBound) {
@@ -42,17 +54,17 @@ public class Main {
         return matrix;
     }
 
-    private static void printMatrix(int[][] matrix, int lineAmount, int columnAmount) {
-        for (int i = 0; i < lineAmount; i++) {
-            for (int j = 0; j < columnAmount; j++) {
-                System.out.printf("[%d]\t", matrix[i][j]);
-            }
-            System.out.println();
-        }
-    }
+    // private static void printMatrix(int[][] matrix, int lineAmount, int columnAmount) {
+    //     for (int i = 0; i < lineAmount; i++) {
+    //         for (int j = 0; j < columnAmount; j++) {
+    //             System.out.printf("[%d]\t", matrix[i][j]);
+    //         }
+    //         System.out.println();
+    //     }
+    // }
 
     private static int getRandom(int lowerBound, int upperBound) {
-        int random = lowerBound + (int)(Math.random() * (upperBound+1));
+        int random = lowerBound + (int)(Math.random() * upperBound);
         return random;
     }
 
