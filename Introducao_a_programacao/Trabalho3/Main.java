@@ -16,14 +16,22 @@ O jogo termina quando não tiver mais nenhum número a ser descoberto na matriz.
 Nesse momento o jogo deve verificar o jogador com mais pontos e mostrar o vencedor. Caso eles
 tenham a mesma pontuação o jogo termina em empate.
  */
+import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        // Scanner input = new Scanner(System.in);
         int lineAmount = 2;
         int columnAmount = 2;
-        // int lowerBound, int upperBound;
         // System.out.print("Digite a quantidade de linhas da matriz: ");
+        // lineAmount = input.nextInt();
         // System.out.print("Digite a quantidade de colunas da matriz: ");
+        // columnAmount = input.nextInt();
+        // Scanner input = new Scanner(System.in);
+        // System.out.print("Digite o menor valor que você quer na matriz: ");
+        // int lowerBound = input.nextInt();
+        // System.out.print("Digite o maior valor que você quer na matriz: ");
+        // int upperBound = input.nextInt();
         int[][] matrix = new int[lineAmount][columnAmount];
         matrix = populateMatrix(matrix, lineAmount, columnAmount);
         printMatrix(matrix, lineAmount, columnAmount);
@@ -32,7 +40,7 @@ public class Main {
     private static int[][] populateMatrix(int[][] matrix, int lineAmount, int columnAmount) {
         for (int i = 0; i < lineAmount; i++) {
             for (int j = 0; j < columnAmount; j++) {
-                matrix[i][j] = 2;
+                matrix[i][j] = getRandom(1, 10);
             }
         }
         return matrix;
@@ -41,8 +49,14 @@ public class Main {
     private static void printMatrix(int[][] matrix, int lineAmount, int columnAmount) {
         for (int i = 0; i < lineAmount; i++) {
             for (int j = 0; j < columnAmount; j++) {
-                System.out.println(matrix[i][j]);
+                System.out.printf("[%d]\t", matrix[i][j]);
             }
+            System.out.println();
         }
+    }
+
+    private static int getRandom(int lowerBound, int upperBound) {
+        int random = lowerBound + (int)(Math.random() * upperBound);
+        return random;
     }
 }
