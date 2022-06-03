@@ -20,27 +20,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // Scanner input = new Scanner(System.in);
-        int lineAmount = 2;
-        int columnAmount = 2;
-        // System.out.print("Digite a quantidade de linhas da matriz: ");
-        // lineAmount = input.nextInt();
-        // System.out.print("Digite a quantidade de colunas da matriz: ");
-        // columnAmount = input.nextInt();
-        // Scanner input = new Scanner(System.in);
-        // System.out.print("Digite o menor valor que você quer na matriz: ");
-        // int lowerBound = input.nextInt();
-        // System.out.print("Digite o maior valor que você quer na matriz: ");
-        // int upperBound = input.nextInt();
-        int[][] matrix = new int[lineAmount][columnAmount];
-        matrix = populateMatrix(matrix, lineAmount, columnAmount);
+        Scanner input = new Scanner(System.in);
+        int lineAmount = getLineAmount(input);
+        int columnAmount = getColumnAmount(input);
+        int lowerBound = getLowerBound(input);
+        int upperBound = getUpperBound(input);
+        int[][] matrix;
+        input.close();
+
+        matrix = populateMatrix(lineAmount, columnAmount, lowerBound, upperBound);
         printMatrix(matrix, lineAmount, columnAmount);
     }
 
-    private static int[][] populateMatrix(int[][] matrix, int lineAmount, int columnAmount) {
+    private static int[][] populateMatrix(int lineAmount, int columnAmount, int lowerBound, int upperBound) {
+        int[][] matrix = new int[lineAmount][columnAmount];
         for (int i = 0; i < lineAmount; i++) {
             for (int j = 0; j < columnAmount; j++) {
-                matrix[i][j] = getRandom(1, 10);
+                matrix[i][j] = getRandom(lowerBound, upperBound);
             }
         }
         return matrix;
@@ -56,7 +52,27 @@ public class Main {
     }
 
     private static int getRandom(int lowerBound, int upperBound) {
-        int random = lowerBound + (int)(Math.random() * upperBound);
+        int random = lowerBound + (int)(Math.random() * (upperBound+1));
         return random;
+    }
+
+    private static int getLineAmount(Scanner input) {
+        System.out.print("Digite a quantidade de linhas da matriz: ");
+        return input.nextInt();
+    }
+
+    private static int getColumnAmount(Scanner input) {
+        System.out.print("Digite a quantidade de colunas da matriz: ");
+        return input.nextInt();
+    }
+
+    private static int getLowerBound(Scanner input) {
+        System.out.print("Digite o menor valor que você quer na matriz: ");
+        return input.nextInt();
+    }
+
+    private static int getUpperBound(Scanner input) {
+        System.out.print("Digite o menor valor que você quer na matriz: ");
+        return input.nextInt();
     }
 }
