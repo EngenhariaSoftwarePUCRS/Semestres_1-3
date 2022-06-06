@@ -26,10 +26,30 @@ public class Main {
         int lowerBound = getLowerBound(input);
         int upperBound = getUpperBound(input);
         int[][] matrix;
-        input.close();
+        int[] valoresMatrix;
 
         matrix = populateMatrix(lineAmount, columnAmount, lowerBound, upperBound);
+<<<<<<< Updated upstream
         printMatrix(matrix, lineAmount, columnAmount);
+=======
+        valoresMatrix = getValues(matrix);
+
+        System.out.println("Você chutou: "+getGuess(lowerBound, upperBound, input));
+        printMatrix(matrix, lineAmount, columnAmount);
+    }
+
+    private static int getGuess(int lowerBound, int upperBound, Scanner input) {
+        int numero;
+        do {
+            System.out.printf("Digite um número entre %d e %d: ", lowerBound, upperBound);
+            numero = input.nextInt();
+        } while (numero < lowerBound || numero > upperBound);
+        return numero;
+>>>>>>> Stashed changes
+    }
+
+    private static int[] getValues(int[][] matrix) {
+        
     }
 
     private static int[][] populateMatrix(int lineAmount, int columnAmount, int lowerBound, int upperBound) {
