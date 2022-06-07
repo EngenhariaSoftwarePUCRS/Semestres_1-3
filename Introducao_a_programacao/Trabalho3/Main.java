@@ -37,14 +37,19 @@ public class Main {
         printMatrix(matrix, lineAmount, columnAmount);
         do {
             guess = getGuess(lowerBound, upperBound, input);
-            for (int valor : valoresMatrix) {
-                if (guess == valor) { 
-                    System.out.println(guess+" está na matrix.\nParabéns, você ganhou um ponto.");
-                    valor = -1;
-                    score++;
+            boolean Break = false;
+            for (int i = 0; i < lineAmount; i++) {
+                for (int j = 0; j < columnAmount; j++) {
+                    if (guess == matrix[i][j]) {
+                        System.out.println("Parabéns! Você ganhou um ponto. ");
+                        score++;
+                        matrix[i][j] = -1;
+                        Break = true;
+                        break;
+                    }
+                    if (Break)
+                        break;
                 }
-                System.out.println(guess+" não está na matrix.\nTente novamente.");
-                break;
             }
         } while (score < 9);
     }
