@@ -16,6 +16,7 @@ O jogo termina quando não tiver mais nenhum número a ser descoberto na matriz.
 Nesse momento o jogo deve verificar o jogador com mais pontos e mostrar o vencedor. Caso eles
 tenham a mesma pontuação o jogo termina em empate.
  */
+import java.util.Random;
 import java.util.Scanner;
 public class Main {
 
@@ -25,31 +26,48 @@ public class Main {
         int columnAmount = getColumnAmount(input);
         int lowerBound = getLowerBound(input);
         int upperBound = getUpperBound(input);
+        int guess;
+        int score = 0;
         int[][] matrix;
         int[] valoresMatrix;
 
         matrix = populateMatrix(lineAmount, columnAmount, lowerBound, upperBound);
-<<<<<<< Updated upstream
-        printMatrix(matrix, lineAmount, columnAmount);
-=======
-        valoresMatrix = getValues(matrix);
+        valoresMatrix = getValues(matrix, lineAmount, columnAmount);
 
-        System.out.println("Você chutou: "+getGuess(lowerBound, upperBound, input));
         printMatrix(matrix, lineAmount, columnAmount);
+        do {
+            guess = getGuess(lowerBound, upperBound, input);
+            for (int valor : valoresMatrix) {
+                if (guess == valor) { 
+                    System.out.println(guess+" está na matrix.\nParabéns, você ganhou um ponto.");
+                    valor = -1;
+                    score++;
+                }
+                System.out.println(guess+" não está na matrix.\nTente novamente.");
+                break;
+            }
+        } while (score < 9);
     }
 
     private static int getGuess(int lowerBound, int upperBound, Scanner input) {
-        int numero;
+        int guess;
         do {
             System.out.printf("Digite um número entre %d e %d: ", lowerBound, upperBound);
-            numero = input.nextInt();
-        } while (numero < lowerBound || numero > upperBound);
-        return numero;
->>>>>>> Stashed changes
+            guess = input.nextInt();
+        } while (guess < lowerBound || guess > upperBound);
+        return guess;
     }
 
-    private static int[] getValues(int[][] matrix) {
-        
+    private static int[] getValues(int[][] matrix, int lineAmount, int columnAmount) {
+        int[] valoresMatrix = new int[lineAmount*columnAmount];
+        int k = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+                valoresMatrix[k] = matrix[i][j];
+                k++;
+            }
+        }
+        return valoresMatrix;
     }
 
     private static int[][] populateMatrix(int lineAmount, int columnAmount, int lowerBound, int upperBound) {
@@ -72,7 +90,8 @@ public class Main {
     }
 
     private static int getRandom(int lowerBound, int upperBound) {
-        int random = lowerBound + (int)(Math.random() * (upperBound+1));
+        Random r = new Random();
+        int random = r.nextInt(upperBound - lowerBound+1) + lowerBound;
         return random;
     }
 
@@ -92,7 +111,7 @@ public class Main {
     }
 
     private static int getUpperBound(Scanner input) {
-        System.out.print("Digite o menor valor que você quer na matriz: ");
+        System.out.print("Digite o maior valor que você quer na matriz: ");
         return input.nextInt();
     }
 }
