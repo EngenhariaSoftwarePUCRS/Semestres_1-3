@@ -85,14 +85,14 @@ public class Main {
         return matrix;
     }
 
-    private static void printMatrix(int[][] matrix, int lineAmount, int columnAmount) {
-        for (int i = 0; i < lineAmount; i++) {
-            for (int j = 0; j < columnAmount; j++) {
-                System.out.printf("[%d]\t", matrix[i][j]);
-            }
-            System.out.println();
-        }
-    }
+    // private static void printMatrix(int[][] matrix, int lineAmount, int columnAmount) {
+    //     for (int i = 0; i < lineAmount; i++) {
+    //         for (int j = 0; j < columnAmount; j++) {
+    //             System.out.printf("[%d]\t", matrix[i][j]);
+    //         }
+    //         System.out.println();
+    //     }
+    // }
 
     private static int getRandom(int lowerBound, int upperBound) {
         Random r = new Random();
