@@ -18,8 +18,7 @@ public class Jogo {
             acertou = false;
             i = qtdJogadas % players.getPlayersAmount();
             System.out.printf("%n%s, ", players.getPlayers()[i]);
-            guess = matrix.getRandom(matrix.getLowerBound(), matrix.getUpperBound());// getGuess(matrix.getLowerBound(),
-                                                                                     // matrix.getUpperBound(), input);
+            guess = getGuess(matrix.getLowerBound(), matrix.getUpperBound(), input);
 
             if (guess == -1)
                 break;
