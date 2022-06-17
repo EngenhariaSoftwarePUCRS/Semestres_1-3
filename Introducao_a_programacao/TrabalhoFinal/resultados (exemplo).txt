@@ -1,0 +1,7 @@
+Data/Hora: 17/06/2022 - 14:11:24
+123,Prometildo Fonseca, Partido dos Milagres,5
+477,Joao da Obra Pronta, Partido Construo Tudo,12
+988,Maria das Praias, Partido do Surfe,6
+702,Enrico Contudo, Partido dos Contratos,1
+345,Vendolino Nada, Partido da Visao,0
+000,NULO,NULO,7
