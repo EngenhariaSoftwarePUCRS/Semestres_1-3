@@ -1,5 +1,5 @@
 public class CadastroPessoa {
-    
+
     private int limite;
     private Pessoa[] pessoas;
 
@@ -9,22 +9,21 @@ public class CadastroPessoa {
     }
 
     private void InicializarCadastro() {
-        for(int i=0; i < limite; i++)
-        {
+        for (int i = 0; i < limite; i++)
             pessoas[i] = null;
-        }
     }
+
     public void adicionarPessoa(Pessoa novaPessoa) {
         int posicaoLivre = this.retornarPrimeiraPosicaoLivre();
-        if(posicaoLivre < this.limite)
+        if (posicaoLivre < this.limite)
             this.pessoas[posicaoLivre] = novaPessoa;
     }
 
     private int retornarPrimeiraPosicaoLivre() {
         int posicaoLivre = -1;
 
-        for(int i =0; i < limite; i++)
-            if(pessoas[i] == null && posicaoLivre == -1)
+        for (int i = 0; i < limite; i++)
+            if ((pessoas[i] == null) && (posicaoLivre == -1))
                 posicaoLivre = i;
 
         return posicaoLivre;
@@ -34,11 +33,12 @@ public class CadastroPessoa {
         return this.pessoas;
     }
 
-    public  int quantidadePessoas() {
+    public int quantidadePessoas() {
         int quantidade = 0;
 
-        for(int i = 0; i < pessoas.length; i++) 
-            if(pessoas[i] != null) quantidade++;
+        for (int i = 0; i < pessoas.length; i++)
+            if (pessoas[i] != null)
+                quantidade++;
 
         return quantidade;
     }
@@ -48,8 +48,8 @@ public class CadastroPessoa {
         Pessoa pessoaEncontrada = null;
         int i = 0;
 
-        while(!achou && i<pessoas.length) {
-            if(pessoas[i]!=null && pessoas[i].getId()==id) {
+        while (!achou && i < pessoas.length) {
+            if (pessoas[i] != null && pessoas[i].getId() == id) {
                 achou = true;
                 pessoaEncontrada = pessoas[i];
             }
@@ -63,8 +63,8 @@ public class CadastroPessoa {
         Pessoa pessoaEncontrada = null;
         int i = 0;
 
-        while(!achou && i<pessoas.length) {
-            if(pessoas[i] != null && pessoas[i].getNome().toLowerCase() == nome.toLowerCase()) {
+        while (!achou && i < pessoas.length) {
+            if (pessoas[i] != null && pessoas[i].getNome().toLowerCase() == nome.toLowerCase()) {
                 achou = true;
                 pessoaEncontrada = pessoas[i];
             }
@@ -77,10 +77,10 @@ public class CadastroPessoa {
         boolean removeu = false;
         int i = 0;
 
-        while(!removeu && i < pessoas.length) {
-            if(pessoas[i] != null && pessoas[i].getId() == id)  {
+        while (!removeu && i < pessoas.length) {
+            if (pessoas[i] != null && pessoas[i].getId() == id) {
                 removeu = true;
-                pessoas[i] = null; //aqui removeu setando null na posicao do vetor
+                pessoas[i] = null; // aqui removeu setando null na posicao do vetor
             }
             i++;
         }
