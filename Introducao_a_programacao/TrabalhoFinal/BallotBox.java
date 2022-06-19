@@ -7,8 +7,8 @@ import java.io.IOException;
 public class BallotBox {
 
     private final int LIMIT = 5;
-    PersonRegistration personRegistration = new PersonRegistration(LIMIT);
     private final String CAMINHO_ARQUIVO_DADOS = "pessoas.txt";
+    PersonRegistration personRegistration = new PersonRegistration(LIMIT);
 
     public void initialize() throws FileNotFoundException {
         System.out.println("Inicializando o sistema...");
@@ -21,7 +21,7 @@ public class BallotBox {
             System.out.println("OPS!!! Arquivo de dados não localizado!");
             System.out.println("Sistema iniciado com banco de dados vazio");
         }
-        System.out.printf("%nTotal de pessoas no cadastro: %d%n", personRegistration.quantidadePessoas());
+        System.out.printf("%nTotal de pessoas no cadastro: %d%n", personRegistration.getQuantidadePessoas());
 
         aguardarQualquerTecla();
         menu();
@@ -33,42 +33,40 @@ public class BallotBox {
             exibirMenu();
             opcao = lerOpcaoMenu();
             switch (opcao) {
-                case 1: {
+                case 1:
                     adicionarPessoa(personRegistration);
                     System.out.println("Nova pessoa adicionada com sucesso!!!");
                     break;
-                }
-                case 2: {
+                case 2:
                     consultarPessoaPorID();
                     break;
-                }
-                case 5: {
+                case 5:
                     listarPessoas();
                     aguardarQualquerTecla();
                     break;
-                }
-                case 7: {
+                case 7:
                     salvarDadosNoArquivo(CAMINHO_ARQUIVO_DADOS);
                     aguardarQualquerTecla();
                     break;
-                }
+                default:
+                    break;
+
             }
         } while (opcao != 0);
     }
 
     private void aguardarQualquerTecla() {
-        Scanner teclado = new Scanner(System.in);
         System.out.println("Pressione qualquer tecla para continuar");
-        teclado.nextLine();
+        new Scanner(System.in).nextLine();
     }
 
     private void consultarPessoaPorID() {
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("Consultar pessoa no cadastro");
+        Scanner input = new Scanner(System.in);
+        System.out.println("Consultar pessoa no cadastro.");
 
-        System.out.println("Digite o ID/Codigo a ser pesquisado: ");
-        int id = teclado.nextInt();
-        teclado.nextLine();
+        System.out.print("Digite o ID/Codigo a ser pesquisado: ");
+        int id = input.nextInt();
+        input.nextLine();
 
         Person p = personRegistration.pesquisarPessoa(id);
         if (p == null)
@@ -85,15 +83,15 @@ public class BallotBox {
     }
 
     private void adicionarPessoa(PersonRegistration cadastro) {
-        Scanner teclado = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("Adicionando nova pessoa no cadastro");
 
         System.out.println("Código (ID): ");
-        int id = teclado.nextInt();
-        teclado.nextLine();
+        int id = input.nextInt();
+        input.nextLine();
 
         System.out.println("Nome.......: ");
-        String nome = teclado.nextLine();
+        String nome = input.nextLine();
 
         Person novaPessoa = new Person(id, nome);
         cadastro.adicionarPessoa(novaPessoa);
@@ -101,26 +99,23 @@ public class BallotBox {
     }
 
     private void exibirMenu() {
-        System.out.println("SISTEMA GERENCIADOR DE PESSOAS");
-        System.out.println("------------------------------");
+        System.out.println("/===============================================\\");
+        System.out.println("|\tSISTEMA GERENCIADOR DE PESSOAS");
+        System.out.println("|");
+        System.out.println("| (1) Adicionar nova pessoa");
+        System.out.println("| (2) Consultar pessoa por ID");
+        System.out.println("| (3) Consultar pessoa por nome");
+        System.out.println("| (4) Remover pessoa do cadastro");
+        System.out.println("| (5) Listar pessoas na tela");
+        System.out.println("| (6) Listar pessoas em ordem alfabética na tela");
+        System.out.println("| (7) Salvar arquivo de dados");
+        System.out.println("| (0) Sair");
         System.out.println();
-        System.out.println(" 1 - Adicionar nova pessoa");
-        System.out.println(" 2 - Consultar pessoa por ID");
-        System.out.println(" 3 - Consultar pessoa por nome");
-        System.out.println(" 4 - Remover pessoa do cadastro");
-        System.out.println(" 5 - Listar pessoas na tela");
-        System.out.println(" 6 - Listar pessoas em ordem alfabética na tela");
-        System.out.println(" 7 - Salvar arquivo de dados");
-        System.out.println(" 0 - Sair");
-        System.out.println("");
-        System.out.println("Selecione sua opção");
+        System.out.print("Selecione sua opção: ");
     }
 
     private int lerOpcaoMenu() {
-        int op;
-        Scanner teclado = new Scanner(System.in);
-        op = teclado.nextInt();
-        return op;
+        return new Scanner(System.in).nextInt();
     }
 
     private void listarPessoas() {

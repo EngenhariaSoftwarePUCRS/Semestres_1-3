@@ -1,14 +1,14 @@
-public class Pessoa {
-    
+public class Person {
+
     private int id;
     private String nome;
 
-    public Pessoa() {
+    public Person() {
         this.id = 0;
         this.nome = null;
     }
 
-    public Pessoa(int id, String nome) {
+    public Person(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
