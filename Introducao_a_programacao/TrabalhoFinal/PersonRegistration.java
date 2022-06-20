@@ -13,7 +13,7 @@ public class PersonRegistration {
             pessoas[i] = null;
     }
 
-    public void adicionarPessoa(Person novaPessoa) {
+    public void addPerson(Person novaPessoa) {
         int posicaoLivre = this.retornarPrimeiraPosicaoLivre();
 
         if (posicaoLivre < this.limite)
@@ -34,7 +34,7 @@ public class PersonRegistration {
         return this.pessoas;
     }
 
-    public int getQuantidadePessoas() {
+    public int getPeopleAmount() {
         int quantidade = 0;
 
         for (int i = 0; i < pessoas.length; i++)

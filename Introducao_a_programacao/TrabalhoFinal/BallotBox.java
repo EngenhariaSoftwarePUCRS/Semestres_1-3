@@ -15,26 +15,26 @@ public class BallotBox {
 
         System.out.println("Carregando arquivo de dados em " + CAMINHO_ARQUIVO_DADOS);
         try {
-            this.carregarDadosDeArquivo(CAMINHO_ARQUIVO_DADOS);
+            this.getDataFrom(CAMINHO_ARQUIVO_DADOS);
             System.out.println("Arquivo de dados carregado com sucesso");
         } catch (FileNotFoundException e) {
             System.out.println("OPS!!! Arquivo de dados não localizado!");
             System.out.println("Sistema iniciado com banco de dados vazio");
         }
-        System.out.printf("%nTotal de pessoas no cadastro: %d%n", personRegistration.getQuantidadePessoas());
+        System.out.printf("%nTotal de pessoas no cadastro: %d%n", personRegistration.getPeopleAmount());
 
-        aguardarQualquerTecla();
+        awaitInput();
         menu();
     }
 
     private void menu() {
-        int opcao;
+        int choice;
         do {
-            exibirMenu();
-            opcao = lerOpcaoMenu();
-            switch (opcao) {
+            showMenu();
+            choice = awaitMenuInput();
+            switch (choice) {
                 case 1:
-                    adicionarPessoa(personRegistration);
+                    addPerson(personRegistration);
                     System.out.println("Nova pessoa adicionada com sucesso!!!");
                     break;
                 case 2:
@@ -42,24 +42,28 @@ public class BallotBox {
                     break;
                 case 5:
                     listarPessoas();
-                    aguardarQualquerTecla();
+                    awaitInput();
                     break;
                 case 7:
                     salvarDadosNoArquivo(CAMINHO_ARQUIVO_DADOS);
-                    aguardarQualquerTecla();
+                    awaitInput();
                     break;
                 default:
                     break;
 
             }
-        } while (opcao != 0);
+        } while (choice != 0);
     }
-
-    private void aguardarQualquerTecla() {
-        System.out.println("Pressione qualquer tecla para continuar");
+    
+    private void awaitInput() {
+        System.out.println("Pressione qualquer tecla para continuar.");
         new Scanner(System.in).nextLine();
     }
-
+    
+    private int awaitMenuInput() {
+        return new Scanner(System.in).nextInt();
+    }
+    
     private void consultarPessoaPorID() {
         Scanner input = new Scanner(System.in);
         System.out.println("Consultar pessoa no cadastro.");
@@ -82,7 +86,7 @@ public class BallotBox {
         System.out.println("");
     }
 
-    private void adicionarPessoa(PersonRegistration cadastro) {
+    private void addPerson(PersonRegistration cadastro) {
         Scanner input = new Scanner(System.in);
         System.out.println("Adicionando nova pessoa no cadastro");
 
@@ -94,11 +98,11 @@ public class BallotBox {
         String nome = input.nextLine();
 
         Person novaPessoa = new Person(id, nome);
-        cadastro.adicionarPessoa(novaPessoa);
+        cadastro.addPerson(novaPessoa);
 
     }
 
-    private void exibirMenu() {
+    private void showMenu() {
         System.out.println("/===============================================\\");
         System.out.println("|\tSISTEMA GERENCIADOR DE PESSOAS");
         System.out.println("|");
@@ -114,17 +118,12 @@ public class BallotBox {
         System.out.print("Selecione sua opção: ");
     }
 
-    private int lerOpcaoMenu() {
-        return new Scanner(System.in).nextInt();
-    }
-
     private void listarPessoas() {
         Person[] pessoas = personRegistration.getPessoas();
         for (int i = 0; i < pessoas.length; i++) {
             Person p = pessoas[i];
-            if (p != null) {
+            if (p != null)
                 mostrarDadosPessoa(p);
-            }
         }
     }
 
@@ -132,25 +131,25 @@ public class BallotBox {
         // TO DO
     }
 
-    private void carregarDadosDeArquivo(String caminhoCompletoArquivo) throws FileNotFoundException {
-        File arquivo = new File(caminhoCompletoArquivo);
-        Scanner leitor = new Scanner(arquivo);
+    private void getDataFrom(String caminhoCompletoArquivo) throws FileNotFoundException {
+        File file = new File(caminhoCompletoArquivo);
+        Scanner fileReader = new Scanner(file);
 
-        while (leitor.hasNextLine()) {
-            String linha = leitor.nextLine();
+        while (fileReader.hasNextLine()) {
+            String fileLine = fileReader.nextLine();
             // 'splita' o conteudo da linha do arquivo em um array usando como separador a
             // virgula
-            String[] arrayLinha = linha.split(",");
+            String[] fileLineContent = fileLine.split(",");
 
             // pega codigo e nome da linha do arquivo
-            int codigo = Integer.parseInt(arrayLinha[0]); // converte um String em Int
-            String nome = arrayLinha[1];
+            int codigo = Integer.parseInt(fileLineContent[0]); // converte um String em Int
+            String nome = fileLineContent[1];
 
             // adiciona nova pessoa no cadastro
             Person p = new Person(codigo, nome);
-            personRegistration.adicionarPessoa(p);
+            personRegistration.addPerson(p);
         }
-        leitor.close();
+        fileReader.close();
     }
 
     private void salvarDadosNoArquivo(String caminhoCompletoArquivo) {
