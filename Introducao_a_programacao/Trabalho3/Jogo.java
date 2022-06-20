@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Jogo {
 
-    public void execute() {
+    public Jogo() {
 
         Scanner input = new Scanner(System.in);
         Difficulty difficulty = new Difficulty();
@@ -10,15 +10,21 @@ public class Jogo {
         Players players = new Players(askForPlayers(input));
 
         int i;
+        int j = 0;
         int guess;
         int qtdJogadas = 0;
+        int[] tentativas = new int[(int)Math.pow(matrix.getMatrixValues().length, 2)];
+        tentativas = populateVector(tentativas, tentativas.length);
         boolean acertou;
 
         while (notEmpty(matrix.getMatrixValues())) {
             acertou = false;
             i = qtdJogadas % players.getPlayersAmount();
+            qtdJogadas++;
             System.out.printf("%n%s, ", players.getPlayers()[i]);
+            //guess = matrix.getRandom(matrix.getLowerBound(), matrix.getUpperBound());
             guess = getGuess(matrix.getLowerBound(), matrix.getUpperBound(), input);
+            tentativas[qtdJogadas-1] = guess;
 
             if (guess == -1)
                 break;
@@ -37,9 +43,11 @@ public class Jogo {
                 System.out.println("Infelizmente, não foi dessa vez.");
             }
 
-            qtdJogadas++;
-            if (qtdJogadas % players.getPlayersAmount() == 0)
-                finalScore(qtdJogadas, players.getPlayers(), players.getScore());
+            if (qtdJogadas % players.getPlayersAmount() == 0) {
+                j++;
+                printVector(tentativas);
+                finalScore(j, players.getPlayers(), players.getScore());
+            }
         }
 
         finalScore(players.getPlayers(), players.getScore());
@@ -47,6 +55,20 @@ public class Jogo {
         System.out.println("\n\n\nA matriz era: ");
         printMatrix(matrix.getMatrix(), matrix.getLineAmount(),
                 matrix.getColumnAmount());
+    }
+
+    private static int[] populateVector(int[] vector, int length) {
+        for (int i = 0; i < length; i++) {
+            vector[i] = -1;
+        }
+        return vector;
+    }
+
+    private static void printVector(int[] vector) {
+        for (int i : vector) {
+            if (i != -1)
+                System.out.printf("Valores tentados: [%d]%n", i);
+        }
     }
 
     private static void printMatrix(int[][] matrix, int lineAmount, int columnAmount) {
