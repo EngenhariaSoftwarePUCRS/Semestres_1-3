@@ -54,16 +54,16 @@ public class BallotBox {
             }
         } while (choice != 0);
     }
-    
+
     private void awaitInput() {
         System.out.println("Pressione qualquer tecla para continuar.");
         new Scanner(System.in).nextLine();
     }
-    
+
     private int awaitMenuInput() {
         return new Scanner(System.in).nextInt();
     }
-    
+
     private void consultarPessoaPorID() {
         Scanner input = new Scanner(System.in);
         System.out.println("Consultar pessoa no cadastro.");
