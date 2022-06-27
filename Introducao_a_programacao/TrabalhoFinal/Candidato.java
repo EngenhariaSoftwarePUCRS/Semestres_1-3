@@ -1,13 +1,13 @@
-public class Eleitor {
+public class Candidato {
 
     private int id;
     private String nome;
-    private String situacao;
+    private String partido;
 
-    public Eleitor(int id, String nome, String situacao) {
+    public Candidato(int id, String nome, String partido) {
         this.id = id;
         this.nome = nome;
-        this.situacao = situacao;
+        this.partido = partido;
     }
 
     public int getId() {
@@ -18,13 +18,13 @@ public class Eleitor {
         return nome;
     }
 
-    public String getSituacao() {
-        return situacao;
+    public String getPartido() {
+        return partido;
     }
 
     public String toString() {
         return ("\nId: " + id +
                 "\nNome: " + nome +
-                "\nSituação: " + situacao);
+                "\nPartido: " + partido);
     }
 }
