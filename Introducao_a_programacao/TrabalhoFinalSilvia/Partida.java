@@ -1,45 +1,68 @@
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
-// (2,0) Partida: esta classe modelo deve representar uma partida de um jogo de 
-// futebol, incluindo, data, horário da partida, bem como os clubes e os escores 
-// obtidos no jogo.
 public class Partida {
 
-    private String data = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
-    private String hora = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
-    private Time[] times = new Time[2];
-    private int[] scores = new int[2];
-    private int numeroPartida;
+    private int numeroPartida = 0;
+    private Data data = new Data();
+    private Clube[] clubes = new Clube[2];
+    private int[] placarPartida = new int[2];
 
-    public Partida(Time[] times, int[] scores, int numeroPartida) {
-        this.times = times;
-        this.scores = scores;
-        this.numeroPartida = numeroPartida;
-    } 
-
-    public Partida(String data, String hora, Time[] times, int[] scores, int numeroPartida) {
+    public Partida(Data data, Clube[] clubes, int[] placarPartida) {
+        this.numeroPartida++;
         this.data = data;
-        this.hora = hora;
-        this.times = times;
-        this.scores = scores;
-        this.numeroPartida = numeroPartida;
+        this.clubes = clubes;
+        this.placarPartida = placarPartida;
     }
-    
-    public String getData() {return data;}    
-    public String getHora() {return hora;}
-    public Time[] getTimes() {return times;}
-    public int[] getScores() {return scores;}
-    public int getNumeroPartida() {return numeroPartida;}
+
+    public void setData(Data data) {
+        this.data = data;
+    }
+
+    public void setClubes(Clube[] clubes) {
+        this.clubes = clubes;
+    }
+
+    public void setClube1(Clube clube1) {
+        this.clubes[0] = clube1;
+    }
+
+    public void setClube2(Clube clube2) {
+        this.clubes[1] = clube2;
+    }
+
+    public void setPlacarPartida(int[] placarPartida) {
+        this.placarPartida = placarPartida;
+    }
+
+    public int getNumeroPartida() {
+        return this.numeroPartida;
+    }
+
+    public Data getData() {
+        return this.data;
+    }
+
+    public Clube[] getClubes() {
+        return this.clubes;
+    }
+
+    public Clube getClube1() {
+        return this.clubes[0];
+    }
+
+    public Clube getClube2() {
+        return this.clubes[1];
+
+    }
+
+    public int[] getPlacarPartida() {
+        return this.placarPartida;
+    }
 
     public String toString() {
-        return
-            "\n\t"+numeroPartida+"ª partida\t" +
-            "\nData: " + data +
-            "\tHora: " + hora +
-            "\nTime 1: " + times[0].getNome() +
-            "\tGols: " + scores[0] +
-            "\nTime 2: " + times[1].getNome() +
-            "\tGols: " + scores[1];
+        return ("\n" + numeroPartida + "ª partida" +
+                "\n" + data +
+                "\nPrimeiro clube = " + clubes[0].getNomeClube() +
+                "\tSegundo clube = " + clubes[1].getNomeClube() +
+                "\nPlacar = (" + placarPartida[0] + " x " + placarPartida[1] + ")");
     }
+
 }
