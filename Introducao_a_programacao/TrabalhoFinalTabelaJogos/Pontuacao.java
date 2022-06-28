@@ -21,7 +21,7 @@ public class Pontuacao {
         this.quantidadePartidasJogadas = 0;
         this.aproveitamento = 0;
     }
-
+    
     public int getQuantidadePontos() {
         return this.quantidadePontos;
     }
@@ -37,16 +37,16 @@ public class Pontuacao {
         this.saldoGols += (golsPro - golsContra);
         
         if (golsPro > golsContra) {
-            quantidadeVitorias++;
-            quantidadePontos += 3;
+            this.quantidadeVitorias++;
+            this.quantidadePontos += 3;
         } else if (golsPro < golsContra) {
-            quantidadeDerrotas++;
+            this.quantidadeDerrotas++;
         } else {
-            quantidadeEmpates++;
-            quantidadePontos += 1;
+            this.quantidadeEmpates++;
+            this.quantidadePontos += 1;
         }
         
-        this.aproveitamento = (quantidadePontos / 3*quantidadePartidasJogadas * 100);
+        this.aproveitamento = (quantidadePontos / (double)(3*quantidadePartidasJogadas)) * 100;
 
         return this;
     }

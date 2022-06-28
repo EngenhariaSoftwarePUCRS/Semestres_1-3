@@ -23,16 +23,20 @@ public class Interface {
                 break;
 
             case 1:
-                exibirListaDePartidas();
+                if (!exibirListaDePartidas())
+                    System.out.println("Não existem partidas por serem exibidas.");
                 break;
 
             case 2:
-                System.out.print("\nDigite o numero da partida que você deseja consultar: ");
-                int consultaPartida = inputInt.nextInt();
-                if (listaDePartidas.existePartida(consultaPartida))
-                    System.out.println(listaDePartidas.consultaPartida(consultaPartida));
-                else
-                    System.out.println("Partida não encontrada");
+                if (exibirListaDePartidas()) {
+                    System.out.print("\nDigite o numero da partida que você deseja consultar: ");
+                    int consultaPartida = inputInt.nextInt();
+                    if (listaDePartidas.existePartida(consultaPartida))
+                        System.out.println(listaDePartidas.consultaPartida(consultaPartida));
+                    else
+                        System.out.println("Partida não encontrada");
+                } else
+                    System.out.println("Não existem partidas para serem consultadas.");
                 break;
 
             case 3:
@@ -42,6 +46,7 @@ public class Interface {
                     System.out.print("\nDigite o novo nome do clube: ");
                     String novoAlterarClube = inputString.nextLine();
                     tabelaDePontuacao.alteraClube(clubeAlterar, novoAlterarClube);
+                    listaDePartidas.alteraClubesPartida(clubeAlterar, novoAlterarClube);
                 } else
                     System.out.println("Clube não encontrado");
                 break;
@@ -149,15 +154,19 @@ public class Interface {
         return placar;
     }
 
-    private static void exibirListaDePartidas() {
+    private static boolean exibirListaDePartidas() {
+        boolean achou = false;
         listaDePartidas.ordenarTabelaData();
         for (Partida partida : listaDePartidas.getPartidas())
-            if (partida != null)
+            if (partida != null) {
                 System.out.println(partida);
+                achou = true;
+            }
+        return achou;
     }
 
     private static void exibirTabela() {
-        tabelaDePontuacao.ordenarTabela();
+        tabelaDePontuacao.ordenarTabelaPontuacao();
         for (Clube clube : tabelaDePontuacao.getClubes()) {
             if (clube != null)
                 System.out.println(clube);

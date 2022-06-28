@@ -14,7 +14,7 @@ public class TabelaDePontuacao {
     public boolean existeClube(String nomeClube) {
         for (int i = 0; i < clubes.length; i++) {
             if (clubes[i] != null) {
-                if (clubes[i].getNomeClube().equalsIgnoreCase(nomeClube))
+                if (clubes[i].getNomeClube().trim().equalsIgnoreCase(nomeClube.trim()))
                     return true;
             }
         }
@@ -23,15 +23,16 @@ public class TabelaDePontuacao {
 
     public Clube consultaClube(String nomeClubePorConsultar) {
         for (int i = 0; i < clubes.length; i++)
-            if (clubes[i].getNomeClube().equalsIgnoreCase(nomeClubePorConsultar))
+            if (clubes[i].getNomeClube().trim().equalsIgnoreCase(nomeClubePorConsultar.trim()))
                 return clubes[i];
         return clubes[0];
     }
 
     public void alteraClube(String clubeAntigo, String clubeNovo) {
         for (int i = 0; i < clubes.length; i++)
-            if (clubes[i].getNomeClube().equalsIgnoreCase(clubeAntigo))
-                clubes[i].setNomeClube(clubeNovo);
+            if (clubes[i] != null)
+                if (clubes[i].getNomeClube().trim().equalsIgnoreCase(clubeAntigo.trim()))
+                    clubes[i].setNomeClube(clubeNovo);
     }
 
     public boolean insereClube(Clube clube) {
@@ -43,7 +44,7 @@ public class TabelaDePontuacao {
         } return false;
     }
 
-    public void ordenarTabela() {
+    public void ordenarTabelaPontuacao() {
         int quantidadeClubes = clubes.length - 1;
         for (int i = 0; i < quantidadeClubes; i++) {
             for (int j = 0; j < quantidadeClubes - i; j++) {

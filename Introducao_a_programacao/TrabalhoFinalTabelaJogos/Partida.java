@@ -15,6 +15,18 @@ public class Partida {
         this.numeroPartida = numeroPartida;
     }
 
+    public int getNumeroPartida() {
+        return this.numeroPartida;
+    }
+
+    public Clube getClube1() {
+        return clubes[0];
+    }
+
+    public Clube getClube2() {
+        return clubes[1];
+    }
+
     public Data getData() {
         return this.data;
     }
