@@ -6,9 +6,10 @@ public class ListaDeCandidatos {
     
     private int quantidadeCandidatos;
     private Candidato[] candidatos;
-    private File candidatosFile = new File("com\\leonardo\\candidatos.txt");
+    private File candidatosFile;
 
-    public ListaDeCandidatos() {
+    public ListaDeCandidatos(File candidatosFile) {
+        this.candidatosFile = candidatosFile;
         this.quantidadeCandidatos = Util.getQuantidadePessoas(candidatosFile);
         this.candidatos = new Candidato[quantidadeCandidatos];
         addCandidatos();
@@ -41,11 +42,30 @@ public class ListaDeCandidatos {
         }
     }
 
-    public void listarPessoas() {
-        for (Candidato candidato : candidatos) {
+    public boolean existeNumero(int numeroCandidato) {
+        boolean existe = true;
+
+        for (Candidato candidato : candidatos)
             if (candidato != null)
+                if (candidato.getId() == numeroCandidato)
+                    return existe;
+                    
+        return !existe;
+    }
+
+    public Candidato getCandidato(int numeroCandidato) {
+        for (Candidato candidato : candidatos)
+            if (candidato.getId() == numeroCandidato)
+                return candidato;
+        return new Candidato();
+    }
+
+    public void exibirCandidatos() {
+        for (Candidato candidato : candidatos)
+            if (candidato != null) {
+                System.out.println();
                 System.out.println(candidato);
-        }
+            }
     }
 
 }

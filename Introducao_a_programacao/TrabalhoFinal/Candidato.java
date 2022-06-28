@@ -3,27 +3,44 @@ public class Candidato {
     private int id;
     private String nome;
     private String partido;
+    private int quantidadeVotos;
+
+    public Candidato() {
+        this.id = 0;
+        this.nome = "";
+        this.partido = "";
+        this.quantidadeVotos = 0;
+    }
 
     public Candidato(int id, String nome, String partido) {
         this.id = id;
         this.nome = nome;
         this.partido = partido;
+        this.quantidadeVotos = 0;
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String getPartido() {
-        return partido;
+        return this.partido;
+    }
+
+    public int getQuandidadeVotos() {
+        return this.quantidadeVotos;
+    }
+
+    public void adicionarVoto() {
+        this.quantidadeVotos++;
     }
 
     public String toString() {
-        return ("\nId: " + id +
+        return ("Id: " + id +
                 "\nNome: " + nome +
                 "\nPartido: " + partido);
     }

@@ -6,9 +6,10 @@ public class ListaDeEleitores {
     
     private int quantidadeEleitores;
     private Eleitor[] eleitores;
-    private File eleitoresFile = new File("com\\leonardo\\eleitores.txt");
+    private File eleitoresFile;
 
-    public ListaDeEleitores() {
+    public ListaDeEleitores(File eleitoresFile) {
+        this.eleitoresFile = eleitoresFile;
         this.quantidadeEleitores = Util.getQuantidadePessoas(eleitoresFile);
         this.eleitores = new Eleitor[quantidadeEleitores];
         addEleitores();
@@ -20,6 +21,24 @@ public class ListaDeEleitores {
 
     public int getQuantidadeEleitores() {
         return quantidadeEleitores;
+    }
+
+    public boolean existeNumero(int numeroEleitor) {
+        boolean existe = true;
+
+        for (Eleitor eleitor : eleitores)
+            if (eleitor != null)
+                if (eleitor.getId() == numeroEleitor)
+                    return existe;
+                    
+        return !existe;
+    }
+
+    public Eleitor getEleitor(int numeroEleitor) {
+        for (Eleitor eleitor : eleitores)
+            if (eleitor.getId() == numeroEleitor)
+                return eleitor;
+        return new Eleitor(0, "Nome", "Não Apto");
     }
 
     private void addEleitores() {
@@ -41,7 +60,7 @@ public class ListaDeEleitores {
         }
     }
 
-    public void listarPessoas() {
+    public void listarEleitores() {
         for (Eleitor eleitor : eleitores) {
             if (eleitor != null)
                 System.out.println(eleitor);

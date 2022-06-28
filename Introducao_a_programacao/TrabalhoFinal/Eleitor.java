@@ -2,12 +2,17 @@ public class Eleitor {
 
     private int id;
     private String nome;
-    private String situacao;
+    private boolean situacao;
+    private boolean jaVotou;
 
     public Eleitor(int id, String nome, String situacao) {
         this.id = id;
         this.nome = nome;
-        this.situacao = situacao;
+        if (situacao.equalsIgnoreCase("apto"))
+            this.situacao = true;
+        else
+            this.situacao = false;
+        this.jaVotou = false;
     }
 
     public int getId() {
@@ -18,13 +23,37 @@ public class Eleitor {
         return nome;
     }
 
-    public String getSituacao() {
+    public boolean getSituacao() {
         return situacao;
     }
 
+    public boolean getJaVotou() {
+        return this.jaVotou;
+    }
+
+    public void votar() {
+        this.jaVotou = true;
+    }
+    
+    public String situacaoToString() {
+        if (situacao)
+            return "Apto";
+        else
+            return "Não Apto";
+    }
+    
+    public String jaVotouToString() {
+        if (jaVotou)
+            return "Votou";
+        else
+            return "Não Votou";
+    }
+
     public String toString() {
-        return ("\nId: " + id +
+        return ("Id: " + id +
                 "\nNome: " + nome +
-                "\nSituação: " + situacao);
+                "\nSituação: " + situacaoToString() +
+                "\nJá votou: " + jaVotouToString()               
+                );
     }
 }
