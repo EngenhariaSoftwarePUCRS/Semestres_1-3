@@ -3,76 +3,69 @@ public class TabelaDePontuacao {
     private Clube[] clubes = new Clube[20];
 
     public TabelaDePontuacao() {
-        criarTabela();
+        this.clubes[0] = new Clube("Bruno FC");
+        this.clubes[1] = new Clube("Duda FC");
     }
 
-    private void criarTabela() {
+    public Clube[] getClubes() {
+        return clubes;
+    }
+
+    public boolean existeClube(String nomeClube) {
         for (int i = 0; i < clubes.length; i++) {
-            if (clubes[i] == null)
-                clubes[i] = new Clube();
+            if (clubes[i] != null) {
+                if (clubes[i].getNomeClube().equalsIgnoreCase(nomeClube))
+                    return true;
+            }
         }
+        return false;
     }
 
-    public boolean insereClube(Clube clubePorInserir) {
-        boolean preenchido = false;
+    public Clube consultaClube(String nomeClubePorConsultar) {
         for (int i = 0; i < clubes.length; i++)
-            if ((clubes[i] == null) || (clubes[i].getNomeClube().equals(""))) {
-                clubes[i] = clubePorInserir;
-                return !preenchido;
-            }
-        return preenchido;
+            if (clubes[i].getNomeClube().equalsIgnoreCase(nomeClubePorConsultar))
+                return clubes[i];
+        return clubes[0];
     }
 
-    public boolean excluiClube(Clube clubePorExcluir) {
-        boolean excluido = true;
+    public void alteraClube(String clubeAntigo, String clubeNovo) {
         for (int i = 0; i < clubes.length; i++)
-            if (clubes[i] == clubePorExcluir) {
-                clubes[i] = null;
-                return excluido;
+            if (clubes[i].getNomeClube().equalsIgnoreCase(clubeAntigo))
+                clubes[i].setNomeClube(clubeNovo);
+    }
+
+    public boolean insereClube(Clube clube) {
+        for (int i = 0; i < clubes.length; i++) {
+            if(clubes[i] == null) {
+                clubes[i] = clube; 
+                return true;
             }
-        return !excluido;
-    }
-
-    public void consultaClube(Clube clube) {
-        System.out.println(clube);
-    }
-
-    public void alteraClube(Clube clube, String nomeClube) {
-        clube.setNomeClube(nomeClube);
-    }
-
-    public void alteraClube(Clube clube, Pontuacao pontuacao) {
-        clube.setPontuacao(pontuacao);
-    }
-
-    public void exibirTabela() {
-        for (Clube clube : clubes)
-            if ((clube != null) && (!clube.getNomeClube().equals("")))
-                System.out.println(clube);
+        } return false;
     }
 
     public void ordenarTabela() {
         int quantidadeClubes = clubes.length - 1;
-        int pontuacaoClube, pontuacaoProximoClube, vitoriasClube, vitoriasProximoClube;
         for (int i = 0; i < quantidadeClubes; i++) {
             for (int j = 0; j < quantidadeClubes - i; j++) {
-                pontuacaoClube = clubes[j].getPontuacao().getQuantidadePontos();
-                pontuacaoProximoClube = clubes[j + 1].getPontuacao().getQuantidadePontos();
-                if (pontuacaoClube < pontuacaoProximoClube)
-                    troca(j, clubes);
-                else if (pontuacaoClube == pontuacaoProximoClube) {
-                    vitoriasClube = clubes[j].getPontuacao().getQuantidadeVitorias();
-                    vitoriasProximoClube = clubes[j + 1].getPontuacao().getQuantidadeVitorias();
-                    if (vitoriasClube < vitoriasProximoClube)
-                        troca(j, clubes);
+                if ((clubes[j] != null) && (clubes[j + 1] != null)) {
+                    int pontuacaoClube = clubes[j].getPontuacao().getQuantidadePontos();
+                    int pontuacaoClubeSeguinte = clubes[j + 1].getPontuacao().getQuantidadePontos();
+                    int vitoriaClube = clubes[j].getPontuacao().getQuantidadeVitorias();
+                    int vitoriaClubeSeguinte = clubes[j + 1].getPontuacao().getQuantidadeVitorias();
+                    if (pontuacaoClube < pontuacaoClubeSeguinte)
+                        troca(j);
+                    else if (pontuacaoClube == pontuacaoClubeSeguinte)
+                        if (vitoriaClube < vitoriaClubeSeguinte)
+                            troca(j);
                 }
             }
         }
     }
 
-    private void troca(int posicaoProcurada, Clube[] clubes) {
-        Clube aux = clubes[posicaoProcurada];
-        clubes[posicaoProcurada] = clubes[posicaoProcurada + 1];
-        clubes[posicaoProcurada + 1] = aux;
+    private void troca(int j) {
+        Clube aux = clubes[j];
+        clubes[j] = clubes[j + 1];
+        clubes[j + 1] = aux;
     }
+
 }

@@ -1,116 +1,67 @@
 public class Pontuacao {
 
-    private int gP;
-    private int gC;
-    private int sG;
+    private int golsPro;
+    private int golsContra;
+    private int saldoGols;
     private int quantidadePontos;
     private int quantidadeVitorias;
     private int quantidadeEmpates;
     private int quantidadeDerrotas;
+    private int quantidadePartidasJogadas;
+    private double aproveitamento;
 
     public Pontuacao() {
-        this.gP = 0;
-        this.gC = 0;
-        this.sG = gP - gC;
+        this.golsPro = 0;
+        this.golsContra = 0;
+        this.saldoGols = golsPro - golsContra;
         this.quantidadePontos = 0;
         this.quantidadeVitorias = 0;
         this.quantidadeEmpates = 0;
         this.quantidadeDerrotas = 0;
-    }
-
-    public Pontuacao(int gP, int gC, int quantidadePontos, int quantidadeVitorias, int quantidadeEmpates,
-            int quantidadeDerrotas) {
-        this.gP = gP;
-        this.gC = gC;
-        this.sG = gP - gC;
-        this.quantidadePontos = quantidadePontos;
-        this.quantidadeVitorias = quantidadeVitorias;
-        this.quantidadeEmpates = quantidadeEmpates;
-        this.quantidadeDerrotas = quantidadeDerrotas;
-    }
-
-    public void setGP(int gP) {
-        this.gP = gP;
-    }
-
-    public void setGC(int gC) {
-        this.gC = gC;
-    }
-
-    public void setSG(int sG) {
-        this.sG = sG;
-    }
-
-    public void setQuantidadePontos(int quantidadePontos) {
-        this.quantidadePontos = quantidadePontos;
-    }
-
-    public void setQuantidadeVitorias(int quantidadeVitorias) {
-        this.quantidadeVitorias = quantidadeVitorias;
-    }
-
-    public void setQuantidadeEmpates(int quantidadeEmpates) {
-        this.quantidadeEmpates = quantidadeEmpates;
-    }
-
-    public void setQuantidadeDerrotas(int quantidadeDerrotas) {
-        this.quantidadeDerrotas = quantidadeDerrotas;
-    }
-
-    public int getGP() {
-        return gP;
-    }
-
-    public int getGC() {
-        return gC;
-    }
-
-    public int getSG() {
-        return sG;
+        this.quantidadePartidasJogadas = 0;
+        this.aproveitamento = 0;
     }
 
     public int getQuantidadePontos() {
-        return quantidadePontos;
+        return this.quantidadePontos;
     }
 
     public int getQuantidadeVitorias() {
-        return quantidadeVitorias;
+        return this.quantidadeVitorias;
     }
 
-    public int getQuantidadeEmpates() {
-        return quantidadeEmpates;
-    }
-
-    public int getQuantidadeDerrotas() {
-        return quantidadeDerrotas;
-    }
-
-    public Pontuacao atualizacaoPartida(int gP, int gC) {
-        this.gP += gP;
-        this.gC += gC;
-        this.sG += (gP - gC);
-
-        if (gP > gC) {
+    public Pontuacao atualizacaoPartida(int golsPro, int golsContra) {
+        this.quantidadePartidasJogadas++;
+        this.golsPro += golsPro;
+        this.golsContra += golsContra;
+        this.saldoGols += (golsPro - golsContra);
+        
+        if (golsPro > golsContra) {
             quantidadeVitorias++;
             quantidadePontos += 3;
-        } else if (gP < gC) {
+        } else if (golsPro < golsContra) {
             quantidadeDerrotas++;
         } else {
             quantidadeEmpates++;
             quantidadePontos += 1;
         }
+        
+        this.aproveitamento = (quantidadePontos / 3*quantidadePartidasJogadas * 100);
 
         return this;
     }
 
     public String toString() {
-        return ("\tQuantidade de pontos = " + quantidadePontos +
-                "\tQuantidade de vitorias = " + quantidadeVitorias +
-                "\tQuantidade de empates = " + quantidadeEmpates +
-                "\tQuantdade de derrotas = " + quantidadeDerrotas +
-                "\tGols feitos = " + gP +
-                "\tGols sofridos = " + gC +
-                "\tSaldo de gols = " + sG);
+        return ("  |Pontos = " + quantidadePontos +
+                "  |Partidas jogadas = " + quantidadePartidasJogadas +
+                "  |Vitorias = " + quantidadeVitorias +
+                "  |Empates = " + quantidadeEmpates +
+                "  |Derrotas = " + quantidadeDerrotas +
+                "  |Gols feitos = " + golsPro +
+                "  |Gols sofridos = " + golsContra +
+                "  |Saldo de gols = " + saldoGols +
+                "  |Aproveitamento = " + aproveitamento + "%"
+                );
        }
 
 }

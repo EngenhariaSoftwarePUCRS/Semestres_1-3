@@ -3,17 +3,8 @@ public class Clube {
     private String nomeClube;
     private Pontuacao pontuacao = new Pontuacao();
 
-    public Clube() {
-        this.nomeClube = "";
-    }
-
     public Clube(String nomeClube) {
         this.nomeClube = nomeClube;
-    }
-
-    public Clube(String nomeClube, Pontuacao pontuacao) {
-        this.nomeClube = nomeClube;
-        this.pontuacao = pontuacao;
     }
 
     public void setNomeClube(String nomeClube) {
@@ -33,7 +24,6 @@ public class Clube {
     }
 
     public String toString() {
-        return ("\nClube = " + nomeClube +
-                "\t" + pontuacao);
+        return ("\nClube = " + nomeClube + pontuacao);
     }
 }
