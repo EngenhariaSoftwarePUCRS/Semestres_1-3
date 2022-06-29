@@ -17,8 +17,8 @@ public class Sistema {
         System.out.println("Inicializando o sistema...");
 
         try {
-            File candidatosFile = new File("com\\leonardo\\candidatos.txt");
-            File eleitoresFile = new File("com\\leonardo\\eleitores.txt");
+            File candidatosFile = new File("candidatos.txt");
+            File eleitoresFile = new File("eleitores.txt");
             listaDeCandidatos = new ListaDeCandidatos(candidatosFile);
             listaDeEleitores = new ListaDeEleitores(eleitoresFile);
             votacao = new Votacao(listaDeCandidatos, listaDeEleitores);
@@ -65,7 +65,11 @@ public class Sistema {
                     break;
 
                 case 6:
-                    salvarArquivoDados("resultado.txt");
+                    // Se a votação já foi encerrada
+                    if (!votacao.getSituacao()) {
+                        salvarArquivoDados("resultados.txt");
+                    } else
+                        System.out.println("A votação ainda não foi finalizada.");
                     break;
 
                 case 0:
@@ -92,57 +96,81 @@ public class Sistema {
                 exibirTabelaResultados(9, 22, 25, 8, 15);
             }
             System.out.println("Aperte 1 para alterar visualização da tabela.");
-            System.out.print("Ou 0 para voltar.\t");
+            System.out.print("Ou 0 para voltar.     ");
             mostrarTabelas = inputInt();
         }
     }
 
     private void salvarArquivoDados(String filePath) {
+        boolean salvo = false;
         try {
             File file = new File(filePath);
+            boolean sobreescrever = true;
             if (!file.exists()) {
                 System.out.println("Arquivo não existente. Criando novo arquivo.");
                 if (file.createNewFile()) {
                     System.out.println("Novo arquivo criado em: " + filePath);
                 }
+            } else {
+                System.out.println("Este arquivo já existe.");
+                sobreescrever = pegarConfirmacao();
             }
 
-            FileWriter fileWriter = new FileWriter(filePath);
-            Candidato[] candidatos = listaDeCandidatos.getCandidatos();
-            String codigoCandidato;
-            String nomeCandidato;
-            String partidoCandidato;
-            String quantidadeVotosCandidato;
-            String fileLine = "Data/Hora: "
-                    .concat(
-                            new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(Calendar.getInstance().getTime()))
-                    .concat("\n");
-            fileWriter.write(fileLine);
-            for (Candidato candidato : candidatos) {
-                if (candidato != null) {
-                    codigoCandidato = Integer.toString(candidato.getId()).trim();
-                    nomeCandidato = candidato.getNome().trim();
-                    partidoCandidato = candidato.getPartido().trim();
-                    quantidadeVotosCandidato = Integer.toString(candidato.getQuandidadeVotos()).trim();
-                    fileLine = ""
-                            .concat(codigoCandidato)
-                            .concat(",")
-                            .concat(nomeCandidato)
-                            .concat(",")
-                            .concat(partidoCandidato)
-                            .concat(",")
-                            .concat(quantidadeVotosCandidato)
-                            .concat("\n");
-                    fileWriter.write(fileLine);
+            if (sobreescrever) {
+                FileWriter fileWriter = new FileWriter(filePath);
+                Candidato[] candidatos = listaDeCandidatos.getCandidatos();
+                String codigoCandidato;
+                String nomeCandidato;
+                String partidoCandidato;
+                String quantidadeVotosCandidato;
+                String fileLine = "Data/Hora: "
+                        .concat(
+                                new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(Calendar.getInstance().getTime()))
+                        .concat("\n");
+                fileWriter.write(fileLine);
+                for (Candidato candidato : candidatos) {
+                    if (candidato != null) {
+                        codigoCandidato = Integer.toString(candidato.getId()).trim();
+                        nomeCandidato = candidato.getNome().trim();
+                        partidoCandidato = candidato.getPartido().trim();
+                        quantidadeVotosCandidato = Integer.toString(candidato.getQuandidadeVotos()).trim();
+                        fileLine = ""
+                                .concat(codigoCandidato)
+                                .concat(",")
+                                .concat(nomeCandidato)
+                                .concat(",")
+                                .concat(partidoCandidato)
+                                .concat(",")
+                                .concat(quantidadeVotosCandidato)
+                                .concat("\n");
+                        fileWriter.write(fileLine);
+                    }
                 }
-            }
-            fileWriter.write("000,NULO,NULO,".concat(Integer.toString(votacao.getQuantidadeVotosNulos()).trim()));
-            fileWriter.close();
-
+                fileWriter.write("000,NULO,NULO,".concat(Integer.toString(votacao.getQuantidadeVotosNulos()).trim()));
+                fileWriter.close();
+                System.out.println("Sucesso!");
+                System.out.println("Arquivo salvo em: " + filePath);
+            } else
+                System.out.println("Ok. Nada foi alterado.");
         } catch (IOException e) {
             System.out.println("Erro ao gerar arquivo de dados.");
             e.printStackTrace();
         }
+    }
+
+    private boolean pegarConfirmacao() {
+        String escolha;
+        boolean confirma = false;
+
+        do {
+            System.out.println();
+            System.out.print("Deseja sobreescrever (S/N)? ");
+            escolha = inputString();
+            if (escolha.equalsIgnoreCase("S"))
+                confirma = true;
+        } while (!(escolha.equalsIgnoreCase("S")) && !(escolha.equalsIgnoreCase("N")));
+
+        return confirma;
     }
 
     private void gerarTabelaResultados(int larguraColunas) {
@@ -269,13 +297,22 @@ public class Sistema {
         }
     }
 
+    private String inputString() {
+        Scanner input = new Scanner(System.in);
+        try {
+            return input.nextLine();
+        } catch (InputMismatchException e) {
+            return inputString();
+        }
+    }
+
     private void showMenu() {
         System.out.println("/===============================================\\");
         System.out.println("|\tSISTEMA GERENCIADOR DE VOTACAO");
         System.out.println("|");
         System.out.println("| (1) Iniciar votação");
         System.out.println("| (2) Encerrar votação");
-        System.out.println("| (3) Listar eleitores");
+        System.out.println("| (3) Listar eleitores (ID)");
         System.out.println("| (4) Listar eleitores (A-Z)");
         System.out.println("| (5) Listar resultados");
         System.out.println("| (6) Gerar arquivo resultados");
