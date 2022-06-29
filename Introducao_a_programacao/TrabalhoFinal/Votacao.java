@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Votacao {
@@ -14,6 +15,18 @@ public class Votacao {
         this.listaDeCandidatos = listaDeCandidatos;
         this.listaDeEleitores = listaDeEleitores;
         this.situacao = true;
+    }
+
+    public void simularVotacao(int qtdVotosPorSimular, int chanceNulo) {
+        for (int i = 0; i < qtdVotosPorSimular; i++) {
+            if (new Random().nextInt(100) < chanceNulo)
+                this.quantidadeVotosNulos++;
+            else {
+                listaDeCandidatos.getCandidatos()[new Random().nextInt(5)].adicionarVoto();
+                this.quantidadeVotosValidos++;
+            }
+            this.quantidadeVotos++;
+        }
     }
 
     public int getQuantidadeVotosValidos() {
@@ -78,11 +91,11 @@ public class Votacao {
     }
 
     public void encerrar() {
-        if (situacao)
+        if (situacao) {
             this.situacao = false;
-        else
+            System.out.println("Votação encerrada.");
+        } else
             System.out.println("Esta votação já foi encerrada.");
-        System.out.println("Votação encerrada.");
     }
 
     private void registrarNovoVoto() {

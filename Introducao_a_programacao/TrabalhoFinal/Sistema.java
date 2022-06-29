@@ -73,8 +73,13 @@ public class Sistema {
                         System.out.println("A votação ainda não foi finalizada.");
                     break;
 
-                case 7:
-                    // simularVotacao();
+                // Caso de testes
+                case -1:
+                    System.out.print("qtdVotorPorSimular: ");
+                    int qtdVotorPorSimular = inputInt();
+                    System.out.print("chanceNulo: ");
+                    int chanceNulo = inputInt();
+                    votacao.simularVotacao(qtdVotorPorSimular, chanceNulo);
                     break;
 
                 case 0:
@@ -172,7 +177,7 @@ public class Sistema {
                 gerarTabelaResultados(9, 22, 25, 8, 15);
                 exibirTabelaResultados(9, 22, 25, 8, 15);
             }
-            System.out.println("Aperte 1 para alterar visualização da tabela ou 0 para voltar.");
+            System.out.print("Aperte 1 para alterar visualização da tabela ou 0 para voltar. ");
             mostrarTabelas = inputInt();
         }
     }
@@ -194,8 +199,10 @@ public class Sistema {
             tabelaResultados[i][2] = inflar(listaDeCandidatos.getPartidosCandidatos()[i - 1], larguraColunas);
             tabelaResultados[i][3] = inflar(listaDeCandidatos.getVotosCandidatos()[i - 1], larguraColunas);
             tabelaResultados[i][4] = inflar(Double
-                    .toString(Math.round((Integer.parseInt(listaDeCandidatos.getVotosCandidatos()[i - 1]))
-                            / (double) (votacao.getQuantidadeVotosValidos())))
+                    .toString(Math.round(
+                            (Integer.parseInt(listaDeCandidatos.getVotosCandidatos()[i - 1]))
+                                    / (double) (votacao.getQuantidadeVotosValidos())
+                                    * 100))
                     .concat("%"), larguraColunas);
         }
 
@@ -243,8 +250,10 @@ public class Sistema {
             tabelaResultados[i][2] = inflar(listaDeCandidatos.getPartidosCandidatos()[i - 1], larguraColuna2);
             tabelaResultados[i][3] = inflar(listaDeCandidatos.getVotosCandidatos()[i - 1], larguraColuna3);
             tabelaResultados[i][4] = inflar(Double
-                    .toString(Math.round((Integer.parseInt(listaDeCandidatos.getVotosCandidatos()[i - 1]))
-                            / (double) (votacao.getQuantidadeVotosValidos())))
+                    .toString(Math.round(
+                            (Integer.parseInt(listaDeCandidatos.getVotosCandidatos()[i - 1]))
+                                    / (double) (votacao.getQuantidadeVotosValidos())
+                                    * 100))
                     .concat("%"), larguraColuna4);
         }
 
