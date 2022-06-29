@@ -10,9 +10,24 @@ public class ListaDeCandidatos {
 
     public ListaDeCandidatos(File candidatosFile) {
         this.candidatosFile = candidatosFile;
-        this.quantidadeCandidatos = Util.getQuantidadePessoas(candidatosFile);
+        this.contaCandidatos();
         this.candidatos = new Candidato[quantidadeCandidatos];
         addCandidatos();
+    }
+
+    private void contaCandidatos() {
+        try {
+            Scanner reader = new Scanner(candidatosFile);
+            // Pular cabeçalho
+            reader.nextLine();
+            while (reader.hasNext()) {
+                this.quantidadeCandidatos++;
+                reader.nextLine();
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Arquivo não encontrado.");
+        }
     }
 
     public Candidato[] getCandidatos() {
@@ -23,6 +38,42 @@ public class ListaDeCandidatos {
         return quantidadeCandidatos;
     }
 
+    public String[] getIdsCandidatos() {
+        String[] idsCandidatos = new String[quantidadeCandidatos];
+
+        for (int i = 0; i < idsCandidatos.length; i++)
+            idsCandidatos[i] = Integer.toString(candidatos[i].getId());
+
+        return idsCandidatos;
+    }
+
+    public String[] getNomesCandidatos() {
+        String[] nomesCandidatos = new String[quantidadeCandidatos];
+
+        for (int i = 0; i < nomesCandidatos.length; i++)
+            nomesCandidatos[i] = candidatos[i].getNome();
+
+        return nomesCandidatos;
+    }
+
+    public String[] getPartidosCandidatos() {
+        String[] partidosCandidatos = new String[quantidadeCandidatos];
+
+        for (int i = 0; i < partidosCandidatos.length; i++)
+            partidosCandidatos[i] = candidatos[i].getPartido();
+
+        return partidosCandidatos;
+    }
+
+    public String[] getVotosCandidatos() {
+        String[] votosCandidatos = new String[quantidadeCandidatos];
+
+        for (int i = 0; i < votosCandidatos.length; i++)
+            votosCandidatos[i] = Integer.toString(candidatos[i].getQuandidadeVotos());
+
+        return votosCandidatos;
+    }
+
     private void addCandidatos() {
         try {
             Scanner reader = new Scanner(candidatosFile);
@@ -30,9 +81,9 @@ public class ListaDeCandidatos {
             for (int i = 0; reader.hasNext(); i++) {
                 String fileLine = reader.nextLine();
                 String[] fileLineContent = fileLine.split(",");
-                int id = Integer.parseInt(fileLineContent[0]);
-                String nome = fileLineContent[1];
-                String partido = fileLineContent[2];
+                int id = Integer.parseInt(fileLineContent[0].trim());
+                String nome = fileLineContent[1].trim();
+                String partido = fileLineContent[2].trim();
                 Candidato candidato = new Candidato(id, nome, partido);
                 candidatos[i] = candidato;
             }
@@ -54,7 +105,7 @@ public class ListaDeCandidatos {
 
     public Candidato getCandidato(int numeroCandidato) {
         for (Candidato candidato : candidatos)
-            if (candidato.getId() == numeroCandidato)
+            if ((candidato != null) && (candidato.getId() == numeroCandidato))
                 return candidato;
         return new Candidato();
     }
@@ -82,7 +133,7 @@ public class ListaDeCandidatos {
             }
     }
 
-    public void exibirCandidatos() {
+    public void listarCandidatos() {
         for (Candidato candidato : candidatos)
             if (candidato != null) {
                 System.out.println();

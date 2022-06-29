@@ -10,9 +10,9 @@ public class Votacao {
     private int quantidadeVotos;
     private boolean situacao;
 
-    public Votacao() {
-        this.listaDeCandidatos = Main.listaDeCandidatos;
-        this.listaDeEleitores = Main.listaDeEleitores;
+    public Votacao(ListaDeCandidatos listaDeCandidatos, ListaDeEleitores listaDeEleitores) {
+        this.listaDeCandidatos = listaDeCandidatos;
+        this.listaDeEleitores = listaDeEleitores;
         this.situacao = true;
     }
 
@@ -98,7 +98,7 @@ public class Votacao {
                     System.out.println();
                     System.out.println("/=======================\\");
                     System.out.println("| Lista de candidatos: ");
-                    listaDeCandidatos.exibirCandidatos();
+                    listaDeCandidatos.listarCandidatos();
                     System.out.println();
                     System.out.print("Digite o número do candidato: ");
                     int numeroCandidato = inputInt();

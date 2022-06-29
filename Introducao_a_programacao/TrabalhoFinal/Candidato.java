@@ -6,10 +6,6 @@ public class Candidato {
     private int quantidadeVotos;
 
     public Candidato() {
-        this.id = 0;
-        this.nome = "";
-        this.partido = "";
-        this.quantidadeVotos = 0;
     }
 
     public Candidato(int id, String nome, String partido) {
