@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ListaDeCandidatos {
-    
+
     private int quantidadeCandidatos;
     private Candidato[] candidatos;
     private File candidatosFile;
@@ -14,7 +14,7 @@ public class ListaDeCandidatos {
         this.candidatos = new Candidato[quantidadeCandidatos];
         addCandidatos();
     }
-    
+
     public Candidato[] getCandidatos() {
         return candidatos;
     }
@@ -46,10 +46,9 @@ public class ListaDeCandidatos {
         boolean existe = true;
 
         for (Candidato candidato : candidatos)
-            if (candidato != null)
-                if (candidato.getId() == numeroCandidato)
-                    return existe;
-                    
+            if ((candidato != null) && (candidato.getId() == numeroCandidato))
+                return existe;
+
         return !existe;
     }
 
@@ -58,6 +57,29 @@ public class ListaDeCandidatos {
             if (candidato.getId() == numeroCandidato)
                 return candidato;
         return new Candidato();
+    }
+
+    public void listarCandidatosVotos() {
+        Candidato[] copiaCandidatos = this.candidatos;
+        for (int i = 0; i < copiaCandidatos.length - 1; i++) {
+            for (int j = 0; j < copiaCandidatos.length - 1 - i; j++) {
+                if ((copiaCandidatos[j] == null) || (copiaCandidatos[j + 1] == null))
+                    continue;
+                int quantidadeVotosCandidato = copiaCandidatos[j].getQuandidadeVotos();
+                int quantidadeVotosCandidatoSeguinte = copiaCandidatos[j + 1].getQuandidadeVotos();
+                if (quantidadeVotosCandidato > quantidadeVotosCandidatoSeguinte) {
+                    Candidato aux = copiaCandidatos[j];
+                    copiaCandidatos[j] = copiaCandidatos[j + 1];
+                    copiaCandidatos[j + 1] = aux;
+                }
+            }
+        }
+        for (Candidato candidato : copiaCandidatos)
+            if (candidato != null) {
+                System.out.println();
+                System.out.print(candidato);
+                System.out.println("\nQuantidade de votos: " + candidato.getQuandidadeVotos());
+            }
     }
 
     public void exibirCandidatos() {

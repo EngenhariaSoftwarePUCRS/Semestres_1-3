@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ListaDeEleitores {
-    
+
     private int quantidadeEleitores;
     private Eleitor[] eleitores;
     private File eleitoresFile;
@@ -14,7 +14,7 @@ public class ListaDeEleitores {
         this.eleitores = new Eleitor[quantidadeEleitores];
         addEleitores();
     }
-    
+
     public Eleitor[] getEleitores() {
         return eleitores;
     }
@@ -27,18 +27,17 @@ public class ListaDeEleitores {
         boolean existe = true;
 
         for (Eleitor eleitor : eleitores)
-            if (eleitor != null)
-                if (eleitor.getId() == numeroEleitor)
-                    return existe;
-                    
+            if ((eleitor != null) && (eleitor.getId() == numeroEleitor))
+                return existe;
+
         return !existe;
     }
 
     public Eleitor getEleitor(int numeroEleitor) {
         for (Eleitor eleitor : eleitores)
-            if (eleitor.getId() == numeroEleitor)
+            if ((eleitor != null) && (eleitor.getId() == numeroEleitor))
                 return eleitor;
-        return new Eleitor(0, "Nome", "Não Apto");
+        return new Eleitor();
     }
 
     private void addEleitores() {
@@ -60,11 +59,36 @@ public class ListaDeEleitores {
         }
     }
 
-    public void listarEleitores() {
-        for (Eleitor eleitor : eleitores) {
-            if (eleitor != null)
-                System.out.println(eleitor);
+    public void listarEleitoresAlfabetica() {
+        Eleitor[] copiaEleitores = this.eleitores;
+        for (int i = 0; i < copiaEleitores.length - 1; i++) {
+            for (int j = 0; j < copiaEleitores.length - 1 - i; j++) {
+                if ((copiaEleitores[j] == null) || (copiaEleitores[j + 1] == null))
+                    continue;
+                String nomeEleitor = copiaEleitores[j].getNome();
+                String nomeEleitorSeguinte = copiaEleitores[j + 1].getNome();
+                char letraNomeEleitor = nomeEleitor.charAt(0);
+                char letraNomeEleitorSeguinte = nomeEleitorSeguinte.charAt(0);
+                if (letraNomeEleitor > letraNomeEleitorSeguinte) {
+                    Eleitor aux = copiaEleitores[j];
+                    copiaEleitores[j] = copiaEleitores[j + 1];
+                    copiaEleitores[j + 1] = aux;
+                }
+            }
         }
+        for (Eleitor eleitor : copiaEleitores)
+            if (eleitor != null) {
+                System.out.println(eleitor);
+                System.out.println();
+            }
+    }
+
+    public void listarEleitores() {
+        for (Eleitor eleitor : eleitores)
+            if (eleitor != null) {
+                System.out.println(eleitor);
+                System.out.println();
+            }
     }
 
 }

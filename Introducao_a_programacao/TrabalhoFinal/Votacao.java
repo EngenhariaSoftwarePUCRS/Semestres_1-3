@@ -3,54 +3,139 @@ import java.util.Scanner;
 
 public class Votacao {
 
-    ListaDeCandidatos listaDeCandidatos = Main.listaDeCandidatos;
-    ListaDeEleitores listaDeEleitores = Main.listaDeEleitores;
+    private ListaDeCandidatos listaDeCandidatos;
+    private ListaDeEleitores listaDeEleitores;
+    private int quantidadeVotosValidos;
+    private int quantidadeVotosNulos;
+    private int quantidadeVotos;
+    private boolean situacao;
+
+    public Votacao() {
+        this.listaDeCandidatos = Main.listaDeCandidatos;
+        this.listaDeEleitores = Main.listaDeEleitores;
+        this.situacao = true;
+    }
+
+    public int getQuantidadeVotosValidos() {
+        return this.quantidadeVotosValidos;
+    }
+
+    private double getPorcentagemVotosValidos() {
+        if (this.quantidadeVotos == 0)
+            return 0;
+        return Math.round(this.quantidadeVotosValidos / (double) this.quantidadeVotos * 100);
+    }
+
+    public int getQuantidadeVotosNulos() {
+        return this.quantidadeVotosNulos;
+    }
+
+    private double getPorcentagemVotosNulos() {
+        if (this.quantidadeVotos == 0)
+            return 0;
+        return Math.round(this.quantidadeVotosNulos / (double) this.quantidadeVotos * 100);
+    }
+
+    public int getQuantidadeVotos() {
+        return this.quantidadeVotos;
+    }
+
+    public boolean getSituacao() {
+        return this.situacao;
+    }
+
+    public String toString() {
+        return ("\nVotos Válidos:  " + this.quantidadeVotosValidos +
+                "\t(" + this.getPorcentagemVotosValidos() + "%)" +
+                "\nVotos Nulos:    " + this.quantidadeVotosNulos +
+                "\t(" + this.getPorcentagemVotosNulos() + "%)" +
+                "\nTotal de votos: " + this.quantidadeVotos +
+                "\t(" + 100 + "%)");
+    }
 
     public void iniciar() {
-        int choice;
-        do {
-            System.out.println();
-            showMenu();
-            choice = inputInt();
-            switch (choice) {
-                case 1:
-                    registrarNovoVoto();
-                    break;
+        if (situacao) {
+            int choice;
+            do {
+                System.out.println();
+                showMenu();
+                choice = inputInt();
+                switch (choice) {
+                    case 1:
+                        registrarNovoVoto();
+                        break;
 
-                case 0:
-                    break;
+                    case 0:
+                        break;
 
-                default:
-                    System.out.println("Valor inválido!");
-                    break;
-            }
-        } while (choice != 0);
+                    default:
+                        System.out.println("Valor inválido!");
+                        break;
+                }
+            } while (choice != 0);
+        } else
+            System.out.println("Esta votação já foi finalizada.");
+    }
+
+    public void encerrar() {
+        if (situacao)
+            this.situacao = false;
+        else
+            System.out.println("Esta votação já foi encerrada.");
     }
 
     private void registrarNovoVoto() {
         System.out.print("Digite seu número de eleitor: ");
         int numeroEleitor = inputInt();
+        // Se o código do eleitor existe
         if (listaDeEleitores.existeNumero(numeroEleitor)) {
             Eleitor eleitorPorVotar = listaDeEleitores.getEleitor(numeroEleitor);
-            if (eleitorPorVotar.getSituacao()) {
-                boolean confirma;
-                do {
-                    System.out.println("Lista de candidatos: ");
-                    System.out.println("=======================");
+            // Se o eleitor estiver apto a votar e ainda não votou
+            if ((eleitorPorVotar.getSituacao()) && !(eleitorPorVotar.getJaVotou())) {
+                System.out.println("Olá, " + eleitorPorVotar.getPrimeiroNome());
+                boolean confirma = false;
+                while (!confirma) {
+                    System.out.println();
+                    System.out.println("/=======================\\");
+                    System.out.println("| Lista de candidatos: ");
                     listaDeCandidatos.exibirCandidatos();
                     System.out.println();
-                    Candidato candidatoPorVotar = pegarCandidato();
-                    confirma = pegarConfirmacao();
-                    if (confirma) {
-                        candidatoPorVotar.adicionarVoto();
-                        System.out.println("Sucesso! Seu voto foi registrado.");
-                        eleitorPorVotar.votar();
+                    System.out.print("Digite o número do candidato: ");
+                    int numeroCandidato = inputInt();
+                    // Se o código de candidato existe
+                    if (listaDeCandidatos.existeNumero(numeroCandidato)) {
+                        Candidato candidatoPorVotar = listaDeCandidatos.getCandidato(numeroCandidato);
+                        System.out.println();
+                        System.out.print("Candidato: ");
+                        System.out.println(candidatoPorVotar.getNome());
+                        System.out.print("Partido:");
+                        System.out.println(candidatoPorVotar.getPartido());
+                        confirma = pegarConfirmacao();
+                        if (confirma)
+                            registrarVoto(candidatoPorVotar, eleitorPorVotar);
+                    } else {
+                        System.out.println("Candidato não encontrado.");
+                        System.out.println("Seu voto foi computado como nulo.");
+                        this.quantidadeVotosNulos++;
+                        this.quantidadeVotos++;
+                        break;
                     }
-                } while (!confirma);
+                }
+                // Se o eleitor não estiver apto a votar
             } else
-                System.out.println("Infelizmente, você não está apto para votar.");
+                System.out.println(
+                        "Infelizmente, você não está apto para votar ou um voto já foi registrado em seu nome.");
+            // Se o código do eleitor não existe
         } else
             System.out.println("Número não encontrado no sistema.");
+    }
+
+    private void registrarVoto(Candidato candidatoPorVotar, Eleitor eleitorPorVotar) {
+        candidatoPorVotar.adicionarVoto();
+        eleitorPorVotar.votar();
+        this.quantidadeVotosValidos++;
+        this.quantidadeVotos++;
+        System.out.println("Sucesso! Seu voto foi registrado.");
     }
 
     private boolean pegarConfirmacao() {
@@ -68,54 +153,26 @@ public class Votacao {
         return confirma;
     }
 
-    private Candidato pegarCandidato() {
-        Candidato candidatoPorVotar = new Candidato();
-        boolean existeCandidato;
-        int numeroCandidato;
-
-        do {
-            System.out.print("Digite o número do candidato: ");
-            numeroCandidato = inputInt();
-            existeCandidato = listaDeCandidatos.existeNumero(numeroCandidato);
-            if (existeCandidato) {
-                candidatoPorVotar = listaDeCandidatos.getCandidato(numeroCandidato);
-                System.out.println();
-                System.out.println("Candidato: ");
-                System.out.println(candidatoPorVotar);
-            } else
-                System.out.println("Candidato não encontrado.");
-        } while (!existeCandidato);
-
-        return candidatoPorVotar;
-    }
-
     private int inputInt() {
         Scanner input = new Scanner(System.in);
-        int result = 0;
-
         try {
-            result = input.nextInt();
+            return input.nextInt();
         } catch (InputMismatchException e) {
             return inputInt();
         }
-
-        return result;
     }
-    
+
     private String inputString() {
         Scanner input = new Scanner(System.in);
-        String result = "";
-
         try {
-            result = input.nextLine();
+            return input.nextLine();
         } catch (InputMismatchException e) {
             return inputString();
         }
-        return result;
     }
 
     private void showMenu() {
-        System.out.println("/======================\\");
+        System.out.println("/========================\\");
         System.out.println("|\tVOTAÇÃO");
         System.out.println("|");
         System.out.println("| (1) Registrar novo voto");
@@ -123,4 +180,5 @@ public class Votacao {
         System.out.println();
         System.out.print("Selecione sua opção: ");
     }
+
 }

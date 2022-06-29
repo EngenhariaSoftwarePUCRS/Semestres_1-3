@@ -9,13 +9,13 @@ public class Main {
     private static File candidatosFile = new File("com\\leonardo\\candidatos.txt");
     private static File eleitoresFile = new File("com\\leonardo\\eleitores.txt");
 
-    public static ListaDeCandidatos listaDeCandidatos = new ListaDeCandidatos(candidatosFile);
-    public static ListaDeEleitores listaDeEleitores = new ListaDeEleitores(eleitoresFile);
+    public static final ListaDeCandidatos listaDeCandidatos = new ListaDeCandidatos(candidatosFile);
+    public static final ListaDeEleitores listaDeEleitores = new ListaDeEleitores(eleitoresFile);
     private static Votacao votacao = new Votacao();
 
     public static void main(String[] args) {
         System.out.println("Inicializando o sistema...");
-        
+
         System.out.printf("%nTotal de pessoas no cadastro: %d%n", listaDeEleitores.getQuantidadeEleitores());
 
         menu();
@@ -32,7 +32,7 @@ public class Main {
                     break;
 
                 case 2:
-                    // Encerrar votação
+                    votacao.encerrar();
                     break;
 
                 case 3:
@@ -40,11 +40,15 @@ public class Main {
                     break;
 
                 case 4:
-                    // Listar eleitores (Alf.)
+                    listaDeEleitores.listarEleitoresAlfabetica();
                     break;
 
                 case 5:
-                    // Listar resultados
+                    // Se a votação já foi encerrada
+                    if (!votacao.getSituacao())
+                        listarResultados();
+                    else
+                        System.out.println("A votação ainda não foi finalizada.");
                     break;
 
                 case 6:
@@ -56,6 +60,7 @@ public class Main {
                     break;
 
                 case 0:
+                    System.out.println("Obrigado por utilizar!");
                     break;
 
                 default:
@@ -65,17 +70,18 @@ public class Main {
         } while (choice != 0);
     }
 
+    private static void listarResultados() {
+        System.out.println(votacao);
+        listaDeCandidatos.listarCandidatosVotos();
+    }
+
     private static int inputInt() {
         Scanner input = new Scanner(System.in);
-        int result = 0;
-
         try {
-            result = input.nextInt();
+            return input.nextInt();
         } catch (InputMismatchException e) {
-            inputInt();
+            return inputInt();
         }
-
-        return result;
     }
 
     private static void showMenu() {

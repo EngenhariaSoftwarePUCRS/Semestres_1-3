@@ -5,6 +5,9 @@ public class Eleitor {
     private boolean situacao;
     private boolean jaVotou;
 
+    public Eleitor() {
+    }
+
     public Eleitor(int id, String nome, String situacao) {
         this.id = id;
         this.nome = nome;
@@ -16,15 +19,19 @@ public class Eleitor {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
+    }
+
+    public String getPrimeiroNome() {
+        return this.nome.split(" ")[0];
     }
 
     public boolean getSituacao() {
-        return situacao;
+        return this.situacao;
     }
 
     public boolean getJaVotou() {
@@ -34,26 +41,19 @@ public class Eleitor {
     public void votar() {
         this.jaVotou = true;
     }
-    
+
     public String situacaoToString() {
-        if (situacao)
+        if (situacao) {
+            if (jaVotou)
+                return "Já votou";
             return "Apto";
-        else
+        } else
             return "Não Apto";
-    }
-    
-    public String jaVotouToString() {
-        if (jaVotou)
-            return "Votou";
-        else
-            return "Não Votou";
     }
 
     public String toString() {
         return ("Id: " + id +
                 "\nNome: " + nome +
-                "\nSituação: " + situacaoToString() +
-                "\nJá votou: " + jaVotouToString()               
-                );
+                "\nSituação: " + situacaoToString());
     }
 }
