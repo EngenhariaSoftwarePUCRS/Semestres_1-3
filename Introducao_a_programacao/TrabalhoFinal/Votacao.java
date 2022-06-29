@@ -74,7 +74,7 @@ public class Votacao {
                 }
             } while (choice != 0);
         } else
-            System.out.println("Esta votação já foi finalizada.");
+            System.out.println("Esta votação já foi encerrada.");
     }
 
     public void encerrar() {
@@ -82,6 +82,7 @@ public class Votacao {
             this.situacao = false;
         else
             System.out.println("Esta votação já foi encerrada.");
+        System.out.println("Votação encerrada.");
     }
 
     private void registrarNovoVoto() {
@@ -108,7 +109,7 @@ public class Votacao {
                         System.out.println();
                         System.out.print("Candidato: ");
                         System.out.println(candidatoPorVotar.getNome());
-                        System.out.print("Partido:");
+                        System.out.print("Partido: ");
                         System.out.println(candidatoPorVotar.getPartido());
                         confirma = pegarConfirmacao();
                         if (confirma)

@@ -110,27 +110,20 @@ public class ListaDeCandidatos {
         return new Candidato();
     }
 
-    public void listarCandidatosVotos() {
-        Candidato[] copiaCandidatos = this.candidatos;
-        for (int i = 0; i < copiaCandidatos.length - 1; i++) {
-            for (int j = 0; j < copiaCandidatos.length - 1 - i; j++) {
-                if ((copiaCandidatos[j] == null) || (copiaCandidatos[j + 1] == null))
+    public void ordenarPorVotos() {
+        for (int i = 0; i < candidatos.length - 1; i++) {
+            for (int j = 0; j < candidatos.length - 1 - i; j++) {
+                if ((candidatos[j] == null) || (candidatos[j + 1] == null))
                     continue;
-                int quantidadeVotosCandidato = copiaCandidatos[j].getQuandidadeVotos();
-                int quantidadeVotosCandidatoSeguinte = copiaCandidatos[j + 1].getQuandidadeVotos();
-                if (quantidadeVotosCandidato > quantidadeVotosCandidatoSeguinte) {
-                    Candidato aux = copiaCandidatos[j];
-                    copiaCandidatos[j] = copiaCandidatos[j + 1];
-                    copiaCandidatos[j + 1] = aux;
+                int quantidadeVotosCandidato = candidatos[j].getQuandidadeVotos();
+                int quantidadeVotosCandidatoSeguinte = candidatos[j + 1].getQuandidadeVotos();
+                if (quantidadeVotosCandidato < quantidadeVotosCandidatoSeguinte) {
+                    Candidato aux = candidatos[j];
+                    candidatos[j] = candidatos[j + 1];
+                    candidatos[j + 1] = aux;
                 }
             }
         }
-        for (Candidato candidato : copiaCandidatos)
-            if (candidato != null) {
-                System.out.println();
-                System.out.print(candidato);
-                System.out.println("\nQuantidade de votos: " + candidato.getQuandidadeVotos());
-            }
     }
 
     public void listarCandidatos() {

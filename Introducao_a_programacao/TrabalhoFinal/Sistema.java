@@ -44,6 +44,7 @@ public class Sistema {
 
                 case 2:
                     votacao.encerrar();
+                    listaDeCandidatos.ordenarPorVotos();
                     break;
 
                 case 3:
@@ -72,6 +73,10 @@ public class Sistema {
                         System.out.println("A votação ainda não foi finalizada.");
                     break;
 
+                case 7:
+                    // simularVotacao();
+                    break;
+
                 case 0:
                     System.out.println("Obrigado por utilizar!");
                     break;
@@ -81,24 +86,6 @@ public class Sistema {
                     break;
             }
         } while (choice != 0);
-    }
-
-    private void exibeTabelas() {
-        boolean face = false;
-        int mostrarTabelas = -1;
-        while (mostrarTabelas != 0) {
-            face = !face;
-            if (face) {
-                gerarTabelaResultados(23);
-                exibirTabelaResultados(23);
-            } else {
-                gerarTabelaResultados(9, 22, 25, 8, 15);
-                exibirTabelaResultados(9, 22, 25, 8, 15);
-            }
-            System.out.println("Aperte 1 para alterar visualização da tabela.");
-            System.out.print("Ou 0 para voltar.     ");
-            mostrarTabelas = inputInt();
-        }
     }
 
     private void salvarArquivoDados(String filePath) {
@@ -171,6 +158,23 @@ public class Sistema {
         } while (!(escolha.equalsIgnoreCase("S")) && !(escolha.equalsIgnoreCase("N")));
 
         return confirma;
+    }
+
+    private void exibeTabelas() {
+        boolean face = false;
+        int mostrarTabelas = -1;
+        while (mostrarTabelas != 0) {
+            face = !face;
+            if (face) {
+                gerarTabelaResultados(23);
+                exibirTabelaResultados(23);
+            } else {
+                gerarTabelaResultados(9, 22, 25, 8, 15);
+                exibirTabelaResultados(9, 22, 25, 8, 15);
+            }
+            System.out.println("Aperte 1 para alterar visualização da tabela ou 0 para voltar.");
+            mostrarTabelas = inputInt();
+        }
     }
 
     private void gerarTabelaResultados(int larguraColunas) {
