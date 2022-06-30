@@ -6,11 +6,14 @@ public class Eleitor {
     private boolean jaVotou;
 
     public Eleitor() {
+        // construtor vazio para criar eleitores "dummies"
+        // e permitir utilização de alguns métodos
     }
 
     public Eleitor(int id, String nome, String situacao) {
         this.id = id;
         this.nome = nome;
+        // Converte a situacao de String para boolean
         if (situacao.equalsIgnoreCase("apto"))
             this.situacao = true;
         else
@@ -43,9 +46,11 @@ public class Eleitor {
     }
 
     public String situacaoToString() {
+        // se o eleitor está apto
         if (situacao) {
             if (jaVotou)
                 return "Já votou";
+            // mas se ainda não votou
             return "Apto";
         } else
             return "Não Apto";

@@ -1,7 +1,0 @@
-Data/Hora: 29/06/2022 - 07:13:00
-123,Prometildo Fonseca,Partido dos Milagres,1
-345,Vendolino Nada,Partido da Visao,1
-477,Joao da Obra Pronta,Partido Construo Tudo,0
-988,Maria das Praias,Partido do Surfe,0
-702,Enrico Contudo,Partido dos Contratos,0
-000,NULO,NULO,1

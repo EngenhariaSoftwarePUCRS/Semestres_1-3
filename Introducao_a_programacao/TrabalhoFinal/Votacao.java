@@ -14,19 +14,8 @@ public class Votacao {
     public Votacao(ListaDeCandidatos listaDeCandidatos, ListaDeEleitores listaDeEleitores) {
         this.listaDeCandidatos = listaDeCandidatos;
         this.listaDeEleitores = listaDeEleitores;
+        // Abre a votação
         this.situacao = true;
-    }
-
-    public void simularVotacao(int qtdVotosPorSimular, int chanceNulo) {
-        for (int i = 0; i < qtdVotosPorSimular; i++) {
-            if (new Random().nextInt(100) < chanceNulo)
-                this.quantidadeVotosNulos++;
-            else {
-                listaDeCandidatos.getCandidatos()[new Random().nextInt(5)].adicionarVoto();
-                this.quantidadeVotosValidos++;
-            }
-            this.quantidadeVotos++;
-        }
     }
 
     public int getQuantidadeVotosValidos() {
@@ -67,6 +56,7 @@ public class Votacao {
     }
 
     public void iniciar() {
+        // Se a votação não estiver fechada
         if (situacao) {
             int choice;
             do {
@@ -90,8 +80,20 @@ public class Votacao {
             System.out.println("Esta votação já foi encerrada.");
     }
 
+    private void showMenu() {
+        System.out.println("/========================\\");
+        System.out.println("|\tVOTAÇÃO");
+        System.out.println("|");
+        System.out.println("| (1) Registrar novo voto");
+        System.out.println("| (0) Voltar ao menu");
+        System.out.println();
+        System.out.print("Selecione sua opção: ");
+    }
+
     public void encerrar() {
+        // Se a votação estiver aberta
         if (situacao) {
+            // fecha
             this.situacao = false;
             System.out.println("Votação encerrada.");
         } else
@@ -101,8 +103,9 @@ public class Votacao {
     private void registrarNovoVoto() {
         System.out.print("Digite seu número de eleitor: ");
         int numeroEleitor = inputInt();
-        // Se o código do eleitor existe
-        if (listaDeEleitores.existeNumero(numeroEleitor)) {
+        // Se o eleitor existe no sistema
+        if (listaDeEleitores.existeEleitor(numeroEleitor)) {
+            // Pega o eleitor
             Eleitor eleitorPorVotar = listaDeEleitores.getEleitor(numeroEleitor);
             // Se o eleitor estiver apto a votar e ainda não votou
             if ((eleitorPorVotar.getSituacao()) && !(eleitorPorVotar.getJaVotou())) {
@@ -117,7 +120,8 @@ public class Votacao {
                     System.out.print("Digite o número do candidato: ");
                     int numeroCandidato = inputInt();
                     // Se o código de candidato existe
-                    if (listaDeCandidatos.existeNumero(numeroCandidato)) {
+                    if (listaDeCandidatos.existeCandidato(numeroCandidato)) {
+                        // Pega o candidato
                         Candidato candidatoPorVotar = listaDeCandidatos.getCandidato(numeroCandidato);
                         System.out.println();
                         System.out.print("Candidato: ");
@@ -125,29 +129,36 @@ public class Votacao {
                         System.out.print("Partido: ");
                         System.out.println(candidatoPorVotar.getPartido());
                         confirma = pegarConfirmacao();
-                        if (confirma)
-                            registrarVoto(candidatoPorVotar, eleitorPorVotar);
+                        registrarNovoVoto(candidatoPorVotar, eleitorPorVotar);
                     } else {
+                        // Se o candidato não exite
+                        System.out.println();
                         System.out.println("Candidato não encontrado.");
-                        System.out.println("Seu voto foi computado como nulo.");
-                        this.quantidadeVotosNulos++;
-                        this.quantidadeVotos++;
-                        break;
+                        System.out.println("Seu voto será computado como nulo.");
+                        confirma = pegarConfirmacao();
+                        registrarNovoVoto(eleitorPorVotar);
                     }
                 }
-                // Se o eleitor não estiver apto a votar
             } else
+                // Se o eleitor não estiver apto a votar
                 System.out.println(
                         "Infelizmente, você não está apto para votar ou um voto já foi registrado em seu nome.");
-            // Se o código do eleitor não existe
         } else
+            // Se o código do eleitor não existe
             System.out.println("Número não encontrado no sistema.");
     }
 
-    private void registrarVoto(Candidato candidatoPorVotar, Eleitor eleitorPorVotar) {
+    private void registrarNovoVoto(Candidato candidatoPorVotar, Eleitor eleitorPorVotar) {
         candidatoPorVotar.adicionarVoto();
         eleitorPorVotar.votar();
         this.quantidadeVotosValidos++;
+        this.quantidadeVotos++;
+        System.out.println("Sucesso! Seu voto foi registrado.");
+    }
+
+    private void registrarNovoVoto(Eleitor eleitorPorVotar) {
+        eleitorPorVotar.votar();
+        this.quantidadeVotosNulos++;
         this.quantidadeVotos++;
         System.out.println("Sucesso! Seu voto foi registrado.");
     }
@@ -158,7 +169,7 @@ public class Votacao {
 
         do {
             System.out.println();
-            System.out.print("Confirma o voto (S/N)? ");
+            System.out.print("Confirma (S/N)? ");
             escolha = inputString();
             if (escolha.equalsIgnoreCase("S"))
                 confirma = true;
@@ -185,14 +196,18 @@ public class Votacao {
         }
     }
 
-    private void showMenu() {
-        System.out.println("/========================\\");
-        System.out.println("|\tVOTAÇÃO");
-        System.out.println("|");
-        System.out.println("| (1) Registrar novo voto");
-        System.out.println("| (0) Voltar ao menu");
-        System.out.println();
-        System.out.print("Selecione sua opção: ");
+    // Método de testes para simular votação independente dos eleitores
+    public void simularVotacao(int qtdVotosPorSimular, int chanceNulo) {
+        for (int i = 0; i < qtdVotosPorSimular; i++) {
+            if (new Random().nextInt(100) < chanceNulo)
+                this.quantidadeVotosNulos++;
+            else {
+                listaDeCandidatos.getCandidatos()[new Random().nextInt(listaDeCandidatos.getQuantidadeCandidatos())]
+                        .adicionarVoto();
+                this.quantidadeVotosValidos++;
+            }
+            this.quantidadeVotos++;
+        }
     }
 
 }

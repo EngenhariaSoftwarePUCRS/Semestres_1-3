@@ -6,6 +6,8 @@ public class Candidato {
     private int quantidadeVotos;
 
     public Candidato() {
+        // construtor vazio para criar candidatos "dummies"
+        // e permitir utilização de alguns métodos
     }
 
     public Candidato(int id, String nome, String partido) {
