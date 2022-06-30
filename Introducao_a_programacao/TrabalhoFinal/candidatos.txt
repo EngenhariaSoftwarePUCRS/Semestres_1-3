@@ -1,0 +1,6 @@
+Codigo,Candidato,Partido
+123,Prometildo Fonseca, Partido dos Milagres
+477,Joao da Obra Pronta, Partido Construo Tudo
+988,Maria das Praias, Partido do Surfe
+702,Enrico Contudo, Partido dos Contratos
+345,Vendolino Nada, Partido da Visao

@@ -1,0 +1,43 @@
+﻿Codigo,Nome,Situacao
+105,Jacinto Coelho Matheus,Apto
+125,Danilo Caio Guedes Amaral,Apto
+126,Adilson Clezar Oliveira Varela,Apto
+134,Romeu Correia de Saldanha,Apto
+142,Branca Proenca de Andrade,Apto
+146,Maurilio Siqueira Bonifacio,Apto
+166,Bruna Salomao Jussim,Apto
+167,Mario de Mascarenhas Branco,Apto
+203,Simao Serra Pilar,Nao Apto
+223,Carla Vidal dos Reis,Nao Apto
+263,Dalila Salomao Machuca,Nao Apto
+290,Graca Gama Quintal,Nao Apto
+291,Julio Medeiros de Alcântara,Apto
+316,Magda Napoles Rocha,Nao Apto
+321,Renata Gouveia Marques,Apto
+416,Eugenia Nunes de Albuquerque,Nao Apto
+463,Diogo Lacerda Conceicao,Apto
+464,Luis Andrade Fernandes Coval,Apto
+467,Angelica Fidalgo Barros Fernandes,Apto
+568,Joaquim Constantina Duarte Lacerda,Apto
+612,Rui Iolanda Nicolau Pimentel,Apto
+617,Julia de Gusmao Antunes,Nao Apto
+622,Arsenio Coutinho Rego,Apto
+623,Alfredo Santiago de Nogueira,Apto
+644,Rute Marta Semedo Medeiros,Apto
+663,Joaquim Matheus Falcao,Apto
+669,Samuel Araujo Aguiar Pinto,Nao Apto
+724,Marcelo Modesto Cunha,Apto
+729,Antonieta Meireles de Corte-Real,Apto
+777,Renata Horta Goncalves,Apto
+782,Alana Medeiros Quintal,Apto
+790,Sabrina Fonseca Hernandes dos Passos,Apto
+817,Aglaia de Alencar Barbosa,Apto
+856,Matilde Moleiro Guerra,Nao Apto
+860,Nicolau Madureira Oliva,Apto
+871,Ademar Feijao Barboza,Apto
+916,Dinis Passos Bandeira,Apto
+920,Jaime Sapateiro Guerreiro,Apto
+932,Arabela de Almeida Santiago Neves,Apto
+940,Isabele de Aguiar Silva,Nao Apto
+980,Rebeca Sanches de Brito,Apto
+994,Giovana Corte-Real Santos,Nao Apto
