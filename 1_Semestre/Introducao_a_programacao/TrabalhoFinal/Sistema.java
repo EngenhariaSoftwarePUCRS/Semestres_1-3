@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 public class Sistema {
 
     private static final String PATH_RESULTS_FILE = "resultados.txt";
+    private static final String PATH_CANDIDATOS_FILE = "candidatos.txt";
+    private static final String PATH_ELEITORES_FILE = "eleitores.txt";
     private ListaDeCandidatos listaDeCandidatos;
     private ListaDeEleitores listaDeEleitores;
     private Votacao votacao;
@@ -21,8 +23,8 @@ public class Sistema {
         // e iniciar uma votacao com esses eleitores e candidatos
         try {
             System.out.println("Inicializando o sistema...");
-            File candidatosFile = new File("candidatos.txt");
-            File eleitoresFile = new File("eleitores.txt");
+            File candidatosFile = new File(PATH_CANDIDATOS_FILE);
+            File eleitoresFile = new File(PATH_ELEITORES_FILE);
             listaDeCandidatos = new ListaDeCandidatos(candidatosFile);
             listaDeEleitores = new ListaDeEleitores(eleitoresFile);
             votacao = new Votacao(listaDeCandidatos, listaDeEleitores);
