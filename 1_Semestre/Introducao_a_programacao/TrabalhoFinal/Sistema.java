@@ -245,6 +245,9 @@ public class Sistema {
 
     private void salvarArquivoResultados(String filePath) {
         try {
+            //Pedindo para o usuário onde quer salvar o arquivo
+            System.out.println("Onde você gostaria de salvar o seu arquivo?");
+            filePath = inputString();
             // Cria um novo arquivo no caminho do parametro
             File file = new File(filePath);
             boolean sobreescrever = true;
