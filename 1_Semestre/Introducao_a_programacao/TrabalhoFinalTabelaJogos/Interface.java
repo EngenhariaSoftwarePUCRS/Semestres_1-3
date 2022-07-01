@@ -40,15 +40,15 @@ public class Interface {
                 break;
 
             case 3:
-                System.out.print("\nDigite o nome do clube que você deseja alterar: ");
-                String clubeAlterar = inputString.nextLine();
-                if (tabelaDePontuacao.existeClube(clubeAlterar)) {
-                    System.out.print("\nDigite o novo nome do clube: ");
-                    String novoAlterarClube = inputString.nextLine();
-                    tabelaDePontuacao.alteraClube(clubeAlterar, novoAlterarClube);
-                    listaDePartidas.alteraClubesPartida(clubeAlterar, novoAlterarClube);
+                System.out.print("\nDigite o nome do time que você deseja alterar: ");
+                String timeAlterar = inputString.nextLine();
+                if (tabelaDePontuacao.existeTime(timeAlterar)) {
+                    System.out.print("\nDigite o novo nome do time: ");
+                    String novoAlterarTime = inputString.nextLine();
+                    tabelaDePontuacao.alteraTime(timeAlterar, novoAlterarTime);
+                    listaDePartidas.alteraTimesPartida(timeAlterar, novoAlterarTime);
                 } else
-                    System.out.println("Clube não encontrado");
+                    System.out.println("Time não encontrado");
                 break;
 
             case 4:
@@ -56,33 +56,33 @@ public class Interface {
                 break;
 
             case 5:
-                System.out.print("\nDigite o nome do clube que você deseja consultar: ");
-                String consultaClube = inputString.nextLine();
-                if (tabelaDePontuacao.existeClube(consultaClube))
-                    System.out.println(tabelaDePontuacao.consultaClube(consultaClube));
+                System.out.print("\nDigite o nome do time que você deseja consultar: ");
+                String consultaTime = inputString.nextLine();
+                if (tabelaDePontuacao.existeTime(consultaTime))
+                    System.out.println(tabelaDePontuacao.consultaTime(consultaTime));
                 else
-                    System.out.println("Clube não encontrado");
+                    System.out.println("Time não encontrado");
                 break;
 
             case 6:
                 Data dataPorInserir = pegarData();
-                Clube[] clubes = pegarClubes();
-                if (!tabelaDePontuacao.existeClube(clubes[0].getNomeClube()))
-                    if(!tabelaDePontuacao.insereClube(clubes[0])) {
+                Time[] times = pegarTimes();
+                if (!tabelaDePontuacao.existeTime(times[0].getNomeTime()))
+                    if (!tabelaDePontuacao.insereTime(times[0])) {
                         System.out.println("Lista cheia");
                         break;
                     }
-                if (!tabelaDePontuacao.existeClube(clubes[1].getNomeClube()))
-                    if(!tabelaDePontuacao.insereClube(clubes[1])) {
+                if (!tabelaDePontuacao.existeTime(times[1].getNomeTime()))
+                    if (!tabelaDePontuacao.insereTime(times[1])) {
                         System.out.println("Lista cheia");
                         break;
                     }
                 int[] placarPorInserir = pegarPlacar();
-                listaDePartidas.inserePartida(dataPorInserir, clubes, placarPorInserir);
-                Clube clube1 = tabelaDePontuacao.consultaClube(clubes[0].getNomeClube());
-                clube1.setPontuacao(clube1.getPontuacao().atualizacaoPartida(placarPorInserir[0], placarPorInserir[1]));
-                Clube clube2 = tabelaDePontuacao.consultaClube(clubes[1].getNomeClube());
-                clube2.setPontuacao(clube2.getPontuacao().atualizacaoPartida(placarPorInserir[1], placarPorInserir[0]));
+                listaDePartidas.inserePartida(dataPorInserir, times, placarPorInserir);
+                Time time1 = tabelaDePontuacao.consultaTime(times[0].getNomeTime());
+                time1.setPontuacao(time1.getPontuacao().atualizacaoPartida(placarPorInserir[0], placarPorInserir[1]));
+                Time time2 = tabelaDePontuacao.consultaTime(times[1].getNomeTime());
+                time2.setPontuacao(time2.getPontuacao().atualizacaoPartida(placarPorInserir[1], placarPorInserir[0]));
                 break;
 
             default:
@@ -94,9 +94,9 @@ public class Interface {
         System.out.println();
         System.out.println("1- Exibir Lista de Partida");
         System.out.println("2- Consultar Partida");
-        System.out.println("3- Alterar nome Clube");
+        System.out.println("3- Alterar nome Time");
         System.out.println("4- Exibir Tabela");
-        System.out.println("5- Consultar Clube");
+        System.out.println("5- Consultar Time");
         System.out.println("6- Criar e Inserir Partida ");
         System.out.println();
         System.out.println("0- Sair");
@@ -131,15 +131,15 @@ public class Interface {
         return data;
     }
 
-    private static Clube[] pegarClubes() {
-        Clube[] clubes = new Clube[2];
+    private static Time[] pegarTimes() {
+        Time[] times = new Time[2];
 
-        System.out.print("Insira o Primeiro Clube: ");
-        clubes[0] = new Clube(inputString.nextLine());
-        System.out.print("Insira o Segundo Clube: ");
-        clubes[1] = new Clube(inputString.nextLine());
+        System.out.print("Insira o Primeiro Time: ");
+        times[0] = new Time(inputString.nextLine());
+        System.out.print("Insira o Segundo Time: ");
+        times[1] = new Time(inputString.nextLine());
 
-        return clubes;
+        return times;
     }
 
     private static int[] pegarPlacar() {
@@ -167,9 +167,9 @@ public class Interface {
 
     private static void exibirTabela() {
         tabelaDePontuacao.ordenarTabelaPontuacao();
-        for (Clube clube : tabelaDePontuacao.getClubes()) {
-            if (clube != null)
-                System.out.println(clube);
+        for (Time time : tabelaDePontuacao.getTimes()) {
+            if (time != null)
+                System.out.println(time);
         }
     }
 

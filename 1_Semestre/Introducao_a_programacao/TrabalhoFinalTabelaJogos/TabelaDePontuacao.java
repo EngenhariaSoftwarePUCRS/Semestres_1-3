@@ -1,62 +1,61 @@
 public class TabelaDePontuacao {
 
-    private Clube[] clubes = new Clube[20];
+    private Time[] times;
 
     public TabelaDePontuacao() {
-        this.clubes[0] = new Clube("Bruno FC");
-        this.clubes[1] = new Clube("Duda FC");
+        this.times = new Time[20];
+        this.times[0] = new Time("Bruno FC");
+        this.times[1] = new Time("Duda FC");
     }
 
-    public Clube[] getClubes() {
-        return clubes;
+    public Time[] getTimes() {
+        return times;
     }
 
-    public boolean existeClube(String nomeClube) {
-        for (int i = 0; i < clubes.length; i++) {
-            if (clubes[i] != null) {
-                if (clubes[i].getNomeClube().trim().equalsIgnoreCase(nomeClube.trim()))
-                    return true;
-            }
-        }
+    public boolean existeTime(String nomeTime) {
+        for (int i = 0; i < times.length; i++)
+            if ((times[i] != null) &&
+                    times[i].getNomeTime().trim().equalsIgnoreCase(nomeTime.trim()))
+                return true;
         return false;
     }
 
-    public Clube consultaClube(String nomeClubePorConsultar) {
-        for (int i = 0; i < clubes.length; i++)
-            if (clubes[i].getNomeClube().trim().equalsIgnoreCase(nomeClubePorConsultar.trim()))
-                return clubes[i];
-        return clubes[0];
+    public Time consultaTime(String nomeTimePorConsultar) {
+        for (int i = 0; i < times.length; i++)
+            if (times[i].getNomeTime().trim().equalsIgnoreCase(nomeTimePorConsultar.trim()))
+                return times[i];
+        return times[0];
     }
 
-    public void alteraClube(String clubeAntigo, String clubeNovo) {
-        for (int i = 0; i < clubes.length; i++)
-            if (clubes[i] != null)
-                if (clubes[i].getNomeClube().trim().equalsIgnoreCase(clubeAntigo.trim()))
-                    clubes[i].setNomeClube(clubeNovo);
+    public void alteraTime(String timeAntigo, String timeNovo) {
+        for (int i = 0; i < times.length; i++)
+            if ((times[i] != null) &&
+                    times[i].getNomeTime().trim().equalsIgnoreCase(timeAntigo.trim()))
+                times[i].setNomeTime(timeNovo);
     }
 
-    public boolean insereClube(Clube clube) {
-        for (int i = 0; i < clubes.length; i++) {
-            if(clubes[i] == null) {
-                clubes[i] = clube; 
+    public boolean insereTime(Time timeNovo) {
+        for (int i = 0; i < times.length; i++)
+            if (times[i] == null) {
+                times[i] = timeNovo;
                 return true;
             }
-        } return false;
+        return false;
     }
 
     public void ordenarTabelaPontuacao() {
-        int quantidadeClubes = clubes.length - 1;
-        for (int i = 0; i < quantidadeClubes; i++) {
-            for (int j = 0; j < quantidadeClubes - i; j++) {
-                if ((clubes[j] != null) && (clubes[j + 1] != null)) {
-                    int pontuacaoClube = clubes[j].getPontuacao().getQuantidadePontos();
-                    int pontuacaoClubeSeguinte = clubes[j + 1].getPontuacao().getQuantidadePontos();
-                    int vitoriaClube = clubes[j].getPontuacao().getQuantidadeVitorias();
-                    int vitoriaClubeSeguinte = clubes[j + 1].getPontuacao().getQuantidadeVitorias();
-                    if (pontuacaoClube < pontuacaoClubeSeguinte)
+        int quantidadeTimes = times.length - 1;
+        for (int i = 0; i < quantidadeTimes; i++) {
+            for (int j = 0; j < quantidadeTimes - i; j++) {
+                if ((times[j] != null) && (times[j + 1] != null)) {
+                    int pontuacaoTime = times[j].getPontuacao().getQuantidadePontos();
+                    int pontuacaoTimeSeguinte = times[j + 1].getPontuacao().getQuantidadePontos();
+                    int vitoriaTime = times[j].getPontuacao().getQuantidadeVitorias();
+                    int vitoriaTimeSeguinte = times[j + 1].getPontuacao().getQuantidadeVitorias();
+                    if (pontuacaoTime < pontuacaoTimeSeguinte)
                         troca(j);
-                    else if (pontuacaoClube == pontuacaoClubeSeguinte)
-                        if (vitoriaClube < vitoriaClubeSeguinte)
+                    else if (pontuacaoTime == pontuacaoTimeSeguinte)
+                        if (vitoriaTime < vitoriaTimeSeguinte)
                             troca(j);
                 }
             }
@@ -64,9 +63,9 @@ public class TabelaDePontuacao {
     }
 
     private void troca(int j) {
-        Clube aux = clubes[j];
-        clubes[j] = clubes[j + 1];
-        clubes[j + 1] = aux;
+        Time aux = times[j];
+        times[j] = times[j + 1];
+        times[j + 1] = aux;
     }
 
 }

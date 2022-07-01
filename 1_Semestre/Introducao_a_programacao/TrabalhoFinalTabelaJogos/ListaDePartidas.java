@@ -41,7 +41,8 @@ public class ListaDePartidas {
             if (partidas[i] != null)
                 if (partidas[i].getNumeroPartida() == numeroProcurado)
                     return i;
-                else i += 1;
+                else
+                    i += 1;
             else
                 i += 1;
         }
@@ -49,20 +50,20 @@ public class ListaDePartidas {
         return -1;
     }
 
-    public void alteraClubesPartida(String clubeAntigo, String clubeNovo) {
+    public void alteraTimesPartida(String timeAntigo, String timeNovo) {
         for (int i = 0; i < partidas.length; i++)
             if (partidas[i] != null) {
-                Clube clube1 = partidas[i].getClube1();
-                Clube clube2 = partidas[i].getClube2();
-                if(clubeAntigo.trim().equalsIgnoreCase(clube1.getNomeClube().trim()))
-                    clube1.setNomeClube(clubeNovo.trim());
-                if(clubeAntigo.trim().equalsIgnoreCase(clube2.getNomeClube().trim()))
-                    clube2.setNomeClube(clubeNovo.trim());
+                Time time1 = partidas[i].getTime1();
+                Time time2 = partidas[i].getTime2();
+                if (timeAntigo.trim().equalsIgnoreCase(time1.getNomeTime().trim()))
+                    time1.setNomeTime(timeNovo.trim());
+                if (timeAntigo.trim().equalsIgnoreCase(time2.getNomeTime().trim()))
+                    time2.setNomeTime(timeNovo.trim());
             }
     }
 
-    public void inserePartida(Data dataPorInserir, Clube[] clubesPorInserir, int[] placarPorInserir) {
-        Partida partidaPorInserir = new Partida(dataPorInserir, clubesPorInserir, placarPorInserir);
+    public void inserePartida(Data dataPorInserir, Time[] timesPorInserir, int[] placarPorInserir) {
+        Partida partidaPorInserir = new Partida(dataPorInserir, timesPorInserir, placarPorInserir);
 
         for (int i = 0; i < partidas.length; i++)
             if (partidas[i] == null) {
