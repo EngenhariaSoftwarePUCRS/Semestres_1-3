@@ -28,7 +28,7 @@ public class Sistema {
                 System.out.print("Digite o caminho do arquivo de candidatos: ");
                 pathCandidatosFile = inputString();
                 System.out.print("Digite o caminho do arquivo de eleitores: ");
-                pathCandidatosFile = inputString();
+                pathEleitoresFile = inputString();
             }
             File candidatosFile = new File(pathCandidatosFile);
             File eleitoresFile = new File(pathEleitoresFile);
