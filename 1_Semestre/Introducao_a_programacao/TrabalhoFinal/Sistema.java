@@ -9,8 +9,8 @@ import java.text.SimpleDateFormat;
 public class Sistema {
 
     private static final String PATH_RESULTS_FILE = "resultados.txt";
-    private static final String PATH_CANDIDATOS_FILE = "candidatos.txt";
-    private static final String PATH_ELEITORES_FILE = "eleitores.txt";
+    private String pathCandidatosFile = "candidatos.txt";
+    private String pathEleitoresFile = "eleitores.txt";
     private ListaDeCandidatos listaDeCandidatos;
     private ListaDeEleitores listaDeEleitores;
     private Votacao votacao;
@@ -23,8 +23,15 @@ public class Sistema {
         // e iniciar uma votacao com esses eleitores e candidatos
         try {
             System.out.println("Inicializando o sistema...");
-            File candidatosFile = new File(PATH_CANDIDATOS_FILE);
-            File eleitoresFile = new File(PATH_ELEITORES_FILE);
+            System.out.println("Os arquivos estão na raiz do projeto?");
+            if (!pegarConfirmacao()) {
+                System.out.print("Digite o caminho do arquivo de candidatos: ");
+                pathCandidatosFile = inputString();
+                System.out.print("Digite o caminho do arquivo de eleitores: ");
+                pathCandidatosFile = inputString();
+            }
+            File candidatosFile = new File(pathCandidatosFile);
+            File eleitoresFile = new File(pathEleitoresFile);
             listaDeCandidatos = new ListaDeCandidatos(candidatosFile);
             listaDeEleitores = new ListaDeEleitores(eleitoresFile);
             votacao = new Votacao(listaDeCandidatos, listaDeEleitores);
@@ -32,9 +39,7 @@ public class Sistema {
             qtdColunasTabelaResultados = 5;
             tabelaResultados = new String[qtdLinhasTabelaResultados][qtdColunasTabelaResultados];
         } catch (Exception e) {
-            System.out.println("OPS!!! Arquivo de dados não localizado!");
-            System.out.println("Sistema iniciado com banco de dados vazio");
-            // Achando os arquivos ou não, vai começar o sistema
+            e.printStackTrace();
         } finally {
             System.out.printf("%nTotal de pessoas no cadastro: %d%n", listaDeEleitores.getQuantidadeEleitores());
             menu();
