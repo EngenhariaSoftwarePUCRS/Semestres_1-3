@@ -13,28 +13,29 @@ public class TabelaDePontuacao {
     }
 
     public boolean existeTime(String nomeTime) {
-        for (int i = 0; i < times.length; i++)
-            if ((times[i] != null) &&
-                    times[i].getNomeTime().trim().equalsIgnoreCase(nomeTime.trim()))
+        for (Time time : times) {
+            if ((time != null) && (time.getNomeTime().equalsIgnoreCase(nomeTime)))
                 return true;
+        }
         return false;
     }
 
-    public Time consultaTime(String nomeTimePorConsultar) {
-        for (int i = 0; i < times.length; i++)
-            if (times[i].getNomeTime().trim().equalsIgnoreCase(nomeTimePorConsultar.trim()))
-                return times[i];
+    public Time getTime(String nomeTime) {
+        for (Time time : times) {
+            if ((time != null) && (time.getNomeTime().equalsIgnoreCase(nomeTime)))
+                return time;
+        }
         return times[0];
     }
 
-    public void alteraTime(String timeAntigo, String timeNovo) {
+    public void alterarTime(String timeAntigo, String timeNovo) {
         for (int i = 0; i < times.length; i++)
             if ((times[i] != null) &&
                     times[i].getNomeTime().trim().equalsIgnoreCase(timeAntigo.trim()))
                 times[i].setNomeTime(timeNovo);
     }
 
-    public boolean insereTime(Time timeNovo) {
+    public boolean inserirTime(Time timeNovo) {
         for (int i = 0; i < times.length; i++)
             if (times[i] == null) {
                 times[i] = timeNovo;
@@ -54,9 +55,11 @@ public class TabelaDePontuacao {
                     int vitoriaTimeSeguinte = times[j + 1].getPontuacao().getQuantidadeVitorias();
                     if (pontuacaoTime < pontuacaoTimeSeguinte)
                         troca(j);
-                    else if (pontuacaoTime == pontuacaoTimeSeguinte)
-                        if (vitoriaTime < vitoriaTimeSeguinte)
+                    else {
+                        if ((pontuacaoTime == pontuacaoTimeSeguinte)
+                                && (vitoriaTime < vitoriaTimeSeguinte))
                             troca(j);
+                    }
                 }
             }
         }
