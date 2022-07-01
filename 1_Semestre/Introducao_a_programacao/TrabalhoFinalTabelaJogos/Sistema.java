@@ -44,6 +44,7 @@ public class Sistema {
                     break;
 
                 case 0:
+                    System.out.println("Obrigado por utilizar!");
                     break;
 
                 default:
@@ -54,6 +55,7 @@ public class Sistema {
     }
 
     private void mostrarOpcoes() {
+        System.out.println();
         System.out.println("/==============================\\");
         System.out.println("| (1) Exibir Lista de Partidas");
         System.out.println("| (2) Consultar Partida");

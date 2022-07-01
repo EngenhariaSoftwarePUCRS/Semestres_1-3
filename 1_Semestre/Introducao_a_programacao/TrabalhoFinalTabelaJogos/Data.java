@@ -58,7 +58,7 @@ public class Data {
         if ((hora < 0) || (hora > 23))
             return false;
 
-        if ((dia < 0) || (dia > 31))
+        if ((dia < 1) || (dia > 31))
             return false;
 
         if ((mes < 1) || (mes > 12))
