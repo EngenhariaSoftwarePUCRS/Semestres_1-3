@@ -1,10 +1,11 @@
 public class Time {
 
     private String nomeTime;
-    private Pontuacao pontuacao = new Pontuacao();
+    private Pontuacao pontuacao;
 
     public Time(String nomeTime) {
         this.nomeTime = nomeTime;
+        this.pontuacao = new Pontuacao();
     }
 
     public void setNomeTime(String nomeTime) {
@@ -24,6 +25,6 @@ public class Time {
     }
 
     public String toString() {
-        return ("\nTime = " + nomeTime + pontuacao);
+        return (nomeTime + pontuacao);
     }
 }
