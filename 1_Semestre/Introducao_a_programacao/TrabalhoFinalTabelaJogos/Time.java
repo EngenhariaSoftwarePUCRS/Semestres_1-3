@@ -25,6 +25,6 @@ public class Time {
     }
 
     public String toString() {
-        return (nomeTime + pontuacao);
+        return (nomeTime + "\t" + pontuacao);
     }
 }

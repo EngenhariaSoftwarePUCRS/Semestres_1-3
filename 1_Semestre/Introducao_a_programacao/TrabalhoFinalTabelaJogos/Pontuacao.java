@@ -48,14 +48,14 @@ public class Pontuacao {
 
     public String toString() {
         return ("Pts: " + quantidadePontos +
-                "PJ: " + quantidadePartidasJogadas +
-                "VIT: " + quantidadeVitorias +
-                "E: " + quantidadeEmpates +
-                "DER: " + quantidadeDerrotas +
-                "GP: " + golsPro +
-                "GC: " + golsContra +
-                "SG: " + saldoGols +
-                "Aproveitamento: " + aproveitamento + "%");
+                "\tPJ: " + quantidadePartidasJogadas +
+                "\tVIT: " + quantidadeVitorias +
+                "\tE: " + quantidadeEmpates +
+                "\tDER: " + quantidadeDerrotas +
+                "\tGP: " + golsPro +
+                "\tGC: " + golsContra +
+                "\tSG: " + saldoGols +
+                "\tAproveitamento: " + aproveitamento + "%");
     }
 
 }

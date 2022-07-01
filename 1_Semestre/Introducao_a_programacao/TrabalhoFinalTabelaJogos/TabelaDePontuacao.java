@@ -4,8 +4,8 @@ public class TabelaDePontuacao {
 
     public TabelaDePontuacao() {
         this.times = new Time[20];
-        this.times[0] = new Time("Bruno FC");
-        this.times[1] = new Time("Duda FC");
+        this.times[0] = new Time("Inter ");
+        this.times[1] = new Time("Grêmio");
     }
 
     public Time[] getTimes() {
