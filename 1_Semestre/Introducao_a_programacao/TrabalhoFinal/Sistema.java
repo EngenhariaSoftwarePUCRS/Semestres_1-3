@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 public class Sistema {
 
     private static final String PATH_RESULTS_FILE = "resultados.txt";
+    private String pathCandidatosFile = "candidatos.txt";
+    private String pathEleitoresFile = "eleitores.txt";
     private ListaDeCandidatos listaDeCandidatos;
     private ListaDeEleitores listaDeEleitores;
     private Votacao votacao;
@@ -21,8 +23,15 @@ public class Sistema {
         // e iniciar uma votacao com esses eleitores e candidatos
         try {
             System.out.println("Inicializando o sistema...");
-            File candidatosFile = new File("candidatos.txt");
-            File eleitoresFile = new File("eleitores.txt");
+            System.out.println("Os arquivos estão na raiz do projeto?");
+            if (!pegarConfirmacao()) {
+                System.out.print("Digite o caminho do arquivo de candidatos: ");
+                pathCandidatosFile = inputString();
+                System.out.print("Digite o caminho do arquivo de eleitores: ");
+                pathEleitoresFile = inputString();
+            }
+            File candidatosFile = new File(pathCandidatosFile);
+            File eleitoresFile = new File(pathEleitoresFile);
             listaDeCandidatos = new ListaDeCandidatos(candidatosFile);
             listaDeEleitores = new ListaDeEleitores(eleitoresFile);
             votacao = new Votacao(listaDeCandidatos, listaDeEleitores);
@@ -30,9 +39,7 @@ public class Sistema {
             qtdColunasTabelaResultados = 5;
             tabelaResultados = new String[qtdLinhasTabelaResultados][qtdColunasTabelaResultados];
         } catch (Exception e) {
-            System.out.println("OPS!!! Arquivo de dados não localizado!");
-            System.out.println("Sistema iniciado com banco de dados vazio");
-            // Achando os arquivos ou não, vai começar o sistema
+            e.printStackTrace();
         } finally {
             System.out.printf("%nTotal de pessoas no cadastro: %d%n", listaDeEleitores.getQuantidadeEleitores());
             menu();
@@ -238,6 +245,9 @@ public class Sistema {
 
     private void salvarArquivoResultados(String filePath) {
         try {
+            //Pedindo para o usuário onde quer salvar o arquivo
+            System.out.println("Onde você gostaria de salvar o seu arquivo?");
+            filePath = inputString();
             // Cria um novo arquivo no caminho do parametro
             File file = new File(filePath);
             boolean sobreescrever = true;
