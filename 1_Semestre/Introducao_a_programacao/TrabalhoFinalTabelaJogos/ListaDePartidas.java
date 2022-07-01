@@ -79,8 +79,8 @@ public class ListaDePartidas {
             for (int j = 0; j < quantidadePartidas - i; j++) {
                 Data dataPartida = partidas[j].getData();
                 Data dataPartidaSeguinte = partidas[j + 1].getData();
-                int mesPartida = dataPartida.getMes();
-                int mesPartidaSeguinte = dataPartidaSeguinte.getMes();
+                int mesPartida = dataPartida.getMes().getNumero();
+                int mesPartidaSeguinte = dataPartidaSeguinte.getMes().getNumero();
                 int diaPartida = dataPartida.getDia();
                 int diaPartidaSeguinte = dataPartidaSeguinte.getDia();
                 int horaPartida = dataPartida.getHora();

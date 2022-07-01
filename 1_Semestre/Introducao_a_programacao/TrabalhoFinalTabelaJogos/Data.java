@@ -1,22 +1,24 @@
+import Data.Mes;
+
 public class Data {
 
     private int minuto;
     private int hora;
     private int dia;
-    private int mes;
+    private Mes mes;
 
     public Data() {
         this.minuto = 00;
         this.hora = 00;
         this.dia = 01;
-        this.mes = 01;
+        this.mes = new Mes(1);
     }
 
     public Data(int minuto, int hora, int dia, int mes) {
         this.minuto = minuto;
         this.hora = hora;
         this.dia = dia;
-        this.mes = mes;
+        this.mes = new Mes(mes);
     }
 
     public void setMinuto(int minuto) {
@@ -32,7 +34,7 @@ public class Data {
     }
 
     public void setMes(int mes) {
-        this.mes = mes;
+        this.mes = new Mes(mes);
     }
 
     public int getMinuto() {
@@ -47,7 +49,7 @@ public class Data {
         return dia;
     }
 
-    public int getMes() {
+    public Mes getMes() {
         return mes;
     }
 
@@ -61,17 +63,8 @@ public class Data {
         if ((dia < 1) || (dia > 31))
             return false;
 
-        if ((mes < 1) || (mes > 12))
+        if (!mes.isValid(mes.getNumero(), dia))
             return false;
-
-        if ((mes == 2) && (dia > 28))
-            return false;
-        else {
-            if ((((mes <= 7) && (mes % 2 == 0)) ||
-                    ((mes > 7) && (mes % 2 == 1)))
-                    && (dia > 30))
-                return false;
-        }
 
         return true;
     }
