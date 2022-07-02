@@ -1,13 +1,13 @@
 public class Partida {
 
-    private int numeroPartida = 0;
-    private Data data = new Data();
-    private Clube[] clubes = new Clube[2];
-    private int[] placarPartida = new int[2];
+    private int numeroPartida;
+    private Data data;
+    private Time[] times;
+    private int[] placarPartida;
 
-    public Partida(Data data, Clube[] clubes, int[] placarPartida) {
+    public Partida(Data data, Time[] times, int[] placarPartida) {
         this.data = data;
-        this.clubes = clubes;
+        this.times = times;
         this.placarPartida = placarPartida;
     }
 
@@ -19,12 +19,12 @@ public class Partida {
         return this.numeroPartida;
     }
 
-    public Clube getClube1() {
-        return clubes[0];
+    public Time getTime1() {
+        return times[0];
     }
 
-    public Clube getClube2() {
-        return clubes[1];
+    public Time getTime2() {
+        return times[1];
     }
 
     public Data getData() {
@@ -34,8 +34,8 @@ public class Partida {
     public String toString() {
         return ("\n" + numeroPartida + "ª partida" +
                 "\n" + data +
-                "\nPrimeiro clube = " + clubes[0].getNomeClube() +
-                "\tSegundo clube = " + clubes[1].getNomeClube() +
+                "\nPrimeiro time = " + getTime1().getNomeTime() +
+                "\tSegundo time = " + getTime2().getNomeTime() +
                 "\nPlacar = (" + placarPartida[0] + " x " + placarPartida[1] + ")");
     }
 
