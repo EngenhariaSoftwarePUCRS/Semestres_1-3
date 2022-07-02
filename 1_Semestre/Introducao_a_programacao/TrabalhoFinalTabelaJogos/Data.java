@@ -63,7 +63,7 @@ public class Data {
         if ((dia < 1) || (dia > 31))
             return false;
 
-        if (!mes.isValid(mes.getNumero(), dia))
+        if (!mes.isValid(dia))
             return false;
 
         return true;

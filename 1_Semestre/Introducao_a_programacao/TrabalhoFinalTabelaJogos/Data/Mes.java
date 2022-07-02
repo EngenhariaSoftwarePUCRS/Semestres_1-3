@@ -78,10 +78,10 @@ public class Mes {
     }
 
     public int getQuantidadeDias() {
-        return this.numero;
+        return this.quantidadeDias;
     }
 
-    public boolean isValid(int numero, int dia) {
+    public boolean isValid(int dia) {
         if ((numero == 2) &&
                 (dia > 28))
             return false;

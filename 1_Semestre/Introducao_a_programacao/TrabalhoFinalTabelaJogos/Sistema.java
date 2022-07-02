@@ -159,7 +159,7 @@ public class Sistema {
             dataValida = data.isValid();
         } while (!dataValida);
         do {
-            System.out.print("Dia (1-31): ");
+            System.out.printf("Dia (1-%d): ", data.getMes().getQuantidadeDias());
             data.setDia(scannerInt());
             dataValida = data.isValid();
         } while (!dataValida);
