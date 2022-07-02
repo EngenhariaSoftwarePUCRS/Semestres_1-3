@@ -21,17 +21,17 @@ public class ListaDePartidas {
     }
 
     public boolean existePartida(int numeroPartida) {
-        if (indiceDeAlgoEmUmVetor(numeroPartida) > -1)
-            if (partidas[indiceDeAlgoEmUmVetor(numeroPartida)] != null)
+        if (indexOf(numeroPartida) > -1)
+            if (partidas[indexOf(numeroPartida)] != null)
                 return true;
         return false;
     }
 
     public Partida consultaPartida(int numeroPartida) {
-        return partidas[indiceDeAlgoEmUmVetor(numeroPartida)];
+        return partidas[indexOf(numeroPartida)];
     }
 
-    private int indiceDeAlgoEmUmVetor(int numeroProcurado) {
+    private int indexOf(int a) {
         int i = 0;
 
         if (partidas == null)
@@ -39,7 +39,7 @@ public class ListaDePartidas {
 
         while (i < partidas.length) {
             if (partidas[i] != null)
-                if (partidas[i].getNumeroPartida() == numeroProcurado)
+                if (partidas[i].getNumeroPartida() == a)
                     return i;
                 else
                     i += 1;
@@ -51,13 +51,15 @@ public class ListaDePartidas {
     }
 
     public void alteraTimesPartida(String timeAntigo, String timeNovo) {
+        timeAntigo = timeAntigo.trim();
+        timeNovo = timeNovo.trim();
         for (int i = 0; i < partidas.length; i++)
             if (partidas[i] != null) {
                 Time time1 = partidas[i].getTime1();
                 Time time2 = partidas[i].getTime2();
-                if (timeAntigo.trim().equalsIgnoreCase(time1.getNomeTime().trim()))
+                if (timeAntigo.equalsIgnoreCase(time1.getNomeTime().trim()))
                     time1.setNomeTime(timeNovo.trim());
-                if (timeAntigo.trim().equalsIgnoreCase(time2.getNomeTime().trim()))
+                if (timeAntigo.equalsIgnoreCase(time2.getNomeTime().trim()))
                     time2.setNomeTime(timeNovo.trim());
             }
     }
@@ -102,9 +104,9 @@ public class ListaDePartidas {
         }
     }
 
-    private void troca(int posicaoProcurada) {
-        Partida aux = partidas[posicaoProcurada];
-        partidas[posicaoProcurada] = partidas[posicaoProcurada + 1];
-        partidas[posicaoProcurada + 1] = aux;
+    private void troca(int j) {
+        Partida aux = partidas[j];
+        partidas[j] = partidas[j + 1];
+        partidas[j + 1] = aux;
     }
 }

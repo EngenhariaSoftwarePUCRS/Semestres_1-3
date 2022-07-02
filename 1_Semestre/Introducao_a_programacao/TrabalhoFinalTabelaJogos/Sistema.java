@@ -124,26 +124,30 @@ public class Sistema {
     private boolean novaPartida() {
         Data dataPorInserir = pegarData();
         Time[] timesPorInserir = pegarTimes();
-        if ((!tabelaDePontuacao.existeTime(timesPorInserir[0].getNomeTime()))
+        String nomeTime1 = timesPorInserir[0].getNomeTime();
+        String nomeTime2 = timesPorInserir[1].getNomeTime();
+        if ((!tabelaDePontuacao.existeTime(nomeTime1))
                 && (!tabelaDePontuacao.inserirTime(timesPorInserir[0]))) {
             System.out.println("Lista cheia.");
             System.out.println("Não foi possível inserir o time e, por conseguinte, criar a partida.");
             return false;
         }
-        if ((!tabelaDePontuacao.existeTime(timesPorInserir[1].getNomeTime()))
+        if ((!tabelaDePontuacao.existeTime(nomeTime2))
                 && (!tabelaDePontuacao.inserirTime(timesPorInserir[1]))) {
             System.out.println("Lista cheia");
             System.out.println("Não foi possível inserir o time e, por conseguinte, criar a partida.");
             return false;
         }
         int[] placarPorInserir = pegarPlacar();
+        int golsTime1 = placarPorInserir[0];
+        int golsTime2 = placarPorInserir[1];
         listaDePartidas.inserePartida(dataPorInserir, timesPorInserir, placarPorInserir);
-        Time time1 = tabelaDePontuacao.getTime(timesPorInserir[0].getNomeTime());
+        Time time1 = tabelaDePontuacao.getTime(nomeTime1);
         time1.setPontuacao(
-                time1.getPontuacao().atualizacaoPartida(placarPorInserir[0], placarPorInserir[1]));
-        Time time2 = tabelaDePontuacao.getTime(timesPorInserir[1].getNomeTime());
+                time1.getPontuacao().atualizacaoPartida(golsTime1, golsTime2));
+        Time time2 = tabelaDePontuacao.getTime(nomeTime2);
         time2.setPontuacao(
-                time2.getPontuacao().atualizacaoPartida(placarPorInserir[1], placarPorInserir[0]));
+                time2.getPontuacao().atualizacaoPartida(golsTime2, golsTime1));
 
         return true;
     }
