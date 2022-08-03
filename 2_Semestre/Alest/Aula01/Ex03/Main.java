@@ -20,5 +20,6 @@ public class Main {
    public static void main(String[] args) {
       Cliente lucas = new Cliente("Lucas", "03360050088", 20, 'M');
       System.out.println(lucas);
+      
    }
 }
