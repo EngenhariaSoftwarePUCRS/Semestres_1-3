@@ -10,7 +10,7 @@
     todos os primos entre estes números.
 */
 
-public class Main {
+public class Ex01 {
     public static void main(String[] args) {
 
         // Letra A:
