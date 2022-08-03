@@ -6,6 +6,11 @@ public class Cliente {
     private int idade;
     private char genero;
 
+    public Cliente() {
+        this.cpf = new CPF("00000000000");
+        this.genero = 'F';
+    }
+
     public Cliente(String nome, String cpf, int idade, char genero) {
         this.nome = nome;
         this.cpf = new CPF(cpf);
