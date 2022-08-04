@@ -8,7 +8,6 @@ public class Cliente {
 
     public Cliente() {
         this.cpf = new CPF("00000000000");
-        this.genero = 'F';
     }
 
     public Cliente(String nome, String cpf, int idade, char genero) {

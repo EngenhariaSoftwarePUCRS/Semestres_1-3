@@ -19,8 +19,40 @@ package Ex03;
 public class Main {
    public static void main(String[] args) {
       Cliente lucas = new Cliente("Lucas", "03360050088", 20, 'M');
-      System.out.println(lucas);
+      Cliente luiza = new Cliente("Luiza", "12378954621", 21, 'F');
+      Cliente lazaro = new Cliente("Lazaro", "15946875421", 22, 'M');
       Restaurante restaurante = new Restaurante();
-      restaurante.getDistribuicaoPorGenero();
+      restaurante.addCliente(lucas);
+      restaurante.addCliente(luiza);
+      restaurante.addCliente(lazaro);
+
+      Cliente[] clientes = restaurante.getClientes();
+      System.out.println("Estão no restaurante: ");
+      for (Cliente cliente : clientes) {
+         if (cliente.getNome() != null) {
+            System.out.println(cliente);
+            pulaLinha();
+         }
+      }
+
+      System.out.printf("A pessoa de cpf %s", luiza.getCpf());
+      System.out.print(restaurante.isNoRestaurante(luiza.getCpf()) ? " " : " não ");
+      System.out.println("está no restaurante.");
+      pulaLinha();
+
+      restaurante.sair(lazaro.getCpf());
+
+      clientes = restaurante.getClientes();
+      for (Cliente cliente : clientes)
+         if (cliente != null)
+            if (cliente.getNome() != null) {
+               System.out.println(cliente);
+               pulaLinha();
+            }
+      restaurante.getDistribuicaoClientes();
+   }
+
+   private static void pulaLinha() {
+      System.out.println("==================");
    }
 }

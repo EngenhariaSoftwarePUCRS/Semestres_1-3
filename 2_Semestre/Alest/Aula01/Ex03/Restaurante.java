@@ -15,36 +15,65 @@ public class Restaurante {
     private int qtdClientesTotal;
 
     public Restaurante() {
-        this.clientes = new Cliente[4];
+        this.clientes = new Cliente[10];
         for (int i = 0; i < clientes.length; i++) {
             clientes[i] = new Cliente();
         }
     }
+
+    public Cliente[] getClientes() {
+        return clientes;
+    }
+
+    public void addCliente(Cliente cliente) {
+        for (int i = 0; i < clientes.length; i++)
+            if (clientes[i].getNome() == null) {
+                clientes[i] = cliente;
+                break;
+            }
+    }
+
+    public boolean isNoRestaurante(CPF cpf) {
+        for (int i = 0; i < clientes.length; i++)
+            if (clientes[i].getCpf() == cpf)
+                return true;
+        return false;
+    }
+    
+    public void sair(CPF cpf) {
+        for (int i = 0; i < clientes.length; i++)
+            if (clientes[i].getCpf() == cpf)
+                clientes[i] = null;
+    }
     
     private void contaClientes() {
         for (Cliente cliente : clientes) {
-            if (cliente.getGenero() == 'M') {qtdClientesMasc++;}
-            if (cliente.getGenero() == 'F') {qtdClientesFem++;}
+            if (cliente != null)
+                if (cliente.getNome() != null) {
+                    if (cliente.getGenero() == 'M') {qtdClientesMasc++;}
+                    else if (cliente.getGenero() == 'F') {qtdClientesFem++;}
+                }
         }
         qtdClientesTotal = qtdClientesMasc + qtdClientesFem;
     }
 
     private double getPercentMasc() {
-        contaClientes();
-        return (qtdClientesMasc / qtdClientesTotal) * 100;
+        return (qtdClientesMasc / (double) qtdClientesTotal) * 100;
     }
     
     private double getPercentFem() {
-        contaClientes();
-        return (qtdClientesFem / qtdClientesTotal) * 100;
+        return (qtdClientesFem / (double) qtdClientesTotal) * 100;
     }
 
     public int getQtdClientesTotal() {
         return this.qtdClientesTotal;
     }
 
-    public void getDistribuicaoPorGenero() {
-        System.out.printf("Masculino: %.2f", getPercentMasc());
-        System.out.printf("%nFeminino: %.2f", getPercentFem());
+    public void getDistribuicaoClientes() {
+        contaClientes();
+        System.out.printf("| Há %d pessoas no bar.\t|", qtdClientesTotal);
+        System.out.printf("%n| -- Distribuição -- \t|");
+        System.out.printf("%n| Masculino:\t%.2f%% |", getPercentMasc());
+        System.out.printf("%n| Feminino:\t%.2f%% |", getPercentFem());
     }
 }
