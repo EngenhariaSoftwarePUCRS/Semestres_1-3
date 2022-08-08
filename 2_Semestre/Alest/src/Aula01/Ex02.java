@@ -1,3 +1,4 @@
+package Aula01;
 /*
     2. Construa os seguintes métodos sobre arranjos
     a. Método que retorna quantas ocorrências de um elemento estão na

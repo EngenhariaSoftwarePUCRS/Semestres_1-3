@@ -1,4 +1,4 @@
-package Ex03;
+package Aula01.Ex03;
 
 public class CPF {
     private String cpf;

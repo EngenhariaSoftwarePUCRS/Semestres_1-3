@@ -1,4 +1,4 @@
-package Ex03;
+package Aula01.Ex03;
 
 /*
  * O dono de uma rede de bares da cidade nos
