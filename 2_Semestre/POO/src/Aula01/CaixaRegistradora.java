@@ -1,3 +1,4 @@
+package Aula01;
 public class CaixaRegistradora {
     private double precoTotal;
     private int numItens;
