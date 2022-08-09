@@ -1,8 +1,9 @@
-package Aula03.Material_Apoio;
+package Aula03.Parte2.Material_Apoio;
 public class Veiculo {
     private final double consumoPorLitro = 10;
     private Placa placa;
     private double combustivel;
+    private double capacidadeTanque = 100;
     
     public Veiculo(Placa placa){
         this.placa = placa;
@@ -23,7 +24,12 @@ public class Veiculo {
 
     public double abastece(double litros){
         if (litros > 0.0){
-            combustivel += litros;
+            for (int l = 0; l < litros; l++) {
+                if (combustivel < capacidadeTanque) 
+                    combustivel++;
+                else
+                    System.out.println("Tanque insuficiente");
+            }
         }
         return combustivel;
     }
