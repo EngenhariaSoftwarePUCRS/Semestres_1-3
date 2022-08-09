@@ -27,8 +27,11 @@ public class Veiculo {
             for (int l = 0; l < litros; l++) {
                 if (combustivel < capacidadeTanque) 
                     combustivel++;
-                else
+                else {
                     System.out.println("Tanque insuficiente");
+                    System.out.println("Tentou colocar: "+(litros-capacidadeTanque)+"l a mais do que a capacidade do tanque.");
+                    break;
+                }
             }
         }
         return combustivel;
@@ -48,7 +51,7 @@ public class Veiculo {
         if (combustivel >= consumo){
             combustivel -= consumo;
             return distancia;
-        }else{
+        } else {
             double distPossivel = combustivel * consumoPorLitro;
             combustivel = 0.0;
             return distPossivel;
