@@ -59,7 +59,7 @@ public class Main {
     
     private static void mainDois() {
         String pais = "Brasil";
-        String codigo = "JBA8C53";
+        String codigo = generateRandomCodigo();
         Double litros = Double.parseDouble("70");
         Double distancia = Double.parseDouble("680");
         Placa placa = new Placa(pais, codigo);
