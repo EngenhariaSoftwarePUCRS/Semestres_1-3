@@ -1,9 +1,9 @@
 package Aula03.Parte2.Material_Apoio;
 public class Veiculo {
     private final double consumoPorLitro = 10;
+    private final double capacidadeTanque = 80;
     private Placa placa;
     private double combustivel;
-    private double capacidadeTanque = 100;
     
     public Veiculo(Placa placa){
         this.placa = placa;
