@@ -1,3 +1,5 @@
+package Aula04;
+
 public class Exercicios {
     public int func1(int n) {
         n = Math.abs(n);
