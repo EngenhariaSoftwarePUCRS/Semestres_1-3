@@ -3,13 +3,11 @@ public class App {
     static Super s = new Super();
 
     public static void main(String[] args) throws Exception {
-
         int escolha;
-
         do {
+            System.out.println("\n------------ MENU ------------");
             mostrarOpcoes();
-            System.out.print("\n------------ MENU ------------");
-            System.out.print("-----Escolha uma opção: ------");
+            System.out.print("\n-----Escolha uma opção: ");
             escolha = Inputs.inputInt();
             analiza(escolha);
         } while (escolha != 0);
@@ -18,17 +16,15 @@ public class App {
     private static void analiza(int escolha) {
         switch (escolha) {
             case 1:
-                System.out.println("Opção escolhida: 1");
                 s.criarTrem();
                 break;
 
             case 2:
-                System.out.println("Opção escolhida: 2");
                 s.editarTrem();
+                // Inserir aqui "sub-menu"
                 break;
 
             case 3:
-                System.out.println("Opção escolhida: 3");
                 s.listarTrens();
                 break;
 
