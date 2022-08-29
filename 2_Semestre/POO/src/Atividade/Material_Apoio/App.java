@@ -3,6 +3,17 @@ import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        int escolha;
+
+        do {
+            mostrarOpcoes();
+            System.out.print("\n------------ MENU ------------");
+            System.out.print("-----Escolha uma opção: ------");
+            escolha = Inputs.inputInt();
+            analiza(escolha);
+        } while (escolha != 0);
+
         GaragemLocomotivas garagemLocomotivas = new GaragemLocomotivas();
         ArrayList<Locomotiva> locomotivas = new ArrayList<>(Arrays.asList(
                 new Locomotiva(1, 2500, 50),
@@ -27,8 +38,7 @@ public class App {
         }
         PatioDeManobras patioDeManobras = new PatioDeManobras();
 
-        // ------------------------------- PARTE 1 CRIAÇÃO ---------------------------
-        // //
+        // ------------------------------- PARTE 1 CRIAÇÃO -- //
         System.out.println("(1) Criando trem");
         System.out.print("Digite o identificador do trem: ");
         int idTrem = 1;// Inputs.inputInt();
@@ -43,7 +53,7 @@ public class App {
         patioDeManobras.adicionaPatio(novoTrem);
         System.out.println("Trem criado com sucesso e inserido no pátio!");
 
-        // ------------------------------- PARTE 2 EDIÇÃO --------------------------- //
+        // ------------------------------- PARTE 2 EDIÇÃO -- //
         System.out.println("(2) Editar trem");
         System.out.println("Trens: ");
         for (int i = 0; i < patioDeManobras.qtdade(); i++) {
@@ -78,5 +88,38 @@ public class App {
         for (int i = 0; i < patioDeManobras.qtdade(); i++) {
             System.out.println(patioDeManobras.getPorPosicao(i));
         }
+    }
+
+    private static void analiza(int escolha) {
+        switch (escolha) {
+            case 1:
+                System.out.println("Opção escolhida: 1");
+                break;
+
+            case 2:
+                System.out.println("Opção escolhida: 2");
+                break;
+
+            case 3:
+                System.out.println("Opção escolhida: 3");
+                break;
+
+            case 4:
+                System.out.println("Opção escolhida: 4");
+                break;
+
+            case 5:
+                System.out.println("Você encerrou o programa.");
+                break;
+        }
+    }
+
+    private static void mostrarOpcoes() {
+        System.out.println();
+        System.out.println("1- Criar trem ");
+        System.out.println("2- Editar um trem");
+        System.out.println("3- Listar todos os trens já criados");
+        System.out.println("4- Desfazer um trem");
+        System.out.println("0- Fim");
     }
 }
