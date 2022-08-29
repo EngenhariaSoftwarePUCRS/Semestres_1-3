@@ -58,8 +58,7 @@ public class Super {
 
     public void criarTrem() {
         System.out.println("(1) Criando trem");
-        System.out.print("Digite o identificador do trem: ");
-        int idTrem = Inputs.inputInt();
+        int idTrem = pedirIdentificador();
         Trem novoTrem = new Trem(idTrem);
         System.out.println("Locomotivas: ");
         System.out.println(locomotivas);
@@ -74,12 +73,9 @@ public class Super {
 
     public Trem editarTrem() {
         System.out.println("(2) Editar trem");
-        System.out.println("Trens: ");
-        for (int i = 0; i < patioDeManobras.qtdade(); i++) {
-            System.out.println(patioDeManobras.getPorPosicao(i));
-        }
-        System.out.print("Digite o identificador do trem: ");
-        int idTrem = Inputs.inputInt();
+        System.out.println("Trens no pátio: ");
+        listarTrens();
+        int idTrem = pedirIdentificador();
         return patioDeManobras.getPorId(idTrem);
     }
 
@@ -89,7 +85,7 @@ public class Super {
         for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
             System.out.println(garagemLocomotivas.getPorPosicao(i));
         }
-        System.out.println("Digite o identificador da locomotiva: ");
+        System.out.print("Digite o identificador da locomotiva: ");
         Locomotiva locomotivaPorAdicionar = garagemLocomotivas.getPorId(Inputs.inputInt());
         tremPorEditar.engataLocomotiva(locomotivaPorAdicionar);
         System.out.println("Locomotiva adicionada com sucesso.");
@@ -101,17 +97,21 @@ public class Super {
         for (int i = 0; i < garagemVagoes.qtdade(); i++) {
             System.out.println(garagemVagoes.getPorPosicao(i));
         }
-        System.out.println("Digite o identificador do vagão: ");
+        System.out.print("Digite o identificador do vagão: ");
         Vagao vagaoPorAdicionar = garagemVagoes.getPorId(Inputs.inputInt());
         tremPorEditar.engataVagao(vagaoPorAdicionar);
         System.out.println("Vagao adicionado com sucesso.");
     }
 
     public void listarTrens() {
-        System.out.println("(3) Trens");
         for (int i = 0; i < patioDeManobras.qtdade(); i++) {
             System.out.println(patioDeManobras.getPorPosicao(i));
         }
+    }
+
+    private int pedirIdentificador() {
+        System.out.print("Digite o identificador do trem: ");
+        return Inputs.inputInt();
     }
 
 }
