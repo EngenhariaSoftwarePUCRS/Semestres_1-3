@@ -103,6 +103,10 @@ public class Super {
         System.out.println("Vagao adicionado com sucesso.");
     }
 
+    public void desfazerTrem() {
+        int idTrem = pedirIdentificador();
+    }
+
     public void listarTrens() {
         for (int i = 0; i < patioDeManobras.qtdade(); i++) {
             System.out.println(patioDeManobras.getPorPosicao(i));
