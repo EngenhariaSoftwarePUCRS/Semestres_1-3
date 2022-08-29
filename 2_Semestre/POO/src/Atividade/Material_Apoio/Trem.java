@@ -79,19 +79,31 @@ public class Trem {
 	}
 
 	public boolean desengataLocomotiva() {
-		locomotivas.remove(getQtdadeLocomotivas() - 1);
-		return false;
+		if (locomotivas.isEmpty())
+			return false;
+		else {
+			if (locomotivas.size() > 1) {
+				locomotivas.remove(locomotivas.size() - 1);
+				return true;
+			} else {
+				System.out.println("Última locomotiva livre.\nPara remover, desmonte o trem.");
+				return false;
+			}
+		}
 	}
 
 	public boolean desengataVagao() {
-		return false;
-		// TO DO
+		if (vagoes.isEmpty())
+			return false;
+		else {
+			vagoes.remove(vagoes.size() - 1);
+			return true;
+		}
 	}
 
 	public String toString() {
 		return ("\nIdentificador: " + identificador +
 				"\nVagões: " + vagoes +
 				"\nLocomotivas: " + locomotivas);
-		// TO DO
 	}
 }

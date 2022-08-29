@@ -34,21 +34,18 @@ public class App {
                             break;
                         
                         case 3:
-                            System.out.println("Opção 2.3: ");
+                            s.editarTremRemoverUltimo(tremPorEditar);
                             break;
 
                         case 4:
-                            System.out.println("Opção 2.4:");
+                            s.editarTremListarLocomotivasLivres(tremPorEditar);
                             break;
                         
                         case 5:
-                            System.out.println("Opção 2.5");
+                            s.editarTremListarVagoesLivres(tremPorEditar);
                             break;
                         
-                        case 6:
-                            System.out.println("Opção 2.6");
-                            break;
-                    
+                        case 6:                    
                         default:
                             break;
                     }
@@ -60,7 +57,8 @@ public class App {
                 break;
 
             case 4:
-                s.desfazerTrem();
+                int idTrem = s.pedirIdentificador();
+                s.desfazerTrem(s.getPatioDeManobras().getPorId(idTrem));
                 break;
 
             case 0:
