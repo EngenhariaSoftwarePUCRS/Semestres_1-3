@@ -20,8 +20,39 @@ public class App {
                 break;
 
             case 2:
-                s.editarTrem();
-                // Inserir aqui "sub-menu"
+                Trem tremPorEditar = s.editarTrem();
+                do {
+                    mostrarOpcoesTrem();
+                    escolha = Inputs.inputInt();
+                    switch (escolha) {
+                        case 1:
+                            s.editarTremInserirLocomotiva(tremPorEditar);
+                            break;
+                        
+                        case 2:
+                            s.editarTremInserirVagao(tremPorEditar);
+                            break;
+                        
+                        case 3:
+                            System.out.println("Opção 2.3: ");
+                            break;
+
+                        case 4:
+                            System.out.println("Opção 2.4:");
+                            break;
+                        
+                        case 5:
+                            System.out.println("Opção 2.5");
+                            break;
+                        
+                        case 6:
+                            System.out.println("Opção 2.6");
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                } while (escolha != 6);
                 break;
 
             case 3:
@@ -49,5 +80,15 @@ public class App {
         System.out.println("3- Listar todos os trens já criados");
         System.out.println("4- Desfazer um trem");
         System.out.println("0- Fim");
+    }
+
+    private static void mostrarOpcoesTrem() {
+        System.out.println();
+        System.out.println("1- Inserir uma locomotiva (informar identificador) respeitando restrições");
+        System.out.println("2- Inserir um vagão (informar identificador) respeitando restrições");
+        System.out.println("3- Remover o último elemento do trem");
+        System.out.println("4- Listar locomotivas livres");
+        System.out.println("5- Listar vagões livres");
+        System.out.println("6- Encerrar a edição do trem");
     }
 }
