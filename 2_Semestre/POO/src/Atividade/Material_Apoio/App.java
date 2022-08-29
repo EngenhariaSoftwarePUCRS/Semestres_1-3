@@ -29,7 +29,7 @@ public class App {
                 break;
 
             case 4:
-                System.out.println("Opção escolhida: 4");
+                s.desfazerTrem();
                 break;
 
             case 0:
