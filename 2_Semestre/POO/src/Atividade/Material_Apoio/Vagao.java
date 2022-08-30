@@ -21,7 +21,7 @@ public class Vagao {
 		return trem;
 	}
 
-	public boolean livre(){
+	public boolean livre() {
 		return trem == null;
 	}
 
@@ -31,9 +31,9 @@ public class Vagao {
 
 	@Override
 	public String toString() {
-		if (livre()){
-			return "Vagao [LIVRE, capacidadeCarga=" + capacidadeCarga + ", identificador=" + identificador + "]";
-		}
-		return "Vagao [Engatado no trem: "+trem.getIdentificador()+", capacidadeCarga=" + capacidadeCarga + ", identificador="+ identificador + "]";
+		String livre = livre() ? "livre" : "engatado no trem ".concat(Integer.toString(trem.getIdentificador()));
+		return ("\n\tVagão " + livre +
+				"\n\tCapacidade de Carga = " + capacidadeCarga + "kg" +
+				"\n\tIdentificador: " + identificador);
 	}
 }

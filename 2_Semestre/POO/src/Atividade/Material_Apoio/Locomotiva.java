@@ -37,12 +37,10 @@ public class Locomotiva {
 
 	@Override
 	public String toString() {
-		if (livre()) {
-			return "Locomotiva [LIVRE, identificador=" + identificador + ", pesoMaximo="
-					+ pesoMaximo + ", qtdadeMaxVagoes=" + qtdadeMaxVagoes + "]";
-		}
-		return "Locomotiva [Engatada no trem=" + trem.getIdentificador() + ", identificador=" + identificador
-				+ ", pesoMaximo="
-				+ pesoMaximo + ", qtdadeMaxVagoes=" + qtdadeMaxVagoes + "]";
+		String livre = livre() ? "livre" : "engatada no trem ".concat(Integer.toString(trem.getIdentificador()));
+		return ("\n\tLocomotiva " + livre +
+				"\n\tIdentificador: " + identificador +
+				"\n\tPeso Máximo: " + pesoMaximo + "kg" +
+				"\n\tQuantidade Máxima Vagões: " + qtdadeMaxVagoes);
 	}
 }

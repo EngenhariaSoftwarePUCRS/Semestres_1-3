@@ -12,6 +12,12 @@ public class PatioDeManobras {
 	}
 
 	public boolean removePatio(int id) {
+		for (Trem trem : trens) {
+			if (trem.getIdentificador() == id) {
+				trens.remove(trem);
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -36,6 +42,6 @@ public class PatioDeManobras {
 	}
 
 	public String toString() {
-		return null;
+		return this.getClass().getName();
 	}
 }
