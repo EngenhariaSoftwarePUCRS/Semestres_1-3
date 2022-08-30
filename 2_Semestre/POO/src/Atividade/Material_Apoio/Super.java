@@ -1,5 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Super {
     private GaragemLocomotivas garagemLocomotivas;
@@ -10,30 +12,47 @@ public class Super {
 
     public Super() {
         garagemLocomotivas = new GaragemLocomotivas();
-        locomotivas = new ArrayList<>(Arrays.asList(
-                new Locomotiva(1, 2500, 50),
-                new Locomotiva(2, 2500, 50),
-                new Locomotiva(3, 2500, 50),
-                new Locomotiva(4, 2500, 50),
-                new Locomotiva(5, 2500, 50),
-                new Locomotiva(6, 2500, 50)));
-        for (Locomotiva l : locomotivas) {
-            garagemLocomotivas.adicionaGaragem(l);
-        }
-
+        locomotivas = new ArrayList<>();
         garagemVagoes = new GaragemVagoes();
-        vagoes = new ArrayList<>(Arrays.asList(
-                new Vagao(1, 50),
-                new Vagao(2, 50),
-                new Vagao(3, 50),
-                new Vagao(4, 50),
-                new Vagao(5, 50),
-                new Vagao(6, 50)));
-        for (Vagao v : vagoes) {
-            garagemVagoes.adicionaGaragem(v);
+        vagoes = new ArrayList<>();
+        patioDeManobras = new PatioDeManobras();
+    }
+
+    public boolean initialize(String locomotivasFilePath, String vagoesFilePath) {
+        try {
+            Scanner lReader = new Scanner(new File(locomotivasFilePath));
+            Scanner vReader = new Scanner(new File(vagoesFilePath));
+            String[] line;
+            int identificador;
+
+            // Skip header
+            lReader.nextLine();
+            while (lReader.hasNextLine()) {
+                line = lReader.nextLine().split(",");
+                identificador = Integer.parseInt(line[0].trim());
+                double pesoMaximo = Double.parseDouble(line[1].trim());
+                int qtdadeVagoes = Integer.parseInt(line[2].trim());
+                Locomotiva novaLocomotiva = new Locomotiva(identificador, pesoMaximo, qtdadeVagoes);
+                locomotivas.add(novaLocomotiva);
+                garagemLocomotivas.adicionaGaragem(novaLocomotiva);
+            }
+
+            // Skip header
+            vReader.nextLine();
+            while (vReader.hasNextLine()) {
+                line = vReader.nextLine().split(",");
+                identificador = Integer.parseInt(line[0].trim());
+                double capacidadeCarga = Double.parseDouble(line[1].trim());
+                Vagao novoVagao = new Vagao(identificador, capacidadeCarga);
+                vagoes.add(novoVagao);
+                garagemVagoes.adicionaGaragem(novoVagao);
+            }
+            return true;
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("Arquivo(s) não encontrado(s).");
+            return false;
         }
 
-        patioDeManobras = new PatioDeManobras();
     }
 
     public GaragemLocomotivas getGaragemLocomotivas() {
@@ -58,41 +77,41 @@ public class Super {
 
     public void criarTrem() {
         System.out.println("(1) Criando trem");
-        int idTrem = pedirIdentificador();
-        Trem novoTrem = new Trem(idTrem);
+        int idNovoTrem = pedirIdentificador("trem");
+        Trem novoTrem = new Trem(idNovoTrem);
         System.out.println("Locomotivas: ");
         for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
             System.out.println(garagemLocomotivas.getPorPosicao(i));
         }
-        System.out.print("Digite o identificador da primeira locomotiva: ");
-        int idLocomotiva = Inputs.inputInt();
-        Locomotiva novaLocomotiva = garagemLocomotivas.getPorId(idLocomotiva);
-        novoTrem.engataLocomotiva(novaLocomotiva);
-        novaLocomotiva.setTrem(novoTrem);
-        patioDeManobras.adicionaPatio(novoTrem);
-        System.out.println("Trem criado com sucesso e inserido no pátio!");
+        int idNovaLocomotiva = pedirIdentificador("locomotiva");
+        Locomotiva novaLocomotiva = garagemLocomotivas.getPorId(idNovaLocomotiva);
+        if (novaLocomotiva != null) {
+            novoTrem.engataLocomotiva(novaLocomotiva);
+            novaLocomotiva.setTrem(novoTrem);
+            patioDeManobras.adicionaPatio(novoTrem);
+            System.out.println("Trem criado com sucesso e inserido no pátio!");
+        }
     }
 
     public Trem editarTrem() {
         System.out.println("(2) Editar trem");
+
         System.out.println("Trens no pátio: ");
         listarTrens();
-        int idTrem = pedirIdentificador();
+        int idTrem = pedirIdentificador("trem");
         return patioDeManobras.getPorId(idTrem);
     }
 
     public void editarTremInserirLocomotiva(Trem tremPorEditar) {
         System.out.println("(2.1) Inserir locomotiva");
-        System.out.println("Locomotivas: ");
-        for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
-            System.out.println(garagemLocomotivas.getPorPosicao(i));
-        }
-        System.out.print("Digite o identificador da locomotiva: ");
-        Locomotiva locomotivaPorAdicionar = garagemLocomotivas.getPorId(Inputs.inputInt());
-        if (locomotivaPorAdicionar == null)
-            System.out.println("Locomotiva inexistente, favor tentar novamente.");
-        else {
-            if (tremPorEditar.getQtdadeVagoes() == 0) {
+        if (tremPorEditar.getQtdadeVagoes() == 0) {
+            System.out.println("Locomotivas: ");
+            for (int i = 0; i < garagemLocomotivas.qtdade(); i++) {
+                System.out.println(garagemLocomotivas.getPorPosicao(i));
+            }
+            int idLocomotivaPorAdicionar = pedirIdentificador("locomotiva");
+            Locomotiva locomotivaPorAdicionar = garagemLocomotivas.getPorId(idLocomotivaPorAdicionar);
+            if (locomotivaPorAdicionar != null) {
                 if (locomotivaPorAdicionar.livre()) {
                     tremPorEditar.engataLocomotiva(locomotivaPorAdicionar);
                     locomotivaPorAdicionar.setTrem(tremPorEditar);
@@ -100,8 +119,10 @@ public class Super {
                 } else
                     System.out.println("Locomotiva indisponível!");
             } else
-                System.out.println("Não é possível adicionar locomotivas após vagões.\nFavor remover vagões antes de tentar novamente.");
-        }
+                System.out.println("Locomotiva inexistente, favor tentar novamente.");
+        } else
+            System.out.println(
+                    "Não é possível adicionar locomotivas após vagões.\nFavor remover vagões antes de tentar novamente.");
     }
 
     public void editarTremInserirVagao(Trem tremPorEditar) {
@@ -110,8 +131,8 @@ public class Super {
         for (int i = 0; i < garagemVagoes.qtdade(); i++) {
             System.out.println(garagemVagoes.getPorPosicao(i));
         }
-        System.out.print("Digite o identificador do vagão: ");
-        Vagao vagaoPorAdicionar = garagemVagoes.getPorId(Inputs.inputInt());
+        int idVagaoPorAdicionar = pedirIdentificador("vagão");
+        Vagao vagaoPorAdicionar = garagemVagoes.getPorId(idVagaoPorAdicionar);
         if (vagaoPorAdicionar == null)
             System.out.println("Vagão inexistente, favor tentar novamente.");
         else {
@@ -157,20 +178,25 @@ public class Super {
             tremPorDesfazer.desengataVagao();
         }
         for (int i = 0; i < tremPorDesfazer.getQtdadeLocomotivas(); i++) {
+            locomotivas.get(i).setTrem(null);
             tremPorDesfazer.desengataLocomotiva();
         }
-        patioDeManobras.adicionaPatio(tremPorDesfazer);
+        patioDeManobras.removePatio(tremPorDesfazer.getIdentificador());
     }
 
-    public void listarTrens() {
-        for (int i = 0; i < patioDeManobras.qtdade(); i++) {
-            System.out.println(patioDeManobras.getPorPosicao(i));
+    public boolean listarTrens() {
+        if (patioDeManobras.qtdade() > 0) {
+            for (int i = 0; i < patioDeManobras.qtdade(); i++) {
+                System.out.println(patioDeManobras.getPorPosicao(i));
+            }
+            return true;
         }
+        return false;
     }
 
-    public int pedirIdentificador() {
-        System.out.print("Digite o identificador do trem: ");
-        return Inputs.inputInt();
+    public int pedirIdentificador(String para) {
+        System.out.printf("%nDigite o identificador do %s: ", para);
+        return Scanners.inputInt();
     }
 
 }

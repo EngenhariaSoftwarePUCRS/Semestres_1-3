@@ -82,13 +82,9 @@ public class Trem {
 		if (locomotivas.isEmpty())
 			return false;
 		else {
-			if (locomotivas.size() > 1) {
-				locomotivas.remove(locomotivas.size() - 1);
-				return true;
-			} else {
-				System.out.println("Última locomotiva livre.\nPara remover, desmonte o trem.");
-				return false;
-			}
+			locomotivas.get(locomotivas.size() - 1).setTrem(null);
+			locomotivas.remove(locomotivas.size() - 1);
+			return true;
 		}
 	}
 
@@ -96,6 +92,7 @@ public class Trem {
 		if (vagoes.isEmpty())
 			return false;
 		else {
+			vagoes.get(vagoes.size() - 1).setTrem(null);
 			vagoes.remove(vagoes.size() - 1);
 			return true;
 		}
