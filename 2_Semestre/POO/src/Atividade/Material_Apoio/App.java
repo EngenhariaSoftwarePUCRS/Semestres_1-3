@@ -4,8 +4,8 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         if (s.initialize(
-                "D:\\Programming\\GitHub\\PUCRS-Eng_Software\\2_Semestre\\POO\\src\\Atividade\\Material_Apoio\\locomotivas.txt",
-                "D:\\Programming\\GitHub\\PUCRS-Eng_Software\\2_Semestre\\POO\\src\\Atividade\\Material_Apoio\\vagoes.txt")) {
+                "locomotivas.txt",
+                "vagoes.txt")) {
             int escolha;
             do {
                 System.out.println("\n------------ MENU ------------");
