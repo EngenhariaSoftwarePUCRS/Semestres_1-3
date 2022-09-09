@@ -50,36 +50,36 @@ public class Sorts {
 		initClock();
 	}
 
-	public long[] geraVetor(int nroElem, int lim) {
+	public int[] geraVetor(int nroElem, int lim) {
 		int dummy;
-		long [] res = null;
+		int [] res = null;
 		int cont = 0;
 		Random rnd = new Random(System.nanoTime() * System.currentTimeMillis());
 
 		if (nroElem >= 0) {
 
-			res = new long[nroElem];
+			res = new int[nroElem];
 
 			while (cont < nroElem) {
 				dummy = rnd.nextInt(lim)+1;
 				dummy = rnd.nextInt(lim)+1;
 				
 				dummy = rnd.nextInt(lim)+1;
-				res[cont++] = (long) dummy;
+				res[cont++] = (int) dummy;
 			}
 		}
 		return res;
 	}
 
-	public long[] geraVetorInv(int nroElem) {
-		long [] res = null;
+	public int[] geraVetorInv(int nroElem) {
+		int [] res = null;
 		
 		if (nroElem > 0) {
 
-			res = new long[nroElem];
+			res = new int[nroElem];
 
 			for (int i = nroElem -1; i >= 0; i--)
-				res[i] = (long) nroElem - i;
+				res[i] = (int) nroElem - i;
 		}
 		return res;
 	}
