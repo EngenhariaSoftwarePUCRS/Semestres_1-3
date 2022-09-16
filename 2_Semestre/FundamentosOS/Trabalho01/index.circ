@@ -220,25 +220,25 @@ This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
     <appear>
       <rect fill="none" height="40" stroke="#000000" stroke-width="2" width="110" x="50" y="50"/>
       <circ-port height="8" pin="150,230" width="8" x="46" y="56"/>
-      <circ-port height="10" pin="720,210" width="10" x="155" y="55"/>
+      <circ-port height="10" pin="720,210" width="10" x="155" y="65"/>
       <circ-port height="8" pin="140,170" width="8" x="46" y="66"/>
-      <circ-port height="10" pin="210,170" width="10" x="155" y="65"/>
-      <circ-port height="10" pin="280,170" width="10" x="165" y="65"/>
-      <circ-port height="10" pin="350,170" width="10" x="175" y="65"/>
-      <circ-port height="10" pin="420,170" width="10" x="185" y="65"/>
-      <circ-port height="10" pin="490,170" width="10" x="195" y="65"/>
-      <circ-port height="10" pin="560,170" width="10" x="205" y="65"/>
-      <circ-port height="10" pin="630,170" width="10" x="215" y="65"/>
-      <circ-port height="10" pin="700,170" width="10" x="225" y="65"/>
-      <circ-port height="8" pin="170,250" width="8" x="46" y="76"/>
-      <circ-port height="8" pin="240,250" width="8" x="56" y="76"/>
-      <circ-port height="8" pin="310,250" width="8" x="66" y="76"/>
-      <circ-port height="8" pin="380,250" width="8" x="76" y="76"/>
-      <circ-port height="8" pin="450,250" width="8" x="86" y="76"/>
-      <circ-port height="8" pin="520,250" width="8" x="96" y="76"/>
-      <circ-port height="8" pin="590,250" width="8" x="106" y="76"/>
-      <circ-port height="8" pin="660,250" width="8" x="116" y="76"/>
-      <circ-port height="8" pin="150,280" width="8" x="46" y="86"/>
+      <circ-port height="10" pin="210,170" width="10" x="65" y="45"/>
+      <circ-port height="10" pin="280,170" width="10" x="75" y="45"/>
+      <circ-port height="10" pin="350,170" width="10" x="85" y="45"/>
+      <circ-port height="10" pin="420,170" width="10" x="95" y="45"/>
+      <circ-port height="10" pin="490,170" width="10" x="105" y="45"/>
+      <circ-port height="10" pin="560,170" width="10" x="115" y="45"/>
+      <circ-port height="10" pin="630,170" width="10" x="125" y="45"/>
+      <circ-port height="10" pin="700,170" width="10" x="135" y="45"/>
+      <circ-port height="8" pin="170,250" width="8" x="76" y="86"/>
+      <circ-port height="8" pin="240,250" width="8" x="86" y="86"/>
+      <circ-port height="8" pin="310,250" width="8" x="96" y="86"/>
+      <circ-port height="8" pin="380,250" width="8" x="106" y="86"/>
+      <circ-port height="8" pin="450,250" width="8" x="116" y="86"/>
+      <circ-port height="8" pin="520,250" width="8" x="126" y="86"/>
+      <circ-port height="8" pin="590,250" width="8" x="136" y="86"/>
+      <circ-port height="8" pin="660,250" width="8" x="146" y="86"/>
+      <circ-port height="8" pin="150,280" width="8" x="46" y="76"/>
       <circ-anchor facing="east" height="6" width="6" x="157" y="67"/>
     </appear>
     <wire from="(660,240)" to="(660,250)"/>
