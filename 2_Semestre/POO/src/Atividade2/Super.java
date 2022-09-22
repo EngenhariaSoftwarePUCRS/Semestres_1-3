@@ -99,7 +99,7 @@ public class Super {
             System.out.println(garagem.getPorPosicao(i));
         }
         int idNovaLocomotiva = pedirIdentificador("locomotiva");
-        Locomotiva novaLocomotiva = garagem.getPorId(idNovaLocomotiva);
+        Locomotiva novaLocomotiva = (Locomotiva) garagem.getPorId(idNovaLocomotiva);
         if (novaLocomotiva != null) {
             novoTrem.engataLocomotiva(novaLocomotiva);
             novaLocomotiva.setTrem(novoTrem);
@@ -125,7 +125,7 @@ public class Super {
                 System.out.println(garagem.getPorPosicao(i));
             }
             int idLocomotivaPorAdicionar = pedirIdentificador("locomotiva");
-            Locomotiva locomotivaPorAdicionar = garagem.getPorId(idLocomotivaPorAdicionar);
+            Locomotiva locomotivaPorAdicionar = (Locomotiva) garagem.getPorId(idLocomotivaPorAdicionar);
             if (locomotivaPorAdicionar != null) {
                 if (locomotivaPorAdicionar.livre()) {
                     tremPorEditar.engataLocomotiva(locomotivaPorAdicionar);
@@ -147,7 +147,7 @@ public class Super {
             System.out.println(garagem.getPorPosicao(i));
         }
         int idVagaoPorAdicionar = pedirIdentificador("vagão");
-        Vagao vagaoPorAdicionar = garagem.getPorId(idVagaoPorAdicionar);
+        Vagao vagaoPorAdicionar = (Vagao) garagem.getPorId(idVagaoPorAdicionar);
         if (vagaoPorAdicionar == null)
             System.out.println("Vagão inexistente, favor tentar novamente.");
         else {

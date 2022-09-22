@@ -7,7 +7,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         if (s.initialize(
                 "locomotivas.txt",
-                "vagoes.txt")) {
+                "vagoes.txt",
+                "vagoesPassageiros.txt"
+            )) {
             int escolha;
             do {
                 System.out.println("\n------------ MENU ------------");
