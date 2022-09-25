@@ -1,7 +1,7 @@
 package Aula11.Questao1;
 
-public class Passage {
-    
+public class Passagem {
+
     private String cpf;
     private String nome;
     private String assento;
@@ -36,21 +36,21 @@ public class Passage {
 
     public double getCustoBagagem(int qtdade, double pesos[]) {
         double c = 0;
-        for(int i=0;i<qtdade;i++){
+        for (int i = 0; i < qtdade; i++) {
             c += 0.5 * pesos[i];
         }
         return c;
     }
 
-    public double defineAssento(String poltrona){
+    public double defineAssento(String poltrona) {
         assento = poltrona;
         return getCustoAssento();
     }
 
-    public String toString(){
-        return ">" + getCpf()+","+ 
-                     getNome()+","+
-                     getAssento()+","+
-                     getCustoPassagem();
+    public String toString() {
+        return ">" + getCpf() + "," +
+                getNome() + "," +
+                getAssento() + "," +
+                getCustoPassagem();
     }
 }

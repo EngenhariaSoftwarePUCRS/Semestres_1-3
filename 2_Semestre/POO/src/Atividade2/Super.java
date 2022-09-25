@@ -1,5 +1,3 @@
-package Atividade2;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -61,7 +59,6 @@ public class Super {
                 vagoesPassageiros.add(novoVagaoPassageiro);
                 garagem.adicionaGaragem(novoVagaoPassageiro);
             }
-
             return true;
         } catch (FileNotFoundException fnfe) {
             System.out.println("Arquivo(s) não encontrado(s).");
@@ -90,22 +87,39 @@ public class Super {
         return patioDeManobras;
     }
 
-    public void criarTrem() {
+    public boolean criarTrem() {
         System.out.println("(1) Criando trem");
         int idNovoTrem = pedirIdentificador("trem");
+        for (int i = 0; i < patioDeManobras.qtdade(); i++) {
+            // Se o id já existe
+            if (idNovoTrem == patioDeManobras.getPorPosicao(i).getIdentificador())
+                return false;
+        }
         Trem novoTrem = new Trem(idNovoTrem);
         System.out.println("Locomotivas: ");
         for (int i = 0; i < garagem.qtdade(); i++) {
-            System.out.println(garagem.getPorPosicao(i));
+            ElementoTrem elementoTrem = garagem.getPorPosicao(i);
+            if (elementoTrem.getClass().getName().equalsIgnoreCase("Locomotiva"))
+                System.out.println(elementoTrem);
         }
         int idNovaLocomotiva = pedirIdentificador("locomotiva");
-        Locomotiva novaLocomotiva = (Locomotiva) garagem.getPorId(idNovaLocomotiva);
+        for (int i = 0; i < locomotivas.size(); i++) {
+            // Se a locomotiva já está em uso
+            if ((idNovaLocomotiva == locomotivas.get(i).getIdentificador()) && (!locomotivas.get(i).livre())) {
+                System.out.println("Locomotiva indisponível.");
+                return false;
+            }
+        }
+        Locomotiva novaLocomotiva = (Locomotiva) garagem.getPorId(idNovaLocomotiva, "Locomotiva");
         if (novaLocomotiva != null) {
             novoTrem.engataLocomotiva(novaLocomotiva);
             novaLocomotiva.setTrem(novoTrem);
             patioDeManobras.adicionaPatio(novoTrem);
             System.out.println("Trem criado com sucesso e inserido no pátio!");
+            return true;
         }
+        System.out.println("Erro ao montar trem. Favor reiniciar o sistema.");
+        return false;
     }
 
     public Trem editarTrem() {
@@ -122,10 +136,12 @@ public class Super {
         if (tremPorEditar.getQtdadeVagoes() == 0) {
             System.out.println("Locomotivas: ");
             for (int i = 0; i < garagem.qtdade(); i++) {
-                System.out.println(garagem.getPorPosicao(i));
+                ElementoTrem elementoTrem = garagem.getPorPosicao(i);
+                if (elementoTrem.getClass().getName().equalsIgnoreCase("Locomotiva"))
+                    System.out.println(elementoTrem);
             }
             int idLocomotivaPorAdicionar = pedirIdentificador("locomotiva");
-            Locomotiva locomotivaPorAdicionar = (Locomotiva) garagem.getPorId(idLocomotivaPorAdicionar);
+            Locomotiva locomotivaPorAdicionar = (Locomotiva) garagem.getPorId(idLocomotivaPorAdicionar, "Locomotiva");
             if (locomotivaPorAdicionar != null) {
                 if (locomotivaPorAdicionar.livre()) {
                     tremPorEditar.engataLocomotiva(locomotivaPorAdicionar);
@@ -144,10 +160,12 @@ public class Super {
         System.out.println("(2.2) Inserir vagao");
         System.out.println("Vagões: ");
         for (int i = 0; i < garagem.qtdade(); i++) {
-            System.out.println(garagem.getPorPosicao(i));
+            ElementoTrem elementoTrem = garagem.getPorPosicao(i);
+            if (elementoTrem.getClass().getName().equalsIgnoreCase("Vagao"))
+                System.out.println(elementoTrem);
         }
         int idVagaoPorAdicionar = pedirIdentificador("vagão");
-        Vagao vagaoPorAdicionar = (Vagao) garagem.getPorId(idVagaoPorAdicionar);
+        Vagao vagaoPorAdicionar = (Vagao) garagem.getPorId(idVagaoPorAdicionar, "Vagao");
         if (vagaoPorAdicionar == null)
             System.out.println("Vagão inexistente, favor tentar novamente.");
         else {
@@ -160,12 +178,40 @@ public class Super {
         }
     }
 
+    public void editarTremInserirVagaoPassageiro(Trem tremPorEditar) {
+        System.out.println("(2.2) Inserir Vagão de Passageiro");
+        System.out.println("Vagões de Passageiros: ");
+        for (int i = 0; i < garagem.qtdade(); i++) {
+            ElementoTrem elementoTrem = garagem.getPorPosicao(i);
+            if (elementoTrem.getClass().getName().equalsIgnoreCase("VagaoPassageiro"))
+                System.out.println(elementoTrem);
+        }
+        int idVagaoPassageiroPorAdicionar = pedirIdentificador("vagão de passageiro");
+        VagaoPassageiro vagaoPassageiroPorAdicionar = (VagaoPassageiro) garagem.getPorId(idVagaoPassageiroPorAdicionar,
+                "VagaoPassageiro");
+        if (vagaoPassageiroPorAdicionar == null)
+            System.out.println("Vagão de passageiro inexistente, favor tentar novamente.");
+        else {
+            if (vagaoPassageiroPorAdicionar.livre()) {
+                tremPorEditar.engataVagao(vagaoPassageiroPorAdicionar);
+                vagaoPassageiroPorAdicionar.setTrem(tremPorEditar);
+                System.out.println("Vagão de passageiro adicionado com sucesso.");
+            } else
+                System.out.println("Esse vagão de passageiro já está sendo utilizado.");
+        }
+    }
+
     public void editarTremRemoverUltimo(Trem tremPorEditar) {
         if (tremPorEditar.getQtdadeVagoes() > 0) {
             if (tremPorEditar.desengataVagao())
                 System.out.println("Vagão desengatado com sucesso!");
             else
                 System.out.println("Não há vagões para desengatar.");
+        } else if (tremPorEditar.getQtdadeVagoesPassageiros() > 0) {
+            if (tremPorEditar.desengataVagaoPassageiro())
+                System.out.println("Vagão de passageiro desengatado com sucesso!");
+            else
+                System.out.println("Não há vagões de passageiros para desengatar.");
         } else {
             if (tremPorEditar.desengataLocomotiva())
                 System.out.println("Locomotiva desengatada com sucesso!");
@@ -174,24 +220,32 @@ public class Super {
         }
     }
 
-    public void editarTremListarLocomotivasLivres(Trem tremPorEditar) {
+    public void editarTremListarLocomotivasLivres() {
         for (Locomotiva locomotiva : locomotivas) {
             if (locomotiva.livre())
                 System.out.println(locomotiva);
         }
     }
 
-    public void editarTremListarVagoesLivres(Trem tremPorEditar) {
+    public void editarTremListarVagoesLivres() {
         for (Vagao vagao : vagoes) {
             if (vagao.livre())
                 System.out.println(vagao);
         }
     }
 
-    public void desfazerTrem(Trem tremPorDesfazer) {
-        for (int i = 0; i < tremPorDesfazer.getQtdadeVagoes(); i++) {
-            tremPorDesfazer.desengataVagao();
+    public void editarTremListarVagoesPassageirosLivres() {
+        for (VagaoPassageiro vagaoPassageiro : vagoesPassageiros) {
+            if (vagaoPassageiro.livre())
+                System.out.println(vagaoPassageiro);
         }
+    }
+
+    public void desfazerTrem(Trem tremPorDesfazer) {
+        for (int i = 0; i < tremPorDesfazer.getQtdadeVagoes(); i++)
+            tremPorDesfazer.desengataVagao();
+        for (int i = 0; i < tremPorDesfazer.getQtdadeVagoesPassageiros(); i++)
+            tremPorDesfazer.desengataVagaoPassageiro();
         for (int i = 0; i < tremPorDesfazer.getQtdadeLocomotivas(); i++) {
             locomotivas.get(i).setTrem(null);
             tremPorDesfazer.desengataLocomotiva();
@@ -210,7 +264,7 @@ public class Super {
     }
 
     public int pedirIdentificador(String para) {
-        System.out.printf("%nDigite o identificador do %s: ", para);
+        System.out.printf("%nDigite o identificador do(a) %s: ", para);
         return Scanners.inputInt();
     }
 

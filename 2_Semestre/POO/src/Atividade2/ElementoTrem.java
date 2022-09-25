@@ -1,10 +1,8 @@
-package Atividade2;
-
 public abstract class ElementoTrem {
     protected int identificador;
     protected double capacidadeCarga;
     protected Trem trem;
-    
+
     public ElementoTrem(int identificador, double capacidadeCarga) {
         this.identificador = identificador;
         this.capacidadeCarga = capacidadeCarga;
@@ -40,6 +38,7 @@ public abstract class ElementoTrem {
     }
 
     public String toString() {
-        return "ElementoTrem capacidadeCarga=" + capacidadeCarga + ", identificador=" + identificador + ", trem=" + trem + "]";
+        return "ElementoTrem capacidadeCarga=" + capacidadeCarga + ", identificador=" + identificador + ", trem="
+                + trem;
     }
 }

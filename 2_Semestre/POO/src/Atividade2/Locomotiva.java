@@ -1,5 +1,3 @@
-package Atividade2;
-
 public class Locomotiva extends ElementoTrem {
 	private int qtdadeMaxVagoes;
 
@@ -7,7 +5,7 @@ public class Locomotiva extends ElementoTrem {
 		super(identificador, capacidadeCarga);
 		this.qtdadeMaxVagoes = qtdadeMaxVagoes;
 	}
-	
+
 	public int getQtdadeMaxVagoes() {
 		return qtdadeMaxVagoes;
 	}

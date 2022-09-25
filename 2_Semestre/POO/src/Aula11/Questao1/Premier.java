@@ -6,10 +6,10 @@ public class Premier extends Executive {
     }
 
     public double getCustoBagagem(int qtdade, double[] pesos) {
-        return new Double();
+        return 0;
     }
 
     public double getCustoAssento() {
-        return new Double();
+        return 0;
     }
 }

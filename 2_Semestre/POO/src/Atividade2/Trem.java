@@ -1,5 +1,3 @@
-package Atividade2;
-
 import java.util.ArrayList;
 
 public class Trem {
@@ -76,12 +74,10 @@ public class Trem {
 
 	private double pesoAtualDoTrem() {
 		int soma = 0;
-		for (Vagao vagao : vagoes) {
+		for (Vagao vagao : vagoes)
 			soma += vagao.getCapacidadeCarga();
-		}
-		for (VagaoPassageiro vagaoPassageiro : vagoesPassageiros) {
+		for (VagaoPassageiro vagaoPassageiro : vagoesPassageiros)
 			soma += vagaoPassageiro.getCapacidadeCarga();
-		}
 		return soma;
 	}
 

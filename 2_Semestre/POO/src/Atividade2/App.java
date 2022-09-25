@@ -1,32 +1,29 @@
-package Atividade2;
-
 public class App {
 
     static Super s = new Super();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         if (s.initialize(
                 "locomotivas.txt",
                 "vagoes.txt",
-                "vagoesPassageiros.txt"
-            )) {
+                "vagoesPassageiros.txt")) {
             int escolha;
             do {
                 System.out.println("\n------------ MENU ------------");
                 mostrarOpcoes();
-                System.out.print("\n-----Escolha uma opção: ");
                 escolha = Scanners.inputInt();
                 analiza(escolha);
             } while (escolha != 0);
-        } else {
+        } else
             System.out.println("Favor reiniciar o sistema e localizar os arquivos.");
-        }
     }
 
     private static void analiza(int escolha) {
         switch (escolha) {
             case 1:
-                s.criarTrem();
+                if (s.criarTrem()) {
+                } else
+                    System.out.println("Identificador já em uso.\nFavor tentar novamente.");
                 break;
 
             case 2:
@@ -45,29 +42,40 @@ public class App {
                                 break;
 
                             case 3:
-                                if ((s.getLocomotivas().size() == 1) && (s.getVagoes().isEmpty())) {
+                                s.editarTremInserirVagaoPassageiro(tremPorEditar);
+                                break;
+
+                            case 4:
+                                if ((tremPorEditar.getQtdadeLocomotivas() == 1)
+                                        && (tremPorEditar.getQtdadeVagoes() == 0)
+                                        && (tremPorEditar.getQtdadeVagoesPassageiros() == 0)) {
                                     System.out.println(
                                             "Não é possível remover a última locomotiva.\nDesmonte o trem para isso.");
                                 } else
                                     s.editarTremRemoverUltimo(tremPorEditar);
                                 break;
 
-                            case 4:
-                                s.editarTremListarLocomotivasLivres(tremPorEditar);
-                                break;
-
                             case 5:
-                                s.editarTremListarVagoesLivres(tremPorEditar);
+                                s.editarTremListarLocomotivasLivres();
                                 break;
 
                             case 6:
+                                s.editarTremListarVagoesLivres();
+                                break;
+
+                            case 7:
+                                s.editarTremListarVagoesPassageirosLivres();
+                                break;
+
+                            case 8:
                             default:
                                 break;
                         }
-                    } while (escolha != 6);
+                    } while (escolha != 8);
                     break;
                 } else
                     System.out.println("Não há trens para serem editados.");
+                break;
 
             case 3:
                 if (s.listarTrens()) {
@@ -78,7 +86,11 @@ public class App {
             case 4:
                 if (s.listarTrens()) {
                     int idTrem = s.pedirIdentificador("trem");
-                    s.desfazerTrem(s.getPatioDeManobras().getPorId(idTrem));
+                    Trem tremPorEditar = s.getPatioDeManobras().getPorId(idTrem);
+                    if ((tremPorEditar) == null)
+                        System.out.println("Trem não encontrado.");
+                    else
+                        s.desfazerTrem(tremPorEditar);
                 } else
                     System.out.println("Não há trens para serem desmontados.");
                 break;
@@ -100,16 +112,20 @@ public class App {
         System.out.println("3- Listar todos os trens já criados");
         System.out.println("4- Desfazer um trem");
         System.out.println("0- Fim");
+        System.out.print("   Digite sua escolha: ");
     }
 
     private static void mostrarOpcoesTrem(int identificador) {
         System.out.println();
         System.out.println("Editando trem " + identificador);
-        System.out.println("1- Inserir uma locomotiva (informar identificador) respeitando restrições");
-        System.out.println("2- Inserir um vagão (informar identificador) respeitando restrições");
-        System.out.println("3- Remover o último elemento do trem");
-        System.out.println("4- Listar locomotivas livres");
-        System.out.println("5- Listar vagões livres");
-        System.out.println("6- Encerrar a edição do trem");
+        System.out.println("\t1- Inserir uma locomotiva");
+        System.out.println("\t2- Inserir um vagão");
+        System.out.println("\t3- Inserir um vagão de passageiros");
+        System.out.println("\t4- Remover o último elemento do trem");
+        System.out.println("\t5- Listar locomotivas livres");
+        System.out.println("\t6- Listar vagões livres");
+        System.out.println("\t7- Listar vagões de passageiros livres");
+        System.out.println("\t8- Encerrar a edição do trem");
+        System.out.print("\t   Digite sua escolha: ");
     }
 }

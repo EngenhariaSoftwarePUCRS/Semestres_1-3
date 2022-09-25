@@ -1,5 +1,3 @@
-package Atividade2;
-
 import java.util.ArrayList;
 
 public class Garagem {
@@ -13,8 +11,8 @@ public class Garagem {
         elementos.add(e);
     }
 
-    public boolean removeGaragem(int id) {
-        return elementos.remove(getPorId(id));
+    public boolean removeGaragem(int id, String tipo) {
+        return elementos.remove(getPorId(id, tipo));
     }
 
     public int qtdade() {
@@ -22,16 +20,14 @@ public class Garagem {
     }
 
     public ElementoTrem getPorPosicao(int pos) {
-        for (int i = 0; i < qtdade(); i++) {
-            if (i == pos)
-                return elementos.get(i);
-        }
+        if ((pos >= 0) && (pos < qtdade()))
+            return elementos.get(pos);
         return null;
     }
 
-    public ElementoTrem getPorId(int id) {
+    public ElementoTrem getPorId(int id, String tipo) {
         for (ElementoTrem elementoTrem : elementos) {
-            if (elementoTrem.getIdentificador() == id)
+            if ((elementoTrem.getIdentificador() == id) && (elementoTrem.getClass().getName().equalsIgnoreCase(tipo)))
                 return elementoTrem;
         }
         return null;
