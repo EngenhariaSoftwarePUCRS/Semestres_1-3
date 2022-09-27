@@ -1,3 +1,5 @@
+package Atividade2;
+
 public class VagaoPassageiro extends Vagao {
     private int qtdPassageiros;
 

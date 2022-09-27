@@ -1,3 +1,5 @@
+package Atividade.Material_Apoio;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

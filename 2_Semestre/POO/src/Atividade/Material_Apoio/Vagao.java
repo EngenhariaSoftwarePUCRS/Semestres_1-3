@@ -1,3 +1,5 @@
+package Atividade.Material_Apoio;
+
 public class Vagao {
 	private int identificador;
 	private double capacidadeCarga;

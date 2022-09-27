@@ -1,3 +1,5 @@
+package Atividade.Material_Apoio;
+
 public class Locomotiva {
 	private int identificador;
 	private double pesoMaximo;

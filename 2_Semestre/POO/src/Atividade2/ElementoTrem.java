@@ -1,3 +1,5 @@
+package Atividade2;
+
 public abstract class ElementoTrem {
     protected int identificador;
     protected double capacidadeCarga;

@@ -1,3 +1,5 @@
+package Atividade.Material_Apoio;
+
 import java.util.ArrayList;
 
 public class GaragemVagoes {

@@ -1,3 +1,5 @@
+package Atividade2;
+
 public class Vagao extends ElementoTrem {
 	public Vagao(int identificador, double capacidadeCarga) {
 		super(identificador, capacidadeCarga);

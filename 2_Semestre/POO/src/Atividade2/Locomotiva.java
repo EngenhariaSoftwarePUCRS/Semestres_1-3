@@ -1,3 +1,5 @@
+package Atividade2;
+
 public class Locomotiva extends ElementoTrem {
 	private int qtdadeMaxVagoes;
 
