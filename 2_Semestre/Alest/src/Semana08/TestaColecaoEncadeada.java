@@ -1,4 +1,4 @@
-package estruturaEncadeada;
+package Semana08;
 
 public class TestaColecaoEncadeada {
 
