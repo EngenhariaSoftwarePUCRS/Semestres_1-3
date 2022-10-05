@@ -1,11 +1,3 @@
-package Semana09;
-import java.util.*;
-
-/*********
- * Interface para o T.A.D. Lista.
- * @author Michael da Costa Móra
- * @param <E> Tipo dos dados armazenados na lista.
- */
 public interface ListTAD<E> {
 	/**********
 	 * Adiciona um elemento na última posição da lista.
