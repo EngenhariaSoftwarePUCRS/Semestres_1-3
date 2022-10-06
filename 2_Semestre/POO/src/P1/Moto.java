@@ -6,4 +6,14 @@ public class Moto extends VeiculoRegulado {
         super(matricula, pesoMax, placa);
     }
 
+    @Override
+    public boolean colocaEncomenda(Encomenda e) {
+        if ((e.getPeso() <= getPesoDisponivel()) && (e.getTamanho().equals("Pequeno"))) {
+            addEncomenda(e);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

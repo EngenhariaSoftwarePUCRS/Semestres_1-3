@@ -6,4 +6,14 @@ public class Bicicleta extends Veiculo {
         super(matricula, pesoMax);
     }
 
+    @Override
+    public boolean colocaEncomenda(Encomenda e) {
+        if ((e.getPeso() <= getPesoDisponivel()) && (e.getTamanho().equals("Pequeno"))) {
+            addEncomenda(e);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

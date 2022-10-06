@@ -8,4 +8,8 @@ public abstract class VeiculoRegulado extends Veiculo {
         this.placa = placa;
     }
 
+    public String getPlaca() {
+        return this.placa;
+    }
+
 }

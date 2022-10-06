@@ -2,7 +2,7 @@ package P1;
 
 import java.util.ArrayList;
 
-public abstract class Veiculo {
+public abstract class Veiculo implements IVeiculo {
     private int matricula;
     private double pesoMax;
     private ArrayList<Encomenda> encomendas;
@@ -21,13 +21,32 @@ public abstract class Veiculo {
         return pesoMax;
     }
 
-    // public int compareTo(int matricula) {
-    // if (this.matricula < matricula)
-    // return -1;
-    // else if (this.matricula > matricula)
-    // return 1;
-    // else
-    // return 0;
-    // }
+    public double getPesoDisponivel() {
+        double peso = 0.0;
+        for (Encomenda e : encomendas) {
+            peso += e.getPeso();
+        }
+        return (getPesoMax() - peso);
+    }
+
+    public void addEncomenda(Encomenda e) {
+        encomendas.add(e);
+    }
+
+    public boolean retiraEncomenda(int codigo) {
+        if (encomendas.size() != 0) {
+            for (Encomenda e : encomendas) {
+                if (e.getCodigo() == codigo) {
+                    encomendas.remove(e);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int qtdEncomendas() {
+        return encomendas.size();
+    }
 
 }
