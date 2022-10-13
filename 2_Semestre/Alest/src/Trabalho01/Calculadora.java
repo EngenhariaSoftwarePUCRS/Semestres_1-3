@@ -4,24 +4,35 @@ import java.util.ArrayList;
 
 public class Calculadora {
 	
-	static ArrayList<String> lst = new ArrayList<>();
 	public static void main(String[] args) {
-		lst.add("5 3");
-		lst.add("2 -3");
+		ArrayList<NumeroComplexo> lst = new ArrayList<>();
+
+		NumeroComplexo a = new NumeroComplexo(4, -2);
+		NumeroComplexo b = new NumeroComplexo(2, 2);
+		lst.add(soma(a, b));
+		lst.add(subtracao(a, b));
+		lst.add(multiplicacao(a, b));
+		lst.add(divisao(a, b));
+		lst.add(inverso(a));
 	}
 
-	static void multiplicacao() {
-		double[] a = {Double.parseDouble(lst.get(0).split(" ")[0]), Double.parseDouble(lst.get(1).split(" ")[0])};
-		double[] b = {Double.parseDouble(lst.get(0).split(" ")[1]), Double.parseDouble(lst.get(1).split(" ")[1])};
-		double[] resultado = {(a[0] * a[1] - b[0] * b[1]), (a[0]*b[1] + b[0]*a[1])};
-		System.out.println(resultado[0] + " " + resultado[1]);
+	static NumeroComplexo soma(NumeroComplexo a, NumeroComplexo b) {
+		return new NumeroComplexo().soma(a, b);
 	}
 
-	static void divisao() {
-
+	static NumeroComplexo subtracao(NumeroComplexo a, NumeroComplexo b) {
+		return new NumeroComplexo().subtracao(a, b);
 	}
 
-	static void inverso() {
-		// divisao(a - b, a² + b²);
+	static NumeroComplexo multiplicacao(NumeroComplexo a, NumeroComplexo b) {
+		return new NumeroComplexo().multiplicacao(a, b);
+	}
+
+	static NumeroComplexo divisao(NumeroComplexo a, NumeroComplexo b) {
+		return new NumeroComplexo().divisao(a, b);
+	}
+
+	static NumeroComplexo inverso(NumeroComplexo n) {
+		return new NumeroComplexo(n).inverso();
 	}
 }
