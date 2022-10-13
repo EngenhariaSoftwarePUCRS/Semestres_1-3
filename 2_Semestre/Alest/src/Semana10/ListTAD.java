@@ -1,31 +1,36 @@
 package Semana10;
+/*********
+ * Interface para o T.A.D. Lista.
+ * @author Michael da Costa Móra
+ * @param <E> Tipo dos dados armazenados na lista.
+ */
 public interface ListTAD<E> {
 	/**********
 	 * Adiciona um elemento na última posição da lista.
 	 * @param element Elemento a ser adicionado. 
-	 * @return true se a operação funcionou, false caso contrário.
+	 * @return true se a operação funcionou, false caso contrório.
 	 */
 	public void add(E element);
 	
 	
 	/**********
 	 * Adiciona o elemento fornecido em uma dada posição da lista.
-	 * @param index Posição da lista.
+	 * @param index posição da lista.
 	 * @param element Elemento a ser adicionado. 
-	 * @return true se a operação funcionou, false caso contrário.
+	 * @return true se a operação funcionou, false caso contrório.
 	 */
 	public void add(int index, E element);
 	
 	
 	/**********
 	 * Remove o elemento armazenado na posição fornecida da lista.
-	 * @param pos Posição da lista. 
+	 * @param pos posição da lista. 
 	 */
 	public E remove(int pos);
 
 	
 	/**********
-	 * Remove a primeira ocorrência de um dado elemento da lista.
+	 * Remove a primeira ocorróncia de um dado elemento da lista.
 	 * @param element Elemento a ser adicionado. 
 	 */
 	public E remove(E element);
@@ -33,7 +38,7 @@ public interface ListTAD<E> {
 	
 	/**********
 	 * Recupera o elemento armazenado em uma dada posição da lista.
-	 * @param pos Posição do elemento na lista.
+	 * @param pos posição do elemento na lista.
 	 * @return Elemento armazenado na lista. 
 	 */	
 	public E get(int pos);
@@ -41,24 +46,24 @@ public interface ListTAD<E> {
 	
 	/**********
 	 * Atualiza a posição fornecida da lista, com o elemento fornecido.
-	 * @param index Posição da lista.
+	 * @param index posição da lista.
 	 * @param element Elemento a ser armazenado na lista.
-	 * @return true se a operação funcionou, false caso contrário. 
+	 * @return true se a operação funcionou, false caso contrório. 
 	 */	
 	public void set(int index, E element);
 	
 	
 	/**********
-	 * Procura um elemento na lista, e retorna sua ocorrência.
+	 * Procura um elemento na lista, e retorna sua ocorróncia.
 	 * @param element Elemento a ser procurado.
-	 * @return referência para o elemento armazenado na lista. 
+	 * @return referóncia para o elemento armazenado na lista. 
 	 */	
-	public E search(E element);
+	// public E search(E element);
 	
 	
 	/**********
-	 * Verifica se a lista está vazia.
-	 * @return true se a lista está vazia, false caso contrário. 
+	 * Verifica se a lista estó vazia.
+	 * @return true se a lista estó vazia, false caso contrório. 
 	 */		
 	public boolean isEmpty();
 	
@@ -71,8 +76,8 @@ public interface ListTAD<E> {
 	
 	
 	/********
-	 * Conta quantas ocorrências de um dado elemento estão armazenadas na lista.
-	 * @return A quantidade de ocorrências do elemento fornecido.
+	 * Conta quantas ocorróncias de um dado elemento estóo armazenadas na lista.
+	 * @return A quantidade de ocorróncias do elemento fornecido.
 	 */	
 	public int count(E element);
 	
@@ -84,21 +89,21 @@ public interface ListTAD<E> {
 	
 	
 	/**********
-	 * Retorna uma representação textual do conteúdo da lista.
-	 * @return Um String com o conteúdo da lista. 
+	 * Retorna uma representaóóo textual do conteódo da lista.
+	 * @return Um String com o conteódo da lista. 
 	 */		
 	public String toString();
 
 	
 	/**********
-	 * Métodos adicionais, para fins didáticos. 
+	 * Mótodos adicionais, para fins didóticos. 
 	 *********/
 	
 	
 	/********
 	 * Adiciona um elemento na primeira posição da lista.
 	 * @param element Elemento a ser adicionado.
-	 * @return true se a operação funcionou, false caso contrário.	
+	 * @return true se a operação funcionou, false caso contrório.	
 	 */
 	public void addFirst(E element);
 
@@ -106,7 +111,7 @@ public interface ListTAD<E> {
 	/**********
 	 * Adiciona um elemento na última posição da lista.
 	 * @param element Elemento a ser adicionado. 
-	 * @return true se a operação funcionou, false caso contrário.
+	 * @return true se a operação funcionou, false caso contrório.
 	 */
 	public void addLast(E element);
 	
