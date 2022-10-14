@@ -1,0 +1,1003 @@
+63766 12999
+14150 81959
+dup
+dup
+inv
+*
+inv
+/
+/
+53465 32481
+dup
+72961 92633
+44936 84967
+chs
+inv
+-
+91368 85368
+*
+55024 57265
+inv
+chs
+91886 71825
+/
+chs
+dup
+14376 71774
+72261 42524
+-
+pop
+*
+77316 43902
++
+52897 46078
+inv
+chs
+inv
++
+chs
+swap
+dup
+abs
+55935 58129
+conj
+conj
+19106 71293
+-
+81092 24650
++
+dup
+dup
+55752 81578
+swap
+dup
++
+35884 72889
+20702 88355
+chs
+-
+pop
+/
+conj
+chs
+77798 7308
+abs
+abs
+abs
+-
+/
+60194 44350
++
+42156 87559
+dup
+56308 68974
+dup
+34924 55894
+27558 65325
+inv
+-
+-
+*
+*
+dup
+-
+swap
+*
+*
+-
+61952 99629
+*
++
+chs
+91824 58456
+pop
+abs
+/
+29531 93971
+abs
+abs
+*
+*
+/
+abs
++
+66301 85470
+pop
+-
+chs
+1798 49879
+conj
+abs
+swap
+chs
+chs
+abs
+swap
+abs
++
+9045 78816
+62885 4182
+/
+chs
+dup
+abs
+swap
+8440 89436
+conj
++
+*
+abs
+inv
+chs
+14288 68058
+dup
+conj
+31116 8710
+pop
+abs
+pop
+conj
+-
+conj
+inv
+pop
+chs
+conj
+1988 48404
+swap
+inv
+8775 27612
+swap
+65094 12656
+63605 69764
+abs
+dup
+chs
+/
+13009 51038
+*
+abs
+swap
+conj
+pop
+68810 59775
+/
+40988 43584
+abs
+84689 90464
+conj
+86398 29884
+/
+82463 39947
+9125 27719
+/
+inv
+-
+abs
+chs
+swap
+abs
+inv
+swap
+61676 20972
+conj
+-
+dup
+inv
+-
+abs
+-
+/
+abs
+pop
+/
+*
+abs
+conj
+17099 74852
+pop
+chs
+conj
+5566 78872
+82178 69422
+conj
+inv
++
++
+abs
+chs
+chs
+47638 67107
+11320 41563
+swap
+-
+67346 91221
+*
+9523 5493
++
+conj
+swap
+74689 21166
+2778 26390
+conj
+55877 76491
+abs
+conj
+chs
+inv
++
+-
+5260 65735
+inv
+11954 78870
+dup
+*
+43965 49781
++
+abs
+conj
+conj
+11749 97931
+inv
+abs
+/
+pop
+pop
+40095 42073
+abs
+conj
+inv
+chs
+73683 56549
+70512 26903
+/
+47733 98285
+27325 41539
++
+49900 87963
+pop
+inv
+27666 87460
+swap
+abs
+/
+abs
+35420 14691
++
+9289 11064
+80034 17776
+-
+-
+16829 41867
+/
+dup
+*
+-
++
+inv
+*
+swap
+swap
+pop
+conj
+2062 62512
+inv
+chs
+dup
+70014 14524
+75341 38544
+conj
+conj
+-
+72693 39177
+dup
+59432 89977
+abs
+99503 46157
+conj
+90046 79841
+/
+inv
+conj
+inv
+dup
++
+29490 69117
+swap
+47930 29420
+pop
+-
+chs
+/
+swap
++
+10154 24181
+dup
+57127 70419
+86233 90160
+-
++
+-
+79658 84607
+-
+pop
+chs
+-
+chs
+-
+58921 27179
+14046 87689
+34111 11719
+11708 40021
+-
+dup
+*
+28083 1801
+abs
+abs
+swap
+chs
+99567 41337
+46330 90170
+abs
+abs
+dup
+chs
+1059 86342
+*
+pop
+inv
+pop
+-
++
+/
+abs
+50024 99788
++
+inv
+chs
+swap
+10853 7045
+66202 13642
+swap
+conj
+conj
+abs
+pop
+*
+inv
++
+-
+98055 67079
+conj
+abs
+65649 3100
+chs
+swap
+56134 93214
+abs
+17392 94663
+*
+21655 35345
+*
+inv
+abs
+*
+-
+inv
+43006 2369
+11144 87175
+inv
+-
+81536 72336
+pop
+-
+conj
+chs
+13557 51999
+swap
+85045 6070
+pop
+-
+dup
+chs
+pop
+chs
+swap
+chs
+chs
+-
+inv
+4001 51587
+13623 74292
+36057 65743
+pop
+dup
+abs
+dup
+conj
+352 93567
+conj
+90561 81658
+inv
+5934 14439
+conj
+inv
+pop
+abs
+inv
+91675 83617
+92731 60560
+69958 28779
+swap
++
+/
+swap
+swap
+abs
+chs
+99483 17250
+swap
+*
+conj
+swap
+dup
++
+dup
+45754 68647
+dup
+-
+-
+/
+chs
+inv
+dup
+conj
+-
+/
+-
+swap
+abs
+24513 90231
+33342 44549
+conj
+abs
+*
+swap
+-
+26002 97106
++
+69675 52477
+swap
+51410 95546
+swap
+28412 13637
+*
+swap
+abs
+conj
+abs
+chs
+86263 37794
+31305 11031
+-
+*
+chs
+swap
+chs
+dup
+dup
+dup
+pop
+45732 62364
+62565 69821
+88727 23125
+inv
+abs
+71339 53592
+*
+dup
+85705 39367
+abs
+chs
+-
+inv
+81722 5943
+conj
+inv
+chs
+conj
+82628 98047
+chs
+58461 89736
++
+43239 46616
+chs
+72995 78557
+chs
+42442 84438
+12621 99842
+72139 78857
+pop
+/
+dup
+*
+12804 50378
+chs
+abs
+6297 601
+swap
+73530 91043
+27140 31353
++
+/
+swap
+swap
+pop
+27963 20486
+2285 73649
+inv
+pop
+12577 67923
+*
++
+abs
+93038 13719
+13568 71321
++
+*
+dup
+abs
+88162 51066
+pop
+27918 53613
+/
+-
+35248 3065
+swap
+dup
+abs
+99294 7342
++
+27938 82680
+abs
+71855 55065
+pop
++
++
+26174 81533
+swap
+pop
+12065 68117
+46250 23547
+dup
+abs
++
+39589 77733
+pop
+*
+abs
+pop
+inv
+conj
+swap
+pop
+abs
+-
+-
+*
+conj
+41994 56132
+inv
+abs
+dup
+35538 62517
+/
+*
+60834 38470
+13273 55552
+/
+/
+abs
+inv
+78608 15996
+30355 24426
+63754 42460
+*
+abs
+97678 74849
+41220 10864
+chs
+conj
+abs
+18771 83185
++
+inv
+*
+*
++
+pop
+inv
+-
+inv
+30135 75600
+abs
+pop
+18791 16312
+1582 19423
+62529 80974
+78609 59236
+chs
+54758 82479
+*
+abs
+chs
+48828 60404
+/
+conj
+pop
+inv
+conj
+conj
+inv
+inv
+11538 2008
+19344 78076
++
+conj
+inv
+conj
+68866 14041
+conj
+pop
+chs
+8500 16797
+chs
+51872 16242
+chs
+-
+pop
+chs
+pop
+inv
+4968 53267
+*
+swap
+dup
+conj
+swap
+pop
++
+chs
+swap
+pop
+79099 73174
+91330 6703
+/
+*
++
+-
+inv
+swap
+73579 14664
+dup
+dup
+-
+7873 85141
+swap
+conj
+pop
+dup
+*
+inv
+50597 97384
+*
+pop
++
+*
+chs
+abs
+swap
+*
+inv
++
+-
+-
+swap
+abs
+inv
+dup
+-
+conj
+*
+/
+abs
+/
+pop
+conj
+54823 71006
+*
+/
++
+*
++
+inv
++
+3895 23897
++
+swap
+-
+chs
+-
+pop
+*
+88185 12932
+dup
+conj
+*
+swap
+/
+conj
+pop
+94511 51616
+/
+abs
+conj
+chs
+abs
+abs
+18228 83124
+/
+conj
+5431 93512
+7681 53466
+inv
+conj
+74014 92415
+-
+-
+/
+abs
+conj
+84135 5628
+5569 90251
+swap
+/
+*
+conj
+chs
+56504 53585
+/
+conj
+40825 66742
+chs
+*
+93778 39268
+dup
+-
+abs
+39050 24299
+conj
+83197 78401
+/
+/
+inv
+dup
+64894 80712
++
+86228 8898
+96607 20651
+swap
+54125 53351
+swap
+swap
+chs
+/
+-
+*
+pop
+inv
+*
+abs
+89972 23660
+chs
+abs
+*
+conj
+conj
+abs
+62371 47242
+40191 91811
+dup
+61531 59818
+/
+dup
+96356 90622
++
+9586 19832
+inv
+pop
++
+swap
+swap
+inv
+conj
+12689 23174
++
+pop
+-
+88158 46920
+*
+inv
+inv
++
+81688 1326
+conj
+abs
+swap
+inv
+dup
+-
+*
+56063 99278
+67348 3652
+dup
+dup
+chs
+chs
+/
+dup
+dup
+swap
+99754 50608
+conj
+swap
+*
+abs
+conj
++
+dup
+/
+conj
+swap
+-
+-
++
+inv
+/
+abs
+abs
+95839 13493
++
+abs
+conj
+chs
+90489 51263
+swap
+-
+conj
+abs
+abs
+44608 52360
+conj
+/
+26952 23532
++
+66835 65319
+chs
+swap
+dup
+inv
+4404 50250
+conj
+abs
+chs
+conj
+*
+dup
+6885 25221
+swap
+26484 29210
+64228 35130
+2757 34139
+15930 31049
+pop
+68668 45615
+abs
+abs
+47017 34242
+/
+1005 54423
+dup
+84342 60524
+*
+abs
+swap
+/
+abs
+abs
+87393 56110
+71001 41008
+/
+*
+conj
+inv
+inv
+abs
+24987 51494
+swap
+*
++
+89415 45059
+51014 76001
+dup
+dup
+abs
+dup
+/
++
+swap
+swap
+chs
+-
++
+*
+33606 41874
+abs
+8665 60539
+inv
+36910 756
+/
+53856 44485
+inv
+conj
+/
+36714 68566
+inv
+pop
+dup
+chs
+dup
+*
+/
+pop
+dup
+60512 75050
+*
++
+*
+dup
+chs
+46998 17371
+38373 80166
+abs
+474 76111
+*
+chs
+swap
+60727 14456
++
+swap
+conj
++
+swap
+pop
+-
+/
+chs
+dup
+conj
+inv
+86584 37871
+inv
+abs
+pop
+chs
+51298 33674
+inv
+dup
+pop
++
+swap
+print
+quit
