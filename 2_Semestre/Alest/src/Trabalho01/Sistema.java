@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Sistema {
     Stack<NumeroComplexo> pilha = new Stack<>();
 
-    public void inicializar(String fileName) throws FileNotFoundException {
+    public void inicializar(String fileName) throws FileNotFoundException, NullPointerException {
         try {
             File calculos = new File(fileName);
             Scanner reader = new Scanner(calculos);
@@ -17,14 +17,16 @@ public class Sistema {
                 newOperation(next);
             }
             reader.close();
+            System.out.println("Tamanho da pilha: "+pilha.size());
+            System.out.println("Topo da pilha: "+pilha.top());
         } catch (FileNotFoundException fnfe) {
-            throw new FileNotFoundException();
+            throw new FileNotFoundException("Não conseguimos encontrar seu arquivo, favor reiniciar o sistema e tentar novamente.");
         }
     }
 
     static final String ERROR_MSG = "Não há valores disponíveis para realizar a operação.";
 
-    void newOperation(String next) {
+    void newOperation(String next) throws NullPointerException {
         NumeroComplexo a, b;
         if (!stackNumbers(next))
             switch (next) {
@@ -49,7 +51,7 @@ public class Sistema {
                 case "/":
                     a = pop();
                     b = pop();
-                    add(CalculadoraComplexo.divisao(a, b));
+                    add(CalculadoraComplexo.divisao(b, a));
                     break;
 
                 case "inv":
@@ -90,8 +92,11 @@ public class Sistema {
             }
     }
 
-    void add(NumeroComplexo n) {
-        pilha.push(n);
+    void add(NumeroComplexo n) throws NullPointerException {
+        if (n != null)
+            pilha.push(n);
+        else
+            throw new NullPointerException("Não é possível adicionar valores nulos, favor reinicar o sistema e rever valores.");
     }
 
     boolean stackNumbers(String next) {
@@ -102,7 +107,9 @@ public class Sistema {
             add(new NumeroComplexo(parteReal, parteImaginaria));
             return true;
         } catch (NumberFormatException nfe) {
-            System.out.println(nfe);
+            return false;
+        } catch (Exception e) {
+            System.out.println(e);
             return false;
         }
     }
@@ -113,16 +120,16 @@ public class Sistema {
 
     void duplica() {
         NumeroComplexo novo = new NumeroComplexo(pop());
-        pilha.add(novo);
-        pilha.add(novo);
+        add(novo);
+        add(novo);
     }
 
     void swap() {
         if (pilha.size() > 1) {
             NumeroComplexo aux1 = pop();
             NumeroComplexo aux2 = pop();
-            pilha.add(aux2);
-            pilha.add(aux1);
+            add(aux2);
+            add(aux1);
         } else
             System.out.println(ERROR_MSG);
     }
