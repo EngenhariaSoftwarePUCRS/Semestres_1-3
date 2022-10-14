@@ -14,19 +14,21 @@ public abstract class CalculadoraComplexo {
 	}
 
 	static NumeroComplexo multiplicacao(NumeroComplexo a, NumeroComplexo b) {
-		double multiplicacaoParteReal = (a.getParteReal() * a.getParteImaginaria())
-				+ (b.getParteReal() * b.getParteImaginaria());
+		double multiplicacaoParteReal = (a.getParteReal() * b.getParteReal())
+				- (a.getParteImaginaria() * b.getParteImaginaria());
 		double multiplicacaoParteImaginaria = ((a.getParteReal() * b.getParteImaginaria())
 				+ (b.getParteReal() * a.getParteImaginaria()));
 		return new NumeroComplexo(multiplicacaoParteReal, multiplicacaoParteImaginaria);
 	}
 
 	static NumeroComplexo divisao(NumeroComplexo a, NumeroComplexo b) {
+		double denominador = quadrado(b.getParteReal()) + quadrado(b.getParteImaginaria());
+		if (denominador == 0)
+			return null;
 		double numeradorReal = (a.getParteReal() * b.getParteReal())
-				+ (a.getParteImaginaria() * b.getParteImaginaria());
-		double numeradorImaginario = (b.getParteReal() * a.getParteImaginaria())
-				- (a.getParteReal() * b.getParteImaginaria());
-		double denominador = quadrado(b.getParteReal() + quadrado(b.getParteImaginaria()));
+				- (a.getParteImaginaria() * -b.getParteImaginaria());
+		double numeradorImaginario = (a.getParteImaginaria() * -b.getParteImaginaria())
+				+ (a.getParteImaginaria() * b.getParteReal());
 		double divisaoParteReal = numeradorReal / denominador;
 		double divisaoParteImaginaria = numeradorImaginario / denominador;
 		return new NumeroComplexo(divisaoParteReal, divisaoParteImaginaria);
@@ -35,6 +37,8 @@ public abstract class CalculadoraComplexo {
 	static NumeroComplexo inverso(NumeroComplexo n) {
 		NumeroComplexo novo = new NumeroComplexo(n);
 		double denominador = quadrado(novo.getParteReal()) + quadrado(novo.getParteImaginaria());
+		if (denominador == 0)
+			return null;
 		double parteReal = novo.getParteReal() / denominador;
 		double parteImaginaria = -novo.getParteImaginaria() / denominador;
 		novo.setParteReal(parteReal);
