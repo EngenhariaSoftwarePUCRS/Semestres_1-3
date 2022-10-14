@@ -6,7 +6,7 @@ public class App {
     public static void main(String[] args) {
         try {
             Sistema sys = new Sistema();
-            sys.inicializar("Trabalho01\\casosTeste\\calculos.txt");
+            sys.inicializar("Trabalho01\\casosTeste\\caso1.txt");
         } catch (FileNotFoundException fnfe) {
             System.out.println(fnfe.getMessage());
         } catch (NullPointerException npe) {
