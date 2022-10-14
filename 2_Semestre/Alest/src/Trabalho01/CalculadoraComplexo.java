@@ -14,14 +14,18 @@ public abstract class CalculadoraComplexo {
 	}
 
 	static NumeroComplexo multiplicacao(NumeroComplexo a, NumeroComplexo b) {
-		double multiplicacaoParteReal = (a.getParteReal() * a.getParteImaginaria()) + (b.getParteReal() * b.getParteImaginaria());
-		double multiplicacaoParteImaginaria = ((a.getParteReal()*b.getParteImaginaria()) + (b.getParteReal() * a.getParteImaginaria()));
+		double multiplicacaoParteReal = (a.getParteReal() * a.getParteImaginaria())
+				+ (b.getParteReal() * b.getParteImaginaria());
+		double multiplicacaoParteImaginaria = ((a.getParteReal() * b.getParteImaginaria())
+				+ (b.getParteReal() * a.getParteImaginaria()));
 		return new NumeroComplexo(multiplicacaoParteReal, multiplicacaoParteImaginaria);
 	}
 
 	static NumeroComplexo divisao(NumeroComplexo a, NumeroComplexo b) {
-		double numeradorReal = (a.getParteReal() * b.getParteReal()) + (a.getParteImaginaria() * b.getParteImaginaria());
-		double numeradorImaginario = (b.getParteReal() * a.getParteImaginaria()) - (a.getParteReal() * b.getParteImaginaria());
+		double numeradorReal = (a.getParteReal() * b.getParteReal())
+				+ (a.getParteImaginaria() * b.getParteImaginaria());
+		double numeradorImaginario = (b.getParteReal() * a.getParteImaginaria())
+				- (a.getParteReal() * b.getParteImaginaria());
 		double denominador = quadrado(b.getParteReal() + quadrado(b.getParteImaginaria()));
 		double divisaoParteReal = numeradorReal / denominador;
 		double divisaoParteImaginaria = numeradorImaginario / denominador;
@@ -32,7 +36,7 @@ public abstract class CalculadoraComplexo {
 		NumeroComplexo novo = new NumeroComplexo(n);
 		double denominador = quadrado(novo.getParteReal()) + quadrado(novo.getParteImaginaria());
 		double parteReal = novo.getParteReal() / denominador;
-		double parteImaginaria = - novo.getParteImaginaria() / denominador;
+		double parteImaginaria = -novo.getParteImaginaria() / denominador;
 		novo.setParteReal(parteReal);
 		novo.setParteImaginaria(parteImaginaria);
 		return novo;
@@ -40,8 +44,10 @@ public abstract class CalculadoraComplexo {
 
 	static NumeroComplexo changeSign(NumeroComplexo n) {
 		NumeroComplexo novo = new NumeroComplexo(n);
-		novo.setParteReal(-novo.getParteReal());
-		novo.setParteImaginaria(-novo.getParteImaginaria());
+		if (novo.getParteReal() != 0)
+			novo.setParteReal(-novo.getParteReal());
+		if (novo.getParteImaginaria() != 0)
+			novo.setParteImaginaria(-novo.getParteImaginaria());
 		return novo;
 	}
 
