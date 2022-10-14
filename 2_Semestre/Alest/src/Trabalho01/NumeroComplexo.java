@@ -4,8 +4,6 @@ public class NumeroComplexo {
     private double parteReal;
     private double parteImaginaria;
 
-    public NumeroComplexo() {}
-
     public NumeroComplexo(NumeroComplexo n) {
         this.parteReal = n.getParteReal();
         this.parteImaginaria = n.getParteImaginaria();
@@ -33,18 +31,17 @@ public class NumeroComplexo {
     }
 
     public String parteRealToString() {
-        String parteReal = this.parteReal != 0
-                    ? Double.toString(this.parteReal)
-                    : "";
-        return parteReal;
+        return this.parteReal != 0
+                ? Double.toString(this.parteReal)
+                : "";
     }
 
     public String parteImaginariaToString() {
         String parteImaginaria = "";
         if (this.parteImaginaria < 0)
-            parteImaginaria = (" "+Double.toString(this.parteImaginaria)+"i");
+            parteImaginaria = (" " + Double.toString(this.parteImaginaria) + "i");
         else if (this.parteImaginaria > 0)
-            parteImaginaria = (" + "+Double.toString(this.parteImaginaria)+"i");
+            parteImaginaria = (" + " + Double.toString(this.parteImaginaria) + "i");
         return parteImaginaria;
     }
 
