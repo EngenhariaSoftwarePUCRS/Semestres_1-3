@@ -5,13 +5,13 @@ public class NumeroComplexo {
     private double parteImaginaria;
 
     public NumeroComplexo(NumeroComplexo n) {
-        this.parteReal = n.getParteReal();
-        this.parteImaginaria = n.getParteImaginaria();
+        this.parteReal = n.getParteReal() == -0 ? 0 : n.getParteReal();
+        this.parteImaginaria = n.getParteImaginaria() == -0 ? 0 : n.getParteImaginaria();
     }
 
     public NumeroComplexo(double parteReal, double parteImaginaria) {
-        this.parteReal = parteReal;
-        this.parteImaginaria = parteImaginaria;
+        this.parteReal = parteReal == -0 ? 0 : parteReal;
+        this.parteImaginaria = parteImaginaria == -0 ? 0 : parteImaginaria;
     }
 
     public double getParteReal() {
@@ -46,6 +46,8 @@ public class NumeroComplexo {
     }
 
     public String toString() {
+        if (parteReal == parteImaginaria && parteImaginaria == 0)
+            return "0";
         return (parteRealToString() + parteImaginariaToString());
     }
 }
