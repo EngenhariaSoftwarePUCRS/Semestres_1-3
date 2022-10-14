@@ -1,6 +1,6 @@
 package Trabalho01;
 
-import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 public class Stack<T> {
     private ListTAD<T> stack = new ListSimpleLinked<>();
@@ -11,7 +11,7 @@ public class Stack<T> {
 
     public T pop() throws EmptyStackException {
         if (isEmpty())
-            throw new EmptyStackException("Pilha Vazia");
+            throw new EmptyStackException();
         T aux = stack.getFirst();
         stack.removeFirst();
         return aux;
@@ -27,13 +27,13 @@ public class Stack<T> {
 
     public T top() throws EmptyStackException {
         if (isEmpty())
-            throw new EmptyStackException("Pilha Vazia");
+            throw new EmptyStackException();
         return stack.getFirst();
     }
 
-    public class EmptyStackException extends RuntimeException {
-        public EmptyStackException(String message) {
-            super(message);
-        }
-    }
+    // public class EmptyStackException extends RuntimeException {
+    //     public EmptyStackException(String message) {
+    //         super(message);
+    //     }
+    // }
 }
