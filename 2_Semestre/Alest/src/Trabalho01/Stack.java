@@ -36,4 +36,8 @@ public class Stack<T> {
     //         super(message);
     //     }
     // }
+
+    public String toString() {
+        return stack.toString();
+    }
 }
