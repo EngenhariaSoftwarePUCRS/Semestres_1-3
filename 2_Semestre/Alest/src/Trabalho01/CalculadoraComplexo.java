@@ -22,13 +22,13 @@ public abstract class CalculadoraComplexo {
 	}
 
 	static NumeroComplexo divisao(NumeroComplexo a, NumeroComplexo b) {
-		double denominador = quadrado(b.getParteReal()) + quadrado(b.getParteImaginaria());
+		double denominador = (quadrado(b.getParteReal()) + quadrado(b.getParteImaginaria()));
 		if (denominador == 0)
 			return null;
-		double numeradorReal = (a.getParteReal() * b.getParteReal())
-				- (a.getParteImaginaria() * -b.getParteImaginaria());
-		double numeradorImaginario = (a.getParteImaginaria() * -b.getParteImaginaria())
-				+ (a.getParteImaginaria() * b.getParteReal());
+		double numeradorReal = ((a.getParteReal() * b.getParteReal())
+				+ (a.getParteImaginaria() * b.getParteImaginaria()));
+		double numeradorImaginario = ((b.getParteReal() * a.getParteImaginaria())
+				- (a.getParteReal() * b.getParteImaginaria()));
 		double divisaoParteReal = numeradorReal / denominador;
 		double divisaoParteImaginaria = numeradorImaginario / denominador;
 		return new NumeroComplexo(divisaoParteReal, divisaoParteImaginaria);
