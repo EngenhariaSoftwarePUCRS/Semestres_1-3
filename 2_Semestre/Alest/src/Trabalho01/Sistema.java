@@ -3,6 +3,7 @@ package Trabalho01;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import Trabalho01.util.Stack;
 
 public class Sistema {
     Stack<NumeroComplexo> pilha = new Stack<>();
@@ -16,12 +17,14 @@ public class Sistema {
             while (reader.hasNext()) {
                 next = reader.nextLine();
                 newOperation(next);
-                // Linhas 454-457
-                if (pilha.top().getParteReal() == 0 && pilha.top().getParteImaginaria() == 0)
-                    System.out.println("Número zerado");
-                if (cont == 453)
-                    System.out.println("bugo na próxima");
+                System.out.println(next);
+                System.out.println(pilha);
                 cont++;
+                // Linhas 454-457
+                // if (pilha.top().getParteReal() == 0 && pilha.top().getParteImaginaria() == 0)
+                // System.out.println("Número zerado");
+                // if (cont == 453)
+                // System.out.println("bugo na próxima");
             }
             reader.close();
             System.out.println("Quantidade de iterações: " + cont);
@@ -30,11 +33,10 @@ public class Sistema {
             System.out.println(pilha);
         } catch (FileNotFoundException fnfe) {
             throw new FileNotFoundException(
-                    "Não conseguimos encontrar seu arquivo, favor reiniciar o sistema e tentar novamente.");
+                    "Não conseguimos encontrar seu arquivo (" + fileName
+                            + "), favor reiniciar o sistema e tentar novamente.");
         }
     }
-
-    static final String ERROR_MSG = "Não há valores disponíveis para realizar a operação.";
 
     void newOperation(String next) throws NullPointerException {
         NumeroComplexo a;
@@ -62,7 +64,7 @@ public class Sistema {
                 case "/":
                     a = pop();
                     b = pop();
-                    add(CalculadoraComplexo.divisao(b, a), "/");
+                    add(CalculadoraComplexo.divisao(a, b), "/");
                     break;
 
                 case "inv":
@@ -95,6 +97,10 @@ public class Sistema {
 
                 case "swap":
                     swap();
+                    break;
+
+                case "":
+                case " ":
                     break;
 
                 default:
@@ -143,6 +149,6 @@ public class Sistema {
             add(aux1, "swap");
             add(aux2, "swap");
         } else
-            System.out.println(ERROR_MSG);
+            System.out.println("Não há valores disponíveis para realizar a operação swap().");
     }
 }
