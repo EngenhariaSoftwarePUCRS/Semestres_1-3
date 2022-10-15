@@ -32,9 +32,9 @@ public class Stack<T> {
     }
 
     // public class EmptyStackException extends RuntimeException {
-    //     public EmptyStackException(String message) {
-    //         super(message);
-    //     }
+    // public EmptyStackException(String message) {
+    // super(message);
+    // }
     // }
 
     public String toString() {
