@@ -11,14 +11,13 @@ public class Sistema {
 
     public void inicializar(String fileName) throws FileNotFoundException, NullPointerException {
         try {
-            File calculos = new File(fileName);
-            Scanner reader = new Scanner(calculos);
+            Scanner reader = new Scanner(new File(fileName));
             String next;
             while (reader.hasNext()) {
                 next = reader.nextLine();
+                System.out.println("\nnewOperation(" + next + ")");
                 newOperation(next);
-                System.out.println(next);
-                System.out.println(pilha);
+                System.out.println("Pilha: " + pilha);
                 cont++;
                 // Linhas 454-457
                 // if (pilha.top().getParteReal() == 0 && pilha.top().getParteImaginaria() == 0)
@@ -27,14 +26,15 @@ public class Sistema {
                 // System.out.println("bugo na próxima");
             }
             reader.close();
-            System.out.println("Quantidade de iterações: " + cont);
-            System.out.println("Tamanho da pilha: " + pilha.size());
-            System.out.println("Topo da pilha: " + pilha.top());
-            System.out.println(pilha);
         } catch (FileNotFoundException fnfe) {
             throw new FileNotFoundException(
                     "Não conseguimos encontrar seu arquivo (" + fileName
                             + "), favor reiniciar o sistema e tentar novamente.");
+        } finally {
+            System.out.println("\n\t===== RESULTADOS =====");
+            System.out.println("Quantidade de iterações: " + cont);
+            System.out.println("Tamanho da pilha: " + pilha.size());
+            System.out.println("Topo da pilha: " + pilha.top());
         }
     }
 

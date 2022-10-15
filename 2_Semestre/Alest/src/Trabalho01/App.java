@@ -17,7 +17,7 @@ public class App {
         } catch (Exception e) {
             System.out.println(e);
         } finally {
-            System.out.println("Obrigado por utilizar o programa!");
+            System.out.println("\nObrigado por utilizar o programa!");
         }
     }
 }
