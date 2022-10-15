@@ -377,10 +377,10 @@ public class ListSimpleLinked<T> implements ListTAD<T> {
 
 	public String toString() {
 		Node aux = refHead;
-		String res = "| ";
+		String res = "\n";
 
 		while (aux != null) {
-			res = res + aux.getElem().toString() + " | ";
+			res = res + "| " + aux.getElem().toString() + " |\n";
 			aux = aux.getNext();
 		}
 
