@@ -1,4 +1,4 @@
-package Trabalho01;
+package Trabalho01.util;
 
 /*********
  * Interface para o T.A.D. Lista.

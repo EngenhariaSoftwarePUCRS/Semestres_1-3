@@ -1,4 +1,4 @@
-package Trabalho01;
+package Trabalho01.util;
 
 import java.util.EmptyStackException;
 
