@@ -10,3 +10,4 @@ chs
 1 2
 conj
 *
+quit

@@ -1,23 +1,24 @@
 package Trabalho01;
 
-import java.io.FileNotFoundException;
-import java.util.EmptyStackException;
+import java.io.File;
 
 public class App {
     public static void main(String[] args) {
-        try {
+        String[] files = new String[11];
+        files[0] = "calculos";
+        for (int i = 1; i < 9; i++) {
+            files[i] = "caso" + i;
+        }
+        for (int i = 9; i < files.length; i++) {
+            files[i] = "teste" + (i - 8);
+        }
+        for (int i = 0; i < files.length; i++) {
+            files[i] = "Trabalho01\\casosTeste\\" + files[i] + ".txt";
+        }
+        for (String file : files) {
+            System.out.println(file);
             Sistema sys = new Sistema();
-            sys.inicializar("Trabalho01\\casosTeste\\teste2.txt");
-        } catch (FileNotFoundException fnfe) {
-            System.out.println(fnfe.getMessage());
-        } catch (NullPointerException npe) {
-            System.out.println(npe.getMessage());
-        } catch (EmptyStackException ese) {
-            System.out.println("Pilha Vazia");
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            System.out.println("\nObrigado por utilizar o programa!");
+            sys.main(new File(file));
         }
     }
 }
