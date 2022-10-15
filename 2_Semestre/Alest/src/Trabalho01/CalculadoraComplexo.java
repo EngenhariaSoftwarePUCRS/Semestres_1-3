@@ -23,8 +23,7 @@ public abstract class CalculadoraComplexo {
 
 	static NumeroComplexo divisao(NumeroComplexo a, NumeroComplexo b) {
 		double denominador = (quadrado(b.getParteReal()) + quadrado(b.getParteImaginaria()));
-		if (denominador == 0)
-			return null;
+		handleDenominadorZero(denominador);
 		double numeradorReal = ((a.getParteReal() * b.getParteReal())
 				+ (a.getParteImaginaria() * b.getParteImaginaria()));
 		double numeradorImaginario = ((b.getParteReal() * a.getParteImaginaria())
@@ -37,8 +36,7 @@ public abstract class CalculadoraComplexo {
 	static NumeroComplexo inverso(NumeroComplexo n) {
 		NumeroComplexo novo = new NumeroComplexo(n);
 		double denominador = quadrado(novo.getParteReal()) + quadrado(novo.getParteImaginaria());
-		if (denominador == 0)
-			return null;
+		handleDenominadorZero(denominador);
 		double parteReal = novo.getParteReal() / denominador;
 		double parteImaginaria = -novo.getParteImaginaria() / denominador;
 		novo.setParteReal(parteReal);
@@ -69,5 +67,10 @@ public abstract class CalculadoraComplexo {
 
 	private static double raiz(double x) {
 		return Math.sqrt(x);
+	}
+
+	private static void handleDenominadorZero(double denominador) {
+		if (denominador == 0)
+			throw new ArithmeticException("Não é possível dividir por zero.");
 	}
 }
