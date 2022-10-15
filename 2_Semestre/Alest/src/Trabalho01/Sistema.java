@@ -15,28 +15,30 @@ public class Sistema {
             String next;
             while (reader.hasNext()) {
                 next = reader.nextLine();
-                System.out.println(pilha);
                 newOperation(next);
                 // Linhas 454-457
                 if (pilha.top().getParteReal() == 0 && pilha.top().getParteImaginaria() == 0)
                     System.out.println("Número zerado");
-                if (cont == 455)
+                if (cont == 453)
                     System.out.println("bugo na próxima");
                 cont++;
             }
             reader.close();
-            System.out.println("Quantidade de iterações: "+cont);
-            System.out.println("Tamanho da pilha: "+pilha.size());
-            System.out.println("Topo da pilha: "+pilha.top());
+            System.out.println("Quantidade de iterações: " + cont);
+            System.out.println("Tamanho da pilha: " + pilha.size());
+            System.out.println("Topo da pilha: " + pilha.top());
+            System.out.println(pilha);
         } catch (FileNotFoundException fnfe) {
-            throw new FileNotFoundException("Não conseguimos encontrar seu arquivo, favor reiniciar o sistema e tentar novamente.");
+            throw new FileNotFoundException(
+                    "Não conseguimos encontrar seu arquivo, favor reiniciar o sistema e tentar novamente.");
         }
     }
 
     static final String ERROR_MSG = "Não há valores disponíveis para realizar a operação.";
 
     void newOperation(String next) throws NullPointerException {
-        NumeroComplexo a, b;
+        NumeroComplexo a;
+        NumeroComplexo b;
         if (!stackNumbers(next))
             switch (next) {
                 case "+":
@@ -105,7 +107,8 @@ public class Sistema {
         if (n != null)
             pilha.push(n);
         else
-            throw new NullPointerException("Não é possível adicionar valores nulos, favor reinicar o sistema e rever valores. at: " + msg);
+            throw new NullPointerException(
+                    "Não é possível adicionar valores nulos, favor reinicar o sistema e rever valores. at: " + msg);
     }
 
     boolean stackNumbers(String next) {
