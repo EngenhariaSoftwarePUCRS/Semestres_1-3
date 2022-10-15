@@ -19,7 +19,7 @@ public class NumeroComplexo {
     }
 
     public void setParteReal(double parteReal) {
-        this.parteReal = parteReal;
+        this.parteReal = parteReal == -0 ? 0 : parteReal;
     }
 
     public double getParteImaginaria() {
@@ -27,7 +27,7 @@ public class NumeroComplexo {
     }
 
     public void setParteImaginaria(double parteImaginaria) {
-        this.parteImaginaria = parteImaginaria;
+        this.parteImaginaria = parteImaginaria == -0 ? 0 : parteImaginaria;
     }
 
     public String parteRealToString() {
