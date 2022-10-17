@@ -20,8 +20,12 @@ public class Sistema {
     public void inicializar() {
         File file = getFile();
         main(file);
-        if (repetir())
+        if (repetir()) {
+            cont = 0;
+            pilha = new Stack<>();
+            maior = new NumeroComplexo();
             inicializar();
+        }
     }
 
     private File getFile() {
@@ -45,13 +49,13 @@ public class Sistema {
         try (Scanner reader = new Scanner(file)) {
             while (reader.hasNext()) {
                 next = reader.nextLine();
+                cont++;
 
                 System.out.println("\nnewOperation(" + next + ")");
                 if ("quit".equalsIgnoreCase(next))
                     break;
 
                 newOperation(next);
-                cont++;
 
                 if (!pilha.isEmpty()) {
                     System.out.print("Pilha: " + pilha);
@@ -75,8 +79,8 @@ public class Sistema {
             System.out.println("Unknown exception: " + e);
         } finally {
             System.out.println("\n\t===== RESULTADOS =====");
-            System.out.println("|= Maior número encontrado: " + maior);
             System.out.println("|= Quantidade de iterações: " + cont);
+            System.out.println("|= Maior número encontrado: " + maior);
             System.out.println("|= Tamanho da pilha: " + size());
             System.out.println("|= Topo da pilha: " + top());
             System.out.println("\nObrigado por utilizar o programa!\n");
