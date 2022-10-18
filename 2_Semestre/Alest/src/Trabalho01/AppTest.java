@@ -1,25 +1,25 @@
 package Trabalho01;
 
 import java.io.File;
+import java.util.Date;
 
 public class AppTest {
     public static void main(String[] args) {
-        String[] files = new String[11];
-        files[0] = "calculos";
-        for (int i = 1; i < 9; i++) {
-            files[i] = "caso" + i;
+        File[] files = new File("Trabalho01\\casosTeste").listFiles();
+        Sistema sys = new Sistema();
+        Date beginning, end;
+        beginning = new Date();
+        for (File file : files) {
+            System.out.println(file);
+            sys.main(file);
         }
-        for (int i = 9; i < files.length; i++) {
-            files[i] = "teste" + (i - 8);
-        }
-        for (int i = 0; i < files.length; i++) {
-            files[i] = "src\\casosTeste\\" + files[i] + ".txt";
-        }
-        // for (String file : files) {
-        //     System.out.println(file);
-        //     Sistema sys = new Sistema();
-        //     sys.main(new File(file));
-        // }
-        new Sistema().main(new File(files[4]));
+        end = new Date();
+        long tempoDecorrido = (end.getTime() - beginning.getTime()) / 1000;
+        long minutosDecorridos = tempoDecorrido / 60;
+        long horasDecorridas = tempoDecorrido / 3600;
+        System.out.println("Tempo decorrido: ");
+        System.out.print(horasDecorridas > 0 ? ((tempoDecorrido / 3600) + "h ") : " ");
+        System.out.print(minutosDecorridos > 0 ? ((tempoDecorrido / 60) + "m ") : " ");
+        System.out.print(" " + (tempoDecorrido % 60) + "s");
     }
 }
