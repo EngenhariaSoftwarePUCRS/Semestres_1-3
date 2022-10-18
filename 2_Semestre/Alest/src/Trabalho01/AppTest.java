@@ -1,5 +1,3 @@
-package Trabalho01;
-
 import java.io.File;
 
 public class AppTest {
@@ -13,12 +11,13 @@ public class AppTest {
             files[i] = "teste" + (i - 8);
         }
         for (int i = 0; i < files.length; i++) {
-            files[i] = "Trabalho01\\casosTeste\\" + files[i] + ".txt";
+            files[i] = "src\\casosTeste\\" + files[i] + ".txt";
         }
-        for (String file : files) {
-            System.out.println(file);
-            Sistema sys = new Sistema();
-            sys.main(new File(file));
-        }
+        // for (String file : files) {
+        //     System.out.println(file);
+        //     Sistema sys = new Sistema();
+        //     sys.main(new File(file));
+        // }
+        new Sistema().main(new File(files[4]));
     }
 }

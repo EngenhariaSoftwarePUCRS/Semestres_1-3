@@ -561,7 +561,6 @@ conj
 abs
 conj
 +
-/
 abs
 swap
 75352 63178
@@ -1114,7 +1113,6 @@ swap
 dup
 -
 conj
-inv
 -
 dup
 chs
@@ -1198,7 +1196,6 @@ dup
 -
 swap
 inv
-/
 inv
 25737 55560
 conj
@@ -1556,7 +1553,6 @@ dup
 /
 76890 20388
 swap
-inv
 43287 61017
 49853 67790
 swap
@@ -2091,11 +2087,9 @@ pop
 abs
 *
 swap
-/
 swap
 chs
 63066 79009
-/
 conj
 chs
 34998 93476
@@ -2727,7 +2721,6 @@ conj
 /
 pop
 chs
-inv
 *
 abs
 chs
@@ -2750,8 +2743,6 @@ swap
 /
 abs
 inv
-/
-/
 pop
 dup
 60702 93667
@@ -2775,7 +2766,6 @@ abs
 conj
 dup
 -
-inv
 39283 50114
 chs
 19726 53625

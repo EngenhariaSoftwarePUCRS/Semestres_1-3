@@ -1,29 +1,32 @@
-package Trabalho01;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.EmptyStackException;
 import java.util.Scanner;
 
-import Trabalho01.util.Stack;
+import util.Stack;
 
 public class Sistema {
     private Stack<NumeroComplexo> pilha;
-    private NumeroComplexo maior;
+    private NumeroComplexo smallestNumber;
+    private NumeroComplexo biggestNumber;
+    private int biggestSize;
     private int cont;
 
     public Sistema() {
         pilha = new Stack<>();
-        maior = new NumeroComplexo();
+        smallestNumber = new NumeroComplexo();
+        biggestNumber = new NumeroComplexo();
     }
 
     public void inicializar() {
         File file = getFile();
         main(file);
         if (repetir()) {
-            cont = 0;
             pilha = new Stack<>();
-            maior = new NumeroComplexo();
+            smallestNumber = new NumeroComplexo();
+            biggestNumber = new NumeroComplexo();
+            biggestSize = 0;
+            cont = 0;
             inicializar();
         }
     }
@@ -60,8 +63,14 @@ public class Sistema {
                 if (!pilha.isEmpty()) {
                     System.out.print("Pilha: " + pilha);
 
-                    if (maior.compareTo(top()) < 0)
-                        maior = top();
+                    if (biggestNumber.compareTo(top()) < 0)
+                        biggestNumber = top();
+
+                    if (smallestNumber.compareTo(top()) > 0)
+                        smallestNumber = top();
+
+                    if (size() > biggestSize)
+                        biggestSize = size();
 
                 } else
                     System.out.println("Pilha vazia");
@@ -79,19 +88,25 @@ public class Sistema {
             System.out.println("Unknown exception: " + e);
         } finally {
             System.out.println("\n\t===== RESULTADOS =====");
-            System.out.println("|= Quantidade de iterações: " + cont);
-            System.out.println("|= Maior número encontrado: " + maior);
-            System.out.println("|= Tamanho da pilha: " + size());
+            System.out.println("|= Tamanho máximo da pilha: " + biggestSize);
+            System.out.println("|= Tamanho final da pilha: " + size());
             System.out.println("|= Topo da pilha: " + top());
+            System.out.println("\t=== EXTRAS ===");
+            System.out.println("|= Quantidade de iterações: " + cont);
+            System.out.println("|= Menor número encontrado: " + smallestNumber);
+            System.out.println("|= Maior número encontrado: " + biggestNumber);
             System.out.println("\nObrigado por utilizar o programa!\n");
         }
     }
 
     private boolean repetir() {
         Scanner input = new Scanner(System.in);
+        String repetir;
 
-        System.out.print("\nDeseja executar novamente? (s/N): ");
-        String repetir = input.nextLine();
+        do {
+            System.out.print("\nDeseja executar novamente? (s/N): ");
+            repetir = input.nextLine();
+        } while (!(repetir.equalsIgnoreCase("s")) && !(repetir.equalsIgnoreCase("N")));
 
         return "s".equalsIgnoreCase(repetir);
     }

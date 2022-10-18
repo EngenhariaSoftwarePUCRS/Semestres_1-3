@@ -2109,24 +2109,19 @@ conj
 +
 dup
 -
-inv
 *
-inv
 swap
-/
 swap
 11921 72510
 inv
 *
 49797 61931
 8052 13562
-pop
-/
+pop=
 73060 86504
 /
 inv
 -
-/
 dup
 dup
 22004 29531
@@ -2347,7 +2342,6 @@ pop
 *
 -
 *
-inv
 32632 51228
 *
 chs
@@ -2438,7 +2432,6 @@ dup
 -
 abs
 chs
-inv
 12126 22412
 dup
 abs
