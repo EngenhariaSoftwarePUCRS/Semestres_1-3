@@ -2928,7 +2928,6 @@ inv
 87725 55090
 dup
 -
-inv
 conj
 20757 6777
 51422 58771
@@ -2992,7 +2991,6 @@ chs
 inv
 dup
 -
-inv
 24204 56902
 dup
 *
@@ -3285,7 +3283,6 @@ conj
 dup
 -
 11874 64777
-/
 17773 96877
 4269 75297
 swap
@@ -3653,15 +3650,11 @@ dup
 dup
 -
 /
-inv
 dup
 80692 21913
 +
 swap
 swap
-/
-/
-inv
 +
 conj
 +
@@ -3957,7 +3950,6 @@ inv
 conj
 -
 pop
-inv
 pop
 chs
 swap
@@ -3997,5 +3989,4 @@ pop
 dup
 17068 28253
 pop
-print
 quit

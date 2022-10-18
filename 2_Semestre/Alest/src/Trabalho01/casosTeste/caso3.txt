@@ -2991,5 +2991,4 @@ swap
 -
 dup
 chs
-print
 quit

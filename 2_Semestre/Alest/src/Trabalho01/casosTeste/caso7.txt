@@ -123,7 +123,6 @@ abs
 +
 26798 34675
 +
-/
 70508 1273
 8411 11261
 *
@@ -259,7 +258,6 @@ abs
 dup
 /
 abs
-/
 inv
 52300 81405
 swap
@@ -2086,26 +2084,21 @@ dup
 -
 /
 swap
-/
 dup
 -
 dup
 swap
-/
 swap
 dup
 conj
 84042 90703
 *
-inv
 chs
-inv
 52656 42484
 +
 pop
 abs
 -
-inv
 -
 conj
 /
@@ -2604,14 +2597,11 @@ chs
 abs
 pop
 /
-inv
 chs
 dup
 +
 87220 38889
-/
 *
-inv
 dup
 conj
 +
@@ -2661,7 +2651,6 @@ swap
 -
 *
 chs
-inv
 -
 swap
 /
@@ -2707,7 +2696,6 @@ pop
 93123 40063
 *
 abs
-/
 50637 20146
 +
 abs
@@ -4430,9 +4418,7 @@ swap
 /
 -
 -
-/
 *
-inv
 pop
 conj
 +
@@ -5006,7 +4992,6 @@ swap
 dup
 -
 *
-inv
 abs
 chs
 dup
@@ -5015,9 +5000,6 @@ conj
 pop
 +
 14141 96999
-/
-/
-/
 inv
 +
 35019 16896
@@ -5341,7 +5323,6 @@ chs
 dup
 -
 19822 61136
-/
 *
 -
 dup
@@ -5846,9 +5827,7 @@ dup
 *
 /
 5145 9804
-/
 swap
-inv
 /
 conj
 conj
@@ -6045,7 +6024,6 @@ chs
 +
 conj
 chs
-inv
 pop
 *
 inv
@@ -6149,7 +6127,6 @@ dup
 -
 abs
 3701 34000
-/
 dup
 chs
 /
@@ -6487,7 +6464,6 @@ dup
 dup
 chs
 conj
-inv
 pop
 78168 72621
 11382 4223
@@ -6625,7 +6601,6 @@ dup
 dup
 -
 *
-inv
 /
 pop
 dup
@@ -7013,5 +6988,4 @@ chs
 40022 25146
 inv
 chs
-print
 quit
