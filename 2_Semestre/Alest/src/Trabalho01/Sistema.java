@@ -1,9 +1,11 @@
+package Trabalho01;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.EmptyStackException;
 import java.util.Scanner;
 
-import util.Stack;
+import Trabalho01.util.Stack;
 
 public class Sistema {
     private Stack<NumeroComplexo> pilha;
