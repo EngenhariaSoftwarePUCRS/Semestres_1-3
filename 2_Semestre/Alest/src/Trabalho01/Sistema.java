@@ -8,6 +8,8 @@ import java.util.Scanner;
 import Trabalho01.util.Stack;
 
 public class Sistema {
+    final static String ROOT_FILE_PATH = "src\\casosTeste\\";
+
     private Stack<NumeroComplexo> pilha;
     private NumeroComplexo smallestNumber;
     private NumeroComplexo biggestNumber;
@@ -21,6 +23,10 @@ public class Sistema {
     }
 
     public void inicializar() {
+        System.out.println("Arquivos disponíveis para leitura: ");
+        for (File file : new File(ROOT_FILE_PATH).listFiles()) {
+            System.out.println("\t" + file.getName());
+        }
         File file = getFile();
         main(file);
         if (repetir()) {
@@ -39,9 +45,9 @@ public class Sistema {
         Scanner input = new Scanner(System.in);
 
         do {
-            System.out.print("\nDigite o local/nome.txt do arquivo que deseja ler: ");
+            System.out.print("\nDigite o nome.txt do arquivo que deseja ler: ");
             filePath = input.nextLine();
-            file = new File(filePath);
+            file = new File(ROOT_FILE_PATH + filePath);
             if (!file.exists())
                 System.out.println("Não foi possível encontrar seu arquivo( " + file + " ).\nTente novamente\n");
         } while (!file.exists());
@@ -56,15 +62,12 @@ public class Sistema {
                 next = reader.nextLine();
                 cont++;
 
-                System.out.println("\nnewOperation(" + next + ")");
                 if ("quit".equalsIgnoreCase(next))
                     break;
 
                 newOperation(next);
 
                 if (!pilha.isEmpty()) {
-                    System.out.print("Pilha: " + pilha);
-
                     if (biggestNumber.compareTo(top()) < 0)
                         biggestNumber = top();
 
@@ -73,18 +76,18 @@ public class Sistema {
 
                     if (size() > biggestSize)
                         biggestSize = size();
-
-                } else
-                    System.out.println("Pilha vazia");
+                }
             }
         } catch (FileNotFoundException fnfe) {
             System.out.println("Erro na leitura de arquivo.\nFavor reiniciar o programa.");
         } catch (NullPointerException npe) {
+            System.out.println("Pilha: " + pilha);
             System.out.println(
                     "Não é possível adicionar valores nulos, favor reinicar o sistema e rever valores. at: " + next);
         } catch (EmptyStackException ese) {
             System.out.println("Pilha Vazia");
         } catch (ArithmeticException ae) {
+            System.out.println("Pilha: " + pilha);
             System.out.println(ae.getMessage());
         } catch (Exception e) {
             System.out.println("Unknown exception: " + e);
@@ -185,6 +188,10 @@ public class Sistema {
                     swap();
                     break;
 
+                case "print":
+                    print();
+                    break;
+
                 case "":
                 case " ":
                     break;
@@ -237,8 +244,17 @@ public class Sistema {
             System.out.println("Não há valores disponíveis para realizar a operação swap().");
     }
 
+    private void print() {
+        if (size() > 0)
+            System.out.print("Pilha: " + pilha);
+        else
+            System.out.println("Pilha vazia");
+    }
+
     private NumeroComplexo top() {
-        return pilha.top();
+        if (pilha.size() > 0)
+            return pilha.top();
+        return null;
     }
 
     private int size() {
