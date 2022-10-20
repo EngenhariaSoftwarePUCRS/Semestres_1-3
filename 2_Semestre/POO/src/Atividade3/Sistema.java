@@ -35,7 +35,6 @@ public class Sistema {
     }
 
     void renumber(File file) throws IOException {
-        ArrayList<String> lineNumbers = getLineNumbers(file);
         String[] lines = getLines(file);
         File novo = new File(file.getName().split("\\.")[0].concat("-rn.").concat(file.getName().split("\\.")[1]));
         FileWriter fw = new FileWriter(novo);
@@ -43,12 +42,11 @@ public class Sistema {
         String newLine;
 
         for (int i = lines.length; i > 0; i--) {
-            String velha = lineNumbers.get(lineNumbers.size() - 1);
+            String velha = lines[i - 1].split(" ")[0];
             String nova = Integer.toString(i * 10);
-            lineNumbers.remove(lineNumbers.size() - 1);
             for (int j = 0; j < lines.length; j++) {
                 oldLine = lines[j];
-                newLine = oldLine.replaceAll(velha, nova);
+                newLine = replaceAll(oldLine, velha, nova);
                 lines[j] = newLine;
             }
         }
@@ -57,14 +55,17 @@ public class Sistema {
         fw.close();
     }
 
-    private ArrayList<String> getLineNumbers(File file) throws IOException {
-        Scanner reader = new Scanner(file);
-        ArrayList<String> lineNumbers = new ArrayList<>();
+    private String replaceAll(String oldLine, String velha, String nova) {
+        String[] palavras = oldLine.split(" ");
+        String newLine = "";
 
-        while (reader.hasNext())
-            lineNumbers.add(reader.nextLine().split(" ")[0]);
-
-        return lineNumbers;
+        for (int i = 0; i < palavras.length; i++) {
+            if (palavras[i].equals(velha))
+                palavras[i] = nova;
+            newLine += palavras[i] + " ";
+        }
+        
+        return newLine.trim();
     }
 
     private int getLineAmount(File file) throws IOException {
