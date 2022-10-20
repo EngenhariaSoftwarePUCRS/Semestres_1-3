@@ -11,6 +11,7 @@ public class Sistema {
     public void inicializar() {
         try {
             renumber(getFile());
+            System.out.println("Arquivo salvo com sucesso!");
         } catch (FileNotFoundException fnfe) {
             System.out.println(fnfe);
         } catch (IOException ioe) {
