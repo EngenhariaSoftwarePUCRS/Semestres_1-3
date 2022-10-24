@@ -1,5 +1,3 @@
-package Trabalho01;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
-import Trabalho01.util.Timer;
+import util.Timer;
 
 public class AppTest {
     static final String ROOT_FILE_PATH = "src\\casosTeste\\";

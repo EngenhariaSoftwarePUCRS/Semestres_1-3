@@ -1,4 +1,4 @@
-package Trabalho01.util;
+package util;
 
 public class ListSimpleLinked<T> implements ListTAD<T> {
 
