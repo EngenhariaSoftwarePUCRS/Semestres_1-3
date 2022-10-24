@@ -1,3 +1,5 @@
+package Trabalho01;
+
 public class NumeroComplexo implements Comparable<NumeroComplexo> {
     private double parteReal;
     private double parteImaginaria;

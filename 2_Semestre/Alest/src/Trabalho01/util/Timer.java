@@ -1,4 +1,4 @@
-package util;
+package Trabalho01.util;
 
 import java.util.Date;
 

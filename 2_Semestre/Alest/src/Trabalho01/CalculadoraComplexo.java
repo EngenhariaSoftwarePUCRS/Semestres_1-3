@@ -1,3 +1,5 @@
+package Trabalho01;
+
 public abstract class CalculadoraComplexo {
 	public static NumeroComplexo soma(NumeroComplexo a, NumeroComplexo b) {
 		double somaParteReal = a.getParteReal() + b.getParteReal();

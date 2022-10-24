@@ -1,9 +1,11 @@
+package Trabalho01;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.EmptyStackException;
 import java.util.Scanner;
 
-import util.Stack;
+import Trabalho01.util.Stack;
 
 public class Sistema {
     final static String ROOT_FILE_PATH = "src\\casosTeste\\";
