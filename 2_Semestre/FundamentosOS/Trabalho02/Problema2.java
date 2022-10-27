@@ -8,9 +8,10 @@ sua solucao.
  */
 public class Problema2 {
     public static void main(String[] args) {
-        int[] sequence = {5, 2, -2, -7, 3, 14, 10, -3, 9, -6, 4, 1};
-        int[] segmento = {4, 8};
-        System.out.println("Soma: " + soma(sequence, segmento));
+        int[] sequence = { 5, 2, -1, -7, 3, 14, 10, -3, 9, -6, 4, 1 };
+        int[] segmento = { 3, 7 };
+        int soma = soma(sequence, segmento);
+        System.out.println("Soma: " + soma);
     }
 
     static int soma(int[] sequence, int[] segment) {
