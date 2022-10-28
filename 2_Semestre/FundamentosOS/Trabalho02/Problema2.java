@@ -6,10 +6,11 @@ Por exemplo, para a sequencia de valores 5, 2, -2, -7, 3, 14, 10, -3, 9, -6, 4,
 e 33. Utilize dois vetores de numeros na demonstracao do funcionamento da
 sua solucao.
  */
+
 public class Problema2 {
     public static void main(String[] args) {
-        int[] sequence = { 5, 2, -1, -7, 3, 14, 10, -3, 9, -6, 4, 1 };
-        int[] segmento = { 3, 7 };
+        int[] sequence = { 5, 2, -2, -7, 3, 14, 10, -3, 9, -6, 4, 1 };
+        int[] segmento = { 4, 8 };
         int soma = soma(sequence, segmento);
         System.out.println("Soma: " + soma);
     }
