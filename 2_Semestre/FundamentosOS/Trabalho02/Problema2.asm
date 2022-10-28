@@ -83,12 +83,30 @@ laco_soma
 	; repeat }
 	bnz r4,laco_soma
 
-print
+atr_msg
+    ; r5 -> mensagem[0]
+    ldi r5,mensagem
+
+print_str
+    ; r4 = mensagem[i]
+    ldb r4,r5
+
+    ; print(r4)
+    stw r4,0xf000
+
+    ; r5 -> mensagem[i+1] (goToNextChar)
+    add r5,1
+
+    ; repeat while there are words
+    bnz r4,print_str
+
+print_number
 	stw r1,0xf002
 	hcf
 
 sequencia 5 2 -2 -7 3 14 10 -3 9 -6 4 1
 segmento 4 8
+mensagem "Soma: "
 
 ; --- ENUNCIADO ---
 ;
