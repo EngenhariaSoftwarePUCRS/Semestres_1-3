@@ -3,12 +3,27 @@ main
     ldi r2,vet
 
 loop
+    ldc r3,0
     ldw r3,r2
     add r3,42
+    ldw r2,r3
     add r2,2
-    slt r4,r5,r1
     sub r1,1
     bnz r1,loop
+
+pre_print
+    ldi r3,32
+    ldi r5,vet
+    ldw r6,vetsz
+
+print
+    ldw r4,r5
+    stw r4,0xf002
+    stw r3,0xf000
+    add r5,2
+    sub r6,1
+    bez r6,end
+    bnz r7,print
 
 end
     hcf
