@@ -75,8 +75,10 @@ print_rep
     ; r4 -> &mensagem + 1 (próximo byte)
     add r4,1
 
-    ; if (r5
+    ; se r5 não for caractere, goTo(final)
     bez r5,final
+
+    ; enquanto r5 for caractere, repete o laço
     bnz r5,print_rep
 
 final
@@ -88,7 +90,7 @@ final
     
     hcf
 
-frase "Teste com 4 palavras"
+frase "Teste de 4 palavras"
 mensagem "\nTotal de palavras:\t"
 
 ; --- ENUNCIADO ---
