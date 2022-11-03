@@ -1,74 +1,95 @@
 main
-    ; r3 = " "
-    ldi r3,32
+    ; r2 = totalPalavras(começa em 0)
+    ldr r2,0
+
+    ; r5 -> &frase
+    ldi r5,frase
+
+    ; salva r5 na pilha
+    sub sp,2
+    stw r5,sp
+
+    ; r6 -> &count
+    ldi r6,count
 
 rep
-    ; r4 -> frase[0]
-    ldi r4,frase
+    ; pega r5 da pilha
+    ldw r5,sp
+    add sp,2
 
-    ; r4 -> frase[1]
-    add r4,r4,1
+    ; r4 = r5[i] (primeiro byte da frase)
+    ldb r4,r5
 
-    ; r4 = frase[1]
-    ldb r4,r4
-
-    ; print(r4)
+    ; se não tiverem mais caracteres por ler, goTo(final)
+    bez r4,print_final
+    
+    ; printa o byte em r4
     stw r4,0xf000
 
-    ; r1++
-    add r1,1
+    ; r5 -> &mensagem + 1 (próximo byte)
+    add r5,1
 
-    ; (r5 = r4)
-    xor r5,r3,r4
+    ; salva r5 na pilha
+    sub sp,2
+    stw r5,sp
 
-    ; se r4 não for caracter, goTo(cont)
-    bez r5,cont
+    ; r3 = 33 (primeiro caracter depois do " " na tabela ASCII)
+    ldr r3,33
+    
+    ; r3 = r4 < r3 ? 1 : 0
+    slt r3,r4,r3
 
-    ; se r4 for um caracter, goTo(rep)
-    bnz r4,rep
+    ; se r4 for um espaço, goTo(count)
+    bnz r3,r6
 
-    ; totalPalavras++;
-    add r2,1
+    ; r3 = 126 (último caracter considerado como letra no exercício)
+    ldr r3,126
 
-    ; goTo(fim)
-    bnz r7,fim
+    ; r3 = r4 < r3 ? 1 : 0
+    slt r3,r4,r3
 
-cont
-    ; totalPalavras++;
-    add r2,1
-
-    ; goTo(rep)
+    ; se r4 não for uma letra, goTo(count)
+    bez r3,r6
+    
+    ; repete o laço
     bnz r7,rep
 
-fim
-    ; r1 = 0
-    ldi r1,0
+count
+    ; totalPalavras++
+    add r2,1
 
-fim_rep
-    ; r4 -> str[0]
-    ldi r4,str
+    ; volta para o laço de repetição
+    bnz r7,rep
 
-    ; r4 -> str[1]
-    add r4,r4,1
+print_final
+    ; r4 -> &mensagem
+    ldi r4,mensagem
 
-    ; r4 = str[1]
-    ldb r4,r4
+print_rep
+    ; r5 = r4[0] (primeiro byte da mensagem)
+    ldb r5,r4
 
-    ; print(r4)
-    stw r4,0xf000
+    ; print(r5)
+    stw r5,0xf000
 
-    ; r1++
-    add r1,1
+    ; r4 -> &mensagem + 1 (próximo byte)
+    add r4,1
 
-    ; enquanto tiver palavras, volta
-    bnz r4,fim_rep
+    ; if (r5
+    bez r5,final
+    bnz r5,print_rep
 
-print
+final
+    ; totalPalavras++
+    add r2,1
+
+    ; print(totalPalavras)
     stw r2,0xf002
-    hcf
     
-frase "teste isso e um teste com 8 palavras"
-str  "\nTotal de palavras: "
+    hcf
+
+frase "Teste com 4 palavras"
+mensagem "\nTotal de palavras:\t"
 
 ; --- ENUNCIADO ---
 ;
