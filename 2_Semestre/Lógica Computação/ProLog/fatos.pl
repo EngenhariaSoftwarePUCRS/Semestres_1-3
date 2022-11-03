@@ -148,7 +148,7 @@ pai(steffon,stannis).
 pai(steffon,renly).
 pai(robert,joffrey).
 pai(robert,myrcella).
-pai(robert,tommen.)
+pai(robert,tommen).
 pai(stannis,shireen).
 
 pai(maekarI,maesterAemon).
@@ -177,3 +177,34 @@ pai(hoster,edmure).
 pai(hoster,catelyn).
 
 pai(jon,robin).
+
+
+mae(elia,raenys).
+mae(elia,aegon).
+
+mae(olena,mace).
+
+mae(joanna,jaime).
+mae(joanna,cersei).
+mae(joanna,tyrion).
+mae(cersei,joffrey).
+mae(cersei,myrcella).
+mae(cersei,tommen).
+
+mae(rhaelle,steffon).
+
+mae(lyanna, jonSnow).
+
+mae(catelyn,robb).
+mae(catelyn,sansa).
+mae(catelyn,arya).
+mae(catelyn,brandon).
+mae(catelyn,rickon).
+
+mae(lysa,robin).
+
+
+irmao(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y.
+irmao(X,Y) :- mae(Z,X), mae(Z,Y), X\=Y.
+descendente(X,Y) :- pai(X,Y); mae(X,Y).
+descendente(X,Y) :- descendente(X,Z), (pai(Z,Y); mae(Z,Y)).
