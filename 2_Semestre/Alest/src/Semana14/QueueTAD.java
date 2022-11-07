@@ -1,4 +1,4 @@
-package br.pucrs.adt;
+package Semana14;
 
 public interface QueueTAD<T extends Comparable<T>> {
 	  public void enqueue(T d);

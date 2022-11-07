@@ -1,8 +1,10 @@
-package br.pucrs.adt;
+package Semana14;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import Semana10.Fila.QueueTAD.EmptyQueueException;
 
 public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTAD<E>
 {
@@ -131,7 +133,7 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 
 	public E getRoot() {
 		if(isEmpty())
-			throw new EmptyTreeException();
+			throw new EmptyQueueException("");
 		return refRoot.getItem();
 	}
 
@@ -193,7 +195,7 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 
 	public void setRoot(E element) {
 		if(isEmpty())
-			throw new EmptyTreeException();
+			throw new EmptyQueueException("");
 		refRoot.setItem(element);
 	}
 

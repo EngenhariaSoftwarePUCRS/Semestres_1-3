@@ -1,4 +1,4 @@
-package br.pucrs.adt;
+package Semana14;
 
 public class EmptyQueueException extends RuntimeException {
 
