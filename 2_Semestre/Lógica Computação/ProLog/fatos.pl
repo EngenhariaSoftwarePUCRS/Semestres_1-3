@@ -1,3 +1,4 @@
+%Questão 1
 casa(doran,martell).
 casa(oberyn,martell).
 casa(elia,martell).
@@ -206,5 +207,35 @@ mae(lysa,robin).
 
 irmao(X,Y) :- pai(Z,X), pai(Z,Y), X\=Y.
 irmao(X,Y) :- mae(Z,X), mae(Z,Y), X\=Y.
+
+
 descendente(X,Y) :- pai(X,Y); mae(X,Y).
 descendente(X,Y) :- descendente(X,Z), (pai(Z,Y); mae(Z,Y)).
+
+
+casados(rhaegar,elia).
+casados(renly,margaery).
+casados(joffrey,margaery).
+casados(tommen,margaery).
+casados(robb,talisa).
+casados(edmure,roslinFrey).
+casados(littleFinger,lysa).
+
+casados(X,Y) :- (((pai(X,Z), mae(Y,Z));(pai(Y,Z), mae(X,Z))), X\=Y).
+
+
+casas_relacionadas(X,Y) :- casa(A,X), casa(B,Y), (casados(A,B); casados(B,A)).
+
+
+%Questão 2
+vazio([]).
+
+pertence(_, []) :- vazio([1]).
+pertence(X, [X|_]).
+pertence(X, [_|T]) :- pertence(X, T).
+
+somatorio([],0).
+somatorio([H|T],Soma) :- somatorio(T,Soma_Tail), Soma is H + Soma_Tail.
+
+%(d) indice(X,Y,I): Retorna verdadeiro caso o elemento Y pertença a lista X e I seja a posição do elemento I na lista.
+%(e) reverso(X,Y): Retorna verdadeiro caso X e Y sejam listas e Y tenha os elementos em ordem inversa de X. Exemplo X = [0, 1, 2], Y = [2, 1, 0]
