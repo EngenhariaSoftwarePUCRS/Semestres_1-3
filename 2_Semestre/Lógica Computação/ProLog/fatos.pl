@@ -227,6 +227,7 @@ casados(X,Y) :- (((pai(X,Z), mae(Y,Z));(pai(Y,Z), mae(X,Z))), X\=Y).
 casas_relacionadas(X,Y) :- casa(A,X), casa(B,Y), (casados(A,B); casados(B,A)).
 
 
+
 %Questão 2
 vazio([]).
 
@@ -237,5 +238,9 @@ pertence(X, [_|T]) :- pertence(X, T).
 somatorio([],0).
 somatorio([H|T],Soma) :- somatorio(T,Soma_Tail), Soma is H + Soma_Tail.
 
-%(d) indice(X,Y,I): Retorna verdadeiro caso o elemento Y pertença a lista X e I seja a posição do elemento I na lista.
-%(e) reverso(X,Y): Retorna verdadeiro caso X e Y sejam listas e Y tenha os elementos em ordem inversa de X. Exemplo X = [0, 1, 2], Y = [2, 1, 0]
+
+indice([H|_],H,0).
+indice(X,Y,I) :- X = [_|T], indice(T,Y,Z), I is Z + 1.
+
+
+reverso(X,Y) :- reverse(X,Z), Y = Z.
