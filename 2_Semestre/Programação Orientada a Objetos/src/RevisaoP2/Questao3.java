@@ -29,12 +29,37 @@ public class Questao3 {
         return false;
     }
 
+    // Versão 1 - Felipe
+    // public static boolean ehSinonimo(String palavra, String sinonimo) {
+    // for (String key : dicSinonimos.keySet()) {
+    // if (key.equalsIgnoreCase(palavra)) {
+    // for (String sin : dicSinonimos.get(key)) {
+    // if (sin.equalsIgnoreCase(sinonimo)) {
+    // return true;
+    // }
+    // }
+    // }
+    // }
+    // return false;
+    // }
+
     // Versão 1 - Luiza
     // public static boolean ehSinonimo(String palavra, String sinonimo) {
     // // = valor da chave palavra (que é uma lista de string)
     // List<String> listaVelhaEFedida = dicSinonimos.get(palavra);
     // for (int i = 0; i < listaVelhaEFedida.size(); i++) {
     // if (listaVelhaEFedida.get(i).equals(sinonimo)) {
+    // return true;
+    // }
+    // }
+    // return false;
+    // }
+
+    // Versão 2 - Luiza
+    // public static boolean ehSinonimo(String palavra, String sinonimo) {
+    // List<String> listaV = dicSinonimos.get(palavra);
+    // for (int i = 0; i < listaV.size(); i++) {
+    // if (listaV.get(i).equals(sinonimo)) {
     // return true;
     // }
     // }
