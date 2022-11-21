@@ -1,0 +1,19 @@
+5 2
+-2 2
+2 -3
+-4 -5
+3 8
++
+-
+*
+/
+inv
+chs
+abs
+dup
+pop
+5 2
+swap
+
+print
+quit

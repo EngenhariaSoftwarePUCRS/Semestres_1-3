@@ -1,0 +1,6 @@
+Identificador, Peso Maximo, Quantidade Vagoes
+1, 2500, 50
+2, 2500, 50
+3, 2500, 50
+4, 2500, 50
+5, 2500, 50

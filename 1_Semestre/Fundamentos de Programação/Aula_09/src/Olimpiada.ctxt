@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Olimpiada
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-comment2.params=notas
-comment2.target=double[]\ quatroMaiores(double[])
-comment3.params=notas
-comment3.target=double\ media(double[])
-numComments=4
