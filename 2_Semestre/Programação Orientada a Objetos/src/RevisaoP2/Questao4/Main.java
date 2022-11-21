@@ -1,30 +1,35 @@
 package RevisaoP2.Questao4;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
+import Aula22.Material_Apoio.CadastroFuncionarios;
 
 public class Main {
     public static void main(String[] args) {
-        List<Funcionario> lstf = new ArrayList<Funcionario>();
-        int[] matriculas = { new Random().nextInt(1000), new Random().nextInt(1000), new Random().nextInt(1000),
-                new Random().nextInt(1000), new Random().nextInt(1000) };
-        String[] nomes = { "Felipe", "Luiza", "Murilo", "Lucca", "Gabriel" };
-        double[] salariosBase = { new Random().nextInt(10000), new Random().nextInt(10000), new Random().nextInt(10000),
-                new Random().nextInt(10000), new Random().nextInt(10000) };
-        int[] nroDependentes = { new Random().nextInt(10), new Random().nextInt(10), new Random().nextInt(10),
-                new Random().nextInt(10), new Random().nextInt(10) };
-        boolean[] insalubridades = { new Random().nextBoolean(), new Random().nextBoolean(), new Random().nextBoolean(),
-                new Random().nextBoolean(), new Random().nextBoolean() };
-        for (int i = 0; i < 5; i++) {
-            lstf.add(new Funcionario(matriculas[i], nomes[i], salariosBase[i], nroDependentes[i], insalubridades[i]));
-        }
-        CadastroFuncionarios cf = new CadastroFuncionarios(lstf);
+        CadastroFuncionarios cf = new CadastroFuncionarios();
         System.out.println(cf);
-        System.out.println("Quantidade de Funcionários com Dependentes: " + cf.quantidadeFuncionariosComDependentes());
-        System.out.println("Nome e Matricula de quem tem o salario bruto maior do que o base: ");
-        for (int i = 0; i < cf.getNomeMatriculaSalarioBrutoMaiorQueBase().size(); i++) {
-            System.out.println(cf.getNomeMatriculaSalarioBrutoMaiorQueBase().get(i));
-        }
+
+        System.out.println("a. Quantidade de funcionários que tem dependentes");
+        System.out.println(cf.quantidadeFuncionariosComDependentes());
+
+        System.out.println(
+                "b. Lista de strings com nome e a matricula de todos os funcionários cujo salário bruto é mais de 10% maior que o salário base");
+        System.out.println(cf.getNomeMatriculaSalarioBrutoMaiorQueBase());
+
+        // Estudo Genérico
+        // Canil canil = new Canil();
+        // System.out.println(canil);
+
+        // System.out.println("a. Todos os cachorros com mais de 4 anos.");
+        // for (int i = 0; i < canil.getAllOlderThan(4).size(); i++) {
+        // System.out.println(canil.getAllOlderThan(4).get(i));
+        // }
+
+        // System.out.println("b. Quantidade de cachorros com mais de 15kg.");
+        // System.out.println(canil.getAmountHeavierThan(15));
+
+        // System.out.println("c. Cor do mais novo.");
+        // System.out.println(canil.getCorFromOldest(2));
+
+        // System.out.println("c. A média do peso dos cachorros com menos de 32kg.");
+        // System.out.println(canil.getAvgWeightLighter(32));
     }
 }
