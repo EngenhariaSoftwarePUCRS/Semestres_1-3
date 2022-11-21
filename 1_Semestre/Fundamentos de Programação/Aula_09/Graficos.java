@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class Graficos {
@@ -23,10 +24,10 @@ public class Graficos {
 			ponto2[1] = input.nextDouble();
 			
 			distancia = Math.sqrt(Math.pow((ponto1[0] - ponto2[0]), 2) + Math.pow((ponto1[1] - ponto2[1]), 2));
-			System.out.println("Distância: "+distancia);
+			System.out.println("Distï¿½ncia: "+distancia);
 			
 			inclinacao = (ponto2[1] - ponto1[1]) / (ponto2[0] - ponto1[0]);
-			System.out.println("Inclinação: "+inclinacao);
+			System.out.println("Inclinaï¿½ï¿½o: "+inclinacao);
 			
 		}
 	}

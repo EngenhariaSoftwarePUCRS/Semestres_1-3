@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class Imparidade {
@@ -9,7 +10,7 @@ public class Imparidade {
 			int qtdImpares = 0;
 			
 			for (int i = 0; i < 3; i++) {
-				System.out.print("Digite um número: ");
+				System.out.print("Digite um nï¿½mero: ");
 				numero[i] = input.nextInt();
 				
 				if (numero[i] % 2 != 0) {
@@ -18,11 +19,11 @@ public class Imparidade {
 			}
 			
 			if (qtdImpares < 1) {
-				System.out.println("Todos os valores são pares.");
+				System.out.println("Todos os valores sï¿½o pares.");
 			} else if (qtdImpares < 2) {
-				System.out.println("Havia "+qtdImpares+" valor ímpar.");
+				System.out.println("Havia "+qtdImpares+" valor ï¿½mpar.");
 			} else {
-				System.out.println("Haviam "+qtdImpares+" valores ímpares.");
+				System.out.println("Haviam "+qtdImpares+" valores ï¿½mpares.");
 			}
 			
 		}

@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class AreaLivreTerreno {
@@ -33,7 +34,7 @@ public class AreaLivreTerreno {
 			areaLivre[0] = areaTerreno - areaCasa;
 			areaLivre[1] = (areaTerreno - areaCasa) / areaTerreno * 100;
 			
-			System.out.println("Você possui "+areaLivre[0]+"m² livres de terreno.");
+			System.out.println("Vocï¿½ possui "+areaLivre[0]+"mï¿½ livres de terreno.");
 			System.out.println("Isso equivalhe a "+areaLivre[1]+"% do total do terreno.");
 			
 		}

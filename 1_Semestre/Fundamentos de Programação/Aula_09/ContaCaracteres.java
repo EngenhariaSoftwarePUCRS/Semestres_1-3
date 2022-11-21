@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class ContaCaracteres {

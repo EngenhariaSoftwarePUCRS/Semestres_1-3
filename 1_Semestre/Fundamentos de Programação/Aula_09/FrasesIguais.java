@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class FrasesIguais {
@@ -15,9 +16,9 @@ public class FrasesIguais {
 			boolean saoIguais = avaliaSemelhanca(s1, s2);
 			
 			if (saoIguais) {
-				System.out.println("Os conteúdos são iguais.");
+				System.out.println("Os conteï¿½dos sï¿½o iguais.");
 			} else {
-				System.out.println("Os conteúdos não são iguais.");
+				System.out.println("Os conteï¿½dos nï¿½o sï¿½o iguais.");
 			}
 		}
 	}

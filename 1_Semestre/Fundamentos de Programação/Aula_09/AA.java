@@ -1,4 +1,6 @@
+package Aula_09;
 import java.util.Scanner;
+
 public class AA {
 	public static void main(String[] args) {
 		try (Scanner input = new Scanner(System.in)) {
@@ -6,19 +8,19 @@ public class AA {
 			int qtdProvas, qtdTrabalhos;
 			double resultado;
 			
-			System.out.print("Quantas provas você tem: ");
+			System.out.print("Quantas provas vocï¿½ tem: ");
 			qtdProvas = input.nextInt();
 			provas = new double[qtdProvas];
 			for (int i = 1; i <= qtdProvas; i++) {
-				System.out.print("Digite a nota da "+i+"ª prova: ");
+				System.out.print("Digite a nota da "+i+"ï¿½ prova: ");
 				provas[i-1] = input.nextDouble();
 			}
 			
-			System.out.print("Quantos trabalhos você tem: ");
+			System.out.print("Quantos trabalhos vocï¿½ tem: ");
 			qtdTrabalhos = input.nextInt();
 			trabalhos = new double[qtdTrabalhos];
 			for (int i = 1; i <= qtdTrabalhos; i++) {
-				System.out.print("Digite a nota do "+i+"º trabalho: ");
+				System.out.print("Digite a nota do "+i+"ï¿½ trabalho: ");
 				trabalhos[i-1] = input.nextDouble();
 			}
 			

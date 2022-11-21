@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class Parquinho {
@@ -7,9 +8,9 @@ public class Parquinho {
 		try (Scanner input = new Scanner(System.in)) {
 			
 			System.out.println("\n/================================\\");
-			System.out.println("| Confira nossa tabela de preços: ");
+			System.out.println("| Confira nossa tabela de preï¿½os: ");
 			System.out.println("|");
-			System.out.println("| Até 7 anos: R$ 5 ");
+			System.out.println("| Atï¿½ 7 anos: R$ 5 ");
 			System.out.println("| 8-18 anos: R$ 10 ");
 			System.out.println("| 18-59 anos: R$ 12 ");
 			System.out.println("| +59 anos: R$ 8 ");
@@ -18,7 +19,7 @@ public class Parquinho {
 			System.out.print("Digite sua idade: ");
 			int idade = input.nextInt();
 			
-			System.out.println("Você precisa pagar: R$ "+valorIngresso(idade));
+			System.out.println("Vocï¿½ precisa pagar: R$ "+valorIngresso(idade));
 		}
 	}
 	
