@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class SegundosDecorridosDia {
@@ -19,7 +20,7 @@ public class SegundosDecorridosDia {
 			
 			segundosDia = horario[2] + horario[1]*60 + horario[0]*3600;
 			
-			System.out.println("Se passaram "+segundosDia+" segundos desde o começo do dia.");
+			System.out.println("Se passaram "+segundosDia+" segundos desde o comeï¿½o do dia.");
 			
 		}
 	}

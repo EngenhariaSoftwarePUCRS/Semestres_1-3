@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class MinCedulasBanco {
@@ -7,7 +8,7 @@ public class MinCedulasBanco {
 		try (Scanner input = new Scanner(System.in)) {
 			int saque;
 			
-			System.out.print("Quanto você quer sacar: ");
+			System.out.print("Quanto vocï¿½ quer sacar: ");
 			saque = input.nextInt();
 			
 			do {

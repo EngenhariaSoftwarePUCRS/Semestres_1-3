@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class PossuiA {
@@ -12,7 +13,7 @@ public class PossuiA {
 			if (possuiA(s1)) {
 				System.out.println("Essa string possui 'a'. ");
 			} else {
-				System.out.println("Essa string não possui 'a'. ");
+				System.out.println("Essa string nï¿½o possui 'a'. ");
 			}
 		}
 	}

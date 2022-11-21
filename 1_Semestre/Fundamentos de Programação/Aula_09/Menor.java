@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class Menor {
@@ -11,7 +12,7 @@ public class Menor {
 			System.out.print("Digite um primeiro valor: ");
 			double b = input.nextDouble();
 			
-			System.out.println("O menor valor digitado é: "+menor(a, b));
+			System.out.println("O menor valor digitado ï¿½: "+menor(a, b));
 		}
 	}
 	

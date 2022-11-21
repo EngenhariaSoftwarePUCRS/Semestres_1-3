@@ -1,3 +1,4 @@
+package Aula_09;
 import java.util.Scanner;
 
 public class Olimpiada {
@@ -8,7 +9,7 @@ public class Olimpiada {
             double[] notas = new double[6];
             
             for (int i = 0; i < 6; i++) {
-                System.out.print("Insira a nota nº "+(i+1)+": ");
+                System.out.print("Insira a nota nï¿½ "+(i+1)+": ");
                 notas[i] = input.nextDouble();
             }
             
@@ -16,7 +17,7 @@ public class Olimpiada {
                 System.out.println("Nota: "+notas[j]);
             }
             
-            System.out.println("A média final foi: "+/*media*/(quatroMaiores(notas)));
+            System.out.println("A mï¿½dia final foi: "+/*media*/(quatroMaiores(notas)));
         }
 
     }
