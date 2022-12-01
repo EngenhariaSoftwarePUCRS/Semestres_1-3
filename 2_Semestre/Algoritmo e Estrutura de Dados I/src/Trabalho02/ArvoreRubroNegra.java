@@ -1,130 +1,421 @@
 package Trabalho02;
 
-import java.util.List;
+import java.util.Random;
 
-public class ArvoreRubroNegra implements IArvoreRubroNegra {
-    private Node raiz;
+// Implementing Red-Black Tree in Java
 
-    private class Node {
-        private Node pai;
-        private int elemento;
-        private Node esq;
-        private Node dir;
-        private boolean red;
+class Node {
+    int data;
+    Node parent;
+    Node left;
+    Node right;
+    int color;
+}
 
-        public Node(int elemento, boolean red) {
-            this.pai = null;
-            this.elemento = elemento;
-            this.esq = null;
-            this.dir = null;
-            this.red = red;
-        }
+public class ArvoreRubroNegra {
+    private Node root;
+    private Node TNULL;
 
-        public Node getPai() {
-            return pai;
-        }
-
-        public void setPai(Node pai) {
-            this.pai = pai;
-        }
-
-        public int getElemento() {
-            return elemento;
-        }
-
-        public void setElemento(int elemento) {
-            this.elemento = elemento;
-        }
-
-        public Node getEsq() {
-            return esq;
-        }
-
-        public void setEsq(Node esq) {
-            this.esq = esq;
-        }
-
-        public Node getDir() {
-            return dir;
-        }
-
-        public void setDir(Node dir) {
-            this.dir = dir;
-        }
-
-        public boolean isRed() {
-            return red;
-        }
-
-        public void setRed(boolean red) {
-            this.red = red;
-        }
+    public Node getParent(Node n) {
+        return n.parent;
     }
 
-    @Override
-    public void add(int elemento) {
-        // TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public boolean contains(int elemento) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public int getParent(int elemento) {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
-    public int height() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override
     public boolean isBalanced() {
-        // TODO Auto-generated method stub
-        return false;
+        return true;
     }
 
-    @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return root == TNULL;
     }
 
-    @Override
-    public List<Integer> positionsCentral() {
-        // TODO Auto-generated method stub
-        return null;
+    // Pre Ordem
+    private void preOrderHelper(Node node) {
+        if (node != TNULL) {
+            System.out.print(node.data + " ");
+            preOrderHelper(node.left);
+            preOrderHelper(node.right);
+        }
     }
 
-    @Override
-    public List<Integer> positionsPos() {
-        // TODO Auto-generated method stub
-        return null;
+    // Ordem Central
+    private void inOrderHelper(Node node) {
+        if (node != TNULL) {
+            inOrderHelper(node.left);
+            System.out.print(node.data + " ");
+            inOrderHelper(node.right);
+        }
     }
 
-    @Override
-    public List<Integer> positionsPre() {
-        // TODO Auto-generated method stub
-        return null;
+    // Pos Ordem
+    private void postOrderHelper(Node node) {
+        if (node != TNULL) {
+            postOrderHelper(node.left);
+            postOrderHelper(node.right);
+            System.out.print(node.data + " ");
+        }
     }
 
-    @Override
-    public List<Integer> positionsWidth() {
-        // TODO Auto-generated method stub
-        return null;
+    // Search the tree
+    private Node contains(Node node, int key) {
+        if (node == TNULL || key == node.data) {
+            return node;
+        }
+
+        if (key < node.data) {
+            return contains(node.left, key);
+        }
+        return contains(node.right, key);
     }
 
-    @Override
-    public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+    // Balance the tree after deletion of a node
+    private void fixDelete(Node x) {
+        Node s;
+        while (x != root && x.color == 0) {
+            if (x == x.parent.left) {
+                s = x.parent.right;
+                if (s.color == 1) {
+                    s.color = 0;
+                    x.parent.color = 1;
+                    leftRotate(x.parent);
+                    s = x.parent.right;
+                }
+
+                if (s.left.color == 0 && s.right.color == 0) {
+                    s.color = 1;
+                    x = x.parent;
+                } else {
+                    if (s.right.color == 0) {
+                        s.left.color = 0;
+                        s.color = 1;
+                        rightRotate(s);
+                        s = x.parent.right;
+                    }
+
+                    s.color = x.parent.color;
+                    x.parent.color = 0;
+                    s.right.color = 0;
+                    leftRotate(x.parent);
+                    x = root;
+                }
+            } else {
+                s = x.parent.left;
+                if (s.color == 1) {
+                    s.color = 0;
+                    x.parent.color = 1;
+                    rightRotate(x.parent);
+                    s = x.parent.left;
+                }
+
+                if (s.right.color == 0 && s.right.color == 0) {
+                    s.color = 1;
+                    x = x.parent;
+                } else {
+                    if (s.left.color == 0) {
+                        s.right.color = 0;
+                        s.color = 1;
+                        leftRotate(s);
+                        s = x.parent.left;
+                    }
+
+                    s.color = x.parent.color;
+                    x.parent.color = 0;
+                    s.left.color = 0;
+                    rightRotate(x.parent);
+                    x = root;
+                }
+            }
+        }
+        x.color = 0;
     }
 
+    private void rbTransplant(Node u, Node v) {
+        if (u.parent == null) {
+            root = v;
+        } else if (u == u.parent.left) {
+            u.parent.left = v;
+        } else {
+            u.parent.right = v;
+        }
+        v.parent = u.parent;
+    }
+
+    private void deleteNodeHelper(Node node, int key) {
+        Node z = TNULL;
+        Node x, y;
+        while (node != TNULL) {
+            if (node.data == key) {
+                z = node;
+            }
+
+            if (node.data <= key) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+
+        if (z == TNULL) {
+            System.out.println("Couldn't find key in the tree");
+            return;
+        }
+
+        y = z;
+        int yOriginalColor = y.color;
+        if (z.left == TNULL) {
+            x = z.right;
+            rbTransplant(z, z.right);
+        } else if (z.right == TNULL) {
+            x = z.left;
+            rbTransplant(z, z.left);
+        } else {
+            y = minimum(z.right);
+            yOriginalColor = y.color;
+            x = y.right;
+            if (y.parent == z) {
+                x.parent = y;
+            } else {
+                rbTransplant(y, y.right);
+                y.right = z.right;
+                y.right.parent = y;
+            }
+
+            rbTransplant(z, y);
+            y.left = z.left;
+            y.left.parent = y;
+            y.color = z.color;
+        }
+        if (yOriginalColor == 0) {
+            fixDelete(x);
+        }
+    }
+
+    // Balance the node after insertion
+    private void fixInsert(Node k) {
+        Node u;
+        while (k.parent.color == 1) {
+            if (k.parent == k.parent.parent.right) {
+                u = k.parent.parent.left;
+                if (u.color == 1) {
+                    u.color = 0;
+                    k.parent.color = 0;
+                    k.parent.parent.color = 1;
+                    k = k.parent.parent;
+                } else {
+                    if (k == k.parent.left) {
+                        k = k.parent;
+                        rightRotate(k);
+                    }
+                    k.parent.color = 0;
+                    k.parent.parent.color = 1;
+                    leftRotate(k.parent.parent);
+                }
+            } else {
+                u = k.parent.parent.right;
+
+                if (u.color == 1) {
+                    u.color = 0;
+                    k.parent.color = 0;
+                    k.parent.parent.color = 1;
+                    k = k.parent.parent;
+                } else {
+                    if (k == k.parent.right) {
+                        k = k.parent;
+                        leftRotate(k);
+                    }
+                    k.parent.color = 0;
+                    k.parent.parent.color = 1;
+                    rightRotate(k.parent.parent);
+                }
+            }
+            if (k == root) {
+                break;
+            }
+        }
+        root.color = 0;
+    }
+
+    private void printHelper(Node root, String indent, boolean last) {
+        if (root != TNULL) {
+            System.out.print(indent);
+            if (last) {
+                System.out.print("R----");
+                indent += "   ";
+            } else {
+                System.out.print("L----");
+                indent += "|  ";
+            }
+
+            String sColor = root.color == 1 ? "RED" : "BLACK";
+            System.out.println(root.data + "(" + sColor + ")");
+            printHelper(root.left, indent, false);
+            printHelper(root.right, indent, true);
+        }
+    }
+
+    public ArvoreRubroNegra() {
+        TNULL = new Node();
+        TNULL.color = 0;
+        TNULL.left = null;
+        TNULL.right = null;
+        root = TNULL;
+    }
+
+    public void positionsPre() {
+        preOrderHelper(this.root);
+    }
+
+    public void positionsCenter() {
+        inOrderHelper(this.root);
+    }
+
+    public void positionsPos() {
+        postOrderHelper(this.root);
+    }
+
+    public Node searchTree(int k) {
+        return contains(this.root, k);
+    }
+
+    public Node minimum(Node node) {
+        while (node.left != TNULL) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    public Node maximum(Node node) {
+        while (node.right != TNULL) {
+            node = node.right;
+        }
+        return node;
+    }
+
+    public Node successor(Node x) {
+        if (x.right != TNULL) {
+            return minimum(x.right);
+        }
+
+        Node y = x.parent;
+        while (y != TNULL && x == y.right) {
+            x = y;
+            y = y.parent;
+        }
+        return y;
+    }
+
+    public Node predecessor(Node x) {
+        if (x.left != TNULL) {
+            return maximum(x.left);
+        }
+
+        Node y = x.parent;
+        while (y != TNULL && x == y.left) {
+            x = y;
+            y = y.parent;
+        }
+
+        return y;
+    }
+
+    public void leftRotate(Node x) {
+        Node y = x.right;
+        x.right = y.left;
+        if (y.left != TNULL) {
+            y.left.parent = x;
+        }
+        y.parent = x.parent;
+        if (x.parent == null) {
+            this.root = y;
+        } else if (x == x.parent.left) {
+            x.parent.left = y;
+        } else {
+            x.parent.right = y;
+        }
+        y.left = x;
+        x.parent = y;
+    }
+
+    public void rightRotate(Node x) {
+        Node y = x.left;
+        x.left = y.right;
+        if (y.right != TNULL) {
+            y.right.parent = x;
+        }
+        y.parent = x.parent;
+        if (x.parent == null) {
+            this.root = y;
+        } else if (x == x.parent.right) {
+            x.parent.right = y;
+        } else {
+            x.parent.left = y;
+        }
+        y.right = x;
+        x.parent = y;
+    }
+
+    public void add(int key) {
+        Node node = new Node();
+        node.parent = null;
+        node.data = key;
+        node.left = TNULL;
+        node.right = TNULL;
+        node.color = 1;
+
+        Node y = null;
+        Node x = this.root;
+
+        while (x != TNULL) {
+            y = x;
+            if (node.data < x.data) {
+                x = x.left;
+            } else {
+                x = x.right;
+            }
+        }
+
+        node.parent = y;
+        if (y == null) {
+            root = node;
+        } else if (node.data < y.data) {
+            y.left = node;
+        } else {
+            y.right = node;
+        }
+
+        if (node.parent == null) {
+            node.color = 0;
+            return;
+        }
+
+        if (node.parent.parent == null) {
+            return;
+        }
+
+        fixInsert(node);
+    }
+
+    public Node getRoot() {
+        return this.root;
+    }
+
+    public void deleteNode(int data) {
+        deleteNodeHelper(this.root, data);
+    }
+
+    public void printTree() {
+        printHelper(this.root, "", true);
+    }
+
+    public static void main(String[] args) {
+        ArvoreRubroNegra bst = new ArvoreRubroNegra();
+        final int ELEMENTOS = 100;
+        long inicio = System.nanoTime();
+
+        for (int i = 0; i < ELEMENTOS; i++)
+            bst.add(new Random().nextInt(99) + 1);
+
+        bst.printTree();
+        System.out.printf("Tempo decorrido para inserir %d elementos: %.5fns", ELEMENTOS,
+                (double) (System.nanoTime() - inicio));
+    }
 }
