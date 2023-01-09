@@ -1,6 +1,6 @@
 # Other
-*/.vscode/settings.json
-*/bin
+**/.vscode
+**/bin
 
 # Compiled class file
 *.class
