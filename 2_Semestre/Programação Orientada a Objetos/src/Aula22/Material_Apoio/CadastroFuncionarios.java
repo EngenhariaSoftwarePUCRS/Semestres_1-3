@@ -25,7 +25,7 @@ public class CadastroFuncionarios {
             lstf.add(f);
         }
 
-        lstf.add(new Funcionario(180,"Zezinho Especial",5000,3,false));
+        lstf.add(new Funcionario(180, "Zezinho Especial", 5000, 3, false));
     }
 
     public List<Funcionario> getFuncionarios() {
@@ -34,48 +34,73 @@ public class CadastroFuncionarios {
     }
 
     // 1a
-    public List<Funcionario> getInsalubridadeDependentes(){
-        return new ArrayList<Funcionario>();
+    public List<Funcionario> getInsalubridadeDependentes() {
+        return lstf.stream()
+                .filter(f -> f.getInsalubridade())
+                .filter(f -> f.getNroDependentes() > 0)
+                .toList();
     }
 
     // 1b
-    public long quantidadeFuncionariosComDependentes(){
-        return 0;
+    public long quantidadeFuncionariosComDependentes() {
+        return lstf.stream()
+                .filter(f -> f.getNroDependentes() > 0)
+                .count();
     }
 
-    //1c
-    public double somatorioSalarioBruto(){
-        return 0;
+    // 1c
+    public double somatorioSalarioBruto() {
+        return lstf.stream()
+                .filter(f -> f.getSalarioBruto() > 5000)
+                .mapToDouble(f -> f.getSalarioBruto())
+                .sum();
     }
 
-    //1d
-    public void aumentaSalarioInsalubres(){
+    // 1d
+    public void aumentaSalarioInsalubres() {
+        lstf.stream()
+                .filter(f -> f.getInsalubridade())
+                .forEach(f -> f.aumentaSalBase(1.2));
     }
 
-    //1e
-    public List<String> getNomeMatriculaSalarioBrutoMaiorQueBase(){
-        return new ArrayList<String>();
+    // 1e
+    public List<String> getNomeMatriculaSalarioBrutoMaiorQueBase() {
+        return lstf.stream()
+                .filter(f -> f.getSalarioBruto() > f.getSalarioBase() * 1.1)
+                .map(f -> f.getNome() + " - " + f.getMatricula())
+                .toList();
     }
 
-    //1f
-    public double mediaSalarialDosQueNaoTemInsalubridade(){
-        return 0;
+    // 1f
+    public double mediaSalarialDosQueNaoTemInsalubridade() {
+        return lstf.stream()
+                .filter(f -> !f.getInsalubridade())
+                .mapToDouble(f -> f.getSalarioLiquido())
+                .average()
+                .orElse(0);
     }
 
-    //1g
-    public List<String> nomesDosQueTemMatriculaMenorQue500(){
-        return new ArrayList<String>();
+    // 1g
+    public List<String> nomesDosQueTemMatriculaMenorQue500() {
+        return lstf.stream()
+                .filter(f -> f.getMatricula() < 500)
+                .map(f -> f.getNome())
+                .toList();
     }
 
-    //1h
-    public double getSalarioLiquido(int matricula){
-        return 0;
+    // 1h
+    public double getSalarioLiquido(int matricula) {
+        return lstf.stream()
+                .filter(f -> f.getMatricula() == matricula)
+                .mapToDouble(f -> f.getSalarioLiquido())
+                .findFirst()
+                .orElse(-1);
     }
-    
+
     @Override
     public String toString() {
         final StringBuilder str = new StringBuilder();
-        lstf.forEach(f->str.append(f.toString()+"\n"));
+        lstf.forEach(f -> str.append(f.toString() + "\n"));
         return str.toString();
     }
 }
