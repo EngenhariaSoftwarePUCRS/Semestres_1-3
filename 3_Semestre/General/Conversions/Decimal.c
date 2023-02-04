@@ -1,30 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int MathPow(int base, int exponent) {
-    int result = 1;
-
-    while (exponent > 0) {
-        result *= base;
-        exponent--;
-    }
-
-    return result;
-}
-
 int getBinaryFromDecimal(int number) {
     int result = 0;
-    int power = 0;
+    int power = 1;
 
     while (number > 0) {
-        // If the last digit is not zero (1), then add 2 to its power to the sum
-        if (number % 10)
-            result += MathPow(2, power);
-        number /= 10;
-        power++;
+        result += number % 2 * power;
+        number /= 2;
+        power *= 10;
     }
 
-    return result;
+   return result;
 }
 
 int main() {
