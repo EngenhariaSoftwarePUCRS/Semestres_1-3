@@ -26,7 +26,7 @@ int getValueFromBinary(int number) {
     int power = 0;
 
     while (number > 0) {
-        // If the digit is not zero (1), then add 2 to its power and add it
+        // If the last digit is not zero (1), then add 2 to its power to the sum
         if (number % 10)
             result += MathPow(2, power);
         number /= 10;
@@ -37,17 +37,17 @@ int getValueFromBinary(int number) {
 }
 
 int main() {
-    int a;
+    int number;
 
-    printf("\nType the value of a: ");
-    scanf("%d", &a);
+    printf("\nType the number you wish to convert: ");
+    scanf("%d", &number);
 
-    if (!isBinary(a)) {
+    if (!isBinary(number)) {
         printf("\nInvalid Non Binary number inserted");
         exit(0);
     }
 
-    printf("\nBinary (%d) is equal to decimal (%d) ", a, getValueFromBinary(a));
+    printf("\nBinary (%d) is equal to decimal (%d) ", number, getValueFromBinary(number));
 
     return 0;
 }
