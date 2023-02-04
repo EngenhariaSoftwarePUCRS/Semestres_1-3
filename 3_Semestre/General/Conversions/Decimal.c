@@ -3,12 +3,12 @@
 
 int getBinaryFromDecimal(int number) {
     int result = 0;
-    int power = 1;
+    int i = 1;
 
-    while (number > 0) {
-        result += number % 2 * power;
+    while (number != 0) {
+        result += number % 2 * i;
         number /= 2;
-        power *= 10;
+        i *= 10;
     }
 
    return result;
