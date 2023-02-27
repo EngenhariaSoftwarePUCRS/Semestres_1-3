@@ -7,3 +7,36 @@
         1 5 10 10 5 1
         3
 */
+
+int main()
+{
+    int i, j;
+    int n = 12;
+    int pascal[12][12];
+
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j <= i; j++)
+        {
+            if (j == 0 || j == i)
+            {
+                pascal[i][j] = 1;
+            }
+            else
+            {
+                pascal[i][j] = pascal[i - 1][j - 1] + pascal[i - 1][j];
+            }
+        }
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j <= i; j++)
+        {
+            printf("%d ", pascal[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}

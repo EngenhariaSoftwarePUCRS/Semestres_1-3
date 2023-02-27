@@ -4,4 +4,27 @@
         (a) Suponha que as bactérias vivem apenas cinco dias. Neste caso, as bactérias que morrem devem ser descontadas do total.
 
         (b) Faça seu programa se adaptar às unidades de peso: de acordo com a quantidade de lixo consumida as unidades devem ser escritas em microgramas (10−6 g), miligramas (10−3 g), gramas, quilogramas ou toneladas, usando a maior unidade onde o peso seja maior do que um. Por exemplo, se for preciso imprimir 0.0037 gramas, você deve escolher 3.7 miligramas, e não 3700 microgramas.
+
+        TODO: Review
 */
+
+int main()
+{
+    int i;
+    int bact = 5;
+    float lixo = 0.00000000001;
+    float lixoTotal = 0.00000000001;
+
+    printf("Dia\tBactérias\tLixo\tLixo Total\n");
+    printf("1\t%d\t\t%f\t%f\n", bact, lixo, lixoTotal);
+
+    for (i = 2; i <= 60; i++)
+    {
+        bact = bact * 2;
+        lixo = lixo * 2;
+        lixoTotal = lixoTotal + lixo;
+        printf("%d\t%d\t\t%f\t%f\n", i, bact, lixo, lixoTotal);
+    }
+
+    return 0;
+}
