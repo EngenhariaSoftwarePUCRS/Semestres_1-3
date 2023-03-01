@@ -1,5 +1,5 @@
 /*
-    Seus colegas da Biologia criaram uma bactéria que come lixo, consumindo cerca de metade de seu peso em lixo todos os dias. (Para facilitar, vamos supor que uma bactéria pesa cerca de 10−11 gramas). Seus colegas tem apenas cinco dessas bactérias, mas elas se dividem em duas todos os dias. A partir daí, escreva um programa que imprime uma tabela a partir do primeiro dia, quando existem apenas cinco bactérias, até dois meses depois (você terá de usar inteiros longos ou números de ponto flutuante para isso). A tabela deve listar o número do dia, quantas bactérias existem até o momento e quanto lixo elas  naquele dia. Depois de fazer isso, adapte seu programa para estas situações:
+    Seus colegas da Biologia criaram uma bactéria que come lixo, consumindo cerca de metade de seu peso em lixo todos os dias. (Para facilitar, vamos supor que uma bactéria pesa cerca de 10e−11 gramas). Seus colegas tem apenas cinco dessas bactérias, mas elas se dividem em duas todos os dias. A partir daí, escreva um programa que imprime uma tabela a partir do primeiro dia, quando existem apenas cinco bactérias, até dois meses depois (você terá de usar inteiros longos ou números de ponto flutuante para isso). A tabela deve listar o número do dia, quantas bactérias existem até o momento e quanto lixo elas comeram naquele dia. Depois de fazer isso, adapte seu programa para estas situações:
 
         (a) Suponha que as bactérias vivem apenas cinco dias. Neste caso, as bactérias que morrem devem ser descontadas do total.
 
@@ -8,23 +8,141 @@
         TODO: Review
 */
 
-int main()
+#include <math.h>
+#include <stdio.h>
+
+void printHeading()
 {
-    int i;
-    int bact = 5;
-    float lixo = 0.00000000001;
-    float lixoTotal = 0.00000000001;
+    printf("Dia\t\tBactérias\t\t\t\tLixo\n");
+}
 
-    printf("Dia\tBactérias\tLixo\tLixo Total\n");
-    printf("1\t%d\t\t%f\t%f\n", bact, lixo, lixoTotal);
+void printLine(int day, int bacteriasAmount, float waste)
+{
+    printf("%d\t\t%d\t\t\t\t%f\n", day, bacteriasAmount, waste);
+}
 
-    for (i = 2; i <= 60; i++)
+void printLineWithUnit(int day, int bacteriasAmount, float waste, char *unit)
+{
+    printf("%d\t\t%d\t\t\t\t%f%s\n", day, bacteriasAmount, waste, unit);
+}
+
+float getConvertedValue(float value)
+{
+    if (value >= 1000000000)
     {
-        bact = bact * 2;
-        lixo = lixo * 2;
-        lixoTotal = lixoTotal + lixo;
-        printf("%d\t%d\t\t%f\t%f\n", i, bact, lixo, lixoTotal);
+        return value /= 1000000000;
     }
 
+    if (value >= 1000000)
+    {
+        return value /= 1000000;
+    }
+
+    if (value >= 1000)
+    {
+        return value /= 1000;
+    }
+
+    if (value >= 1)
+    {
+        return value /= 1;
+    }
+
+    return value *= 1000000;
+}
+char getConvertedUnit(float value)
+{
+    if (value >= 1000000000)
+    {
+        return 'T';
+    }
+
+    if (value >= 1000000)
+    {
+        return 'M';
+    }
+
+    if (value >= 1000)
+    {
+        return 'K';
+    }
+
+    if (value >= 1)
+    {
+        return 'G';
+    }
+
+    return 'U';
+}
+
+int main()
+{
+    printf("\n\n========================================\n");
+    printf("\t\tSituação Inicial:\n\n");
+    long long int bacteriasAmount = 5;
+    int day;
+    float BACTERIA_WEIGHT = 0.00000000001;
+    float waste;
+
+    printHeading();
+    for (day = 1; day <= 60; day++)
+    {
+        printLine(day, bacteriasAmount, waste);
+        bacteriasAmount = pow(2, day) * 5;
+        waste += BACTERIA_WEIGHT / 2;
+    }
+
+    printf("\n\n========================================\n");
+    printf("\t\tSituação a:\n\n");
+    a();
+
+    printf("\n\n========================================\n");
+    printf("\t\tSituação b:\n\n");
+    b();
+
     return 0;
+}
+
+void a()
+{
+    // long int bacteriasAmount = 5;
+    // int bacteriasAmountDayPrior = 0;
+    // int bacteriasAmountDayCurrent = bacteriasAmount;
+    // int deadBacteriasOverall = 0;
+    // float BACTERIA_WEIGHT = 0.00000000001;
+    // int day;
+    // float waste;
+
+    // printHeading();
+    // printLine(day, bacteriasAmount, waste);
+    // for (day = 1; day <= 60; day++)
+    // {
+    //     bacteriasAmountDayPrior = bacteriasAmountDayCurrent;
+    //     bacteriasAmountDayCurrent = bacteriasAmount;
+    //     bacteriasAmount *= 2;
+    //     deadBacteriasOverall = bacteriasAmountDayPrior - bacteriasAmountDayCurrent;
+    //     bacteriasAmount -= deadBacteriasOverall;
+    //     waste += BACTERIA_WEIGHT / 2;
+    //     printLine(day, bacteriasAmount, waste);
+    // }
+}
+
+void b()
+{
+    // long int bacteriasAmount = 5;
+    // int day = 1;
+    // float BACTERIA_WEIGHT = 0.00000000001;
+    // float waste;
+
+    // printHeading();
+    // printLine(day, bacteriasAmount, waste);
+    // for (day = 1; day <= 60; day++)
+    // {
+    //     bacteriasAmount *= 2;
+    //     waste += BACTERIA_WEIGHT / 2;
+    //     float visualWaste = getConvertedValue(waste);
+    //     char unit = getConvertedUnit(waste);
+
+    //     printLineWithUnit(day, bacteriasAmount, visualWaste, unit);
+    // }
 }
