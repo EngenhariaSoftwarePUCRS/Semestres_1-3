@@ -5,14 +5,15 @@
         1 3 3 1
         1 4 6 4 1
         1 5 10 10 5 1
-        3
 */
+
+#include <stdio.h>
 
 int main()
 {
     int i, j;
-    int n = 12;
-    int pascal[12][12];
+    int n = 5;
+    int pascal[5][5];
 
     for (i = 0; i < n; i++)
     {
