@@ -2,6 +2,8 @@
     Crie outra função similar à função do programa do exercício 3 para determinar também quantos segundos ainda faltam até o dia terminar.
 */
 
+#include <stdio.h>
+
 int segundosRestantes(int horas, int minutos, int segundos)
 {
     return 86400 - (horas * 3600 + minutos * 60 + segundos);

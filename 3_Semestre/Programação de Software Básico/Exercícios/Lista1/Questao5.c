@@ -4,6 +4,8 @@
     À medida que o processo é repetido, os novos valores de k se aproximam cada vez mais da raiz de N. Escreva um programa que leia o valor de N e imprima os primeiros doze valores obtidos com esta fórmula, testando-os para ver se eles realmente se aproximam.
 */
 
+#include <stdio.h>
+
 int main()
 {
     int N = 0;

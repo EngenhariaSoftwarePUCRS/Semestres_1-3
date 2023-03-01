@@ -2,6 +2,8 @@
     Escreva uma função que recebe um horário (horas, minutos, segundos) e determina quantos segundos já se passaram desde que o dia começou.
 */
 
+#include <stdio.h>
+
 int segundosDecorridos(int horas, int minutos, int segundos)
 {
     return horas * 3600 + minutos * 60 + segundos;
