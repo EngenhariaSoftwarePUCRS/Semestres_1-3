@@ -1,3 +1,5 @@
+package Aula_04.Calculadora;
+
 public class Calculadora {
     // 4- Escreva um programa que calcula a soma dos dez primeiros números
     // positivos, 1 + 2 + ... + 10
