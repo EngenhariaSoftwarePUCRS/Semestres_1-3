@@ -1,0 +1,70 @@
+explorer .
+mkdir felipeC
+cd felipeC
+ls
+cd felipeC
+oi
+yes
+ls ..
+ls .. -a
+history
+pwd
+ls /home
+ls /home/
+ls /home/git
+ls -a /home/git
+ls /
+ls -a /
+ls -a /bin
+ls /etc
+ls -a /etc/nginx
+ls -a /etc/nginx/sites-enabled
+ls /share
+ls /usr/share
+ls -a /usr/share/pixmaps
+ls /dev
+pwd
+ls
+ls /
+history
+ls -l ../frontend
+man
+man man
+man ls
+man nginx
+cd
+cd /felipeC
+cd felipeC
+ls /dev
+ls /dev/mem
+ls -a /dev/mem
+file ../frontend/
+file ../frontend/dev/index.html 
+file ../backend/dev/index.ts
+ls -a ../frontend/dev/index.html 
+ls -a /temp
+cp ../frontend/dev/index.html /temp
+ls -a /temp
+ls -a /temp/
+cd /temp
+ls
+ls -a /
+nano /temp
+rm /temp
+nano /temp
+man rm
+cd ..
+mv felipeC felipeCrenamed
+ls
+mv felipeCrenamed/ felipeC
+ls
+ls felipeC/
+cd felipeC/
+cat .
+cat ../frontend/dev/index.html 
+less ../frontend/dev/index.html 
+ls -a /usr/include
+cd
+cd felipeC/
+ls -ll ../frontend/dev/
+history
