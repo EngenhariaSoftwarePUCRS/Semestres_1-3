@@ -1,42 +1,35 @@
-/*4.Escreva um programa que lê um conjunto de números em ponto flutuante e imprime:
-    A média dos valores
-    O menor valor.
-    O maior valor.
-    A diferença entre o maior e o menor número digitado.*/
-
 import java.util.Scanner;
 public class Ex4
 {
-    public static void main() {
-        double numeroLido, menorValor, maiorValor, qtdValores = 0, soma, media;
-        Scanner input = new Scanner(System.in);
-        
-        System.out.print("Digite valores: ");
-        numeroLido = input.nextDouble();
-        menorValor = numeroLido;
-        maiorValor = numeroLido;
-        soma = numeroLido;
-        qtdValores++;
-        
-        while (input.hasNextDouble()) {
-            System.out.print("Digite um valor: ");
-            numeroLido = input.nextDouble();
+    public static void main(String args[])
+    {
+        double valor, soma, maior, menor;
+        int continua = 0, qtdNumeros = 1;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Digite um valor");
+        menor = in.nextDouble();
+        maior = menor;
+        soma = menor;
+        do {            
+            System.out.println("Digite um valor");
+            valor = in.nextDouble();
             
-            if (numeroLido > maiorValor) {
-                maiorValor = numeroLido;
+            soma = soma + valor;
+            qtdNumeros++;
+            if (valor > maior) {
+                maior = valor;
             }
-            if (numeroLido < menorValor) {
-                menorValor = numeroLido;
+            if (valor < menor) {
+                menor = valor;
             }
-            soma += numeroLido;
-            qtdValores++;
-        }
-        
-        media = soma / qtdValores;
-        
-        System.out.println("Média valores: "+media);
-        System.out.println("Menor valor: "+menorValor);
-        System.out.println("Maior valor: "+maiorValor);
-        System.out.println("Diferença: "+(maiorValor - menorValor));
+
+            System.out.println("Deseja finalizar o programa? \n 0 - Não \n 1 - Sim");
+            continua = in.nextInt();
+        } while(continua != 1);
+
+        System.out.println("A média dos valores é:" + soma/qtdNumeros);
+        System.out.println("O menor valor é:" + menor);
+        System.out.println("O maior valor é:" + maior);
+        System.out.println("A diferença entre o maior e menor é:" + (maior - menor));
     }
 }
