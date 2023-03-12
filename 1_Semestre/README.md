@@ -2,7 +2,7 @@
 
 ### Disciplinas Cursadas
 
--   [Cálculo I](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Calculo_I/README.md)
+-   [Cálculo I](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Calculo_I)
 -   [Formação do Empreendedor](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Formacao_do_Empreendedor)
 -   [Fundamentos de Programação (em Java)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Fundamentos_de_Programacao)
 -   [Introdução a Computação](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Introducao_a_Engenharia_de_Software)
