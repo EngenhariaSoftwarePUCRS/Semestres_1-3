@@ -1,13 +1,14 @@
 package Semana06;
-public class Main {
+
+public class Sortings {
     public static void main(String[] args) {
         Sorts s = new Sorts();
         int[] v = s.geraVetor(10000, 10000),
-            v1 = v.clone(),
-            v2 = v.clone(),
-            v3 = v.clone(),
-            v4 = v.clone(),
-            v5 = v.clone();
+                v1 = v.clone(),
+                v2 = v.clone(),
+                v3 = v.clone(),
+                v4 = v.clone(),
+                v5 = v.clone();
 
         System.out.println("\nbubbleSort0");
         s.bubbleSort1(v1);

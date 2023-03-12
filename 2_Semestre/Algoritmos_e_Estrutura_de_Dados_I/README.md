@@ -1,0 +1,3 @@
+-   COD: 4645G-04
+-   Disciplina: Algoritmos e Estrutura de Dados I
+-   Professor: Michael da Costa Mora

@@ -1,6 +1,6 @@
 package Aula06;
 
-public class Main {
+public class QuickSort {
     public static void main(String[] args) {
         int[] v = { 6, 1, 12, 40, 1, 29, 2, 3, 17, 5 };
         quicksort(v, 0, 9);

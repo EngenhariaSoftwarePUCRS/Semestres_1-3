@@ -2,7 +2,7 @@ package Aula05;
 
 import java.util.Random;
 
-public class Main {
+public class Sortings {
 
     private static int contador = 0;
 
@@ -13,8 +13,10 @@ public class Main {
         System.out.println("Posição do número 100 no vetor: " + pesqDireta(meuVetorDezMil, 20));
         System.out.println("Quantidade de iterações em vetor de 10.000 posições: " + contador);
         contador = 0;
-        // System.out.println("Posição do número 100 no vetor: " + pesqDireta(meuVetorUmMilhao, 100));
-        // System.out.println("Quantidade de iterações em vetor de 1.000.000 posições: " + contador);
+        // System.out.println("Posição do número 100 no vetor: " +
+        // pesqDireta(meuVetorUmMilhao, 100));
+        // System.out.println("Quantidade de iterações em vetor de 1.000.000 posições: "
+        // + contador);
         // contador = 0;
 
         System.out.println("===============================================================");
@@ -23,8 +25,10 @@ public class Main {
         System.out.println("Posição do número 100 no vetor: " + binarySearch(meuVetorDezMil, 20));
         System.out.println("Quantidade de iterações em vetor de 10.000 posições: " + contador);
         contador = 0;
-        // System.out.println("Posição do número 100 no vetor: " + binarySearch(meuVetorUmMilhao, 100));
-        // System.out.println("Quantidade de iterações em vetor de 1.000.000 posições: " + contador);
+        // System.out.println("Posição do número 100 no vetor: " +
+        // binarySearch(meuVetorUmMilhao, 100));
+        // System.out.println("Quantidade de iterações em vetor de 1.000.000 posições: "
+        // + contador);
         // contador = 0;
     }
 

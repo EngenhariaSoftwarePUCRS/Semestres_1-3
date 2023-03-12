@@ -1,59 +1,57 @@
-package br.pucrs.adt;
+package General;
+
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ListSimpleLinked <D> implements ListTAD<D> {
+public class ListSimpleLinked<D> implements ListTAD<D> {
 
 	/**
 	 * 
 	 */
 
-	private class Node  {		
+	private class Node {
 
 		private Node refNext;
 		private D item;
 
-		public Node()
-		{
+		public Node() {
 			refNext = null;
 			item = null;
 		}
 
-		public Node(D elem, Node n)
-		{
+		public Node(D elem, Node n) {
 			this.item = elem;
 			refNext = n;
 		}
 
-		public void setNext(Node no) 
-		{ refNext = no; }
+		public void setNext(Node no) {
+			refNext = no;
+		}
 
-		public Node getNext() 
-		{ return refNext; }
+		public Node getNext() {
+			return refNext;
+		}
 
-		public void setElem(D o) 
-		{ item = o; }
+		public void setElem(D o) {
+			item = o;
+		}
 
-		public D getElem() 
-		{ return item; }
+		public D getElem() {
+			return item;
+		}
 	}
 
 	private Node refHead = null;
 	private Node refTail = null;
 	private int qtdElem = 0;
 
-	
-	public void add(D element)
-	{
+	public void add(D element) {
 		Node novo = new Node(element, null);
 
-		if (refHead == null)
-		{
+		if (refHead == null) {
 			refHead = refTail = novo;
-		}
-		else
-		{
+		} else {
 			refTail.setNext(novo);
 			refTail = novo;
 		}
@@ -73,7 +71,7 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		qtdElem++;
 	}
 
-	public void addLast(D d) { 
+	public void addLast(D d) {
 		Node novo = new Node(d, null);
 
 		if (refTail == null)
@@ -90,30 +88,25 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 	// sem usar a ref para o �ltimo
 	//
 
-	public void addLastAlt(D d) { 
+	public void addLastAlt(D d) {
 		Node novo = new Node(d, null);
 		Node aux;
 		int i;
 
-
-		if(refHead != null) 
-		{
+		if (refHead != null) {
 			aux = refHead;
-			for(i = 1 ; i < qtdElem; i++)
+			for (i = 1; i < qtdElem; i++)
 				aux = aux.getNext();
 
 			aux.setNext(novo);
 			refTail = novo;
-		}
-		else 
+		} else
 			refHead = refTail = novo;
 
 		qtdElem++;
 	}
 
-
-	public void add(int index, D element)
-	{
+	public void add(int index, D element) {
 		Node ant, novo, prox = null;
 		int i;
 
@@ -126,8 +119,7 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 				if (refTail == null)
 					refTail = novo;
 				refHead = novo;
-			}
-			else {
+			} else {
 				ant = refHead;
 				for (i = 1; i < index; i++)
 					ant = ant.getNext();
@@ -139,16 +131,14 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 				novo.setNext(prox);
 			}
 			qtdElem++;
-		}
-		else
+		} else
 			throw new IllegalArgumentException("�ndice inv�lido -> " + index);
 	}
 
 	public D removeFirst() {
 		D auxD = null;
 
-		if(refHead != null)
-		{
+		if (refHead != null) {
 			auxD = refHead.getElem();
 
 			refHead = refHead.getNext();
@@ -165,19 +155,16 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		D auxD = null;
 		Node aux;
 
-		if(refHead != null) 
-		{
-			if(refHead.getNext() == null)
-			{
+		if (refHead != null) {
+			if (refHead.getNext() == null) {
 				auxD = refHead.getElem();
-				refHead = null;    
+				refHead = null;
 				refTail = null;
 			}
 
-			else 
-			{
+			else {
 				aux = refHead;
-				while(aux.getNext().getNext() != null) 
+				while (aux.getNext().getNext() != null)
 					aux = aux.getNext();
 
 				auxD = aux.getNext().getElem();
@@ -194,21 +181,16 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		D auxD = null;
 		int i;
 
-		if ((index >=0) && (index < qtdElem))
-		{
-			if (index == 0)
-			{
+		if ((index >= 0) && (index < qtdElem)) {
+			if (index == 0) {
 				auxD = refHead.getElem();
 				refHead = refHead.getNext();
 
 				if (refHead == null)
 					refTail = null;
-			}
-			else
-			{
+			} else {
 				ant = aux = refHead;
-				for (i = 1; i <= index; i++)
-				{
+				for (i = 1; i <= index; i++) {
 					ant = aux;
 					aux = aux.getNext();
 				}
@@ -222,20 +204,19 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 					refTail = ant;
 			}
 
-			qtdElem --;
-		}    	
-		else
-			throw(new IndexOutOfBoundsException());
+			qtdElem--;
+		} else
+			throw (new IndexOutOfBoundsException());
 
 		return auxD;
 	}
 
 	public D remove(D element) {
 		D res = null;
-		Node aux, ant; 
+		Node aux, ant;
 
 		ant = aux = refHead;
-		while(aux != null && !aux.getElem().equals(element)) {
+		while (aux != null && !aux.getElem().equals(element)) {
 			ant = aux;
 			aux = aux.getNext();
 		}
@@ -247,7 +228,7 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 			if (qtdElem == 0)
 				refHead = refTail = null;
 			else {
-				if (aux == refHead) 
+				if (aux == refHead)
 					refHead = refHead.getNext();
 				else
 					ant.setNext(aux.getNext());
@@ -265,18 +246,19 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		Node aux, ant;
 		if (refHead != null) {
 			aux = ant = refHead;
-			while(aux != null) {
-				if (aux.getElem().equals(dado)){
-					if (refHead == aux){
+			while (aux != null) {
+				if (aux.getElem().equals(dado)) {
+					if (refHead == aux) {
 						refHead = aux.getNext();
-						aux = ant = refHead; }
-					else ant.setNext(aux.getNext());
+						aux = ant = refHead;
+					} else
+						ant.setNext(aux.getNext());
 					if (refTail == aux)
 						refTail = ant;
 					res++;
 					qtdElem--;
-				}
-				else ant = aux;
+				} else
+					ant = aux;
 
 				aux = aux.getNext();
 			}
@@ -284,13 +266,13 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		return res;
 	}
 
-	public boolean addAll(D[] ar){
+	public boolean addAll(D[] ar) {
 		boolean res = true;
 
 		if (ar == null || ar.length == 0)
 			res = false;
 		else
-			for (D x:ar)
+			for (D x : ar)
 				add(x);
 
 		return res;
@@ -314,24 +296,21 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		return res;
 	}
 
-	public D get(int pos){
+	public D get(int pos) {
 		D res = null;
 		Node aux;
 		int i;
 
-		if ((pos >= 0) && (pos < qtdElem))
-		{
-			if(refHead != null) 
-			{
+		if ((pos >= 0) && (pos < qtdElem)) {
+			if (refHead != null) {
 				aux = refHead;
-				for(i = 1 ; i <= pos; i++)
+				for (i = 1; i <= pos; i++)
 					aux = aux.getNext();
 
 				res = aux.getElem();
 			}
-		}
-		else 
-			throw(new IndexOutOfBoundsException());
+		} else
+			throw (new IndexOutOfBoundsException());
 
 		return res;
 	}
@@ -350,26 +329,24 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 
 	public int size() {
 		return qtdElem;
-	}    
+	}
 
 	public boolean isEmpty() {
 		boolean res;
 
-		if(refHead == null) 
+		if (refHead == null)
 			res = true;
-		else 
+		else
 			res = false;
 
 		return res;
 	}
 
-	public int count(D dado)
-	{
+	public int count(D dado) {
 		int cont = 0;
 		Node aux = refHead;
 
-		while(aux != null)
-		{
+		while (aux != null) {
 			if (dado.equals(aux.getElem()))
 				cont++;
 			aux = aux.getNext();
@@ -383,12 +360,10 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		qtdElem = 0;
 	}
 
-	public void reverse()
-	{
+	public void reverse() {
 		Node novaLista = null, aux;
 
-		while (!this.isEmpty())
-		{
+		while (!this.isEmpty()) {
 			aux = refHead;
 			refHead = refHead.getNext();
 			aux.setNext(novaLista);
@@ -398,15 +373,12 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		refHead = novaLista;
 	}
 
-	public int updateAll(D dado, D novoDado)
-	{
+	public int updateAll(D dado, D novoDado) {
 		int cont = 0;
 		Node aux = refHead;
 
-		while(aux != null)
-		{
-			if (dado.equals(aux.getElem()))
-			{
+		while (aux != null) {
+			if (dado.equals(aux.getElem())) {
 				aux.setElem(novoDado);
 				cont++;
 			}
@@ -420,7 +392,7 @@ public class ListSimpleLinked <D> implements ListTAD<D> {
 		Node aux = refHead;
 		String res = "";
 
-		while(aux != null) {
+		while (aux != null) {
 			res = res + aux.getElem().toString();
 			aux = aux.getNext();
 		}

@@ -1,4 +1,4 @@
-package br.pucrs.adt;
+package General;
 
 public class EmptyQueueException extends RuntimeException {
 

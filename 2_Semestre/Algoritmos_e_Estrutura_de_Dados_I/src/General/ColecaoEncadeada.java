@@ -1,4 +1,4 @@
-package general;
+package General;
 
 public class ColecaoEncadeada {
     private Node head = new Node();
@@ -39,6 +39,6 @@ public class ColecaoEncadeada {
     }
 
     public void addFirst(String s) {
-        
+
     }
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 import Trabalho01.util.Stack;
 
 public class Sistema {
-    final static String ROOT_FILE_PATH = "src\\casosTeste\\";
+    final static String ROOT_FILE_PATH = "src/Trabalho01/casosTeste/";
 
     private Stack<NumeroComplexo> pilha;
     private NumeroComplexo smallestNumber;

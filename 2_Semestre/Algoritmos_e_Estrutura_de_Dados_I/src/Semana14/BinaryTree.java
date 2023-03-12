@@ -1,55 +1,64 @@
 package Semana14;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BinaryTree<E extends Comparable<E>> extends GeneralTreeLinked<E> implements BinaryTreeTAD<E> {
 
-	private Node refRoot;
+    private Node refRoot;
 
-	private final class Node implements Comparable<Node> {
-		private Node father;
-		private E item;
-		private List<Node> subtrees;
+    private final class Node implements Comparable<Node> {
+        private Node father;
+        private E item;
+        private List<Node> subtrees;
 
-		public Node(E element) {
-			father = null;
-			item = element;
-			subtrees = new LinkedList<Node>();
-		}
+        public Node(E element) {
+            father = null;
+            item = element;
+            subtrees = new LinkedList<Node>();
+        }
 
-		public Node getFather() {
-			return father;
-		}
-		public void setFather(Node n) {
-			father = n;
-		}
-		public E getItem() {
-			return item;
-		}
-		public void setItem(E element) {
-			item = element;
-		}
-		public void addSubtree(Node n) {
-			n.setFather(this);
-			subtrees.add(n);
-		}
-		public boolean removeSubtree(Node n) {
-			n.setFather(null);
-			return subtrees.remove(n);
-		}
-		public Node getSubtree(int i) {
-			if((i<0) || (i>=subtrees.size()))
-				throw new IndexOutOfBoundsException();
-			return subtrees.get(i);
-		}
-		public int countSubtrees() {
-			return subtrees.size();
-		}
-		public int compareTo(Node o) {
-			return this.getItem().compareTo(o.getItem());
-		}
-	}
+        public Node getFather() {
+            return father;
+        }
+
+        public void setFather(Node n) {
+            father = n;
+        }
+
+        public E getItem() {
+            return item;
+        }
+
+        public void setItem(E element) {
+            item = element;
+        }
+
+        public void addSubtree(Node n) {
+            n.setFather(this);
+            subtrees.add(n);
+        }
+
+        public boolean removeSubtree(Node n) {
+            n.setFather(null);
+            return subtrees.remove(n);
+        }
+
+        public Node getSubtree(int i) {
+            if ((i < 0) || (i >= subtrees.size()))
+                throw new IndexOutOfBoundsException();
+            return subtrees.get(i);
+        }
+
+        public int countSubtrees() {
+            return subtrees.size();
+        }
+
+        public int compareTo(Node o) {
+            return this.getItem().compareTo(o.getItem());
+        }
+    }
 
     public BinaryTree() {
         refRoot = null;
@@ -142,5 +151,5 @@ public class BinaryTree<E extends Comparable<E>> extends GeneralTreeLinked<E> im
         // TODO Auto-generated method stub
         return null;
     }
-    
+
 }

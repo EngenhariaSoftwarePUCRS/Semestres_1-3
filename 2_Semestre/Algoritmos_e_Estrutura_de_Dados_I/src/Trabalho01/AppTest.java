@@ -11,7 +11,7 @@ import java.util.Scanner;
 import Trabalho01.util.Timer;
 
 public class AppTest {
-    static final String ROOT_FILE_PATH = "src\\casosTeste\\";
+    final static String ROOT_FILE_PATH = "src/Trabalho01/casosTeste/";
 
     public static void main(String[] args) throws IOException {
         int choice;

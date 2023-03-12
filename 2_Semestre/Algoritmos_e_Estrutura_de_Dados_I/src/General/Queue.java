@@ -1,47 +1,43 @@
-package br.pucrs.adt;
+package General;
+
 import java.io.Serializable;
 
 public class Queue<T extends Comparable<T>> implements QueueTAD<T>, Serializable {
 	// private ListTAD<T> lst = new ListDoubleLinked<T>();
-	private ListTAD<T> lst = new ListSimpleLinkedFull<T>();
-	
-	public void enqueue(T dado)
-	{
+	private ListTAD<T> lst = new ListSimpleLinked<T>();
+
+	public void enqueue(T dado) {
 		if (dado != null)
 			lst.add(dado);
 		else
 			throw new IllegalArgumentException();
 	}
-	
-	public T dequeue()
-	{
+
+	public T dequeue() {
 		T res = null;
-		
+
 		res = lst.remove(0);
 		if (res == null)
 			throw new EmptyQueueException();
-		else 
+		else
 			return res;
 	}
-	
-	public T first()
-	{
+
+	public T first() {
 		T res = null;
-		
+
 		res = lst.get(0);
 		if (res == null)
 			throw new EmptyQueueException();
-		else 
+		else
 			return res;
 	}
-	
-	public boolean isEmpty()
-	{
+
+	public boolean isEmpty() {
 		return lst.isEmpty();
 	}
-	
-	public int size()
-	{
+
+	public int size() {
 		return lst.size();
 	}
 }

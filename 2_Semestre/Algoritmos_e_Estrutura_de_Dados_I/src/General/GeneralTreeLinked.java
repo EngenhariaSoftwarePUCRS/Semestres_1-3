@@ -1,11 +1,10 @@
-package br.pucrs.adt;
+package General;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTAD<E>
-{
+public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTAD<E> {
 	private Node refRoot;
 
 	private final class Node implements Comparable<Node> {
@@ -22,39 +21,45 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		public Node getFather() {
 			return father;
 		}
+
 		public void setFather(Node n) {
 			father = n;
 		}
+
 		public E getItem() {
 			return item;
 		}
+
 		public void setItem(E element) {
 			item = element;
 		}
+
 		public void addSubtree(Node n) {
 			n.setFather(this);
 			subtrees.add(n);
 		}
+
 		public boolean removeSubtree(Node n) {
 			n.setFather(null);
 			return subtrees.remove(n);
 		}
+
 		public Node getSubtree(int i) {
-			if((i<0) || (i>=subtrees.size()))
+			if ((i < 0) || (i >= subtrees.size()))
 				throw new IndexOutOfBoundsException();
 			return subtrees.get(i);
 		}
+
 		public int countSubtrees() {
 			return subtrees.size();
 		}
+
 		public int compareTo(Node o) {
 			return this.getItem().compareTo(o.getItem());
 		}
 	}
 
-	
-	public GeneralTreeLinked()
-	{
+	public GeneralTreeLinked() {
 		refRoot = null;
 	}
 
@@ -62,18 +67,18 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		Node n = new Node(element);
 		Node nAux = null;
 		boolean res = false;
-		//Verifica se está inserindo na raiz
+		// Verifica se está inserindo na raiz
 		if (father == null) {
-			//Atualiza o pai da raiz
+			// Atualiza o pai da raiz
 			if (refRoot != null) {
 				n.addSubtree(refRoot);
 				refRoot.setFather(n);
 			}
-			//Atualiza a raiz
+			// Atualiza a raiz
 			refRoot = n;
 			res = true;
 		}
-		//Insere no meio da árvore
+		// Insere no meio da árvore
 		else {
 			nAux = searchNodeRef(father, refRoot);
 			if (nAux != null) {
@@ -84,22 +89,20 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		return res;
 	}
 
-	public boolean contains(E element)
-	{
+	public boolean contains(E element) {
 		Node nAux = searchNodeRef(element, refRoot);
 		return (nAux != null);
 	}
-	private Node searchNodeRef(E element, Node target)
-	{
+
+	private Node searchNodeRef(E element, Node target) {
 		Node res = null;
 		if (target != null) {
-			if(target.getItem().equals(element)) {
+			if (target.getItem().equals(element)) {
 				res = target;
-			}
-			else {
+			} else {
 				Node aux = null;
 				int i = 0;
-				while((aux == null) && (i < target.countSubtrees())) {
+				while ((aux == null) && (i < target.countSubtrees())) {
 					aux = searchNodeRef(element, target.getSubtree(i));
 					i++;
 				}
@@ -112,17 +115,17 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 	public E get(E element, int i) {
 		E res = null;
 		Node nAux = searchNodeRef(element, refRoot);
-		if(nAux != null) {
+		if (nAux != null) {
 			res = nAux.getSubtree(i).getItem();
 		}
-		return res;		
+		return res;
 	}
 
 	public E getFather(E element) {
 		E res = null;
 		Node nAux = searchNodeRef(element, refRoot);
-		if(nAux != null) {
-			if(nAux.getFather()!=null) {
+		if (nAux != null) {
+			if (nAux.getFather() != null) {
 				res = nAux.getFather().getItem();
 			}
 		}
@@ -130,8 +133,8 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 	}
 
 	public E getRoot() {
-		if(isEmpty())
-			throw new EmptyTreeException();
+		if (isEmpty())
+			throw new EmptyQueueException();
 		return refRoot.getItem();
 	}
 
@@ -147,8 +150,7 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 			if (refRoot.getItem().equals(element)) {
 				refRoot = null;
 				rem = true;
-			}
-			else {
+			} else {
 				nAux = searchNodeRef(element, refRoot);
 				if (nAux != null) {
 					father = nAux.getFather();
@@ -168,8 +170,7 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 			if (refRoot.getItem().equals(element)) {
 				refRoot = null;
 				rem = true;
-			}
-			else {
+			} else {
 				nAux = searchNodeRef(element, refRoot);
 				if (nAux != null) {
 					father = nAux.getFather();
@@ -180,7 +181,7 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		}
 		return rem;
 	}
-	
+
 	public E set(E old, E element) {
 		E res = null;
 		Node nAux = searchNodeRef(old, refRoot);
@@ -192,52 +193,50 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 	}
 
 	public void setRoot(E element) {
-		if(isEmpty())
-			throw new EmptyTreeException();
+		if (isEmpty())
+			throw new EmptyQueueException();
 		refRoot.setItem(element);
 	}
 
 	public int count() {
 		return count(refRoot);
 	}
-	private int count(Node target)
-	{
+
+	private int count(Node target) {
 		if (target == null) {
 			return 0;
 		}
 		int total = 1;
-		for(int i=0; i<target.countSubtrees(); i++)
+		for (int i = 0; i < target.countSubtrees(); i++)
 			total += count(target.getSubtree(i));
 		return total;
 	}
 
-	public List<E> traversalPos()
-	{
+	public List<E> traversalPos() {
 		List<E> res = new ArrayList<E>();
 		traversalPos(refRoot, res);
 		return res;
 	}
-	private void traversalPos(Node n, List<E> res)
-	{
+
+	private void traversalPos(Node n, List<E> res) {
 		if (n != null) {
-			for(int i=0; i<n.countSubtrees(); i++) {
+			for (int i = 0; i < n.countSubtrees(); i++) {
 				traversalPos(n.getSubtree(i), res);
 			}
 			res.add(n.getItem());
 		}
 	}
 
-	public List<E> traversalPre()
-	{
+	public List<E> traversalPre() {
 		List<E> res = new ArrayList<E>();
 		traversalPre(refRoot, res);
 		return res;
 	}
-	private void traversalPre(Node n, List<E> res)
-	{
+
+	private void traversalPre(Node n, List<E> res) {
 		if (n != null) {
 			res.add(n.getItem());
-			for(int i=0; i<n.countSubtrees(); i++) {
+			for (int i = 0; i < n.countSubtrees(); i++) {
 				traversalPre(n.getSubtree(i), res);
 			}
 		}
@@ -252,24 +251,24 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 			while (!fila.isEmpty()) {
 				atual = fila.dequeue();
 				res.add(atual.getItem());
-				for(int i=0; i<atual.countSubtrees(); i++) {
+				for (int i = 0; i < atual.countSubtrees(); i++) {
 					fila.enqueue(atual.getSubtree(i));
 				}
 			}
 		}
 		return res;
-	}    
+	}
 
-	//***********************************************************
-	//* Exercicios sobre estruturas em �rvores. N�o fazem parte 
-	//* da interface padr�o. N�o entregar antes de passar o 
-	//* exerc�cio.
-	//***********************************************************
+	// ***********************************************************
+	// * Exercicios sobre estruturas em �rvores. N�o fazem parte
+	// * da interface padr�o. N�o entregar antes de passar o
+	// * exerc�cio.
+	// ***********************************************************
 
-	public boolean hasRepeat(E el) { 
+	public boolean hasRepeat(E el) {
 		int cont = 0;
 		boolean res;
-		if  (hasRepeat(el, refRoot, cont) <= 1)
+		if (hasRepeat(el, refRoot, cont) <= 1)
 			res = false;
 		else
 			res = true;
@@ -280,15 +279,14 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 	private int hasRepeat(E el, Node n, int cont) {
 		if (n != null) {
 			if (el.equals(n.getItem()))
-				cont ++;
-			if (cont <= 1){
-				for (int i = 0; ((i < n.countSubtrees()) && (cont <=1)); i++)
+				cont++;
+			if (cont <= 1) {
+				for (int i = 0; ((i < n.countSubtrees()) && (cont <= 1)); i++)
 					cont += hasRepeat(el, n.getSubtree(i), cont);
 			}
 		}
 		return cont;
 	}
-
 
 	public List<E> getInternalElelments() {
 		return getInternalElements(refRoot, new ArrayList<E>());
@@ -322,17 +320,18 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		return res;
 	}
 
-	private Node getNodetoPathSize(E element, Node n){
+	private Node getNodetoPathSize(E element, Node n) {
 		Node res = null;
 
 		if (n != null)
 			if (element.equals(n.getItem()))
 				res = n;
-			else for (int i = 0; i < n.countSubtrees(); i++) {
-				res = getNodetoPathSize(element, n.getSubtree(i));
-				if (res != null)
-					break;
-			}
+			else
+				for (int i = 0; i < n.countSubtrees(); i++) {
+					res = getNodetoPathSize(element, n.getSubtree(i));
+					if (res != null)
+						break;
+				}
 
 		return res;
 	}
@@ -340,8 +339,8 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 	public int countBiggerThan(E elem) {
 		return countBiggerThan(elem, refRoot);
 	}
-	private int countBiggerThan(E elem, Node target)
-	{
+
+	private int countBiggerThan(E elem, Node target) {
 		if (target == null) {
 			return 0;
 		}
@@ -350,7 +349,7 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		if (target.getItem().compareTo(elem) > 0)
 			total = 1;
 
-		for(int i=0; i<target.countSubtrees(); i++)
+		for (int i = 0; i < target.countSubtrees(); i++)
 			total += countBiggerThan(elem, target.getSubtree(i));
 		return total;
 	}
@@ -363,60 +362,59 @@ public class GeneralTreeLinked<E extends Comparable<E>> implements GeneralTreeTA
 		if (refRoot == null)
 			res = null;
 		else {
-//			toStringFunc(refRoot, str, level);
+			// toStringFunc(refRoot, str, level);
 			toStringFunc(refRoot, str);
 			res = str.toString();
 		}
 		return res;
 	}
 
-//	private void toStringFunc(Node<E> n, StringBuilder str, int level) {
-//		String tabs;
-//		
-//		if (n != null){
-//			str.append("tree(");
-//			str.append(n.getItem());
-//
-//			level++;
-//			for (int i = 0; i < n.subtrees.size(); i++){
-//				str.append(",");
-//				if (i == 0) {
-//					str.append("\n");
-//					tabs = tabFill(level);
-////					str.append("\n");
-//					str.append(tabs);
-//				}
-//				toStringFunc(n.subtrees.get(i), str, level);
-//			}
-//			
-//			level--;
-//			str.append(")");
-////			str.append(",");
-//			tabs = tabFill(level);
-////			str.append("\n");
-////			str.append(tabs);
-//
-//		}
-//	}
-	
+	// private void toStringFunc(Node<E> n, StringBuilder str, int level) {
+	// String tabs;
+	//
+	// if (n != null){
+	// str.append("tree(");
+	// str.append(n.getItem());
+	//
+	// level++;
+	// for (int i = 0; i < n.subtrees.size(); i++){
+	// str.append(",");
+	// if (i == 0) {
+	// str.append("\n");
+	// tabs = tabFill(level);
+	//// str.append("\n");
+	// str.append(tabs);
+	// }
+	// toStringFunc(n.subtrees.get(i), str, level);
+	// }
+	//
+	// level--;
+	// str.append(")");
+	//// str.append(",");
+	// tabs = tabFill(level);
+	//// str.append("\n");
+	//// str.append(tabs);
+	//
+	// }
+	// }
+
 	private void toStringFunc(Node n, StringBuilder str) {
-		if (n != null){
+		if (n != null) {
 			str.append(n.getItem());
 
-			for (int i = 0; i < n.subtrees.size(); i++){
+			for (int i = 0; i < n.subtrees.size(); i++) {
 				str.append(",");
 				toStringFunc(n.subtrees.get(i), str);
 			}
 		}
 	}
-	
-	
+
 	String tabFill(int level) {
 		String res = "";
-		
+
 		for (int i = 0; i <= level; i++)
 			res += "   ";
-		
+
 		return res;
 	}
 }
