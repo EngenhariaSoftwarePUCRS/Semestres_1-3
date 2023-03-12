@@ -1,0 +1,3 @@
+-   COD: 06509-02
+-   Disciplina: Gerenciamento de Configuração de Software
+-   Professor: Marco Aurélio Souza Mangan
