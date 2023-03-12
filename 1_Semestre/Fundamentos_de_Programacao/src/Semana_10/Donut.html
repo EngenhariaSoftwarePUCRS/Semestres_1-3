@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="IE=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Rolling Donut</title>
+		<style>
+			* {
+				cursor: url('donut.jpg');
+			}
+			img {
+				width: 50px;
+				height: 50px;
+				margin-top: 200px;
+				margin-left: 0;
+				animation: donut 10s infinite;
+			}
+			img:hover {
+				cursor: url('https://media.istockphoto.com/photos/donut-with-sprinkles-isolated-picture-id538335769?k=20&m=538335769&s=612x612&w=0&h=A1DAZd6aHjfRyq2qKAKuBD9KAf0cq1LXKW8mpvTxKgU=');
+			}
+			@keyframes donut {
+				0% {
+					margin-left: 0;
+					transform: rotateX(0deg);
+					transform: rotateY(0deg);
+					transform: rotateZ(0deg);
+				}
+				50% {
+					margin-left: 600px;
+					transform: rotateX(180deg);
+					transform: rotateY(180deg);
+					transform: rotateZ(180deg);
+				}
+				54% {
+					margin-bottom: 0;
+				}
+				55% {
+					width: 500px;
+					height: 500px;
+				}
+				56% {
+					margin-bottom: 0;
+				}
+				100% {
+					margin-left: 0;
+					transform: rotateX(360deg);
+					transform: rotateY(360deg);
+					transform: rotateZ(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<img
+			src="https://media.istockphoto.com/photos/donut-with-sprinkles-isolated-picture-id538335769?k=20&m=538335769&s=612x612&w=0&h=A1DAZd6aHjfRyq2qKAKuBD9KAf0cq1LXKW8mpvTxKgU="
+			alt="Donut"
+		/>
+	</body>
+</html>
