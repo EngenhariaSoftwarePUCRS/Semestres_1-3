@@ -9,4 +9,4 @@
 -   [Introdução a Engenharia de Software](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Introducao_a_Computacao)
 -   [Matemática Discreta](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Matematica_Discreta)
 
-Todas cursadas no período noturno
+Todas cursadas no período noturno em 2022/1
