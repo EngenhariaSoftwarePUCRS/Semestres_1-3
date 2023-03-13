@@ -1,4 +1,4 @@
-package aula03_analise_algortimos_ordenacao;
+package Aula04_AnaliseAlgoritmosOrdenacao;
 
 public class QuickSort {
 
