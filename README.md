@@ -6,7 +6,7 @@
 
 ## Disciplinas do Curso de Engenharia de Software (98AL) da PUCRS
 
--   ### [Primeiro Semestre (2022/1)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/1_Semestre)
+-   ### [Primeiro Semestre (2022/1)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre)
 
     -   [Cálculo I](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Calculo_I)
     -   [Formação do Empreendedor](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Formacao_do_Empreendedor)
@@ -15,7 +15,7 @@
     -   [Introdução a Engenharia de Software](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Introducao_a_Computacao)
     -   [Matemática Discreta](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/1_Semestre/Matematica_Discreta)
 
--   ### [Segundo Semestre (2022/2)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/2_Semestre)
+-   ### [Segundo Semestre (2022/2)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/2_Semestre)
 
     -   [Algoritmos e Estrutura de Dados I (em Java)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/2_Semestre/Algoritmos_e_Estrutura_de_Dados_I)
     -   [Banco de Dados I](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/2_Semestre/Banco_de_Dados_I)
@@ -25,10 +25,10 @@
     -   [Lógica para Computação](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/2_Semestre/Logica_para_Computacao)
     -   [Programação Orientada a Objetos (em Java)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/2_Semestre/Programacao_Orientada_a_Objetos)
 
--   ### [Terceiro Semestre (2023/1)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/3_Semestre)
+-   ### [Terceiro Semestre (2023/1)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre)
 
     -   [Prática na Agência Experimental I (120 horas)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre/AGES_I)
-    -   [Algoritmos e Estrutura de Dados II (em Java)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre/Algoritmos_e_Estrutura_de_Dados_II)
+    -   [Algoritmos e Estruturas de Dados II (em Java)](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre/Algoritmos_e_Estruturas_de_Dados_II)
     -   [Banco de Dados II](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre/Banco_de_Dados_II)
     -   [Introdução a Dispositivos Eletrônicos](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre/Introducao_a_Dispositivos_Eletronicos)
     -   [Linguagens, Autômatos e Computação](https://github.com/felipefreitassilvalearning/EngenhariaSoftwarePUCRS/tree/develop/3_Semestre/Linguagens_Automatos_e_Computacao)
