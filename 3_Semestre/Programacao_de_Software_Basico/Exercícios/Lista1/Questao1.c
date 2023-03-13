@@ -17,10 +17,10 @@ int main()
     long int li;
     long long int lli;
 
-    printf("short: %d bytes\n", sizeof(s));
-    printf("int: %d bytes\n", sizeof(i));
-    printf("long int: %d bytes\n", sizeof(li));
-    printf("long long int: %d bytes\n", sizeof(lli));
+    printf("short: %ld bytes\n", sizeof(s));
+    printf("int: %ld bytes\n", sizeof(i));
+    printf("long int: %ld bytes\n", sizeof(li));
+    printf("long long int: %ld bytes\n", sizeof(lli));
 
     return 0;
 }

@@ -1,0 +1,3 @@
+-   COD: 46526-02
+-   Disciplina: Programação de Software Básico
+-   Professor: Marcelo Cohen
