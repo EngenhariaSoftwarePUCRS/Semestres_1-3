@@ -1,0 +1,135 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-light: #0099d0;
+	--primary: #15315b;
+}
+
+body {
+	height: 100vh;
+}
+
+aside.upperMenu {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+	gap: 200px;
+
+	position: absolute;
+	width: 100%;
+	height: 280px;
+
+	z-index: 1;
+	top: -280px;
+	background: rgba(0, 153, 208, 0.1);
+}
+
+aside.upperMenu button {
+	aspect-ratio: 1;
+	background: #15315b;
+	border-radius: 10px;
+	padding: 1rem;
+	cursor: pointer;
+}
+
+aside.upperMenu button figure {
+	position: relative;
+}
+
+aside.upperMenu button figure figcaption {
+	position: absolute;
+	bottom: -10px;
+	width: 100%;
+	color: white;
+	text-align: center;
+}
+
+main {
+	display: grid;
+	place-items: center;
+
+	height: 100%;
+}
+
+main section {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	width: max(150px, 20%);
+	gap: 3rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+
+main section h1 {
+	text-align: center;
+}
+
+main section p {
+	padding: 1rem 2rem;
+	background: #f3f3f3;
+	border: 2px solid #0d0d0d;
+	border-radius: 10px;
+}
+
+.copied-notification {
+	opacity: 0;
+	position: fixed;
+	bottom: 20%;
+	left: 50%;
+	transform: translate(-50%, -20%);
+
+	background-color: var(--primary-light);
+	border-radius: 1rem;
+
+	padding: 1rem 2rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	color: var(--primary);
+
+	transition: opacity 300ms;
+}
+
+.arrowBtn {
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.arrowBtn .btnUpperMenu {
+	position: absolute;
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.arrowBtn .btnPrevious {
+	position: absolute;
+	top: 50%;
+	left: 1rem;
+	transform: translateY(-50%) rotate(90deg);
+}
+
+.arrowBtn .btnNext {
+	position: absolute;
+	top: 50%;
+	right: 1rem;
+	transform: translateY(-50%) rotate(-90deg);
+}
+
