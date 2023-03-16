@@ -4,58 +4,36 @@
 
 #include <stdio.h>
 
-void saqueCaixaDeBanco(int R, int c100, int c50, int c10, int c5, int c1)
+void saqueCaixaDeBanco(int, int *, int *, int *, int *, int *);
+
+void saqueCaixaDeBanco(int R, int *pc100, int *pc50, int *pc10, int *pc5, int *pc1)
 {
-    do
-    {
-        if (R / 100 >= 1)
-        {
-            R -= R / 100 * 100;
-            // &pc100 = R;
-        }
-        else if (R / 50 >= 1)
-        {
-            R -= R / 50 * 50;
-            // &pc50 = R;
-        }
-        else if (R / 10 >= 1)
-        {
-            R -= R / 10 * 10;
-            // &pc10 = R;
-        }
-        else if (R / 5 >= 1)
-        {
-            R -= R / 5 * 5;
-            // &pc5 = R;
-        }
-        else if (R / 1 >= 1)
-        {
-            R -= R / 1 * 1;
-            // &pc1 = R;
-        }
-    } while (R % 100 != 0);
+    *pc100 = R / 100;
+    *pc50 = R % 100 / 50;
+    *pc10 = R % 50 / 10;
+    *pc5 = R % 10 / 5;
+    *pc1 = R % 5 / 1;
 }
 
 int main()
 {
-    int saque;
-    int
-        c100, *pc100 = &c100,
-        c50, *pc50 = &c50,
-        c10, *pc10 = &c10,
-        c5, *pc5 = &c5,
-        c1, *pc1 = &c1;
+    int saque, c100, c50, c10, c5, c1;
 
     printf("Digite quanto você quer sacar: ");
     scanf("%d", &saque);
 
-    saqueCaixaDeBanco(saque, c100, c50, c10, c5, c1);
+    saqueCaixaDeBanco(saque, &c100, &c50, &c10, &c5, &c1);
 
-    // printf("%d notas de R$100.\n", c100);
-    // printf("%d notas de R$50.\n", c50);
-    // printf("%d notas de R$10.\n", c10);
-    // printf("%d notas de R$5.\n", c5);
-    // printf("%d moedas de R$1.\n", c1);
+    if (c100 >= 1)
+        printf("%d nota(s) de R$100.\n", c100);
+    if (c50 >= 1)
+        printf("%d nota(s) de R$50.\n", c50);
+    if (c10 >= 1)
+        printf("%d nota(s) de R$10.\n", c10);
+    if (c5 >= 1)
+        printf("%d nota(s) de R$5.\n", c5);
+    if (c1 >= 1)
+        printf("%d moeda(s) de R$1.\n", c1);
 
     return 0;
 }
