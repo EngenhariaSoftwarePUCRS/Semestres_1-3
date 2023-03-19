@@ -1,7 +1,6 @@
 package Trabalho01;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class JungleGame {
@@ -18,15 +17,24 @@ public class JungleGame {
     private void analyseFile(File file) {
         Scanner fileReader = FileHelper.fileScanner(file);
         this.rounds = Integer.parseInt(fileReader.nextLine().split(" ")[1]);
-
+        
         for (int i = 0; fileReader.hasNextLine(); i++) {
-            // line = Macaco {id} par -> {evenTarget} impar -> {oddTarget} : {coconutAmount}
-            // : [{stoneAmount}, {stoneAmount}, {stoneAmount}]
             String line = fileReader.nextLine();
-            // partial = [{ }]
+            /* line = Macaco {id} par -> {evenTarget} impar -> {oddTarget} : {coconutAmount} : {stoneAmount} {stoneAmount} {stoneAmount} */
+
             String[] partial = line.split(" : ");
+            /* partial = [
+                Macaco {id} par -> {evenTarget} impar -> {oddTarget}
+                { coconutAmount }
+                {stoneAmount} {stoneAmount} {stoneAmount}
+            ]*/
 
             String[] target = partial[0].split(" -> ");
+            /* target = [
+                Macaco {id} par
+                {evenTarget} impar
+                {oddTarget}
+            ]*/
             int evenTarget = Integer.parseInt(target[1].substring(0, 1));
             int oddTarget = Integer.parseInt(target[2].substring(0, 1));
 
