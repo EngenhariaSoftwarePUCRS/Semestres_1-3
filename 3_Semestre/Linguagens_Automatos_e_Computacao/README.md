@@ -3,3 +3,6 @@
 -   Professor: Júlio Pereira Machado
 
 Obs: Disciplina Online
+
+-   Ferramenta Utilizada
+-   [JFLAP@7.1](https://www.jflap.org/jflaptmp/) (https://www.jflap.org/jflaptmp/)
