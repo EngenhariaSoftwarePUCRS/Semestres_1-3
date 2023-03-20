@@ -15,8 +15,8 @@ public class Main {
         heap.inserir(2);
         heap.inserir(3);
 
-        for (int i : heap.ordernarHeapSort()) {
-            System.out.println(i);
-        }
+        // for (int i : heap.ordernarHeapSort()) {
+        // System.out.println(i);
+        // }
     }
 }
