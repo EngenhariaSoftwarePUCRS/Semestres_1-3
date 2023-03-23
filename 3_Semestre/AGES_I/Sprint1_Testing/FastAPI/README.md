@@ -1,0 +1,1 @@
+This API was based on the [Como Criar API em Python Usando o FastAPI](https://www.youtube.com/watch?v=R26iojTwUv8&t=1239s) from the [Hashtag Programação](https://www.youtube.com/@HashtagProgramacao) youtube channel.
