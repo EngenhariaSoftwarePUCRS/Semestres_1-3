@@ -11,9 +11,10 @@ public class JungleGame {
     int rounds;
     Monkey[] monkeys;
 
-    public JungleGame(String filePath) {
-        File file = new File(filePath);
+    public JungleGame(File file) {
         int lineAmount = FileHelper.countLines(file);
+        if (lineAmount <= 1)
+            throw new IllegalArgumentException("Arquivo inválido ou vazio.");
         this.monkeys = new Monkey[lineAmount - 1];
         analyseFile(file);
     }
