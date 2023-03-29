@@ -1,0 +1,1 @@
+// Escreva uma função que receba um vetor de inteiros, mais a quantidade de valores presentes nele, e retorne um número inteiro correspondente à quantidade de valores que aparecem mais de uma vez. Exemplo: se o vetor for [1, 2, 3, 4, 5, 3, 6, 7, 2, 8], o retorno será 2 (2 números se repetem, 2 e 3).
