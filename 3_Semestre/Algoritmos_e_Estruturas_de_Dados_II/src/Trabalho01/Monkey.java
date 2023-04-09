@@ -1,14 +1,14 @@
 package Trabalho01;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Monkey {
     private int id;
     private int evenTarget;
     private int oddTarget;
-    private ArrayList<Coconut> coconuts;
+    private List<Coconut> coconuts;
 
-    public Monkey(int id, int evenTarget, int oddTarget, ArrayList<Coconut> coconuts) {
+    public Monkey(int id, int evenTarget, int oddTarget, List<Coconut> coconuts) {
         this.id = id;
         this.evenTarget = evenTarget;
         this.oddTarget = oddTarget;
@@ -43,7 +43,7 @@ public class Monkey {
         return oddTarget;
     }
 
-    public ArrayList<Coconut> getCoconuts() {
+    public List<Coconut> getCoconuts() {
         return coconuts;
     }
 

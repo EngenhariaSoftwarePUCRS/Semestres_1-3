@@ -1,7 +1,7 @@
 package Trabalho01;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -74,7 +74,7 @@ public class JungleGame {
             int oddTarget = Integer.parseInt(target[2]);
 
             int coconutsAmount = Integer.parseInt(partial[1]);
-            ArrayList<Coconut> coconuts = new ArrayList<Coconut>(coconutsAmount);
+            List<Coconut> coconuts = new LinkedList<Coconut>();
 
             String[] stonesString = partial[2].split(" ");
             for (int j = 0; j < coconutsAmount; j++) {
