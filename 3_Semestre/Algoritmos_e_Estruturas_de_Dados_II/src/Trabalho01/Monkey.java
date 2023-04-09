@@ -19,13 +19,11 @@ public class Monkey {
         for (int i = 0; i < coconuts.size(); i++) {
             Coconut coconut = coconuts.get(0);
             int stonesInCoconut = coconut.getStonesAmount();
-            if (stonesInCoconut % 2 == 0) {
+            if (stonesInCoconut % 2 == 0)
                 evenTarget.receiveCoconut(coconut);
-                coconuts.remove(coconut);
-            } else {
+            else
                 oddTarget.receiveCoconut(coconut);
-                coconuts.remove(coconut);
-            }
+            coconuts.remove(coconut);
         }
     }
 

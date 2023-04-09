@@ -28,7 +28,7 @@ public class JungleGame {
                 // System.out.println(monkey.toString().substring(0, 8) + " " + monkey.getCoconuts().size() + " - cocos.");
                 Monkey evenTarget = monkeys[monkey.getEvenTarget()];
                 Monkey oddTarget = monkeys[monkey.getOddTarget()];
-                monkeys[j].throwCoconuts(evenTarget, oddTarget);
+                monkey.throwCoconuts(evenTarget, oddTarget);
             }
         }
 
@@ -37,11 +37,14 @@ public class JungleGame {
                 .sorted((monkeyA, monkeyB) -> monkeyA.getCoconuts().size() < monkeyB.getCoconuts().size() ? 1 : -1)
                 .toList();
 
-        System.out.println("\n\n\n========== RESULTADOS ==========\n");
+        System.out.println("========== RESULTADOS ==========");
         for (int i = 1; i <= monkeysResult.size(); i++) {
             Monkey monkey = monkeysResult.get(i - 1);
-            String monkeyName = monkey.toString().substring(0, 8);
-            System.out.println(i + "º lugar: " + monkeyName + " - " + monkey.getCoconuts().size() + " cocos.");
+            String[] monkeyString = monkey.toString().split(" ");
+            String monkeyName = monkeyString[0];
+            String monkeyNumber = monkeyString[1];
+            String monkeyId = monkeyName + " " + monkeyNumber;
+            System.out.println(i + "º lugar: " + monkeyId + " - " + monkey.getCoconuts().size() + " cocos.");
         }
         System.out.println("================================");
     }
@@ -67,8 +70,8 @@ public class JungleGame {
                 {evenTarget} impar
                 {oddTarget}
             ]*/
-            int evenTarget = Integer.parseInt(target[1].substring(0, 1));
-            int oddTarget = Integer.parseInt(target[2].substring(0, 1));
+            int evenTarget = Integer.parseInt(target[1].split(" ")[0]);
+            int oddTarget = Integer.parseInt(target[2]);
 
             int coconutsAmount = Integer.parseInt(partial[1]);
             ArrayList<Coconut> coconuts = new ArrayList<Coconut>(coconutsAmount);
