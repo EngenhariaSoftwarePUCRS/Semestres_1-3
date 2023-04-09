@@ -1,1 +1,6 @@
+# Reference Book
 *.pdf
+
+# Proteus Simulator
+*.exe
+*.pdsprj*
