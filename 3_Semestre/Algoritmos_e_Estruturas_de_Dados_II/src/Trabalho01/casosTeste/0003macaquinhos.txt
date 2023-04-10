@@ -1,0 +1,5 @@
+Fazer 3 rodadas
+Macaco 0 par -> 2 impar -> 1 : 2 : 10 20
+Macaco 1 par -> 2 impar -> 3 : 1 : 13
+Macaco 2 par -> 0 impar -> 1 : 2 : 6 7
+Macaco 3 par -> 2 impar -> 1 : 3 : 9 5 3

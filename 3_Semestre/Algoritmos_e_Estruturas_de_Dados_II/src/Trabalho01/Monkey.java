@@ -16,7 +16,8 @@ public class Monkey {
     }
 
     public void throwCoconuts(Monkey evenTarget, Monkey oddTarget) {
-        for (int i = 0; i < coconuts.size(); i++) {
+        int originalSize = coconuts.size();
+        for (int i = 0; i < originalSize; i++) {
             Coconut coconut = coconuts.get(0);
             int stonesInCoconut = coconut.getStonesAmount();
             if (stonesInCoconut % 2 == 0)
