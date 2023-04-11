@@ -1,7 +1,6 @@
 package Trabalho01;
 
 import java.io.File;
-import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -32,9 +31,10 @@ public class JungleGame {
             }
         }
 
+        // Sort monkeys by coconuts amount
         Stream<Monkey> monkeyStream = Arrays.asList(monkeys).stream();
         List<Monkey> monkeysResult = monkeyStream
-                .sorted((monkeyA, monkeyB) -> monkeyA.getCoconuts().size() < monkeyB.getCoconuts().size() ? 1 : -1)
+                .sorted((monkeyA, monkeyB) -> monkeyA.getCoconuts() < monkeyB.getCoconuts() ? 1 : -1)
                 .toList();
 
         System.out.println("========== RESULTADOS ==========");
@@ -44,7 +44,7 @@ public class JungleGame {
             String monkeyName = monkeyString[0];
             String monkeyNumber = monkeyString[1];
             String monkeyId = monkeyName + " " + monkeyNumber;
-            int coconutsAmount = monkey.getCoconuts().size();
+            int coconutsAmount = monkey.getCoconuts();
             if (coconutsAmount == 0) {
                 System.out.println("Emmpatados em " + i + "º lugar: outros macacos - nenhum coco.");
                 break;
@@ -81,15 +81,18 @@ public class JungleGame {
             int oddTarget = Integer.parseInt(target[2]);
 
             int coconutsAmount = Integer.parseInt(partial[1]);
-            List<Coconut> coconuts = new LinkedList<Coconut>();
+            int evenCoconuts = 0;
 
             String[] stonesString = partial[2].split(" ");
             for (int j = 0; j < coconutsAmount; j++) {
                 int stoneAmount = Integer.parseInt(stonesString[j]);
-                coconuts.add(new Coconut(stoneAmount));
+                if (stoneAmount % 2 == 0)
+                    evenCoconuts++;
             }
 
-            this.monkeys[i] = new Monkey(i, evenTarget, oddTarget, coconuts);
+            int oddCoconuts = coconutsAmount - evenCoconuts;
+
+            this.monkeys[i] = new Monkey(i, evenTarget, oddTarget, evenCoconuts, oddCoconuts);
         }
 
         fileReader.close();

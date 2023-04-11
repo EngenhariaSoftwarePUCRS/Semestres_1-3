@@ -1,35 +1,33 @@
 package Trabalho01;
 
-import java.util.List;
-
 public class Monkey {
     private int id;
     private int evenTarget;
     private int oddTarget;
-    private List<Coconut> coconuts;
+    private int evenCoconuts;
+    private int oddCoconuts;
 
-    public Monkey(int id, int evenTarget, int oddTarget, List<Coconut> coconuts) {
+    public Monkey(int id, int evenTarget, int oddTarget, int evenCoconuts, int oddCoconuts) {
         this.id = id;
         this.evenTarget = evenTarget;
         this.oddTarget = oddTarget;
-        this.coconuts = coconuts;
+        this.evenCoconuts = evenCoconuts;
+        this.oddCoconuts = oddCoconuts;
     }
 
     public void throwCoconuts(Monkey evenTarget, Monkey oddTarget) {
-        int originalSize = coconuts.size();
-        for (int i = 0; i < originalSize; i++) {
-            Coconut coconut = coconuts.get(0);
-            int stonesInCoconut = coconut.getStonesAmount();
-            if (stonesInCoconut % 2 == 0)
-                evenTarget.receiveCoconut(coconut);
-            else
-                oddTarget.receiveCoconut(coconut);
-            coconuts.remove(coconut);
-        }
+        evenTarget.receiveEvenCoconut(evenCoconuts);
+        this.evenCoconuts = 0;
+        oddTarget.receiveOddCoconut(oddCoconuts);
+        this.oddCoconuts = 0;
     }
 
-    public void receiveCoconut(Coconut coconut) {
-        this.coconuts.add(coconut);
+    public void receiveEvenCoconut(int coconutAmount) {
+        this.evenCoconuts += coconutAmount;
+    }
+
+    public void receiveOddCoconut(int coconutAmount) {
+        this.oddCoconuts += coconutAmount;
     }
 
     public int getId() {
@@ -44,18 +42,16 @@ public class Monkey {
         return oddTarget;
     }
 
-    public List<Coconut> getCoconuts() {
-        return coconuts;
+    public int getCoconuts() {
+        return evenCoconuts + oddCoconuts;
     }
 
     @Override
     public String toString() {
-        String stringifiedMonkey = "Macaco " + id +
+        return "Macaco " + id +
                 " par -> " + evenTarget +
                 " impar -> " + oddTarget +
-                " : " + coconuts.size() + " :";
-        for (Coconut coconut : coconuts)
-            stringifiedMonkey += coconut;
-        return stringifiedMonkey;
+                " cocos com número par de pedrinhas -> " + evenCoconuts +
+                " cocos com número ímpar de pedrinhas -> " + oddCoconuts;
     }
 }

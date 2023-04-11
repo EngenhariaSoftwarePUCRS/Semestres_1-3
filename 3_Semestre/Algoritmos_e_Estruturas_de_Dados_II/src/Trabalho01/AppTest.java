@@ -8,14 +8,16 @@ public class AppTest {
         try {
             String filesPath = args.length > 0 ? args[0]
                     : "src/Trabalho01/casosTeste";
+            String outputFilePath = args.length > 1 ? args[1]
+                    : "src/Trabalho01/resultados.txt";
             File[] files = new File(filesPath).listFiles();
-            FileWriter fileWriter = new FileWriter("src/Trabalho01/resultados.txt");
+            FileWriter fileWriter = new FileWriter(outputFilePath);
             long totalTime = 0;
             String fileReadTimeOutput = "Tempo decorrido para analisar o arquivo: 0s";
 
             for (File file : files) {
-                System.out.print("\nAnalisando arquivo: ");
-                System.out.println(file.getName());
+                String fileName = file.getName();
+                System.out.print("\nAnalisando arquivo: " + fileName);
 
                 long startTime = System.nanoTime();
                 Monkey winner = new JungleGame(file).play();
@@ -23,9 +25,9 @@ public class AppTest {
                 long fileTime = endTime - startTime;
 
                 fileReadTimeOutput = String.format("Tempo decorrido para analisar o arquivo \"%s\": %s",
-                        file.getName(), Util.convertLongToTime(fileTime));
+                        fileName, Util.convertLongToTime(fileTime));
                 String winnerMonkey = String.format("Vencedor: Macaco %d - %d cocos.",
-                        winner.getId(), winner.getCoconuts().size());
+                        winner.getId(), winner.getCoconuts());
 
                 fileWriter.write(fileReadTimeOutput + "\n");
                 fileWriter.write("\t" + winnerMonkey + "\n");
@@ -51,6 +53,8 @@ public class AppTest {
             System.out.println("\t" + totalFilesOutput);
             System.out.println("\t" + totalFilesTimeOutput);
             System.out.println("\t" + averageTimeOutput);
+
+            System.out.println("Resumo das informações disponíveis em: " + outputFilePath);
 
             fileWriter.close();
         } catch (Exception e) {
