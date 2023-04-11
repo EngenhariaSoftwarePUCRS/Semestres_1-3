@@ -19,7 +19,7 @@ public class JungleGame {
         analyseFile(file);
     }
 
-    public void play() {
+    public Monkey play() {
         for (int i = 0; i < rounds; i++) {
             // System.out.println("\n\n===== ROUND " + i + " =====\n");
 
@@ -44,9 +44,16 @@ public class JungleGame {
             String monkeyName = monkeyString[0];
             String monkeyNumber = monkeyString[1];
             String monkeyId = monkeyName + " " + monkeyNumber;
-            System.out.println(i + "º lugar: " + monkeyId + " - " + monkey.getCoconuts().size() + " cocos.");
+            int coconutsAmount = monkey.getCoconuts().size();
+            if (coconutsAmount == 0) {
+                System.out.println("Emmpatados em " + i + "º lugar: outros macacos - nenhum coco.");
+                break;
+            }
+            System.out.println(i + "º lugar: " + monkeyId + " - " + coconutsAmount + " cocos.");
         }
         System.out.println("================================");
+
+        return monkeysResult.get(0);
     }
 
     private void analyseFile(File file) {
