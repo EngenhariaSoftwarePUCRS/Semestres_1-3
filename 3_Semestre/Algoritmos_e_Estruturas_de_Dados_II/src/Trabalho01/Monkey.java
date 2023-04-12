@@ -4,10 +4,10 @@ public class Monkey {
     private int id;
     private int evenTarget;
     private int oddTarget;
-    private int evenCoconuts;
-    private int oddCoconuts;
+    private long evenCoconuts;
+    private long oddCoconuts;
 
-    public Monkey(int id, int evenTarget, int oddTarget, int evenCoconuts, int oddCoconuts) {
+    public Monkey(int id, int evenTarget, int oddTarget, long evenCoconuts, long oddCoconuts) {
         this.id = id;
         this.evenTarget = evenTarget;
         this.oddTarget = oddTarget;
@@ -22,11 +22,11 @@ public class Monkey {
         this.oddCoconuts = 0;
     }
 
-    public void receiveEvenCoconut(int coconutAmount) {
+    public void receiveEvenCoconut(long coconutAmount) {
         this.evenCoconuts += coconutAmount;
     }
 
-    public void receiveOddCoconut(int coconutAmount) {
+    public void receiveOddCoconut(long coconutAmount) {
         this.oddCoconuts += coconutAmount;
     }
 
@@ -42,7 +42,7 @@ public class Monkey {
         return oddTarget;
     }
 
-    public int getCoconuts() {
+    public long getCoconuts() {
         return evenCoconuts + oddCoconuts;
     }
 

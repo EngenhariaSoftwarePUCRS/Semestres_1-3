@@ -5,7 +5,7 @@ import java.io.File;
 public class App {
     public static void main(String[] args) {
         String filePath = args.length > 0 ? args[0]
-                : "src/Trabalho01/casosTeste/1000macaquinhos.txt";
+                : "src/Trabalho01/casosTeste/0006macaquinhos.txt";
 
         long startTime = System.nanoTime();
         new JungleGame(new File(filePath)).play();

@@ -2,6 +2,7 @@ package Trabalho01;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class FileHelper {
@@ -19,14 +20,19 @@ public class FileHelper {
 
     public static int countLines(File file) {
         try {
-            Scanner reader = new Scanner(file);
-            int lineAmount = 0;
-            while (reader.hasNext()) {
-                lineAmount++;
-                reader.nextLine();
+            try {
+                String fileName = file.getName();
+                return Integer.parseInt(fileName.substring(0, 4));
+            } catch (InputMismatchException ime) {
+                Scanner reader = new Scanner(file);
+                int lineAmount = 0;
+                while (reader.hasNext()) {
+                    lineAmount++;
+                    reader.nextLine();
+                }
+                reader.close();
+                return lineAmount - 1;
             }
-            reader.close();
-            return lineAmount;
         } catch (FileNotFoundException fnfe) {
             return -1;
         }

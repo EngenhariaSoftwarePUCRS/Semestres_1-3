@@ -1,22 +1,24 @@
-Tempo decorrido para analisar o arquivo "0003macaquinhos.txt": 00:00.040
+Tempo decorrido para analisar o arquivo "0004macaquinhos.txt": 00:00.041
 	Vencedor: Macaco 1 - 5 cocos.
-Tempo decorrido para analisar o arquivo "0005macaquinhos.txt": 00:00.012
+Tempo decorrido para analisar o arquivo "0006macaquinhos.txt": 00:00.012
 	Vencedor: Macaco 0 - 43 cocos.
-Tempo decorrido para analisar o arquivo "0050macaquinhos.txt": 00:00.048
+Tempo decorrido para analisar o arquivo "0050macaquinhos.txt": 00:00.030
 	Vencedor: Macaco 14 - 1847 cocos.
-Tempo decorrido para analisar o arquivo "0100macaquinhos.txt": 00:00.093
+Tempo decorrido para analisar o arquivo "0100macaquinhos.txt": 00:00.091
 	Vencedor: Macaco 88 - 16327 cocos.
-Tempo decorrido para analisar o arquivo "0200macaquinhos.txt": 00:00.132
+Tempo decorrido para analisar o arquivo "0200macaquinhos.txt": 00:00.098
 	Vencedor: Macaco 9 - 17043 cocos.
-Tempo decorrido para analisar o arquivo "0400macaquinhos.txt": 00:00.435
+Tempo decorrido para analisar o arquivo "0400macaquinhos.txt": 00:00.272
 	Vencedor: Macaco 109 - 402270 cocos.
-Tempo decorrido para analisar o arquivo "0600macaquinhos.txt": 00:01.1050
+Tempo decorrido para analisar o arquivo "0600macaquinhos.txt": 00:00.690
 	Vencedor: Macaco 49 - 307830 cocos.
-Tempo decorrido para analisar o arquivo "0800macaquinhos.txt": 00:01.1479
+Tempo decorrido para analisar o arquivo "0800macaquinhos.txt": 00:00.986
 	Vencedor: Macaco 33 - 626323 cocos.
-Tempo decorrido para analisar o arquivo "1000macaquinhos.txt": 00:02.2536
+Tempo decorrido para analisar o arquivo "1000macaquinhos.txt": 00:01.1528
 	Vencedor: Macaco 77 - 333394 cocos.
+Tempo decorrido para analisar o arquivo "2000macaquinhos.txt": 00:06.6456
+	Vencedor: Macaco 539 - 4844003 cocos.
 ------------------------ RESULTADOS ------------------------
-Total de arquivos analisados: 9
-Tempo total de execução: 00:05.5829
-Tempo médio de execução: 00:00.647
+Total de arquivos analisados: 10
+Tempo total de execução: 00:10.10210
+Tempo médio de execução: 00:01.1021

@@ -14,7 +14,7 @@ public class JungleGame {
         int lineAmount = FileHelper.countLines(file);
         if (lineAmount <= 1)
             throw new IllegalArgumentException("Arquivo inválido ou vazio.");
-        this.monkeys = new Monkey[lineAmount - 1];
+        this.monkeys = new Monkey[lineAmount];
         analyseFile(file);
     }
 
@@ -44,7 +44,7 @@ public class JungleGame {
             String monkeyName = monkeyString[0];
             String monkeyNumber = monkeyString[1];
             String monkeyId = monkeyName + " " + monkeyNumber;
-            int coconutsAmount = monkey.getCoconuts();
+            long coconutsAmount = monkey.getCoconuts();
             if (coconutsAmount == 0) {
                 System.out.println("Emmpatados em " + i + "º lugar: outros macacos - nenhum coco.");
                 break;
@@ -80,17 +80,17 @@ public class JungleGame {
             int evenTarget = Integer.parseInt(target[1].split(" ")[0]);
             int oddTarget = Integer.parseInt(target[2]);
 
-            int coconutsAmount = Integer.parseInt(partial[1]);
-            int evenCoconuts = 0;
+            long coconutsAmount = Long.parseLong(partial[1]);
+            long evenCoconuts = 0;
 
             String[] stonesString = partial[2].split(" ");
             for (int j = 0; j < coconutsAmount; j++) {
-                int stoneAmount = Integer.parseInt(stonesString[j]);
+                long stoneAmount = Long.parseLong(stonesString[j]);
                 if (stoneAmount % 2 == 0)
                     evenCoconuts++;
             }
 
-            int oddCoconuts = coconutsAmount - evenCoconuts;
+            long oddCoconuts = coconutsAmount - evenCoconuts;
 
             this.monkeys[i] = new Monkey(i, evenTarget, oddTarget, evenCoconuts, oddCoconuts);
         }
