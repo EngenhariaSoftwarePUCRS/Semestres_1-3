@@ -1,36 +1,37 @@
-const { MongoClient } = require('mongodb');
+const cors = require('cors')
 require('dotenv').config()
+const express = require('express')
+const { MongoClient } = require('mongodb');
 
 async function main() {
     /**
-     * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-     * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-     */
-
+      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
+      * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
+    **/
     const uri = process.env.CONNECTION_URI;
-
     const client = new MongoClient(uri);
+    const app = express()
+    const PORT = 5000
 
-    try {
-        // Connect to the MongoDB cluster
-        await client.connect();
+    // Connect to the MongoDB cluster
+    await client.connect();
 
-        // Make the appropriate DB calls
-        await listDatabases(client);
+    app.use(cors({
+        origin: 'http://127.0.0.1:5500'
+    }))
 
-        await client.db("sample_airbnb").collection("listingsAndReviews")
-            .find({})
-            .limit(5)
-            .forEach(console.log)
+    app.listen(PORT, () => {
+        console.log(`Running on http://localhost:${PORT}`)
+    })
 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
+    app.get('/', async (_, res) => {
+        const documents = await client.db("sample_airbnb").collection("listingsAndReviews").find({}).toArray()
+        const data = documents.map(doc => JSON.stringify(doc))
+        return res.send(data)
+    })
 }
 
-main().catch(console.error);
+main()
 
 async function listDatabases(client) {
     databasesList = await client.db().admin().listDatabases();

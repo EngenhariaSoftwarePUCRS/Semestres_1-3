@@ -7,7 +7,15 @@
     <title>MongoDB</title>
 </head>
 <body>
-    <button></button>
-    <script></script>
+    <div id="root">
+        <button onclick="getCollection()">Get Collection</button>
+    </div>
+    <script>
+        async function getCollection() {
+            fetch('http://localhost:5000/')
+                // .then(res => res.json())
+                .then(data => console.log(data))
+        }
+    </script>
 </body>
 </html>
