@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="" id="fileInput" multiple>
+    <button onclick="sendFile()">Send</button>
+    <script>
+        const fileInput = document.getElementById('fileInput');
+
+        async function testBack() {
+            const respose = await fetch("http://localhost:8000/veiculos", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+        }
+        testBack()
+
+        async function sendFile() {
+            const formData = new FormData();
+            const files = [...fileInput.files]
+            files.forEach((file) => {
+                formData.append("file", file);
+            })
+            const response = await fetch("http://localhost:8000/veiculos/pdf/", {
+                method: "POST",
+                body: formData
+            })
+                .then((response) => response.json())
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err))
+        }
+    </script>
+</body>
+</html>
