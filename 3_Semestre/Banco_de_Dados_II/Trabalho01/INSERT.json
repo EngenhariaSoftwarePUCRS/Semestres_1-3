@@ -1,0 +1,29 @@
+db.collection.insertMany([
+    { "Codigo": 1, "Placa": "HUN7182", "Marca": "Chevrolet", "Modelo": "Onix", "Ano": 2020, "Nome_motorista": "Benedita Aurora Marli Porto" },
+    { "Codigo": 2, "Placa": "LVK2914", "Marca": "Volkswagen", "Modelo": "Gol", "Ano": 2018, "Nome_motorista": "Gustavo Ryan Peixoto" },
+    { "Codigo": 3, "Placa": "HZM8590", "Marca": "Toyota", "Modelo": "Corolla", "Ano": 2021, "Nome_motorista": "Rafaela Laura Pereira" },
+    { "Codigo": 4, "Placa": "NEA6661", "Marca": "Fiat", "Modelo": "Palio", "Ano": 2010, "Nome_motorista": "Sônia Ana Corte Real" }
+])
+
+db.collection.insertMany([
+    { "CPF": "40153021845", "Nome": "Julio Caleb Marcelo Corte Real Assis", "Email": "julio_caleb_corterealassis@expressoforte.com.br", "Telefone": "61981253455", "Bairro": "Ceilândia Norte (Ceilândia)", "Meio_Pagamento": "Crédito MasterCard" },
+    { "CPF": "43870718692", "Nome": "Marcelo Luiz Vieira", "Email": "marcelo_vieira@studiodeideias.com", "Telefone": "79987733936", "Bairro": "Cidade Nova", "Meio_Pagamento": "Visa 16 Dígitos" },
+    { "CPF": "98944351490", "Nome": "Marlene Mirella Assis", "Email": "marlene_assis@contjulioroberto.com.br", "Telefone": "15992325358", "Bairro": "Jardim Santa Inêz", "Meio_Pagamento": "Visa Electron" },
+    { "CPF": "64812811058", "Nome": "José Theo Giovanni Aragão", "Email": "jose.theo.aragao@netsite.com.br", "Telefone": "81998804732", "Bairro": "COHAB", "Meio_Pagamento": "Dinheiro" },
+    { "CPF": "38598277312", "Nome": "Marcos Kaique Lorenzo Viana", "Email": "marcos-viana88@terra.com.br", "Telefone": "6937921678", "Meio_Pagamento": "Débito Maestro" },
+    { "CPF": "90897008200", "Nome": "Sabrina Ayla Nogueira", "Email": "sabrinaaylanogueira@sygma.com.br", "Telefone": "85987842372", "Bairro": "Presidente Kennedy" }
+])
+
+db.collection.insertMany([
+    { "Id": 1, "Kms": 10.5, "Valor": 25.75, "Duração": 30, "FK_Carro_Codigo": 1 },
+    { "Id": 2, "Kms": 15.2, "Valor": 30.00, "Duração": 40, "FK_Carro_Codigo": 2 },
+    { "Id": 3, "Kms": 5.7, "Valor": 12.50, "Duração": 20, "FK_Carro_Codigo": 3 },
+    { "Id": 4, "Kms": 20.0, "Valor": 50.00, "Duração": 50, "FK_Carro_Codigo": 4 },
+    { "Id": 5, "Kms": 8.5, "Valor": 20.25, "Duração": 25, "FK_Carro_Codigo": 1 },
+    { "Id": 6, "Kms": 12.0, "Valor": 27.50, "Duração": 35, "FK_Carro_Codigo": 2 },
+    { "Id": 7, "Kms": 3.5, "Valor": 8.75, "Duração": 15, "FK_Carro_Codigo": 3 },
+    { "Id": 8, "Kms": 18.3, "Valor": 45.00, "Duração": 45, "FK_Carro_Codigo": 4 },
+    { "Id": 9, "Kms": 9.2, "Valor": 22.50, "Duração": 27, "FK_Carro_Codigo": 1 },
+    { "Id": 10, "Kms": 14.7, "Valor": 32.50, "Duração": 38, "FK_Carro_Codigo": 2 },
+    { "Id": 11, "Kms": 6.0, "Valor": 15.00, "Duração": 22, "FK_Carro_Codigo": 3 }
+])
