@@ -24,3 +24,31 @@ INSERT INTO Viagem (Id, Kms, Valor, Duracao, FK_Carro_Codigo) VALUES
     (9, 9.2, 22.50, 27, 1),
     (10, 14.7, 32.50, 38, 2),
     (11, 6.0, 15.00, 22, 3);
+    
+INSERT INTO Usa (FK_Passageiro_CPF, FK_Viagem_Id) VALUES
+	('40153021845', 1),
+    ('43870718692', 2),
+    ('98944351490', 3),
+    ('64812811058', 4),
+    ('38598277312', 5),
+    ('90897008200', 6),
+	('40153021845', 7),
+    ('43870718692', 8),
+    ('98944351490', 9),
+    ('64812811058', 10),
+    ('38598277312', 11);
+    
+INSERT INTO Urbana (Bairro_Partida, Bairro_Destino, FK_Viagem_Id) VALUES
+	(2),
+	(4),
+	(6),
+	(8),
+	(10);
+    
+INSERT INTO Interurbana (Taxa_Adicional, Cidade_Partida, Cidade_Destino, FK_Viagem_Id) VALUES
+	(10, 'Ceilândia Norte (Ceilândia)', 'Jardim Santa Inêz', 1),
+	(10, 'Jardim Santa Inêz', 'Ceilândia Norte (Ceilândia)', 3),
+	(5),
+	(7),
+	(9),
+	(11);
