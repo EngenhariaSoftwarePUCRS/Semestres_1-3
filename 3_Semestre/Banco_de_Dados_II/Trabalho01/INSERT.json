@@ -1,29 +1,290 @@
-db.collection.insertMany([
-    { "Codigo": 1, "Placa": "HUN7182", "Marca": "Chevrolet", "Modelo": "Onix", "Ano": 2020, "Nome_motorista": "Benedita Aurora Marli Porto" },
-    { "Codigo": 2, "Placa": "LVK2914", "Marca": "Volkswagen", "Modelo": "Gol", "Ano": 2018, "Nome_motorista": "Gustavo Ryan Peixoto" },
-    { "Codigo": 3, "Placa": "HZM8590", "Marca": "Toyota", "Modelo": "Corolla", "Ano": 2021, "Nome_motorista": "Rafaela Laura Pereira" },
-    { "Codigo": 4, "Placa": "NEA6661", "Marca": "Fiat", "Modelo": "Palio", "Ano": 2010, "Nome_motorista": "Sônia Ana Corte Real" }
+db.carro.insertMany([
+    {
+        "Codigo": 1,
+        "Placa": "HUN7182",
+        "Marca": "Chevrolet",
+        "Modelo": "Onix",
+        "Ano": 2020,
+        "Nome_motorista": "Benedita Aurora Marli Porto"
+    },
+    {
+        "Codigo": 2,
+        "Placa": "LVK2914",
+        "Marca": "Volkswagen",
+        "Modelo": "Gol",
+        "Ano": 2018,
+        "Nome_motorista": "Gustavo Ryan Peixoto"
+    },
+    {
+        "Codigo": 3,
+        "Placa": "HZM8590",
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Ano": 2021,
+        "Nome_motorista": "Rafaela Laura Pereira"
+    },
+    {
+        "Codigo": 4,
+        "Placa": "NEA6661",
+        "Marca": "Fiat",
+        "Modelo": "Palio",
+        "Ano": 2010,
+        "Nome_motorista": "Sônia Ana Corte Real"
+    }
 ])
 
-db.collection.insertMany([
-    { "CPF": "40153021845", "Nome": "Julio Caleb Marcelo Corte Real Assis", "Email": "julio_caleb_corterealassis@expressoforte.com.br", "Telefone": "61981253455", "Bairro": "Ceilândia Norte (Ceilândia)", "Meio_Pagamento": "Crédito MasterCard" },
-    { "CPF": "43870718692", "Nome": "Marcelo Luiz Vieira", "Email": "marcelo_vieira@studiodeideias.com", "Telefone": "79987733936", "Bairro": "Cidade Nova", "Meio_Pagamento": "Visa 16 Dígitos" },
-    { "CPF": "98944351490", "Nome": "Marlene Mirella Assis", "Email": "marlene_assis@contjulioroberto.com.br", "Telefone": "15992325358", "Bairro": "Jardim Santa Inêz", "Meio_Pagamento": "Visa Electron" },
-    { "CPF": "64812811058", "Nome": "José Theo Giovanni Aragão", "Email": "jose.theo.aragao@netsite.com.br", "Telefone": "81998804732", "Bairro": "COHAB", "Meio_Pagamento": "Dinheiro" },
-    { "CPF": "38598277312", "Nome": "Marcos Kaique Lorenzo Viana", "Email": "marcos-viana88@terra.com.br", "Telefone": "6937921678", "Meio_Pagamento": "Débito Maestro" },
-    { "CPF": "90897008200", "Nome": "Sabrina Ayla Nogueira", "Email": "sabrinaaylanogueira@sygma.com.br", "Telefone": "85987842372", "Bairro": "Presidente Kennedy" }
+db.passageiro.insertMany([
+    {
+        "CPF": "10531043088",
+        "Nome": "Alexandre Rafael Julio Silveira Gonçalves",
+        "Email": "alexandrerafaelsilveira@gmail.com",
+        "Telefone": "54981380067",
+        "Bairo": "Cerâmica",
+        "Cidade": "Erechim",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Crédito MasterCard"
+    },
+    {
+        "CPF": "29438733060",
+        "Nome": "Theo Danilo Brito",
+        "Email": "theo_danilo_brito@jh2consulting.com",
+        "Telefone": "55988063073",
+        "Bairo": "Nossa Senhora de Fátima",
+        "Cidade": "Santa Maria",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Visa 16 Dígitos"
+    },
+    {
+        "CPF": "98822414098",
+        "Nome": "Raul Tiago Manuel da Silva",
+        "Email": "raul_dasilva@terra.com.br",
+        "Telefone": "51991926194",
+        "Bairo": "São Vicente",
+        "Cidade": "Gravataí",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Visa Electron"
+    },
+    {
+        "CPF": "59362314029",
+        "Nome": "Agatha Maitê Aline Gonçalves",
+        "Email": "agatha.maite.goncalves@uol.com.br",
+        "Telefone": "51997736328",
+        "Bairo": "Passo da Areia",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Dinheiro"
+    },
+    {
+        "CPF": "78428732086",
+        "Nome": "Rita Clarice Stella Melo",
+        "Email": "rita_clarice_melo@coldblock.com.br",
+        "Telefone": "51991576603",
+        "Meio_Pagamento": "Débito Maestro"
+    },
+    {
+        "CPF": "42738597009",
+        "Nome": "Liz Débora Fernandes",
+        "Email": "lizdeborafernandes@vhbadvogados.com.br",
+        "Telefone": "55999817972",
+        "Bairo": "Floresta",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul"
+    }
 ])
 
-db.collection.insertMany([
-    { "Id": 1, "Kms": 10.5, "Valor": 25.75, "Duração": 30, "FK_Carro_Codigo": 1 },
-    { "Id": 2, "Kms": 15.2, "Valor": 30.00, "Duração": 40, "FK_Carro_Codigo": 2 },
-    { "Id": 3, "Kms": 5.7, "Valor": 12.50, "Duração": 20, "FK_Carro_Codigo": 3 },
-    { "Id": 4, "Kms": 20.0, "Valor": 50.00, "Duração": 50, "FK_Carro_Codigo": 4 },
-    { "Id": 5, "Kms": 8.5, "Valor": 20.25, "Duração": 25, "FK_Carro_Codigo": 1 },
-    { "Id": 6, "Kms": 12.0, "Valor": 27.50, "Duração": 35, "FK_Carro_Codigo": 2 },
-    { "Id": 7, "Kms": 3.5, "Valor": 8.75, "Duração": 15, "FK_Carro_Codigo": 3 },
-    { "Id": 8, "Kms": 18.3, "Valor": 45.00, "Duração": 45, "FK_Carro_Codigo": 4 },
-    { "Id": 9, "Kms": 9.2, "Valor": 22.50, "Duração": 27, "FK_Carro_Codigo": 1 },
-    { "Id": 10, "Kms": 14.7, "Valor": 32.50, "Duração": 38, "FK_Carro_Codigo": 2 },
-    { "Id": 11, "Kms": 6.0, "Valor": 15.00, "Duração": 22, "FK_Carro_Codigo": 3 }
+db.viagem.insertMany([
+    {
+        "Id": 1,
+        "Kms": 369,
+        "Valor": 922.5,
+        "Duracao": 300,
+        "FK_Carro_Codigo": 2
+    },
+    {
+        "Id": 2,
+        "Kms": 369,
+        "Valor": 922.5,
+        "Duracao": 305,
+        "FK_Carro_Codigo": 3
+    },
+    {
+        "Id": 3,
+        "Kms": 369,
+        "Valor": 922.5,
+        "Duracao": 300,
+        "FK_Carro_Codigo": 1
+    },
+    {
+        "Id": 4,
+        "Kms": 359,
+        "Valor": 897.5,
+        "Duracao": 300,
+        "FK_Carro_Codigo": 3
+    },
+    {
+        "Id": 5,
+        "Kms": 29,
+        "Valor": 72.5,
+        "Duracao": 27,
+        "FK_Carro_Codigo": 3
+    },
+    {
+        "Id": 6,
+        "Kms": 377,
+        "Valor": 942.5,
+        "Duracao": 310,
+        "FK_Carro_Codigo": 3
+    },
+    {
+        "Id": 7,
+        "Kms": 358,
+        "Valor": 895,
+        "Duracao": 296,
+        "FK_Carro_Codigo": 1
+    },
+    {
+        "Id": 8,
+        "Kms": 358,
+        "Valor": 895,
+        "Duracao": 296,
+        "FK_Carro_Codigo": 2
+    },
+    {
+        "Id": 9,
+        "Kms": 378,
+        "Valor": 945,
+        "Duracao": 309,
+        "FK_Carro_Codigo": 3
+    },
+    {
+        "Id": 10,
+        "Kms": 6.3,
+        "Valor": 15.75,
+        "Duracao": 10,
+        "FK_Carro_Codigo": 4
+    },
+    {
+        "Id": 11,
+        "Kms": 4.5,
+        "Valor": 11.25,
+        "Duracao": 7,
+        "FK_Carro_Codigo": 4
+    }
+])
+
+db.usa.insertMany([
+    {
+        "FK_Passageiro_CPF": "59362314029",
+        "FK_Viagem_Id": 1
+    },
+    {
+        "FK_Passageiro_CPF": "10531043088",
+        "FK_Viagem_Id": 2
+    },
+    {
+        "FK_Passageiro_CPF": "59362314029",
+        "FK_Viagem_Id": 3
+    },
+    {
+        "FK_Passageiro_CPF": "10531043088",
+        "FK_Viagem_Id": 4
+    },
+    {
+        "FK_Passageiro_CPF": "42738597009",
+        "FK_Viagem_Id": 5
+    },
+    {
+        "FK_Passageiro_CPF": "98822414098",
+        "FK_Viagem_Id": 6
+    },
+    {
+        "FK_Passageiro_CPF": "29438733060",
+        "FK_Viagem_Id": 7
+    },
+    {
+        "FK_Passageiro_CPF": "29438733060",
+        "FK_Viagem_Id": 8
+    },
+    {
+        "FK_Passageiro_CPF": "78428732086",
+        "FK_Viagem_Id": 9
+    },
+    {
+        "FK_Passageiro_CPF": "59362314029",
+        "FK_Viagem_Id": 10
+    },
+    {
+        "FK_Passageiro_CPF": "42738597009",
+        "FK_Viagem_Id": 11
+    }
+])
+
+db.urbana.insertMany([
+    {
+        "Bairro_Partida": "Partenon",
+        "Bairro_Destino": "Floresta",
+        "FK_Viagem_Id": 9
+    },
+    {
+        "Bairro_Partida": "Floresta",
+        "Bairro_Destino": "Passo da Areaia",
+        "FK_Viagem_Id": 11
+    }
+])
+
+db.interurbana.insertMany([
+    {
+        "Taxa_Adicional": 23.06,
+        "Cidade_Partida": "Porto Alegre",
+        "Cidade_Destino": "Erechim",
+        "FK_Viagem_Id": 1
+    },
+    {
+        "Taxa_Adicional": 23.06,
+        "Cidade_Partida": "Erechim",
+        "Cidade_Destino": "Porto Alegre",
+        "FK_Viagem_Id": 2
+    },
+    {
+        "Taxa_Adicional": 23.06,
+        "Cidade_Partida": "Porto Alegre",
+        "Cidade_Destino": "Erechim",
+        "FK_Viagem_Id": 3
+    },
+    {
+        "Taxa_Adicional": 22.44,
+        "Cidade_Partida": "Erechim",
+        "Cidade_Destino": "Santa Maria",
+        "FK_Viagem_Id": 4
+    },
+    {
+        "Taxa_Adicional": 23.06,
+        "Cidade_Partida": "Porto Alegre",
+        "Cidade_Destino": "Gravataí",
+        "FK_Viagem_Id": 5
+    },
+    {
+        "Taxa_Adicional": 23.56,
+        "Cidade_Partida": "Gravataí",
+        "Cidade_Destino": "Erechim",
+        "FK_Viagem_Id": 6
+    },
+    {
+        "Taxa_Adicional": 22.4,
+        "Cidade_Partida": "Santa Maria",
+        "Cidade_Destino": "Erechim",
+        "FK_Viagem_Id": 7
+    },
+    {
+        "Taxa_Adicional": 22.4,
+        "Cidade_Partida": "Erechim",
+        "Cidade_Destino": "Gravataí",
+        "FK_Viagem_Id": 8
+    },
+    {
+        "Taxa_Adicional": 23.06,
+        "Cidade_Partida": "Porto Alegre",
+        "Cidade_Destino": "Erechim",
+        "FK_Viagem_Id": 10
+    }
 ])
