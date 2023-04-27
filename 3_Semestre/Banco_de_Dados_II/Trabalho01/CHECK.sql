@@ -1,3 +1,6 @@
+/*DROP SCHEMA viagens_aplicativo;
+CREATE SCHEMA viagens_aplicativo;*/
+
 DESC Carro;
 SELECT * FROM Carro;
 
