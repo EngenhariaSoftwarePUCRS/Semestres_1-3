@@ -16,13 +16,15 @@ CREATE TABLE Passageiro (
     Email VARCHAR(110) NOT NULL,
     Telefone VARCHAR(13) NOT NULL,
     Bairro VARCHAR(255),
+    Cidade VARCHAR(255),
+    Estado VARCHAR(20),
     Meio_Pagamento VARCHAR(20)
 );
 
 CREATE TABLE Viagem (
     Id INTEGER UNSIGNED NOT NULL PRIMARY KEY UNIQUE,
-    Kms DECIMAL(4,2)  UNSIGNED NOT NULL,
-    Valor DECIMAL(4,2) UNSIGNED NOT NULL,
+    Kms DECIMAL(6,2)  UNSIGNED NOT NULL,
+    Valor DECIMAL(6,2) UNSIGNED NOT NULL,
     Duracao INTEGER(4) UNSIGNED NOT NULL,
     FK_Carro_Codigo INTEGER UNSIGNED NOT NULL
 );
@@ -34,7 +36,7 @@ CREATE TABLE Urbana (
 );
 
 CREATE TABLE Interurbana (
-    Taxa_Adicional DECIMAL(4,2),
+    Taxa_Adicional DECIMAL(6,2),
     Cidade_Partida VARCHAR(255),
     Cidade_Destino VARCHAR(255) NOT NULL,
     FK_Viagem_Id INTEGER UNSIGNED NOT NULL PRIMARY KEY
