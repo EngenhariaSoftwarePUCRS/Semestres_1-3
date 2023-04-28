@@ -95,196 +95,187 @@ db.passageiro.insertMany([
 db.viagem.insertMany([
     {
         "Id": 1,
+        "Carro_Codigo": 2,
+        "Passageiros_CPF": [
+            "59362314029"
+        ],
         "Kms": 369,
         "Valor": 922.5,
         "Duracao": 300,
-        "FK_Carro_Codigo": 2
+        "Taxa_Adicional": 23.06,
+        "Partida": {
+            "Cidade": "Porto Alegre"
+        },
+        "Destino": {
+            "Cidade": "Erechim"
+        }
     },
     {
         "Id": 2,
+        "Carro_Codigo": 3,
+        "Passageiros_CPF": [
+            "10531043088"
+        ],
         "Kms": 369,
         "Valor": 922.5,
         "Duracao": 305,
-        "FK_Carro_Codigo": 3
+        "Taxa_Adicional": 23.06,
+        "Partida": {
+            "Cidade": "Erechim"
+        },
+        "Destino": {
+            "Cidade": "Porto Alegre"
+        }
     },
     {
         "Id": 3,
+        "Carro_Codigo": 1,
+        "Passageiros_CPF": [
+            "59362314029"
+        ],
         "Kms": 369,
         "Valor": 922.5,
         "Duracao": 300,
-        "FK_Carro_Codigo": 1
+        "Taxa_Adicional": 23.06,
+        "Partida": {
+            "Cidade": "Porto Alegre"
+        },
+        "Destino": {
+            "Cidade": "Erechim"
+        }
     },
     {
         "Id": 4,
+        "Carro_Codigo": 3,
+        "Passageiros_CPF": [
+            "10531043088"
+        ],
         "Kms": 359,
         "Valor": 897.5,
         "Duracao": 300,
-        "FK_Carro_Codigo": 3
+        "Taxa_Adicional": 22.44,
+        "Partida": {
+            "Cidade": "Erechim"
+        },
+        "Destino": {
+            "Cidade": "Santa Maria"
+        }
     },
     {
         "Id": 5,
+        "Carro_Codigo": 3,
+        "Passageiros_CPF": [
+            "42738597009"
+        ],
         "Kms": 29,
         "Valor": 72.5,
         "Duracao": 27,
-        "FK_Carro_Codigo": 3
+        "Taxa_Adicional": 23.06,
+        "Partida": {
+            "Cidade": "Porto Alegre"
+        },
+        "Destino": {
+            "Cidade": "Gravataí"
+        }
     },
     {
         "Id": 6,
+        "Carro_Codigo": 3,
+        "Passageiros_CPF": [
+            "98822414098"
+        ],
         "Kms": 377,
         "Valor": 942.5,
         "Duracao": 310,
-        "FK_Carro_Codigo": 3
+        "Taxa_Adicional": 23.56,
+        "Partida": {
+            "Cidade": "Gravataí"
+        },
+        "Destino": {
+            "Cidade": "Erechim"
+        }
     },
     {
         "Id": 7,
+        "Carro_Codigo": 1,
+        "Passageiros_CPF": [
+            "29438733060"
+        ],
         "Kms": 358,
         "Valor": 895,
         "Duracao": 296,
-        "FK_Carro_Codigo": 1
+        "Taxa_Adicional": 22.4,
+        "Partida": {
+            "Cidade": "Santa Maria"
+        },
+        "Destino": {
+            "Cidade": "Erechim"
+        }
     },
     {
         "Id": 8,
+        "Carro_Codigo": 2,
+        "Passageiros_CPF": [
+            "29438733060"
+        ],
         "Kms": 358,
         "Valor": 895,
         "Duracao": 296,
-        "FK_Carro_Codigo": 2
+        "Taxa_Adicional": 22.4,
+        "Partida": {
+            "Cidade": "Erechim"
+        },
+        "Destino": {
+            "Cidade": "Gravataí"
+        }
     },
     {
         "Id": 9,
+        "Carro_Codigo": 3,
+        "Passageiros_CPF": [
+            "78428732086"
+        ],
         "Kms": 378,
         "Valor": 945,
         "Duracao": 309,
-        "FK_Carro_Codigo": 3
+        "Partida": {
+            "Bairro": "Partenon"
+        },
+        "Destino": {
+            "Bairro": "Floresta"
+        }
     },
     {
         "Id": 10,
+        "Carro_Codigo": 4,
+        "Passageiros_CPF": [
+            "59362314029"
+        ],
         "Kms": 6.3,
         "Valor": 15.75,
         "Duracao": 10,
-        "FK_Carro_Codigo": 4
+        "Taxa_Adicional": 23.06,
+        "Partida": {
+            "Cidade": "Porto Alegre"
+        },
+        "Destino": {
+            "Cidade": "Erechim"
+        }
     },
     {
         "Id": 11,
+        "Carro_Codigo": 4,
+        "Passageiros_CPF": [
+            "42738597009"
+        ],
         "Kms": 4.5,
         "Valor": 11.25,
         "Duracao": 7,
-        "FK_Carro_Codigo": 4
-    }
-])
-
-db.usa.insertMany([
-    {
-        "FK_Passageiro_CPF": "59362314029",
-        "FK_Viagem_Id": 1
-    },
-    {
-        "FK_Passageiro_CPF": "10531043088",
-        "FK_Viagem_Id": 2
-    },
-    {
-        "FK_Passageiro_CPF": "59362314029",
-        "FK_Viagem_Id": 3
-    },
-    {
-        "FK_Passageiro_CPF": "10531043088",
-        "FK_Viagem_Id": 4
-    },
-    {
-        "FK_Passageiro_CPF": "42738597009",
-        "FK_Viagem_Id": 5
-    },
-    {
-        "FK_Passageiro_CPF": "98822414098",
-        "FK_Viagem_Id": 6
-    },
-    {
-        "FK_Passageiro_CPF": "29438733060",
-        "FK_Viagem_Id": 7
-    },
-    {
-        "FK_Passageiro_CPF": "29438733060",
-        "FK_Viagem_Id": 8
-    },
-    {
-        "FK_Passageiro_CPF": "78428732086",
-        "FK_Viagem_Id": 9
-    },
-    {
-        "FK_Passageiro_CPF": "59362314029",
-        "FK_Viagem_Id": 10
-    },
-    {
-        "FK_Passageiro_CPF": "42738597009",
-        "FK_Viagem_Id": 11
-    }
-])
-
-db.urbana.insertMany([
-    {
-        "Bairro_Partida": "Partenon",
-        "Bairro_Destino": "Floresta",
-        "FK_Viagem_Id": 9
-    },
-    {
-        "Bairro_Partida": "Floresta",
-        "Bairro_Destino": "Passo da Areaia",
-        "FK_Viagem_Id": 11
-    }
-])
-
-db.interurbana.insertMany([
-    {
-        "Taxa_Adicional": 23.06,
-        "Cidade_Partida": "Porto Alegre",
-        "Cidade_Destino": "Erechim",
-        "FK_Viagem_Id": 1
-    },
-    {
-        "Taxa_Adicional": 23.06,
-        "Cidade_Partida": "Erechim",
-        "Cidade_Destino": "Porto Alegre",
-        "FK_Viagem_Id": 2
-    },
-    {
-        "Taxa_Adicional": 23.06,
-        "Cidade_Partida": "Porto Alegre",
-        "Cidade_Destino": "Erechim",
-        "FK_Viagem_Id": 3
-    },
-    {
-        "Taxa_Adicional": 22.44,
-        "Cidade_Partida": "Erechim",
-        "Cidade_Destino": "Santa Maria",
-        "FK_Viagem_Id": 4
-    },
-    {
-        "Taxa_Adicional": 23.06,
-        "Cidade_Partida": "Porto Alegre",
-        "Cidade_Destino": "Gravataí",
-        "FK_Viagem_Id": 5
-    },
-    {
-        "Taxa_Adicional": 23.56,
-        "Cidade_Partida": "Gravataí",
-        "Cidade_Destino": "Erechim",
-        "FK_Viagem_Id": 6
-    },
-    {
-        "Taxa_Adicional": 22.4,
-        "Cidade_Partida": "Santa Maria",
-        "Cidade_Destino": "Erechim",
-        "FK_Viagem_Id": 7
-    },
-    {
-        "Taxa_Adicional": 22.4,
-        "Cidade_Partida": "Erechim",
-        "Cidade_Destino": "Gravataí",
-        "FK_Viagem_Id": 8
-    },
-    {
-        "Taxa_Adicional": 23.06,
-        "Cidade_Partida": "Porto Alegre",
-        "Cidade_Destino": "Erechim",
-        "FK_Viagem_Id": 10
+        "Partida": {
+            "Bairro": "Floresta"
+        },
+        "Destino": {
+            "Bairro": "Passo da Areaia"
+        }
     }
 ])
