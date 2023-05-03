@@ -1,2 +1,0 @@
-# Website to visualize Binary Trees
-http://btv.melezinek.cz/binary-heap.html
