@@ -1,3 +1,5 @@
+package Aula15_SimuladoP1;
+
 public class Questao08 {
     int[] hashTable;
 

@@ -1,3 +1,5 @@
+package Aula15_SimuladoP1;
+
 public class Questao09 {
     // a) 00000000011111100000011111
     // 9x0’s + 6x1's + 6x0’s + 5x1's = 26 bits
