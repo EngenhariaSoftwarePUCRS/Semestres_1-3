@@ -1,4 +1,4 @@
-/* Modelo_Logico_FelipeFreitasSilva: */
+/* Modelo_Logico_FelipeFreitas_LuizaHeller: */
 
 CREATE TABLE Carro (
     Codigo INTEGER UNSIGNED NOT NULL PRIMARY KEY,
