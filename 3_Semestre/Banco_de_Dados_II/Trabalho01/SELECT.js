@@ -30,7 +30,7 @@ db.viagens.aggregate([
         $group: {
             _id: "$Passageiros_CPF.CPF",
             "Nome Passageiro": {$first: "$Passageiros_CPF.Nome"},
-            "Quilômetros Percorridos": {$sum: "$KMS"}
+            "Quilômetros Percorridos": {$sum: "$Kms"}
         }
     },
     {
