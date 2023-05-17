@@ -1,9 +1,9 @@
 package Aula19_Grafos;
 
-public abstract class Grafo<T> implements Grafo<T> {
-    private int numeroVertices;
-    private int numeroArestas;
-    private T listaAdjacencia;
+public abstract class Grafo<T> implements IGrafo<T> {
+    protected int numeroVertices;
+    protected int numeroArestas;
+    protected T listaAdjacencia;
 
     public Grafo(int numeroVertices) {
         this.numeroVertices = numeroVertices;
