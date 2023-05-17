@@ -39,7 +39,7 @@ db.passageiro.insertMany([
         "Nome": "Alexandre Rafael Julio Silveira Gonçalves",
         "Email": "alexandrerafaelsilveira@gmail.com",
         "Telefone": "54981380067",
-        "Bairo": "Cerâmica",
+        "Bairro": "Cerâmica",
         "Cidade": "Erechim",
         "Estado": "Rio Grande do Sul",
         "Meio_Pagamento": "Crédito MasterCard"
@@ -49,7 +49,7 @@ db.passageiro.insertMany([
         "Nome": "Theo Danilo Brito",
         "Email": "theo_danilo_brito@jh2consulting.com",
         "Telefone": "55988063073",
-        "Bairo": "Nossa Senhora de Fátima",
+        "Bairro": "Nossa Senhora de Fátima",
         "Cidade": "Santa Maria",
         "Estado": "Rio Grande do Sul",
         "Meio_Pagamento": "Visa 16 Dígitos"
@@ -59,7 +59,7 @@ db.passageiro.insertMany([
         "Nome": "Raul Tiago Manuel da Silva",
         "Email": "raul_dasilva@terra.com.br",
         "Telefone": "51991926194",
-        "Bairo": "São Vicente",
+        "Bairro": "São Vicente",
         "Cidade": "Gravataí",
         "Estado": "Rio Grande do Sul",
         "Meio_Pagamento": "Visa Electron"
@@ -69,7 +69,7 @@ db.passageiro.insertMany([
         "Nome": "Agatha Maitê Aline Gonçalves",
         "Email": "agatha.maite.goncalves@uol.com.br",
         "Telefone": "51997736328",
-        "Bairo": "Passo da Areia",
+        "Bairro": "Passo da Areia",
         "Cidade": "Porto Alegre",
         "Estado": "Rio Grande do Sul",
         "Meio_Pagamento": "Dinheiro"
@@ -86,7 +86,7 @@ db.passageiro.insertMany([
         "Nome": "Liz Débora Fernandes",
         "Email": "lizdeborafernandes@vhbadvogados.com.br",
         "Telefone": "55999817972",
-        "Bairo": "Floresta",
+        "Bairro": "Floresta",
         "Cidade": "Porto Alegre",
         "Estado": "Rio Grande do Sul"
     }
@@ -278,4 +278,341 @@ db.viagem.insertMany([
             "Bairro": "Passo da Areaia"
         }
     }
+])
+
+db.viagens.insertMany([
+  {
+      "Id": 1,
+      "Carro_Codigo": {
+        "Codigo": 1,
+        "Placa": "HUN7182",
+        "Marca": "Chevrolet",
+        "Modelo": "Onix",
+        "Ano": 2020,
+        "Nome_motorista": "Benedita Aurora Marli Porto"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "59362314029",
+        "Nome": "Agatha Maitê Aline Gonçalves",
+        "Email": "agatha.maite.goncalves@uol.com.br",
+        "Telefone": "51997736328",
+        "Bairro": "Passo da Areia",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Dinheiro"
+      }],
+      "Kms": 369,
+      "Valor": 922.5,
+      "Duracao": 300,
+      "Taxa_Adicional": 23.06,
+      "Partida": {
+        "Cidade": "Porto Alegre"
+      },
+      "Destino": {
+        "Cidade": "Erechim"
+      }
+  },
+  {
+      "Id": 2,
+      "Carro_Codigo": {
+        "Codigo": 3,
+        "Placa": "HZM8590",
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Ano": 2021,
+        "Nome_motorista": "Rafaela Laura Pereira"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "10531043088",
+        "Nome": "Alexandre Rafael Julio Silveira Gonçalves",
+        "Email": "alexandrerafaelsilveira@gmail.com",
+        "Telefone": "54981380067",
+        "Bairro": "Cerâmica",
+        "Cidade": "Erechim",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Crédito MasterCard"
+      }],
+      "Kms": 369,
+      "Valor": 922.5,
+      "Duracao": 305,
+      "Taxa_Adicional": 23.06,
+      "Partida": {
+        "Cidade": "Erechim"
+      },
+      "Destino": {
+        "Cidade": "Porto Alegre"
+      }
+  },
+  {
+      "Id": 3,
+      "Carro_Codigo": {
+        "Codigo": 1,
+        "Placa": "HUN7182",
+        "Marca": "Chevrolet",
+        "Modelo": "Onix",
+        "Ano": 2020,
+        "Nome_motorista": "Benedita Aurora Marli Porto"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "59362314029",
+        "Nome": "Agatha Maitê Aline Gonçalves",
+        "Email": "agatha.maite.goncalves@uol.com.br",
+        "Telefone": "51997736328",
+        "Bairro": "Passo da Areia",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Dinheiro"
+      }],
+      "Kms": 369,
+      "Valor": 922.5,
+      "Duracao": 300,
+      "Taxa_Adicional": 23.06,
+      "Partida": {
+        "Cidade": "Porto Alegre"
+      },
+      "Destino": {
+        "Cidade": "Erechim"
+      }
+  },
+  {
+      "Id": 4,
+      "Carro_Codigo": {
+        "Codigo": 3,
+        "Placa": "HZM8590",
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Ano": 2021,
+        "Nome_motorista": "Rafaela Laura Pereira"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "10531043088",
+        "Nome": "Alexandre Rafael Julio Silveira Gonçalves",
+        "Email": "alexandrerafaelsilveira@gmail.com",
+        "Telefone": "54981380067",
+        "Bairro": "Cerâmica",
+        "Cidade": "Erechim",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Crédito MasterCard"
+      }],
+      "Kms": 359,
+      "Valor": 897.5,
+      "Duracao": 300,
+      "Taxa_Adicional": 22.44,
+      "Partida": {
+        "Cidade": "Erechim"
+      },
+      "Destino": {
+        "Cidade": "Santa Maria"
+      }
+  },
+  {
+      "Id": 5,
+      "Carro_Codigo": {
+        "Codigo": 3,
+        "Placa": "HZM8590",
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Ano": 2021,
+        "Nome_motorista": "Rafaela Laura Pereira"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "42738597009",
+        "Nome": "Liz Débora Fernandes",
+        "Email": "lizdeborafernandes@vhbadvogados.com.br",
+        "Telefone": "55999817972",
+        "Bairro": "Floresta",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul"
+      }],
+      "Kms": 29,
+      "Valor": 72.5,
+      "Duracao": 27,
+      "Taxa_Adicional": 23.06,
+      "Partida": {
+        "Cidade": "Porto Alegre"
+      },
+      "Destino": {
+        "Cidade": "Gravataí"
+      }
+  },
+  {
+      "Id": 6,
+      "Carro_Codigo": {
+        "Codigo": 3,
+        "Placa": "HZM8590",
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Ano": 2021,
+        "Nome_motorista": "Rafaela Laura Pereira"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "98822414098",
+        "Nome": "Raul Tiago Manuel da Silva",
+        "Email": "raul_dasilva@terra.com.br",
+        "Telefone": "51991926194",
+        "Bairro": "São Vicente",
+        "Cidade": "Gravataí",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Visa Electron"
+      }],
+      "Kms": 377,
+      "Valor": 942.5,
+      "Duracao": 310,
+      "Taxa_Adicional": 23.56,
+      "Partida": {
+        "Cidade": "Gravataí"
+      },
+      "Destino": {
+        "Cidade": "Erechim"
+      }
+  },
+  {
+      "Id": 7,
+      "Carro_Codigo": {
+        "Codigo": 1,
+        "Placa": "HUN7182",
+        "Marca": "Chevrolet",
+        "Modelo": "Onix",
+        "Ano": 2020,
+        "Nome_motorista": "Benedita Aurora Marli Porto"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "29438733060",
+        "Nome": "Theo Danilo Brito",
+        "Email": "theo_danilo_brito@jh2consulting.com",
+        "Telefone": "55988063073",
+        "Bairro": "Nossa Senhora de Fátima",
+        "Cidade": "Santa Maria",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Visa 16 Dígitos"
+      }],
+      "Kms": 358,
+      "Valor": 895,
+      "Duracao": 296,
+      "Taxa_Adicional": 22.4,
+      "Partida": {
+        "Cidade": "Santa Maria"
+      },
+      "Destino": {
+        "Cidade": "Erechim"
+      }
+  },
+  {
+      "Id": 8,
+      "Carro_Codigo": {
+        "Codigo": 2,
+        "Placa": "LVK2914",
+        "Marca": "Volkswagen",
+        "Modelo": "Gol",
+        "Ano": 2018,
+        "Nome_motorista": "Gustavo Ryan Peixoto"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "29438733060",
+        "Nome": "Theo Danilo Brito",
+        "Email": "theo_danilo_brito@jh2consulting.com",
+        "Telefone": "55988063073",
+        "Bairro": "Nossa Senhora de Fátima",
+        "Cidade": "Santa Maria",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Visa 16 Dígitos"
+      }],
+      "Kms": 358,
+      "Valor": 895,
+      "Duracao": 296,
+      "Taxa_Adicional": 22.4,
+      "Partida": {
+        "Cidade": "Erechim"
+      },
+      "Destino": {
+        "Cidade": "Gravataí"
+      }
+  },
+  {
+      "Id": 9,
+      "Carro_Codigo": {
+        "Codigo": 3,
+        "Placa": "HZM8590",
+        "Marca": "Toyota",
+        "Modelo": "Corolla",
+        "Ano": 2021,
+        "Nome_motorista": "Rafaela Laura Pereira"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "78428732086",
+        "Nome": "Rita Clarice Stella Melo",
+        "Email": "rita_clarice_melo@coldblock.com.br",
+        "Telefone": "51991576603",
+        "Meio_Pagamento": "Débito Maestro"
+      }],
+      "Kms": 378,
+      "Valor": 945,
+      "Duracao": 309,
+      "Partida": {
+        "Bairro": "Partenon"
+      },
+      "Destino": {
+        "Bairro": "Floresta"
+      }
+  },
+  {
+      "Id": 10,
+      "Carro_Codigo": {
+        "Codigo": 4,
+        "Placa": "NEA6661",
+        "Marca": "Fiat",
+        "Modelo": "Palio",
+        "Ano": 2010,
+        "Nome_motorista": "Sônia Ana Corte Real"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "59362314029",
+        "Nome": "Agatha Maitê Aline Gonçalves",
+        "Email": "agatha.maite.goncalves@uol.com.br",
+        "Telefone": "51997736328",
+        "Bairro": "Passo da Areia",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul",
+        "Meio_Pagamento": "Dinheiro"
+      }],
+      "Kms": 6.3,
+      "Valor": 15.75,
+      "Duracao": 10,
+      "Taxa_Adicional": 23.06,
+      "Partida": {
+        "Cidade": "Porto Alegre"
+      },
+      "Destino": {
+        "Cidade": "Erechim"
+      }
+  },
+  {
+      "Id": 11,
+      "Carro_Codigo": {
+        "Codigo": 4,
+        "Placa": "NEA6661",
+        "Marca": "Fiat",
+        "Modelo": "Palio",
+        "Ano": 2010,
+        "Nome_motorista": "Sônia Ana Corte Real"
+      },
+      "Passageiros_CPF": [{
+        "CPF": "42738597009",
+        "Nome": "Liz Débora Fernandes",
+        "Email": "lizdeborafernandes@vhbadvogados.com.br",
+        "Telefone": "55999817972",
+        "Bairro": "Floresta",
+        "Cidade": "Porto Alegre",
+        "Estado": "Rio Grande do Sul"
+      }],
+      "Kms": 4.5,
+      "Valor": 11.25,
+      "Duracao": 7,
+      "Partida": {
+        "Bairro": "Floresta"
+      },
+      "Destino": {
+        "Bairro": "Passo da Areia"
+      }
+  }
 ])
