@@ -10,9 +10,9 @@ db.viagens.aggregate([
         $unwind: "$Passageiros_CPF"
     },
     {
-        $match: {
-            "Partida.Bairro": "$Passageiros_CPF.Bairo"
-        }
+        $expr: {$eq:[
+            "$Partida.Bairro", "$Passageiros_CPF.Bairro"
+        ]}
     },
     {
         $project: {
