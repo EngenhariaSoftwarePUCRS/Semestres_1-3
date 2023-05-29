@@ -1,0 +1,8 @@
+origem | destino | peso
+5 vertices
+A | B | 3
+A | D | 11
+B | C | 2
+C | D | 6
+C | E | 1
+D | E | 4
