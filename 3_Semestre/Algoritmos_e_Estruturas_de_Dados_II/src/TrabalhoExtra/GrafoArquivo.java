@@ -48,10 +48,11 @@ public class GrafoArquivo {
             fw.write("origem | destino | peso\n");
             fw.write(g.getNumeroVertices() + " vertices\n");
 
-            // for (int i = 0; i < g.getNumeroVertices(); i++)
-                // for (Aresta a : g.getAdjacentes(i)) {
-                //     fw.write((char)(i + ((int)'A')) + " | " + (char)(a.w + ((int)'A')) + " | " + a.peso + "\n");
+            for (int i = 0; i < g.getNumeroVertices(); i++)
+                for (Aresta a : g.getAdjacencia(i))
+                    fw.write((char)(i + ((int)'A')) + " | " + (char)(a.w + ((int)'A')) + " | " + a.peso + "\n");
 
+            fw.close();
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao salvar arquivo!");
