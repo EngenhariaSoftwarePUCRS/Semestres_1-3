@@ -1,15 +1,14 @@
-package Aula26;
+package Trabalho02.src;
 
 import aula26_grafos_dijkstra.FilaPrioridadeMinima;
-import aula26_grafos_dijkstra.GrafoDirigidoValorado;
 
 public class Dijkstra {
     public int[] antecessor;
     public int[] distancia;
     public boolean[] percorrido;
-    private GrafoDirigidoValorado grafo;
+    private Grafo grafo;
     
-    public Dijkstra(GrafoDirigidoValorado g, int origem) {
+    public Dijkstra(Grafo g, int origem) {
         this.grafo = g;
         antecessor = new int[grafo.getNumeroVertices()];
         distancia = new int[grafo.getNumeroVertices()];
@@ -27,9 +26,9 @@ public class Dijkstra {
         while (!filaMin.estaVazia()) {
             int vertice = filaMin.desenfileirar();
             percorrido[vertice] = true;
-            for (GrafoDirigidoValorado.ArestaDirigida aresta : g.getListaAdjacencia(vertice)) {
-                int destino = aresta.destino;
-                int distanciaDestino = distancia[vertice] + aresta.peso;
+            for (int aresta : g.adjacentes(vertice)) {
+                int destino = aresta;
+                int distanciaDestino = distancia[vertice] + 1;
                 if (distanciaDestino < distancia[destino]) {
                     antecessor[destino] = vertice;
                     distancia[destino] = distanciaDestino;
@@ -41,7 +40,7 @@ public class Dijkstra {
         imprimirResultado(g);
     }
 
-    public void imprimirResultado(GrafoDirigidoValorado g) {
+    public void imprimirResultado(Grafo g) {
         System.out.println("vertice,antecessor,distancia,percorrido");
         for (int i = 0; i < g.getNumeroVertices(); i++)
             System.out.println(i + "," + antecessor[i] + "," + distancia[i] + "," + percorrido[i]);
