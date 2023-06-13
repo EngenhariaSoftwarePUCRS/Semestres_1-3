@@ -11,7 +11,7 @@ public class Mapa {
 
     public Mapa() {
         try {
-            Scanner sc = new Scanner(new File("src/Trabalho02/mapas/mapa1.txt"));
+            Scanner sc = new Scanner(new File("src/Trabalho02/mapas/mapa0.txt"));
             String linhaUm = sc.nextLine();
             String[] arrayLinhaUm = (linhaUm.split(" "));
         
@@ -22,26 +22,32 @@ public class Mapa {
                 System.out.println(arrayLinhaUm[i]);
             }
         
-            char[][] texto = new char[numeroDeLinhas][numeroDeColunas];
+            matrizMapa = new char[numeroDeLinhas][numeroDeColunas];
             vertices = new Vertice[numeroDeLinhas * numeroDeColunas];
             grafo = new Grafo(numeroDeLinhas * numeroDeColunas);
         
             int contador = 0;
         
             while (sc.hasNextLine()) {
-                for (int i = 0; i < texto.length; i++) {
+                for (int i = 0; i < matrizMapa.length; i++) {
                     String linha = sc.nextLine();
-                    for (int j = 0; j < texto[i].length; j++) {
-                        texto[i][j] = linha.charAt(j);
-                        Vertice v = new Vertice(contador, i, j, texto[i][j]);
+                    for (int j = 0; j < matrizMapa[i].length; j++) {
+                        matrizMapa[i][j] = linha.charAt(j);
+                        Vertice v = new Vertice(contador, i, j, matrizMapa[i][j]);
                         contador++;
                         try {
-                            int vertice = Integer.parseInt(String.valueOf(texto[i][j]));
+                            int vertice = Integer.parseInt(String.valueOf(matrizMapa[i][j]));
                             this.pontos1a9[vertice - 1] = v;
                         } catch (NumberFormatException nfe) {
                             continue;
                         }
                     }
+                }
+            }
+
+            for (int i = 0; i < matrizMapa.length; i++) {
+                for (int j = 0; j < array.length; j++) {
+                    matrizMapa[i][0] = '0';
                 }
             }
 
