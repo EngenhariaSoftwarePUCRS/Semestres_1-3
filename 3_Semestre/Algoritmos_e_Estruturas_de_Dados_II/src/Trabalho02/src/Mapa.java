@@ -4,85 +4,94 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Mapa {
+    private int lineAmount;
+    private int columnAmount;
     private Grafo grafo;
-    private Vertice[] vertices;
-    private Vertice[] pontos1a9 = new Vertice[9];
-    private char[][] matrizMapa;
+    private char[][] worldMap;
+    private int[] harbours;
 
-    public Mapa() {
+    public Mapa(String fileName, int harbourAmount) {
+        String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
+        harbours = new int[harbourAmount];
+        readFile(filePath);
+        linkEdges();
+        navigate();
+    }
+
+    private void readFile(String filePath) {
         try {
-            Scanner sc = new Scanner(new File("src/Trabalho02/mapas/mapinha.txt"));
-            String linhaUm = sc.nextLine();
-            String[] arrayLinhaUm = (linhaUm.split(" "));
+            Scanner sc = new Scanner(new File(filePath));
+            String[] header = sc.nextLine().split(" ");
         
-            int numeroDeColunas = Integer.parseInt(arrayLinhaUm[1]);
-            int numeroDeLinhas = Integer.parseInt(arrayLinhaUm[0]);
+            lineAmount = Integer.parseInt(header[0]);
+            columnAmount = Integer.parseInt(header[1]);
         
-            matrizMapa = new char[numeroDeLinhas][numeroDeColunas];
-            vertices = new Vertice[numeroDeLinhas * numeroDeColunas];
-            grafo = new Grafo(numeroDeLinhas * numeroDeColunas);
+            worldMap = new char[lineAmount][columnAmount];
+            grafo = new Grafo(lineAmount * columnAmount);
         
-            int contador = 0;
-            while (sc.hasNextLine()) {
-                for (int i = 0; i < matrizMapa.length; i++) {
-                    String linha = sc.nextLine();
-                    for (int j = 0; j < matrizMapa[i].length; j++) {
-                        matrizMapa[i][j] = linha.charAt(j);
-                        Vertice v = new Vertice(contador, i, j, matrizMapa[i][j]);
-                        vertices[contador] = v;
-                        contador++;
-                        try {
-                            int vertice = Integer.parseInt(String.valueOf(matrizMapa[i][j]));
-                            this.pontos1a9[vertice - 1] = v;
-                        } catch (NumberFormatException nfe) {
-                            continue;
-                        }
+            int counter = 0;
+            for (int i = 0; sc.hasNextLine(); i++) {
+                String line = sc.nextLine();
+                for (int j = 0; j < columnAmount; j++) {
+                    char value = line.charAt(j);
+                    worldMap[i][j] = value;
+                    try {
+                        int vertice = Integer.parseInt(String.valueOf(worldMap[i][j]));
+                        this.harbours[vertice - 1] = counter;
+                    } catch (NumberFormatException nfe) {
                     }
+                    counter++;
                 }
             }
-
-            for (int i = 0; i < numeroDeLinhas; i++) {
-                for (int j = 0; j < numeroDeColunas; j++) {
-                    if (matrizMapa[i][j] == '*') continue;
-
-                    // Olha pra cima
-                    if (i > 0 && matrizMapa[i - 1][j] != '*') {
-                        grafo.adicionarAresta(
-                            vertices[(i * numeroDeColunas) + j].getIndice(),
-                            vertices[((i - 1) * numeroDeColunas) + j].getIndice()
-                        );
-                    }
-                    // Olha pra baixo
-                    if (i < numeroDeLinhas - 1 && matrizMapa[i + 1][j] != '*') {
-                        grafo.adicionarAresta(
-                            vertices[(i * numeroDeColunas) + j].getIndice(),
-                            vertices[((i + 1) * numeroDeColunas) + j].getIndice()
-                        );
-                    }
-                    // Olha pra esquerda
-                    if (j > 0 && matrizMapa[i][j - 1] != '*') {
-                        grafo.adicionarAresta(
-                            vertices[(i * numeroDeColunas) + j].getIndice(),
-                            vertices[(i * numeroDeColunas) + (j - 1)].getIndice()
-                        );
-                    }
-                    // Olha pra direita
-                    if (j < numeroDeColunas - 1 && matrizMapa[i][j + 1] != '*') {
-                        grafo.adicionarAresta(
-                            vertices[(i * numeroDeColunas) + j].getIndice(),
-                            vertices[(i * numeroDeColunas) + (j + 1)].getIndice()
-                        );
-                    }
-                }
-            }
-
-            int origem = pontos1a9[0].getIndice();
-            Dijkstra dijkstra = new Dijkstra(grafo, origem);
-            dijkstra.imprimirResultado(grafo);
         } catch (FileNotFoundException fnfe) {
             System.out.println("Arquivo não encontrado!");
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    private void linkEdges() {
+        for (int i = 0; i < lineAmount; i++)
+            for (int j = 0; j < columnAmount; j++) {
+                if (worldMap[i][j] == '*') continue;
+
+                // Olha pra cima
+                if (i > 0 && worldMap[i - 1][j] != '*') {
+                    grafo.adicionarAresta(
+                        (i * columnAmount) + j,
+                        ((i - 1) * columnAmount) + j
+                    );
+                }
+                // Olha pra baixo
+                if (i < lineAmount - 1 && worldMap[i + 1][j] != '*') {
+                    grafo.adicionarAresta(
+                        (i * columnAmount) + j,
+                        ((i + 1) * columnAmount) + j
+                    );
+                }
+                // Olha pra esquerda
+                if (j > 0 && worldMap[i][j - 1] != '*') {
+                    grafo.adicionarAresta(
+                        (i * columnAmount) + j,
+                        (i * columnAmount) + (j - 1)
+                    );
+                }
+                // Olha pra direita
+                if (j < columnAmount - 1 && worldMap[i][j + 1] != '*') {
+                    grafo.adicionarAresta(
+                        (i * columnAmount) + j,
+                        (i * columnAmount) + (j + 1)
+                    );
+                }
+            }
+    }
+
+    private void navigate() {
+        int[] distances = new int[harbours.length];
+        for (int harbour = 0; harbour < harbours.length - 1; harbour++) {
+            Dijkstra dijkstra = new Dijkstra(grafo, harbour);
+            distances[harbour] = dijkstra.getDistancia(harbour + 1);
+            dijkstra.imprimirResultado();
         }
     }
 }

@@ -37,12 +37,15 @@ public class Dijkstra {
                 }
             }
         }
-        imprimirResultado(g);
     }
 
-    public void imprimirResultado(Grafo g) {
+    public int getDistancia(int destino) {
+        return distancia[destino];
+    }
+
+    public void imprimirResultado() {
         System.out.println("vertice,antecessor,distancia,percorrido");
-        for (int i = 0; i < g.getNumeroVertices(); i++)
+        for (int i = 0; i < grafo.getNumeroVertices(); i++)
             System.out.println(i + "," + antecessor[i] + "," + distancia[i] + "," + percorrido[i]);
     }
 }

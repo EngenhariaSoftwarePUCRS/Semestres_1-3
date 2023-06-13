@@ -11,9 +11,8 @@ public class Grafo {
         this.numeroVertices = numeroVertices;
         this.numeroArestas = 0;
         listaAdjacencia = new ArrayList[numeroVertices];
-        for (int i = 0; i < numeroVertices; i++) {
+        for (int i = 0; i < numeroVertices; i++)
             listaAdjacencia[i] = new ArrayList<>();
-        }
     }
 
     public void adicionarAresta(int v, int w) {
@@ -74,5 +73,4 @@ public class Grafo {
         }
         return ret;
     }
-
 }
