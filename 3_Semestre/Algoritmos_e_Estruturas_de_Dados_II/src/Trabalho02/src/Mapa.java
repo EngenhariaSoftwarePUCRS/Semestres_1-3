@@ -12,10 +12,16 @@ public class Mapa {
 
     public Mapa(String fileName, int harbourAmount) {
         String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
-        harbours = new int[harbourAmount];
+        harbours = new int[harbourAmount + 1];
+        System.out.println("\nCarregando mapa...");
         readFile(filePath);
+        System.out.println("Mapa carregado com sucesso!");
+        System.out.println("\nEstabelecendo conexões...");
         linkEdges();
+        System.out.println("Conexões estabelecidas com sucesso!");
+        System.out.println("\nCalculando distâncias...");
         navigate();
+        System.out.println("Distâncias calculadas com sucesso!\n");
     }
 
     private void readFile(String filePath) {
@@ -37,7 +43,7 @@ public class Mapa {
                     worldMap[i][j] = value;
                     try {
                         int vertice = Integer.parseInt(String.valueOf(worldMap[i][j]));
-                        this.harbours[vertice - 1] = counter;
+                        this.harbours[vertice] = counter;
                     } catch (NumberFormatException nfe) {
                     }
                     counter++;
@@ -87,11 +93,14 @@ public class Mapa {
     }
 
     private void navigate() {
-        int[] distances = new int[harbours.length];
-        for (int harbour = 0; harbour < harbours.length - 1; harbour++) {
-            Dijkstra dijkstra = new Dijkstra(grafo, harbour);
-            distances[harbour] = dijkstra.getDistancia(harbour + 1);
-            dijkstra.imprimirResultado();
+        int[] distances = new int[harbours.length + 1];
+        for (int harbourNumber = 1; harbourNumber < harbours.length - 1; harbourNumber++) {
+            Dijkstra dijkstra = new Dijkstra(grafo, harbours[harbourNumber]);
+            distances[harbourNumber + 1] = dijkstra.getDistancia(harbours[harbourNumber + 1]);
         }
+
+        System.out.println("Distâncias: ");
+        for (int i = 0; i < distances.length; i++)
+            System.out.println("Distância do porto " + (i + 1) + ": " + distances[i]);
     }
 }
