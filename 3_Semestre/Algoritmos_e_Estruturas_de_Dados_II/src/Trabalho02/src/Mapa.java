@@ -100,7 +100,8 @@ public class Mapa {
     }
 
     private void navigate(int origin, int destination) {
-        if (origin == harbours.length - 1) return;
+        int limit = harbours.length - 1;
+        if (origin == limit || destination > limit ) return;
 
         Dijkstra dijkstra = new Dijkstra(grafo, harbours[origin]);
         distances[destination] = dijkstra.getDistancia(harbours[destination]);
