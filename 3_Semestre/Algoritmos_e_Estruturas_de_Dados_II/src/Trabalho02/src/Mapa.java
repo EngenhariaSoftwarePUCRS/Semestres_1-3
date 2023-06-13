@@ -94,13 +94,21 @@ public class Mapa {
 
     private void navigate() {
         int[] distances = new int[harbours.length + 1];
+        int nextOrigin = 1;
+        int nextDestination = 2;
         for (int harbourNumber = 1; harbourNumber < harbours.length - 1; harbourNumber++) {
-            Dijkstra dijkstra = new Dijkstra(grafo, harbours[harbourNumber]);
-            distances[harbourNumber + 1] = dijkstra.getDistancia(harbours[harbourNumber + 1]);
+            Dijkstra dijkstra = new Dijkstra(grafo, harbours[nextOrigin]);
+            if (dijkstra.isUnreachable(harbours[nextDestination])) {
+                distances[harbourNumber + 1] = -1;
+                nextDestination++;
+            } else {
+                nextOrigin = nextDestination + 1;
+                distances[harbourNumber + 1] = dijkstra.getDistancia(harbours[nextDestination]);
+            }
         }
 
         System.out.println("Distâncias: ");
-        for (int i = 0; i < distances.length; i++)
-            System.out.println("Distância do porto " + (i + 1) + ": " + distances[i]);
+        for (int i = 1; i < distances.length - 1; i++)
+            System.out.println("Distância do porto " + (i) + ": " + distances[i]);
     }
 }

@@ -43,6 +43,10 @@ public class Dijkstra {
         return distancia[destino];
     }
 
+    public boolean isUnreachable(int destino) {
+        return distancia[destino] == Integer.MAX_VALUE;
+    }
+
     public void imprimirResultado() {
         System.out.println("vertice,antecessor,distancia,percorrido");
         for (int i = 0; i < grafo.getNumeroVertices(); i++)
