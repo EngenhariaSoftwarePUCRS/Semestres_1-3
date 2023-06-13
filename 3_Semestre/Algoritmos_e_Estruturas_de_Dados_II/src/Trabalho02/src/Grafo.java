@@ -17,6 +17,7 @@ public class Grafo {
     }
 
     public void adicionarAresta(int v, int w) {
+        if (existeAresta(v, w)) return;
         listaAdjacencia[v].add(w);
         listaAdjacencia[w].add(v);
         numeroArestas++;
@@ -37,6 +38,14 @@ public class Grafo {
 
     public ArrayList<Integer> adjacentes(int v) {
         return listaAdjacencia[v];
+    }
+
+    public int getNumeroVertices() {
+        return this.numeroVertices;
+    }
+
+    public int getNumeroArestas() {
+        return this.numeroArestas;
     }
 
     public String toDot() {
@@ -64,10 +73,6 @@ public class Grafo {
             ret = ret + " } " + System.lineSeparator();
         }
         return ret;
-    }
-
-    public int getNumeroVertices() {
-        return 0;
     }
 
 }
