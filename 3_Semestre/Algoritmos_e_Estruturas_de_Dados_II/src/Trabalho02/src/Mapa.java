@@ -9,19 +9,26 @@ public class Mapa {
     private Grafo grafo;
     private char[][] worldMap;
     private int[] harbours;
+    private int[] distances;
 
     public Mapa(String fileName, int harbourAmount) {
         String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
         harbours = new int[harbourAmount + 1];
+        distances = new int[harbours.length];
+
         System.out.println("\nCarregando mapa...");
         readFile(filePath);
         System.out.println("Mapa carregado com sucesso!");
+
         System.out.println("\nEstabelecendo conexões...");
         linkEdges();
         System.out.println("Conexões estabelecidas com sucesso!");
+
         System.out.println("\nCalculando distâncias...");
-        navigate();
+        navigate(1, 2);
         System.out.println("Distâncias calculadas com sucesso!\n");
+
+        showDistances();
     }
 
     private void readFile(String filePath) {
@@ -92,23 +99,25 @@ public class Mapa {
             }
     }
 
-    private void navigate() {
-        int[] distances = new int[harbours.length + 1];
-        int nextOrigin = 1;
-        int nextDestination = 2;
-        for (int harbourNumber = 1; harbourNumber < harbours.length - 1; harbourNumber++) {
-            Dijkstra dijkstra = new Dijkstra(grafo, harbours[nextOrigin]);
-            if (dijkstra.isUnreachable(harbours[nextDestination])) {
-                distances[harbourNumber + 1] = -1;
-                nextDestination++;
-            } else {
-                nextOrigin = nextDestination + 1;
-                distances[harbourNumber + 1] = dijkstra.getDistancia(harbours[nextDestination]);
-            }
-        }
+    private void navigate(int origin, int destination) {
+        if (origin == harbours.length - 1) return;
 
+        Dijkstra dijkstra = new Dijkstra(grafo, harbours[origin]);
+        distances[destination] = dijkstra.getDistancia(harbours[destination]);
+        
+        if (dijkstra.isUnreachable(harbours[destination]))
+            navigate(origin, destination + 1);
+        else
+            navigate(destination, destination + 1);
+    }
+
+    void showDistances() {
         System.out.println("Distâncias: ");
-        for (int i = 1; i < distances.length - 1; i++)
-            System.out.println("Distância do porto " + (i) + ": " + distances[i]);
+        for (int i = 2; i < distances.length - 1; i++) {
+            if (distances[i] == Integer.MAX_VALUE)
+                System.out.println("Não é possível chegar ao porto " + i);
+            else
+                System.out.println("Distância do porto " + (i) + ": " + distances[i]);
+        }
     }
 }
