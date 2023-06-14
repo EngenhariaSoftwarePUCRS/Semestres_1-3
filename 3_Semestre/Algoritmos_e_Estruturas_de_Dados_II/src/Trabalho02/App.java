@@ -7,10 +7,9 @@ public class App {
         int harbourAmount = 9;
 
         long startTime = System.nanoTime();
-        Mapa map = new Mapa(fileName, harbourAmount);
-        System.out.println(map.getDistances());
+        new Map(fileName, harbourAmount);
         long endTime = System.nanoTime();
-        long fileTime = endTime - startTime;
-        System.out.println("Tempo decorrido para analisar o arquivo: " + Util.convertLongToTime(fileTime));
+        long time = endTime - startTime;
+        System.out.println("Tempo decorrido para analisar o arquivo: " + Util.convertLongToTime(time));
     }
 }

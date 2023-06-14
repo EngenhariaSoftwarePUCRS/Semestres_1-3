@@ -3,53 +3,61 @@ package Trabalho02;
 import aula26_grafos_dijkstra.FilaPrioridadeMinima;
 
 public class Dijkstra {
-    public int[] antecessor;
-    public int[] distancia;
-    public boolean[] percorrido;
-    private Grafo grafo;
+    public int[] predecessor;
+    public int[] distances;
+    public boolean[] visited;
+    private Graph graph;
     
-    public Dijkstra(Grafo g, int origem) {
-        this.grafo = g;
-        antecessor = new int[grafo.getNumeroVertices()];
-        distancia = new int[grafo.getNumeroVertices()];
-        percorrido = new boolean[grafo.getNumeroVertices()];
-        for (int i = 0; i < grafo.getNumeroVertices(); i++) {
-            antecessor[i] = -1;
-            distancia[i] = Integer.MAX_VALUE;
-            percorrido[i] = false;
-        }
+    public Dijkstra(Graph graph) {
+        this.graph = graph;
+        int verticesAmount = graph.getVerticesAmount();
+        predecessor = new int[verticesAmount];
+        distances = new int[verticesAmount];
+        visited = new boolean[verticesAmount];
+        this.clear();
+    }
+
+    public int getDistance(int origin, int destination) {
+        this.clear();
 
         FilaPrioridadeMinima filaMin = new FilaPrioridadeMinima();
-        filaMin.enfileirar(origem, 0);
-        distancia[origem] = 0;
+        filaMin.enfileirar(origin, 0);
+        this.distances[origin] = 0;
 
         while (!filaMin.estaVazia()) {
-            int vertice = filaMin.desenfileirar();
-            percorrido[vertice] = true;
-            for (int aresta : g.adjacentes(vertice)) {
-                int destino = aresta;
-                int distanciaDestino = distancia[vertice] + 1;
-                if (distanciaDestino < distancia[destino]) {
-                    antecessor[destino] = vertice;
-                    distancia[destino] = distanciaDestino;
-                    if (!filaMin.existe(destino)) filaMin.enfileirar(destino, distanciaDestino);
-                    else filaMin.atualizarDistanca(destino, distanciaDestino);
+            int vertex = filaMin.desenfileirar();
+            this.visited[vertex] = true;
+            for (int destinationVertex : graph.getAdjecencyListForVertex(vertex)) {
+                int destinationDistance = this.distances[vertex] + 1;
+                if (destinationDistance < this.distances[destinationVertex]) {
+                    predecessor[destinationVertex] = vertex;
+                    this.distances[destinationVertex] = destinationDistance;
+                    if (!filaMin.existe(destinationVertex)) filaMin.enfileirar(destinationVertex, destinationDistance);
+                    else filaMin.atualizarDistanca(destinationVertex, destinationDistance);
                 }
             }
         }
-    }
 
-    public int getDistancia(int destino) {
-        return distancia[destino];
+        return distances[destination];
     }
 
     public boolean isUnreachable(int destino) {
-        return distancia[destino] == Integer.MAX_VALUE;
+        return distances[destino] == Integer.MAX_VALUE;
     }
 
-    public void imprimirResultado() {
-        System.out.println("vertice,antecessor,distancia,percorrido");
-        for (int i = 0; i < grafo.getNumeroVertices(); i++)
-            System.out.println(i + "," + antecessor[i] + "," + distancia[i] + "," + percorrido[i]);
+    private void clear() {
+        for (int i = 0; i < graph.getVerticesAmount(); i++) {
+            this.predecessor[i] = -1;
+            this.distances[i] = Integer.MAX_VALUE;
+            this.visited[i] = false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String result = "vertice,antecessor,distancia,percorrido\n";
+        for (int i = 0; i < graph.getVerticesAmount(); i++)
+            result += (i + "," + predecessor[i] + "," + distances[i] + "," + visited[i] + "\n");
+        return result;
     }
 }

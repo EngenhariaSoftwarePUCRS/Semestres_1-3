@@ -1,5 +1,5 @@
 
-Tempo decorrido para analisar o arquivo "mapa_15_80": 00:61.662700
+Tempo decorrido para analisar o arquivo "mapa_15_80": 00:63.698600
 	Distâncias: 
 		Não é possível chegar ao porto 2
 		Distância para o porto 3: 14
@@ -13,7 +13,7 @@ Tempo decorrido para analisar o arquivo "mapa_15_80": 00:61.662700
 	Distância total: 304
 
 
-Tempo decorrido para analisar o arquivo "mapa_30_120": 00:23.864600
+Tempo decorrido para analisar o arquivo "mapa_30_120": 00:28.95100
 	Distâncias: 
 		Distância para o porto 2: 82
 		Distância para o porto 3: 66
@@ -27,7 +27,7 @@ Tempo decorrido para analisar o arquivo "mapa_30_120": 00:23.864600
 	Distância total: 432
 
 
-Tempo decorrido para analisar o arquivo "mapa_500_1000": 06:6181.701400
+Tempo decorrido para analisar o arquivo "mapa_500_1000": 06:6079.911700
 	Distâncias: 
 		Distância para o porto 2: 178
 		Distância para o porto 3: 404
@@ -41,7 +41,7 @@ Tempo decorrido para analisar o arquivo "mapa_500_1000": 06:6181.701400
 	Distância total: 3426
 
 
-Tempo decorrido para analisar o arquivo "mapa_50_100": 00:15.858700
+Tempo decorrido para analisar o arquivo "mapa_50_100": 00:20.201600
 	Distâncias: 
 		Distância para o porto 2: 26
 		Distância para o porto 3: 74
@@ -55,7 +55,7 @@ Tempo decorrido para analisar o arquivo "mapa_50_100": 00:15.858700
 	Distância total: 484
 
 
-Tempo decorrido para analisar o arquivo "mapa_60_500": 00:103.983600
+Tempo decorrido para analisar o arquivo "mapa_60_500": 00:84.421700
 	Distâncias: 
 		Distância para o porto 2: 238
 		Distância para o porto 3: 58
@@ -68,21 +68,7 @@ Tempo decorrido para analisar o arquivo "mapa_60_500": 00:103.983600
 		Distância para o porto 1: 127
 	Distância total: 986
 
-
-Tempo decorrido para analisar o arquivo "mapinha": 00:00.833800
-	Distâncias: 
-		Distância para o porto 2: 6
-		Distância para o porto 3: 2
-		Distância para o porto 4: 4
-		Distância para o porto 5: 0
-		Distância para o porto 6: 0
-		Distância para o porto 7: 0
-		Distância para o porto 8: 0
-		Distância para o porto 9: 0
-		Distância para o porto 1: 0
-	Distância total: 12
-
 ------------------------ RESULTADOS ------------------------
-Total de arquivos analisados: 6
-Tempo total de execução: 06:6387.904800
-Tempo médio de execução: 01:1064.650800
+Total de arquivos analisados: 5
+Tempo total de execução: 06:6276.328700
+Tempo médio de execução: 01:1255.265740

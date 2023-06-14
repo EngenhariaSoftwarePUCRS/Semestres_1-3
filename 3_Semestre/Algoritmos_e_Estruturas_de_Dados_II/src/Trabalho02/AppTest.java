@@ -21,7 +21,7 @@ public class AppTest {
                 System.out.print("\nAnalisando arquivo: " + fileName);
 
                 long startTime = System.nanoTime();
-                Mapa map = new Mapa(fileName, harbourAmount, true);
+                Map map = new Map(fileName, harbourAmount, true);
                 long endTime = System.nanoTime();
                 long fileTime = endTime - startTime;
 
