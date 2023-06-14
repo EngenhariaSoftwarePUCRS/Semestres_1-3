@@ -1,4 +1,4 @@
-package Trabalho02.src;
+package Trabalho02;
 
 import java.io.File;
 import java.io.FileWriter;
