@@ -11,14 +11,11 @@ public class Mapa {
     private int[] harbours;
     private int[] distances;
     private int further;
-    private long startTime;
 
     public Mapa(String fileName, int harbourAmount) {
         String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
         harbours = new int[harbourAmount + 1];
         distances = new int[harbours.length];
-
-        startTime = System.currentTimeMillis();
 
         System.out.println("\nCarregando mapa...");
         readFile(filePath);
@@ -34,10 +31,18 @@ public class Mapa {
         distances[1] = dijkstra.getDistancia(harbours[1]);
         System.out.println("Distâncias calculadas com sucesso!\n");
 
-        showDistances();
+        getDistances();
+    }
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("\nTempo de execução: " + (endTime - startTime) + "ms");
+    public Mapa(String fileName, int harbourAmount, boolean test) {
+        String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
+        harbours = new int[harbourAmount + 1];
+        distances = new int[harbours.length];
+        readFile(filePath);
+        linkEdges();
+        navigate(1, 2);
+        Dijkstra dijkstra = new Dijkstra(grafo, harbours[further]);
+        distances[1] = dijkstra.getDistancia(harbours[1]);
     }
 
     private void readFile(String filePath) {
@@ -123,19 +128,20 @@ public class Mapa {
         }
     }
 
-    private void showDistances() {
-        System.out.println("Distâncias: ");
+    public String getDistances() {
+        String result = "\tDistâncias: \n";
         for (int i = 2; i < distances.length; i++) {
             if (distances[i] == Integer.MAX_VALUE)
-                System.out.println("Não é possível chegar ao porto " + i);
+                result += "\t\tNão é possível chegar ao porto " + i + "\n";
             else
-                System.out.println("Distância pro porto " + (i) + ": " + distances[i]);
+                result += "\t\tDistância para o porto " + i + ": " + distances[i] + "\n";
         }
-        System.out.println("Distância pro porto " + (1) + ": " + distances[1]);
-        System.out.println("Distância total: " + getDistances());
+        result += "\t\tDistância para o porto " + 1 + ": " + distances[1] + "\n";
+        result += "\tDistância total: " + getAccumulatedDistance() + "\n";
+        return result;
     }
 
-    private int getDistances() {
+    private int getAccumulatedDistance() {
         int sum = 0;
         for (int i = 1; i < distances.length; i++)
             if (distances[i] != Integer.MAX_VALUE)
