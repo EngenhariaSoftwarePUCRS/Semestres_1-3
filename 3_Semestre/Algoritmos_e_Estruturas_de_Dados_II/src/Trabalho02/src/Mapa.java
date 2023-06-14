@@ -10,30 +10,40 @@ public class Mapa {
     private char[][] worldMap;
     private int[] harbours;
     private int[] distances;
-    private int further;
+    private int furthest;
 
     public Mapa(String fileName, int harbourAmount) {
         String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
         harbours = new int[harbourAmount + 1];
         distances = new int[harbours.length];
 
-        System.out.println("\nCarregando mapa...");
+        System.out.print("Carregando mapa...");
         readFile(filePath);
+        Util.clear("Carregando mapa...");
         System.out.println("Mapa carregado com sucesso!");
 
-        System.out.println("\nEstabelecendo conexões...");
+        System.out.print("Estabelecendo conexões...");
         linkEdges();
+        Util.clear("Estabelecendo conexões...");
         System.out.println("Conexões estabelecidas com sucesso!");
 
-        System.out.println("\nCalculando distâncias...");
+        System.out.print("Calculando distâncias...");
         navigate(1, 2);
-        Dijkstra dijkstra = new Dijkstra(grafo, harbours[further]);
+        Dijkstra dijkstra = new Dijkstra(grafo, harbours[furthest]);
         distances[1] = dijkstra.getDistancia(harbours[1]);
+        Util.clear("Calculando distâncias...");
         System.out.println("Distâncias calculadas com sucesso!\n");
 
         getDistances();
     }
 
+    /*
+     * Construtor para testes
+     * @param fileName Nome do arquivo de mapa
+     * @param harbourAmount Quantidade de portos
+     * @param test Flag para indicar que o construtor é para testes (sempre true)
+     * @return void
+     */
     public Mapa(String fileName, int harbourAmount, boolean test) {
         String filePath = "src/Trabalho02/mapas/" + fileName + ".txt";
         harbours = new int[harbourAmount + 1];
@@ -41,7 +51,7 @@ public class Mapa {
         readFile(filePath);
         linkEdges();
         navigate(1, 2);
-        Dijkstra dijkstra = new Dijkstra(grafo, harbours[further]);
+        Dijkstra dijkstra = new Dijkstra(grafo, harbours[furthest]);
         distances[1] = dijkstra.getDistancia(harbours[1]);
     }
 
@@ -123,7 +133,7 @@ public class Mapa {
         if (dijkstra.isUnreachable(harbours[destination])) {
             navigate(origin, destination + 1);
         } else {
-            further = destination;
+            furthest = destination;
             navigate(destination, destination + 1);
         }
     }

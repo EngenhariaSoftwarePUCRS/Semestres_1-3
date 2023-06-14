@@ -1,5 +1,5 @@
 
-Tempo decorrido para analisar o arquivo "mapa0": 00:41.606800
+Tempo decorrido para analisar o arquivo "mapa0": 00:39.143700
 	Distâncias: 
 		Distância para o porto 2: 10
 		Distância para o porto 3: 12
@@ -13,7 +13,7 @@ Tempo decorrido para analisar o arquivo "mapa0": 00:41.606800
 	Distância total: 24
 
 
-Tempo decorrido para analisar o arquivo "mapa1": 00:15.550600
+Tempo decorrido para analisar o arquivo "mapa1": 00:15.79400
 	Distâncias: 
 		Não é possível chegar ao porto 2
 		Distância para o porto 3: 14
@@ -27,7 +27,7 @@ Tempo decorrido para analisar o arquivo "mapa1": 00:15.550600
 	Distância total: 304
 
 
-Tempo decorrido para analisar o arquivo "mapa2": 00:20.601400
+Tempo decorrido para analisar o arquivo "mapa2": 00:22.65600
 	Distâncias: 
 		Distância para o porto 2: 82
 		Distância para o porto 3: 66
@@ -41,7 +41,7 @@ Tempo decorrido para analisar o arquivo "mapa2": 00:20.601400
 	Distância total: 432
 
 
-Tempo decorrido para analisar o arquivo "mapa3": 00:124.100300
+Tempo decorrido para analisar o arquivo "mapa3": 00:136.941300
 	Distâncias: 
 		Distância para o porto 2: 238
 		Distância para o porto 3: 58
@@ -55,7 +55,7 @@ Tempo decorrido para analisar o arquivo "mapa3": 00:124.100300
 	Distância total: 986
 
 
-Tempo decorrido para analisar o arquivo "mapa4": 06:6030.848000
+Tempo decorrido para analisar o arquivo "mapa4": 05:5925.443200
 	Distâncias: 
 		Distância para o porto 2: 178
 		Distância para o porto 3: 404
@@ -69,7 +69,7 @@ Tempo decorrido para analisar o arquivo "mapa4": 06:6030.848000
 	Distância total: 3426
 
 
-Tempo decorrido para analisar o arquivo "mapinha": 00:00.600600
+Tempo decorrido para analisar o arquivo "mapinha": 00:00.757500
 	Distâncias: 
 		Distância para o porto 2: 6
 		Distância para o porto 3: 2
@@ -84,5 +84,5 @@ Tempo decorrido para analisar o arquivo "mapinha": 00:00.600600
 
 ------------------------ RESULTADOS ------------------------
 Total de arquivos analisados: 6
-Tempo total de execução: 06:6233.307700
-Tempo médio de execução: 01:1038.884616
+Tempo total de execução: 06:6139.430700
+Tempo médio de execução: 01:1023.238450

@@ -8,4 +8,11 @@ public class Util {
 
         return String.format("%02d:%02d.%03d", seconds, milliseconds, nanoseconds);
     }
+
+    public static void clear(String text) {
+        String clear = "";
+        for (int i = 0; i < text.length(); i++)
+            clear += " ";
+        System.out.println("\r" + clear);
+    }
 }
