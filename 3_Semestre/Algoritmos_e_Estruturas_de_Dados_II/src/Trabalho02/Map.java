@@ -32,6 +32,7 @@ public class Map {
             loadingMessage = "Calculando distâncias...";
             System.out.print(loadingMessage);
             Dijkstra dijkstra = new Dijkstra(graph);
+            navigate(dijkstra, 1, 2);
             distances[1] = dijkstra.getDistance(harbours[furthest], harbours[1]);
             Util.clear(loadingMessage);
             System.out.println("Distâncias calculadas com sucesso!\n");

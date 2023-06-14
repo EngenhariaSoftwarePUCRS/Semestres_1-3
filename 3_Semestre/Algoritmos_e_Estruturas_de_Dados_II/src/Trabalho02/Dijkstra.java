@@ -1,7 +1,5 @@
 package Trabalho02;
 
-import aula26_grafos_dijkstra.FilaPrioridadeMinima;
-
 public class Dijkstra {
     public int[] predecessor;
     public int[] distances;
@@ -20,20 +18,20 @@ public class Dijkstra {
     public int getDistance(int origin, int destination) {
         this.clear();
 
-        FilaPrioridadeMinima filaMin = new FilaPrioridadeMinima();
-        filaMin.enfileirar(origin, 0);
+        PriorityQueue visitingQueue = new PriorityQueue();
+        visitingQueue.push(origin, 0);
         this.distances[origin] = 0;
 
-        while (!filaMin.estaVazia()) {
-            int vertex = filaMin.desenfileirar();
+        while (!visitingQueue.isEmpty()) {
+            int vertex = visitingQueue.pop();
             this.visited[vertex] = true;
             for (int destinationVertex : graph.getAdjecencyListForVertex(vertex)) {
                 int destinationDistance = this.distances[vertex] + 1;
                 if (destinationDistance < this.distances[destinationVertex]) {
                     predecessor[destinationVertex] = vertex;
                     this.distances[destinationVertex] = destinationDistance;
-                    if (!filaMin.existe(destinationVertex)) filaMin.enfileirar(destinationVertex, destinationDistance);
-                    else filaMin.atualizarDistanca(destinationVertex, destinationDistance);
+                    if (!visitingQueue.exists(destinationVertex)) visitingQueue.push(destinationVertex, destinationDistance);
+                    else visitingQueue.updateDistance(destinationVertex, destinationDistance);
                 }
             }
         }
