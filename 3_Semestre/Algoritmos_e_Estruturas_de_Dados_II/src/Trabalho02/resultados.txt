@@ -1,19 +1,5 @@
 
-Tempo decorrido para analisar o arquivo "mapa0": 00:38.543600
-	Distâncias: 
-		Distância para o porto 2: 10
-		Distância para o porto 3: 12
-		Distância para o porto 4: 0
-		Distância para o porto 5: 0
-		Distância para o porto 6: 0
-		Distância para o porto 7: 0
-		Distância para o porto 8: 0
-		Distância para o porto 9: 0
-		Distância para o porto 1: 2
-	Distância total: 24
-
-
-Tempo decorrido para analisar o arquivo "mapa1": 00:14.131100
+Tempo decorrido para analisar o arquivo "mapa_15_80": 00:61.662700
 	Distâncias: 
 		Não é possível chegar ao porto 2
 		Distância para o porto 3: 14
@@ -27,7 +13,7 @@ Tempo decorrido para analisar o arquivo "mapa1": 00:14.131100
 	Distância total: 304
 
 
-Tempo decorrido para analisar o arquivo "mapa2": 00:19.848100
+Tempo decorrido para analisar o arquivo "mapa_30_120": 00:23.864600
 	Distâncias: 
 		Distância para o porto 2: 82
 		Distância para o porto 3: 66
@@ -41,21 +27,7 @@ Tempo decorrido para analisar o arquivo "mapa2": 00:19.848100
 	Distância total: 432
 
 
-Tempo decorrido para analisar o arquivo "mapa3": 00:126.684200
-	Distâncias: 
-		Distância para o porto 2: 238
-		Distância para o porto 3: 58
-		Distância para o porto 4: 275
-		Distância para o porto 5: 110
-		Distância para o porto 6: 88
-		Distância para o porto 7: 39
-		Distância para o porto 8: 51
-		Não é possível chegar ao porto 9
-		Distância para o porto 1: 127
-	Distância total: 986
-
-
-Tempo decorrido para analisar o arquivo "mapa4": 05:5961.205800
+Tempo decorrido para analisar o arquivo "mapa_500_1000": 06:6181.701400
 	Distâncias: 
 		Distância para o porto 2: 178
 		Distância para o porto 3: 404
@@ -69,7 +41,35 @@ Tempo decorrido para analisar o arquivo "mapa4": 05:5961.205800
 	Distância total: 3426
 
 
-Tempo decorrido para analisar o arquivo "mapinha": 00:00.657300
+Tempo decorrido para analisar o arquivo "mapa_50_100": 00:15.858700
+	Distâncias: 
+		Distância para o porto 2: 26
+		Distância para o porto 3: 74
+		Não é possível chegar ao porto 4
+		Distância para o porto 5: 53
+		Distância para o porto 6: 75
+		Não é possível chegar ao porto 7
+		Distância para o porto 8: 85
+		Distância para o porto 9: 108
+		Distância para o porto 1: 63
+	Distância total: 484
+
+
+Tempo decorrido para analisar o arquivo "mapa_60_500": 00:103.983600
+	Distâncias: 
+		Distância para o porto 2: 238
+		Distância para o porto 3: 58
+		Distância para o porto 4: 275
+		Distância para o porto 5: 110
+		Distância para o porto 6: 88
+		Distância para o porto 7: 39
+		Distância para o porto 8: 51
+		Não é possível chegar ao porto 9
+		Distância para o porto 1: 127
+	Distância total: 986
+
+
+Tempo decorrido para analisar o arquivo "mapinha": 00:00.833800
 	Distâncias: 
 		Distância para o porto 2: 6
 		Distância para o porto 3: 2
@@ -84,5 +84,5 @@ Tempo decorrido para analisar o arquivo "mapinha": 00:00.657300
 
 ------------------------ RESULTADOS ------------------------
 Total de arquivos analisados: 6
-Tempo total de execução: 06:6161.70100
-Tempo médio de execução: 01:1026.845016
+Tempo total de execução: 06:6387.904800
+Tempo médio de execução: 01:1064.650800
